@@ -282,7 +282,7 @@ table_plot_cond_rel
 We can now take these tables to construct plots grouped by explicitness. To achieve this we simply need to add the `facet_wrap()` function, which replicates a plot multiple times, split by a specified grouping factor. Note that the grouping factor has to be supplied in R’s formula notation, hence it is preceded by a “~” symbol.
 
 
-```r
+``` r
 ggplot(table_plot_cond_rel, aes(x = fct_reorder(genre,
     Freq), y = Freq)) + geom_col(aes(fill = Freq)) +
     facet_wrap(~explicit) + labs(x = "", y = "Relative frequency",
@@ -401,7 +401,7 @@ music_data$log_streams <- log(music_data$streams)
 Now, let's create a boxplot based on these variables and plot the log-transformed number of streams by genre. 
 
 
-```r
+``` r
 ggplot(music_data, aes(x = fct_reorder(genre, log_streams),
     y = log_streams)) + geom_boxplot(coef = 3) + labs(x = "Genre",
     y = "Number of streams (log-scale)") + theme_minimal() +
@@ -421,7 +421,7 @@ The following graphic shows you how to interpret the boxplot:
 Note that you could also flip the boxplot. To do this, you only need to exchange the x- and y-variables. If we provide the categorical variable to the y-axis as follows, the axis will be flipped.   
 
 
-```r
+``` r
 ggplot(music_data, aes(x = log_streams, y = fct_reorder(genre,
     log_streams))) + geom_boxplot(coef = 3) + labs(x = "Number of streams (log-scale)",
     y = "Genre") + theme_minimal() + theme(plot.title = element_text(hjust = 0.5,
@@ -436,7 +436,7 @@ ggplot(music_data, aes(x = log_streams, y = fct_reorder(genre,
 It is often meaningful to augment the boxplot with the data points using ```geom_jitter()```. This way, differences in the distribution of the variable between the genres become even more apparent. 
 
 
-```r
+``` r
 ggplot(music_data, aes(x = log_streams, y = fct_reorder(genre,
     log_streams))) + geom_jitter(colour = "red", alpha = 0.1) +
     geom_boxplot(coef = 3, alpha = 0.1) + labs(x = "Number of streams (log-scale)",

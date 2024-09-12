@@ -605,7 +605,7 @@ You can check out the grouping variable(s)'s name(s) under "Survey Flow" in the 
 To import the data to R you can use the "read_survey" function from the "qualtRics" library.
 
 
-```r
+``` r
 library(qualtRics)
 green_consumption <- read_survey("data/Green_Consumption.csv")
 head(green_consumption)
@@ -613,7 +613,7 @@ head(green_consumption)
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["StartDate"],"name":[1],"type":["dttm"],"align":["right"]},{"label":["EndDate"],"name":[2],"type":["dttm"],"align":["right"]},{"label":["Status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["IPAddress"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Progress"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Duration (in seconds)"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Finished"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["RecordedDate"],"name":[8],"type":["dttm"],"align":["right"]},{"label":["ResponseId"],"name":[9],"type":["chr"],"align":["left"]},{"label":["RecipientLastName"],"name":[10],"type":["lgl"],"align":["right"]},{"label":["RecipientFirstName"],"name":[11],"type":["lgl"],"align":["right"]},{"label":["RecipientEmail"],"name":[12],"type":["lgl"],"align":["right"]},{"label":["ExternalReference"],"name":[13],"type":["lgl"],"align":["right"]},{"label":["LocationLatitude"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["LocationLongitude"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["DistributionChannel"],"name":[16],"type":["chr"],"align":["left"]},{"label":["UserLanguage"],"name":[17],"type":["chr"],"align":["left"]},{"label":["Q8"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["Q34_1...19"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["Q34_2"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["Q34_3"],"name":[21],"type":["dbl"],"align":["right"]},{"label":["Q34_4"],"name":[22],"type":["dbl"],"align":["right"]},{"label":["Q34_5"],"name":[23],"type":["dbl"],"align":["right"]},{"label":["Q34_5_TEXT"],"name":[24],"type":["chr"],"align":["left"]},{"label":["Q33_1"],"name":[25],"type":["dbl"],"align":["right"]},{"label":["Q33_2"],"name":[26],"type":["dbl"],"align":["right"]},{"label":["Q33_3"],"name":[27],"type":["dbl"],"align":["right"]},{"label":["Q33_4"],"name":[28],"type":["dbl"],"align":["right"]},{"label":["Q33_5"],"name":[29],"type":["dbl"],"align":["right"]},{"label":["Q33_6"],"name":[30],"type":["dbl"],"align":["right"]},{"label":["Q33_7"],"name":[31],"type":["dbl"],"align":["right"]},{"label":["Q37...32"],"name":[32],"type":["chr"],"align":["left"]},{"label":["Q33"],"name":[33],"type":["chr"],"align":["left"]},{"label":["Q43"],"name":[34],"type":["chr"],"align":["left"]},{"label":["Q45"],"name":[35],"type":["chr"],"align":["left"]},{"label":["Q47"],"name":[36],"type":["chr"],"align":["left"]},{"label":["Q49"],"name":[37],"type":["chr"],"align":["left"]},{"label":["Q1_1"],"name":[38],"type":["dbl"],"align":["right"]},{"label":["Q1_2"],"name":[39],"type":["dbl"],"align":["right"]},{"label":["Q1_3"],"name":[40],"type":["dbl"],"align":["right"]},{"label":["Q1_4"],"name":[41],"type":["dbl"],"align":["right"]},{"label":["Q1_5"],"name":[42],"type":["dbl"],"align":["right"]},{"label":["Q3"],"name":[43],"type":["lgl"],"align":["right"]},{"label":["Q30_1"],"name":[44],"type":["dbl"],"align":["right"]},{"label":["Q4_1"],"name":[45],"type":["dbl"],"align":["right"]},{"label":["Q4_2"],"name":[46],"type":["dbl"],"align":["right"]},{"label":["Q4_3"],"name":[47],"type":["dbl"],"align":["right"]},{"label":["Q4_4"],"name":[48],"type":["dbl"],"align":["right"]},{"label":["Q5_1"],"name":[49],"type":["dbl"],"align":["right"]},{"label":["Q5_2"],"name":[50],"type":["dbl"],"align":["right"]},{"label":["Q5_3"],"name":[51],"type":["dbl"],"align":["right"]},{"label":["Q5_4"],"name":[52],"type":["dbl"],"align":["right"]},{"label":["Q5_5"],"name":[53],"type":["dbl"],"align":["right"]},{"label":["Q10_1"],"name":[54],"type":["dbl"],"align":["right"]},{"label":["Q10_2"],"name":[55],"type":["dbl"],"align":["right"]},{"label":["Q10_3"],"name":[56],"type":["dbl"],"align":["right"]},{"label":["Q10_4"],"name":[57],"type":["dbl"],"align":["right"]},{"label":["Q40"],"name":[58],"type":["dbl"],"align":["right"]},{"label":["Q41_1"],"name":[59],"type":["dbl"],"align":["right"]},{"label":["Q41_2"],"name":[60],"type":["dbl"],"align":["right"]},{"label":["Q41_3"],"name":[61],"type":["dbl"],"align":["right"]},{"label":["Q41_4"],"name":[62],"type":["dbl"],"align":["right"]},{"label":["Q41_5"],"name":[63],"type":["dbl"],"align":["right"]},{"label":["Q41_5_TEXT"],"name":[64],"type":["chr"],"align":["left"]},{"label":["Q42_1"],"name":[65],"type":["dbl"],"align":["right"]},{"label":["Q34_1...66"],"name":[66],"type":["dbl"],"align":["right"]},{"label":["Q13"],"name":[67],"type":["dbl"],"align":["right"]},{"label":["Q11"],"name":[68],"type":["dbl"],"align":["right"]},{"label":["Q29_1"],"name":[69],"type":["dbl"],"align":["right"]},{"label":["Q29_2"],"name":[70],"type":["dbl"],"align":["right"]},{"label":["Q29_3"],"name":[71],"type":["dbl"],"align":["right"]},{"label":["Q29_4"],"name":[72],"type":["dbl"],"align":["right"]},{"label":["Q41"],"name":[73],"type":["dbl"],"align":["right"]},{"label":["Q39"],"name":[74],"type":["dbl"],"align":["right"]},{"label":["Q37...75"],"name":[75],"type":["dbl"],"align":["right"]},{"label":["Q50"],"name":[76],"type":["dbl"],"align":["right"]},{"label":["Q24"],"name":[77],"type":["dbl"],"align":["right"]},{"label":["Q29"],"name":[78],"type":["dbl"],"align":["right"]},{"label":["Q25"],"name":[79],"type":["dbl"],"align":["right"]},{"label":["Q30"],"name":[80],"type":["dbl"],"align":["right"]},{"label":["Q28_1"],"name":[81],"type":["dbl"],"align":["right"]},{"label":["Q28_2"],"name":[82],"type":["dbl"],"align":["right"]},{"label":["Q28_3"],"name":[83],"type":["dbl"],"align":["right"]},{"label":["Q28_3_TEXT"],"name":[84],"type":["chr"],"align":["left"]},{"label":["Q31"],"name":[85],"type":["chr"],"align":["left"]},{"label":["Q44"],"name":[86],"type":["dbl"],"align":["right"]}],"data":[{"1":"2019-11-01 02:13:07","2":"2019-11-01 02:21:41","3":"0","4":"89.144.204.52","5":"100","6":"513","7":"1","8":"2019-11-01 02:21:42","9":"R_1YbbIFT2P1b6ekN","10":"NA","11":"NA","12":"NA","13":"NA","14":"48.20000","15":"16.36670","16":"anonymous","17":"EN","18":"2","19":"0","20":"90","21":"10","22":"0","23":"0","24":"NA","25":"5","26":"4","27":"6","28":"5","29":"4","30":"3","31":"6","32":"02.50","33":"02.50","34":"01.90","35":"01.50","36":"06.90","37":"06.90","38":"6","39":"6","40":"6","41":"1","42":"5","43":"NA","44":"55","45":"87","46":"100","47":"84","48":"74","49":"100","50":"80","51":"100","52":"75","53":"30","54":"4","55":"4","56":"3","57":"4","58":"2","59":"100","60":"0","61":"0","62":"100","63":"0","64":"NA","65":"4","66":"45","67":"2","68":"7","69":"1","70":"3","71":"3","72":"4","73":"3","74":"4","75":"3","76":"NA","77":"23","78":"2","79":"3","80":"1","81":"1","82":"NA","83":"NA","84":"NA","85":"1","86":"1"},{"1":"2019-11-01 02:14:06","2":"2019-11-01 02:26:02","3":"0","4":"213.142.96.124","5":"100","6":"715","7":"1","8":"2019-11-01 02:26:03","9":"R_w7Ph2h8lppYIJ6V","10":"NA","11":"NA","12":"NA","13":"NA","14":"48.20770","15":"16.37050","16":"anonymous","17":"EN","18":"3","19":"0","20":"50","21":"50","22":"0","23":"0","24":"NA","25":"4","26":"5","27":"5","28":"5","29":"4","30":"4","31":"6","32":"2.5","33":"3","34":"0.60","35":"1","36":"0","37":"0","38":"6","39":"6","40":"6","41":"2","42":"2","43":"NA","44":"66","45":"61","46":"80","47":"44","48":"65","49":"0","50":"0","51":"0","52":"100","53":"0","54":"5","55":"5","56":"5","57":"2","58":"1","59":"0","60":"0","61":"100","62":"0","63":"0","64":"NA","65":"3","66":"51","67":"6","68":"0","69":"1","70":"1","71":"1","72":"1","73":"2","74":"4","75":"2","76":"NA","77":"24","78":"2","79":"4","80":"1","81":"1","82":"NA","83":"NA","84":"NA","85":"1","86":"1"},{"1":"2019-11-01 02:27:00","2":"2019-11-01 02:38:38","3":"0","4":"212.95.5.90","5":"100","6":"698","7":"1","8":"2019-11-01 02:38:38","9":"R_3RwjJqp399Ga5LM","10":"NA","11":"NA","12":"NA","13":"NA","14":"48.21690","15":"16.49969","16":"anonymous","17":"EN","18":"2","19":"98","20":"2","21":"0","22":"0","23":"0","24":"NA","25":"6","26":"5","27":"1","28":"2","29":"6","30":"4","31":"5","32":"1.99","33":"1.99","34":"0.89","35":"0.99","36":"0.00","37":"3.50","38":"5","39":"5","40":"4","41":"3","42":"5","43":"NA","44":"49","45":"81","46":"100","47":"71","48":"52","49":"80","50":"10","51":"5","52":"0","53":"5","54":"5","55":"2","56":"2","57":"5","58":"1","59":"0","60":"0","61":"0","62":"100","63":"0","64":"NA","65":"3","66":"2","67":"6","68":"2","69":"3","70":"3","71":"3","72":"2","73":"2","74":"1","75":"NA","76":"2","77":"24","78":"2","79":"4","80":"1","81":"1","82":"NA","83":"NA","84":"NA","85":"1","86":"1"},{"1":"2019-11-01 02:46:17","2":"2019-11-01 02:53:37","3":"0","4":"213.162.73.140","5":"100","6":"440","7":"1","8":"2019-11-01 02:53:37","9":"R_1N7TIk9MjEKYI0t","10":"NA","11":"NA","12":"NA","13":"NA","14":"47.13519","15":"15.46010","16":"anonymous","17":"EN","18":"2","19":"30","20":"40","21":"20","22":"10","23":"0","24":"NA","25":"4","26":"2","27":"5","28":"4","29":"5","30":"5","31":"6","32":"02.49","33":"02.99","34":"01.99","35":"2.49","36":"06.99","37":"07.99","38":"4","39":"4","40":"4","41":"4","42":"5","43":"NA","44":"52","45":"53","46":"52","47":"100","48":"47","49":"30","50":"20","51":"20","52":"20","53":"10","54":"3","55":"3","56":"3","57":"3","58":"2","59":"20","60":"0","61":"20","62":"60","63":"0","64":"NA","65":"4","66":"10","67":"6","68":"7","69":"1","70":"3","71":"4","72":"5","73":"3","74":"3","75":"3","76":"NA","77":"25","78":"2","79":"2","80":"1","81":"1","82":"NA","83":"NA","84":"NA","85":"1","86":"1"},{"1":"2019-11-01 03:08:06","2":"2019-11-01 03:17:40","3":"0","4":"80.110.125.99","5":"100","6":"574","7":"1","8":"2019-11-01 03:17:40","9":"R_3OkSPNyYYVv8YLU","10":"NA","11":"NA","12":"NA","13":"NA","14":"48.16400","15":"16.44630","16":"anonymous","17":"EN","18":"3","19":"60","20":"20","21":"20","22":"0","23":"0","24":"NA","25":"4","26":"4","27":"4","28":"4","29":"4","30":"3","31":"6","32":"2.00","33":"02.50","34":"01.50","35":"01.50","36":"04.00","37":"04.00","38":"5","39":"5","40":"4","41":"2","42":"5","43":"NA","44":"45","45":"65","46":"100","47":"50","48":"68","49":"50","50":"15","51":"30","52":"0","53":"5","54":"4","55":"4","56":"3","57":"4","58":"2","59":"0","60":"0","61":"80","62":"20","63":"0","64":"NA","65":"4","66":"62","67":"6","68":"4","69":"1","70":"3","71":"4","72":"2","73":"4","74":"4","75":"NA","76":"4","77":"24","78":"2","79":"4","80":"1","81":"1","82":"NA","83":"NA","84":"NA","85":"1","86":"1"},{"1":"2019-11-01 03:39:03","2":"2019-11-01 03:54:54","3":"0","4":"212.197.132.62","5":"100","6":"950","7":"1","8":"2019-11-01 03:54:54","9":"R_3kHzNH3NUqDTHzl","10":"NA","11":"NA","12":"NA","13":"NA","14":"48.23380","15":"16.29010","16":"anonymous","17":"EN","18":"3","19":"50","20":"50","21":"0","22":"0","23":"0","24":"NA","25":"5","26":"4","27":"4","28":"4","29":"5","30":"4","31":"6","32":"4,50","33":"04,50","34":"04,50\\200","35":"1,50","36":"10","37":"09,50","38":"6","39":"5","40":"4","41":"2","42":"4","43":"NA","44":"60","45":"82","46":"83","47":"61","48":"62","49":"40","50":"20","51":"20","52":"10","53":"10","54":"3","55":"3","56":"3","57":"5","58":"3","59":"0","60":"0","61":"50","62":"0","63":"50","64":"Nicht Mainstream","65":"3","66":"40","67":"7","68":"5","69":"1","70":"3","71":"5","72":"3","73":"4","74":"3","75":"NA","76":"4","77":"20","78":"1","79":"3","80":"1","81":"1","82":"NA","83":"NA","84":"NA","85":"2","86":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["StartDate"],"name":[1],"type":["dttm"],"align":["right"]},{"label":["EndDate"],"name":[2],"type":["dttm"],"align":["right"]},{"label":["Status"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["IPAddress"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Progress"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Duration (in seconds)"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["Finished"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["RecordedDate"],"name":[8],"type":["dttm"],"align":["right"]},{"label":["ResponseId"],"name":[9],"type":["chr"],"align":["left"]},{"label":["RecipientLastName"],"name":[10],"type":["lgl"],"align":["right"]},{"label":["RecipientFirstName"],"name":[11],"type":["lgl"],"align":["right"]},{"label":["RecipientEmail"],"name":[12],"type":["lgl"],"align":["right"]},{"label":["ExternalReference"],"name":[13],"type":["lgl"],"align":["right"]},{"label":["LocationLatitude"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["LocationLongitude"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["DistributionChannel"],"name":[16],"type":["chr"],"align":["left"]},{"label":["UserLanguage"],"name":[17],"type":["chr"],"align":["left"]},{"label":["Q8"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["Q34_1...19"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["Q34_2"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["Q34_3"],"name":[21],"type":["dbl"],"align":["right"]},{"label":["Q34_4"],"name":[22],"type":["dbl"],"align":["right"]},{"label":["Q34_5"],"name":[23],"type":["dbl"],"align":["right"]},{"label":["Q34_5_TEXT"],"name":[24],"type":["chr"],"align":["left"]},{"label":["Q33_1"],"name":[25],"type":["dbl"],"align":["right"]},{"label":["Q33_2"],"name":[26],"type":["dbl"],"align":["right"]},{"label":["Q33_3"],"name":[27],"type":["dbl"],"align":["right"]},{"label":["Q33_4"],"name":[28],"type":["dbl"],"align":["right"]},{"label":["Q33_5"],"name":[29],"type":["dbl"],"align":["right"]},{"label":["Q33_6"],"name":[30],"type":["dbl"],"align":["right"]},{"label":["Q33_7"],"name":[31],"type":["dbl"],"align":["right"]},{"label":["Q37...32"],"name":[32],"type":["chr"],"align":["left"]},{"label":["Q33"],"name":[33],"type":["chr"],"align":["left"]},{"label":["Q43"],"name":[34],"type":["chr"],"align":["left"]},{"label":["Q45"],"name":[35],"type":["chr"],"align":["left"]},{"label":["Q47"],"name":[36],"type":["chr"],"align":["left"]},{"label":["Q49"],"name":[37],"type":["chr"],"align":["left"]},{"label":["Q1_1"],"name":[38],"type":["dbl"],"align":["right"]},{"label":["Q1_2"],"name":[39],"type":["dbl"],"align":["right"]},{"label":["Q1_3"],"name":[40],"type":["dbl"],"align":["right"]},{"label":["Q1_4"],"name":[41],"type":["dbl"],"align":["right"]},{"label":["Q1_5"],"name":[42],"type":["dbl"],"align":["right"]},{"label":["Q3"],"name":[43],"type":["lgl"],"align":["right"]},{"label":["Q30_1"],"name":[44],"type":["dbl"],"align":["right"]},{"label":["Q4_1"],"name":[45],"type":["dbl"],"align":["right"]},{"label":["Q4_2"],"name":[46],"type":["dbl"],"align":["right"]},{"label":["Q4_3"],"name":[47],"type":["dbl"],"align":["right"]},{"label":["Q4_4"],"name":[48],"type":["dbl"],"align":["right"]},{"label":["Q5_1"],"name":[49],"type":["dbl"],"align":["right"]},{"label":["Q5_2"],"name":[50],"type":["dbl"],"align":["right"]},{"label":["Q5_3"],"name":[51],"type":["dbl"],"align":["right"]},{"label":["Q5_4"],"name":[52],"type":["dbl"],"align":["right"]},{"label":["Q5_5"],"name":[53],"type":["dbl"],"align":["right"]},{"label":["Q10_1"],"name":[54],"type":["dbl"],"align":["right"]},{"label":["Q10_2"],"name":[55],"type":["dbl"],"align":["right"]},{"label":["Q10_3"],"name":[56],"type":["dbl"],"align":["right"]},{"label":["Q10_4"],"name":[57],"type":["dbl"],"align":["right"]},{"label":["Q40"],"name":[58],"type":["dbl"],"align":["right"]},{"label":["Q41_1"],"name":[59],"type":["dbl"],"align":["right"]},{"label":["Q41_2"],"name":[60],"type":["dbl"],"align":["right"]},{"label":["Q41_3"],"name":[61],"type":["dbl"],"align":["right"]},{"label":["Q41_4"],"name":[62],"type":["dbl"],"align":["right"]},{"label":["Q41_5"],"name":[63],"type":["dbl"],"align":["right"]},{"label":["Q41_5_TEXT"],"name":[64],"type":["chr"],"align":["left"]},{"label":["Q42_1"],"name":[65],"type":["dbl"],"align":["right"]},{"label":["Q34_1...66"],"name":[66],"type":["dbl"],"align":["right"]},{"label":["Q13"],"name":[67],"type":["dbl"],"align":["right"]},{"label":["Q11"],"name":[68],"type":["dbl"],"align":["right"]},{"label":["Q29_1"],"name":[69],"type":["dbl"],"align":["right"]},{"label":["Q29_2"],"name":[70],"type":["dbl"],"align":["right"]},{"label":["Q29_3"],"name":[71],"type":["dbl"],"align":["right"]},{"label":["Q29_4"],"name":[72],"type":["dbl"],"align":["right"]},{"label":["Q41"],"name":[73],"type":["dbl"],"align":["right"]},{"label":["Q39"],"name":[74],"type":["dbl"],"align":["right"]},{"label":["Q37...75"],"name":[75],"type":["dbl"],"align":["right"]},{"label":["Q50"],"name":[76],"type":["dbl"],"align":["right"]},{"label":["Q24"],"name":[77],"type":["dbl"],"align":["right"]},{"label":["Q29"],"name":[78],"type":["dbl"],"align":["right"]},{"label":["Q25"],"name":[79],"type":["dbl"],"align":["right"]},{"label":["Q30"],"name":[80],"type":["dbl"],"align":["right"]},{"label":["Q28_1"],"name":[81],"type":["dbl"],"align":["right"]},{"label":["Q28_2"],"name":[82],"type":["dbl"],"align":["right"]},{"label":["Q28_3"],"name":[83],"type":["dbl"],"align":["right"]},{"label":["Q28_3_TEXT"],"name":[84],"type":["chr"],"align":["left"]},{"label":["Q31"],"name":[85],"type":["chr"],"align":["left"]},{"label":["Q44"],"name":[86],"type":["dbl"],"align":["right"]}],"data":[{"1":"2019-11-01 02:13:07","2":"2019-11-01 02:21:41","3":"0","4":"89.144.204.52","5":"100","6":"513","7":"1","8":"2019-11-01 02:21:42","9":"R_1YbbIFT2P1b6ekN","10":"NA","11":"NA","12":"NA","13":"NA","14":"48.20000","15":"16.36670","16":"anonymous","17":"EN","18":"2","19":"0","20":"90","21":"10","22":"0","23":"0","24":"NA","25":"5","26":"4","27":"6","28":"5","29":"4","30":"3","31":"6","32":"02.50","33":"02.50","34":"01.90","35":"01.50","36":"06.90","37":"06.90","38":"6","39":"6","40":"6","41":"1","42":"5","43":"NA","44":"55","45":"87","46":"100","47":"84","48":"74","49":"100","50":"80","51":"100","52":"75","53":"30","54":"4","55":"4","56":"3","57":"4","58":"2","59":"100","60":"0","61":"0","62":"100","63":"0","64":"NA","65":"4","66":"45","67":"2","68":"7","69":"1","70":"3","71":"3","72":"4","73":"3","74":"4","75":"3","76":"NA","77":"23","78":"2","79":"3","80":"1","81":"1","82":"NA","83":"NA","84":"NA","85":"1","86":"1"},{"1":"2019-11-01 02:14:06","2":"2019-11-01 02:26:02","3":"0","4":"213.142.96.124","5":"100","6":"715","7":"1","8":"2019-11-01 02:26:03","9":"R_w7Ph2h8lppYIJ6V","10":"NA","11":"NA","12":"NA","13":"NA","14":"48.20770","15":"16.37050","16":"anonymous","17":"EN","18":"3","19":"0","20":"50","21":"50","22":"0","23":"0","24":"NA","25":"4","26":"5","27":"5","28":"5","29":"4","30":"4","31":"6","32":"2.5","33":"3","34":"0.60","35":"1","36":"0","37":"0","38":"6","39":"6","40":"6","41":"2","42":"2","43":"NA","44":"66","45":"61","46":"80","47":"44","48":"65","49":"0","50":"0","51":"0","52":"100","53":"0","54":"5","55":"5","56":"5","57":"2","58":"1","59":"0","60":"0","61":"100","62":"0","63":"0","64":"NA","65":"3","66":"51","67":"6","68":"0","69":"1","70":"1","71":"1","72":"1","73":"2","74":"4","75":"2","76":"NA","77":"24","78":"2","79":"4","80":"1","81":"1","82":"NA","83":"NA","84":"NA","85":"1","86":"1"},{"1":"2019-11-01 02:27:00","2":"2019-11-01 02:38:38","3":"0","4":"212.95.5.90","5":"100","6":"698","7":"1","8":"2019-11-01 02:38:38","9":"R_3RwjJqp399Ga5LM","10":"NA","11":"NA","12":"NA","13":"NA","14":"48.21690","15":"16.49969","16":"anonymous","17":"EN","18":"2","19":"98","20":"2","21":"0","22":"0","23":"0","24":"NA","25":"6","26":"5","27":"1","28":"2","29":"6","30":"4","31":"5","32":"1.99","33":"1.99","34":"0.89","35":"0.99","36":"0.00","37":"3.50","38":"5","39":"5","40":"4","41":"3","42":"5","43":"NA","44":"49","45":"81","46":"100","47":"71","48":"52","49":"80","50":"10","51":"5","52":"0","53":"5","54":"5","55":"2","56":"2","57":"5","58":"1","59":"0","60":"0","61":"0","62":"100","63":"0","64":"NA","65":"3","66":"2","67":"6","68":"2","69":"3","70":"3","71":"3","72":"2","73":"2","74":"1","75":"NA","76":"2","77":"24","78":"2","79":"4","80":"1","81":"1","82":"NA","83":"NA","84":"NA","85":"1","86":"1"},{"1":"2019-11-01 02:46:17","2":"2019-11-01 02:53:37","3":"0","4":"213.162.73.140","5":"100","6":"440","7":"1","8":"2019-11-01 02:53:37","9":"R_1N7TIk9MjEKYI0t","10":"NA","11":"NA","12":"NA","13":"NA","14":"47.13519","15":"15.46010","16":"anonymous","17":"EN","18":"2","19":"30","20":"40","21":"20","22":"10","23":"0","24":"NA","25":"4","26":"2","27":"5","28":"4","29":"5","30":"5","31":"6","32":"02.49","33":"02.99","34":"01.99","35":"2.49","36":"06.99","37":"07.99","38":"4","39":"4","40":"4","41":"4","42":"5","43":"NA","44":"52","45":"53","46":"52","47":"100","48":"47","49":"30","50":"20","51":"20","52":"20","53":"10","54":"3","55":"3","56":"3","57":"3","58":"2","59":"20","60":"0","61":"20","62":"60","63":"0","64":"NA","65":"4","66":"10","67":"6","68":"7","69":"1","70":"3","71":"4","72":"5","73":"3","74":"3","75":"3","76":"NA","77":"25","78":"2","79":"2","80":"1","81":"1","82":"NA","83":"NA","84":"NA","85":"1","86":"1"},{"1":"2019-11-01 03:08:06","2":"2019-11-01 03:17:40","3":"0","4":"80.110.125.99","5":"100","6":"574","7":"1","8":"2019-11-01 03:17:40","9":"R_3OkSPNyYYVv8YLU","10":"NA","11":"NA","12":"NA","13":"NA","14":"48.16400","15":"16.44630","16":"anonymous","17":"EN","18":"3","19":"60","20":"20","21":"20","22":"0","23":"0","24":"NA","25":"4","26":"4","27":"4","28":"4","29":"4","30":"3","31":"6","32":"2.00","33":"02.50","34":"01.50","35":"01.50","36":"04.00","37":"04.00","38":"5","39":"5","40":"4","41":"2","42":"5","43":"NA","44":"45","45":"65","46":"100","47":"50","48":"68","49":"50","50":"15","51":"30","52":"0","53":"5","54":"4","55":"4","56":"3","57":"4","58":"2","59":"0","60":"0","61":"80","62":"20","63":"0","64":"NA","65":"4","66":"62","67":"6","68":"4","69":"1","70":"3","71":"4","72":"2","73":"4","74":"4","75":"NA","76":"4","77":"24","78":"2","79":"4","80":"1","81":"1","82":"NA","83":"NA","84":"NA","85":"1","86":"1"},{"1":"2019-11-01 03:39:03","2":"2019-11-01 03:54:54","3":"0","4":"212.197.132.62","5":"100","6":"950","7":"1","8":"2019-11-01 03:54:54","9":"R_3kHzNH3NUqDTHzl","10":"NA","11":"NA","12":"NA","13":"NA","14":"48.23380","15":"16.29010","16":"anonymous","17":"EN","18":"3","19":"50","20":"50","21":"0","22":"0","23":"0","24":"NA","25":"5","26":"4","27":"4","28":"4","29":"5","30":"4","31":"6","32":"4,50","33":"04,50","34":"04,50€","35":"1,50","36":"10","37":"09,50","38":"6","39":"5","40":"4","41":"2","42":"4","43":"NA","44":"60","45":"82","46":"83","47":"61","48":"62","49":"40","50":"20","51":"20","52":"10","53":"10","54":"3","55":"3","56":"3","57":"5","58":"3","59":"0","60":"0","61":"50","62":"0","63":"50","64":"Nicht Mainstream","65":"3","66":"40","67":"7","68":"5","69":"1","70":"3","71":"5","72":"3","73":"4","74":"3","75":"NA","76":"4","77":"20","78":"1","79":"3","80":"1","81":"1","82":"NA","83":"NA","84":"NA","85":"2","86":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -624,7 +624,7 @@ At first some of the column names will be the question number. Question 8 in our
 We can see the question and the first values using the `str` function
 
 
-```r
+``` r
 str(green_consumption$Q8)
 ```
 
@@ -645,7 +645,7 @@ The value $1$ in our data actually corresponds to the answer $0$, $2$ to $1-2$ a
 We can also get just the text of the question using `get_label` from the `sjlabelled` library. This function creates a labelled vector that we can subset using the column names in the `data.frame` to get the corresponding question. It is important to save the labels to a variable before transforming the data as some of the labels will be removed from the `data.frame` in the process (e.g., by transforming to a factor variable).
 
 
-```r
+``` r
 library(sjlabelled)
 questions_green_consumption <- get_label(green_consumption)
 questions_green_consumption["Q8"]
@@ -662,7 +662,7 @@ questions_green_consumption["Q8"]
 For single answer multiple choice questions we can create a `factor` variable using the corresponding answers as labels.
 
 
-```r
+``` r
 green_consumption$Q8 <- factor(green_consumption$Q8,
                                levels = 1:4, 
                                labels = c("0", "1-2", "3-4", ">4"))
@@ -680,7 +680,7 @@ head(green_consumption$Q8)
 In case there are multiple possible answers there will be multiple columns corresponding to the same question but different answers. For example, if we ask people for reasons why they use a car there are multiple options which are not mutually exclusive.
 
 
-```r
+``` r
 carsharing <- read_survey("data/Car_sharing.csv")
 questions_carsharing <- get_label(carsharing)
 questions_carsharing["Q6_1"]
@@ -691,7 +691,7 @@ questions_carsharing["Q6_1"]
 ## "For what reason(s) do you use your car? - to visit somebody"
 ```
 
-```r
+``` r
 questions_carsharing["Q6_2"]
 ```
 
@@ -700,7 +700,7 @@ questions_carsharing["Q6_2"]
 ## "For what reason(s) do you use your car? - to go shopping"
 ```
 
-```r
+``` r
 questions_carsharing["Q6_3"]
 ```
 
@@ -712,7 +712,7 @@ questions_carsharing["Q6_3"]
 The value of such a column is going to be $1$ for the participants that chose the option and `NA` otherwise. We can easily replace all `NA`s with $0$ if we would like to. The `startsWith` function can be helpful to select the names of multiple columns corresponding to the same question. Then `replace` function can replace the `NA` values with 0:
 
 
-```r
+``` r
 head(carsharing$Q6_1)
 ```
 
@@ -720,7 +720,7 @@ head(carsharing$Q6_1)
 ## [1]  1 NA NA NA NA  1
 ```
 
-```r
+``` r
 carsharing[, startsWith(names(carsharing), "Q6")]  <- replace(carsharing[, startsWith(names(carsharing), "Q6")], 
                                                               is.na(carsharing[, startsWith(names(carsharing), "Q6")]), 0)
 carsharing[, startsWith(names(carsharing), "Q6")]
@@ -735,7 +735,7 @@ carsharing[, startsWith(names(carsharing), "Q6")]
 This is useful, for example, to easily calculate the share of respondents who chose a given option
 
 
-```r
+``` r
 share_go_shopping <- mean(carsharing$Q6_2)
 share_go_shopping
 ```
@@ -750,7 +750,7 @@ share_go_shopping
 Some fields allow for text input but we expect a certain format (e.g., a currency value formated as xxx.xx to assess willingness to pay). However, even if we instruct participants to enter values in that format they might not follow the instructions exactly. Let's look at some example answers we might get:
 
 
-```r
+``` r
 questions_green_consumption["Q33"]
 ```
 
@@ -759,20 +759,20 @@ questions_green_consumption["Q33"]
 ## "How much would you pay for a kg (kilogram) of these apples?Please state your willingness to pay in the field below (xx.xx)."
 ```
 
-```r
+``` r
 green_consumption$Q33[c(1,2,6,24,34,58,82,98,102,157,158)]
 ```
 
 ```
-##  [1] "02.50"         "3"             "04,50"         "5,10\200"        
-##  [5] "\2004,--"         "04.00 Euro"    "15 USD"        "90,000.00"    
+##  [1] "02.50"         "3"             "04,50"         "5,10€"        
+##  [5] "€4,--"         "04.00 Euro"    "15 USD"        "90,000.00"    
 ##  [9] "$5"            NA              "Error picture"
 ```
 
 The first two examples can be converted to numbers easily:
 
 
-```r
+``` r
 as.numeric(green_consumption$Q33[c(1,2)])
 ```
 
@@ -783,7 +783,7 @@ as.numeric(green_consumption$Q33[c(1,2)])
 However the third will fail due to the comma.
 
 
-```r
+``` r
 as.numeric(green_consumption$Q33[6])
 ```
 
@@ -794,7 +794,7 @@ as.numeric(green_consumption$Q33[6])
 We can use the `stringr` package to replace all `,` with `.` and convert the third example (and equivalent values in the data) to numeric:
 
 
-```r
+``` r
 library(stringr)
 green_consumption$Q33 <- str_replace(green_consumption$Q33, ',', '.')
 as.numeric(green_consumption$Q33[6])
@@ -806,7 +806,7 @@ as.numeric(green_consumption$Q33[6])
 However, this creates a problem for values like $90,000.00$ since those are now $90.000.00$. We can identify them with `which(str_count(..., fixed('.')) > 1)` which returns the row numbers of rows containing more than one `.`: 
 
 
-```r
+``` r
 bad_rows <- which(str_count(green_consumption$Q33, fixed('.')) > 1)
 green_consumption$Q33[bad_rows]
 ```
@@ -818,7 +818,7 @@ green_consumption$Q33[bad_rows]
 In this case we only need to replace the first `.` but not the second. `str_remove` removes only the first occurrence (whether the resulting value is reasonable is up to you to judge): 
 
 
-```r
+``` r
 green_consumption$Q33[bad_rows] <- str_remove(green_consumption$Q33[bad_rows], fixed('.'))
 green_consumption$Q33[bad_rows]
 ```
@@ -830,7 +830,7 @@ green_consumption$Q33[bad_rows]
 If we had values with a varying number of "." we would like to remove we can use a `while` loop that runs as long as we still have rows with more than one `.`:
 
 
-```r
+``` r
 values <- c("90.1", "12.345.000.23", "12.000.4")
 bad_rows <- which(str_count(values, fixed('.')) > 1)
 while(length(bad_rows) > 0){
@@ -847,7 +847,7 @@ values
 Similarly we can remove `€` and the word `euro` or `eur` and `--` with `str_remove_all` by chaining them together using `|`. It is also beneficial to ignore the case of the characters by wrapping the strings to be replaced in `regex(..., ingnore_case = TRUE)`:
 
 
-```r
+``` r
 green_consumption$Q33 <- str_remove_all(green_consumption$Q33, regex('€|euro|eur|-', ignore_case = TRUE))
 green_consumption$Q33[c(1,2,6,24,34,58,82,98,102,157,158)]
 ```
@@ -861,7 +861,7 @@ green_consumption$Q33[c(1,2,6,24,34,58,82,98,102,157,158)]
 Values in a different currency can be converted using a given exchange rate. We first look for rows including `$` or `USD` using the `grepl` function which unfortunately uses a slightly different syntax than `stringr`. Since `$` also has a special meaning we need to prepend `\\` to let R know that we mean a literal `$`.
 
 
-```r
+``` r
 dollar_rows <- grepl("\\$|usd", green_consumption$Q33, ignore.case = TRUE)
 dollar_values <- green_consumption$Q33[dollar_rows]
 dollar_values
@@ -874,7 +874,7 @@ dollar_values
 Now we can remove everything non-numeric, multiply by the exchange rate, and replace the dollar values in the column with the corresponding euro equivalent.
 
 
-```r
+``` r
 exchange_rate <- 0.9
 dollar_values <- str_remove_all(dollar_values, regex("\\$|usd", ignore_case = TRUE))
 green_consumption$Q33[dollar_rows] <- as.numeric(dollar_values) * exchange_rate
@@ -886,7 +886,7 @@ green_consumption$Q33[dollar_rows]
 ```
 
 
-```r
+``` r
 green_consumption$Q33[c(1,2,6,24,34,58,82,98,102,157,158)]
 ```
 
@@ -899,7 +899,7 @@ green_consumption$Q33[c(1,2,6,24,34,58,82,98,102,157,158)]
 Once we have formatted all values that are actually numbers correctly we can simply convert the whole variable to numeric replacing all non-numeric values with `NA` (which will result in a warning that we can ignore):
 
 
-```r
+``` r
 as.numeric(green_consumption$Q33[c(1,2,6,24,34,58,82,98,102,157,158)])
 ```
 
@@ -910,7 +910,7 @@ as.numeric(green_consumption$Q33[c(1,2,6,24,34,58,82,98,102,157,158)])
 For the whole variable:
 
 
-```r
+``` r
 green_consumption$Q33 <- as.numeric(green_consumption$Q33)
 str(green_consumption$Q33)
 ```
@@ -923,7 +923,7 @@ str(green_consumption$Q33)
 In the following example we use data generated from a topic selection process similar to the one you did when you chose your project topic. In order to make ranking questions easier to analyze we first want to get them into a format where we have one column for the group (this could also be a user id), one column for the rank, and one for the topic (i.e., a "long" format). We can use the `pivot_longer` function from the `tidyr` package to combine all columns that start with "Q1" (our ranking question; `cols = starts_with("Q1")`) into one long column. 
 
 
-```r
+``` r
 library(tidyr)
 topic_selection <- read_survey("data/topic_selection.csv")
 topic_selection <- pivot_longer(topic_selection, cols = starts_with("Q1"), values_to = "rank")
@@ -939,7 +939,7 @@ topic_selection
 Next we want to filter out all the rows that do not contain ranks and those that have missing values for the ranks (i.e., were not selected at all by a given group; `[endsWith(topic_selection$name, "RANK") & !is.na(topic_selection$rank), ]`). To get the topic of a row we extract the digits  (`[0-9]+`, where the plus indicates one or more) from the `name` variable that come before `_RANK` (`(?=_RANK)`).
 
 
-```r
+``` r
 topic_selection <- topic_selection[endsWith(topic_selection$name, "RANK") & !is.na(topic_selection$rank), ]
 topic_selection$topic <- as.factor(as.numeric(str_extract(topic_selection$name, "[0-9]+(?=_RANK)")))
 topic_selection
@@ -954,7 +954,7 @@ topic_selection
 To get a feeling for how popular a question is we might also want to calculate the counts for each topic and rank. For plotting it is also convenient to have the rank as a factor in decreasing order of the rank (see below).
 
 
-```r
+``` r
 rank_counts <- data.frame(table(topic_selection$rank, topic_selection$topic))
 colnames(rank_counts) <- c("rank", "topic", "count")
 rank_counts$rank <- factor(rank_counts$rank, 
@@ -981,7 +981,7 @@ Multiple choice questions can be visualized using barplots of the counts of each
 Therefore, we will get any text that follows the `- ` pattern. Similarly we can extract just the question with `.*(?= -)` matching anything _before_ the ` -` pattern.
 
 
-```r
+``` r
 q6_columns <- names(carsharing)[startsWith(names(carsharing), "Q6")]
 q6_labels <- questions_carsharing[q6_columns]
 q6_answers <- str_extract(q6_labels, "(?<=- ).*")
@@ -996,7 +996,7 @@ q6_answers
 ## [9] "for leisure/cultural activities"
 ```
 
-```r
+``` r
 q6_question <- str_extract(questions_carsharing["Q6_1"], ".*(?= -)")
 q6_question
 ```
@@ -1012,7 +1012,7 @@ The counts are just the column sums of the variables we transformed above. We ad
 In addition the grid on the y-axis does not add to the interpretability of the plot and should therefore be removed ` theme(panel.grid.major.y = element_blank())`. Optionally the counts can be added to the plot (`geom_text(aes(label = count), hjust = -.2)`).
 
 
-```r
+``` r
 library(ggplot2)
 library(colorspace)
 q6_counts <- colSums(carsharing[,q6_columns])
@@ -1034,7 +1034,7 @@ An important aspect when choosing colors for your plots is color vision deficien
 For our plot we can simulate cvd as follows and observe that it works well even for people with cvd (the colors you use in your projects should work well for people with cvd but you should not include this plot):
 
 
-```r
+``` r
 swatchplot(hcl.colors(nrow(q6_data), palette = "Blues 2"), cvd = TRUE)
 ```
 
@@ -1045,7 +1045,7 @@ If you would like to explore the available colors more check out the `hcl_wizard
 Another option to visualize multiple choice questions is to plot the percentage of respondents who chose a certain answer (note that this will not generally sum up to 1 if multiple answers are possible). The only thing we have to change is to calculate the shares (careful with the denominator!). In this case we might also want to expand the x-axis to 0.4 (`expand_limits(x = 0.4`) to account for the extra space necessary for the labels.
 
 
-```r
+``` r
 q6_data$share <- q6_data$count / nrow(carsharing)
 ggplot(q6_data[order(q6_data$share, decreasing = TRUE),], aes(x = share, y = reason, fill = share)) + 
   geom_bar(stat="identity", show.legend = FALSE) + 
@@ -1064,7 +1064,7 @@ ggplot(q6_data[order(q6_data$share, decreasing = TRUE),], aes(x = share, y = rea
 To visualize the distribution of rankings we can use boxplots. Since 1 is the highest rank and 5 the lowest, we can reverse the y-axis (`scale_y_reverse`).
 
 
-```r
+``` r
 ggplot(topic_selection, aes(x = topic, y = rank, group = topic)) +
   geom_boxplot() +
   theme_bw() +
@@ -1078,7 +1078,7 @@ ggplot(topic_selection, aes(x = topic, y = rank, group = topic)) +
 Another way to visualize the rankings is a stacked barplot in which we stack the counts of all ranks. Compared to the barplot in the carsharing example above the colors are now more important since we need them to distinguish the ranks. Therefore, a multi-hue sequential (see `hcl_palettes("sequential multi", plot = TRUE)`) scheme is appropriate. One has to be careful with this type of approach if the number of groups gets larger. It is not easy to find more than 7-8 easily distinguishable colors. In addition we can emphasize the y-grid lines (`panel.grid.major.y = element_line(color="black")`) and make the bars slightly transparent (`alpha = 0.8`) to make it easier to see the counts. 
 
 
-```r
+``` r
 ggplot(rank_counts, aes(x=topic, y=count, fill=rank)) + 
   geom_bar(stat="identity") +
   theme_bw() +
@@ -1097,7 +1097,7 @@ ggplot(rank_counts, aes(x=topic, y=count, fill=rank)) +
 In many cases we want to assess the relative frequency or share of usage of different products/services. One such case is the share of wallet of different types of grocery providers. 
 
 
-```r
+``` r
 questions_green_consumption["Q34_1...19"]
 ```
 
@@ -1106,7 +1106,7 @@ questions_green_consumption["Q34_1...19"]
 ## "Where do you usually shop for groceries?\n\n\nPlease allocate 100 points among the different options according to the frequency you shop there. - Discounter"
 ```
 
-```r
+``` r
 questions_green_consumption["Q34_2"]
 ```
 
@@ -1115,7 +1115,7 @@ questions_green_consumption["Q34_2"]
 ## "Where do you usually shop for groceries?\n\n\nPlease allocate 100 points among the different options according to the frequency you shop there. - Supermarket"
 ```
 
-```r
+``` r
 questions_green_consumption["Q34_3"]
 ```
 
@@ -1127,7 +1127,7 @@ questions_green_consumption["Q34_3"]
 In this case the searching the names for "Q34" also yields a question that we are not interested in and it is removed when getting the full labels. In addition, we have to distinguish between pre-defined answers and "other" which also has a text field.
 
 
-```r
+``` r
 shareofwallet_names <- names(green_consumption)[startsWith(names(green_consumption), "Q34")] 
 shareofwallet_labels <- questions_green_consumption[shareofwallet_names[-length(shareofwallet_names)]]
 shareofwallet_answers <- str_extract(shareofwallet_labels, "(?<=- ).*")
@@ -1140,7 +1140,7 @@ shareofwallet_answers
 ## [5] "Other:"                   "Other: - Text"
 ```
 
-```r
+``` r
 shareofwallet_data <- green_consumption[, shareofwallet_names[-length(shareofwallet_names)]]
 shareofwallet_text <- shareofwallet_data$Q34_5_TEXT
 c(na.omit(shareofwallet_text))
@@ -1156,7 +1156,7 @@ c(na.omit(shareofwallet_text))
 ## [7] "Organic shops"
 ```
 
-```r
+``` r
 shareofwallet_data <- na.omit(subset(shareofwallet_data, select = -Q34_5_TEXT))
 colnames(shareofwallet_data) <- shareofwallet_answers[-length(shareofwallet_answers)]
 shareofwallet_data
@@ -1171,7 +1171,7 @@ shareofwallet_data
 First we can take a look at the correlation of the points allocated to different types. In this case a diverging color scheme is appropriate.
 
 
-```r
+``` r
 library(ggcorrplot)
 colors <- hcl.colors(3, palette = "Blue-Yellow")
 ggcorrplot(cor(shareofwallet_data), lab = TRUE, colors = colors)
@@ -1182,7 +1182,7 @@ ggcorrplot(cor(shareofwallet_data), lab = TRUE, colors = colors)
 For easier plotting of distributions we should transform the data to a long format and remove the `:` from `Other:`.
 
 
-```r
+``` r
 shareofwallet_data <- pivot_longer(shareofwallet_data, cols = everything(), names_to = "type", values_to = "points")
 shareofwallet_data$type <- str_remove(shareofwallet_data$type, ":")
 shareofwallet_data
@@ -1198,7 +1198,7 @@ shareofwallet_data
 It is easier to see the relative popularity of each store type if we sort the boxplots by the respective medians. This is done by sorting the factor levels accordingly.
 
 
-```r
+``` r
 shareofwallet_median <- sort(c(by(shareofwallet_data$points, shareofwallet_data$type, median)), decreasing = TRUE)
 shareofwallet_data$type <- factor(shareofwallet_data$type, levels = names(shareofwallet_median))
 ggplot(shareofwallet_data, aes(y = points, x=type)) +
@@ -1212,7 +1212,7 @@ ggplot(shareofwallet_data, aes(y = points, x=type)) +
 For the text part of the "Other" variable a word cloud can be used to visualize the answers
 
 
-```r
+``` r
 library(wordcloud)
 shareofwallet_counts <- c(by(na.omit(shareofwallet_text), na.omit(shareofwallet_text), length))
 wordcloud(names(shareofwallet_counts), shareofwallet_counts)
@@ -1225,7 +1225,7 @@ wordcloud(names(shareofwallet_counts), shareofwallet_counts)
 We can also use the previous plots to show differences between groups (gender, experimental, etc.). A natural fit to add another "dimension" is the `facet_wrap` layer in `ggplot2`. First we select the appropriate variables.
 
 
-```r
+``` r
 green_consumption$gender <- factor(green_consumption$Q29, levels = c(1,2), labels = c("F", "M"))
 gender_sow <- green_consumption[,c(shareofwallet_names[1:4], "gender")]
 names(gender_sow)[1:4] <- shareofwallet_answers[1:4]
@@ -1241,7 +1241,7 @@ gender_sow
 Second the data is transformed to a long format again and then the distribution of points is shown for each gender and each store type observed in the data. By adding `scales = "free_y"` to the `facet_warp` layer, the y-axis values can vary across the plots.
 
 
-```r
+``` r
 gender_sow <- pivot_longer(gender_sow, cols = !last_col(), names_to = "type", values_to = "points")
 gender_sow <- gender_sow[!is.na(gender_sow$gender), ]
 ggplot(gender_sow, aes(x = gender, y = points, fill = gender)) +
@@ -1258,7 +1258,7 @@ ggplot(gender_sow, aes(x = gender, y = points, fill = gender)) +
 Another way to compare multiple values across groups is a radar plot. First we calculate the share of respondents by gender for a couple of car use-cases (`aggregate(. ~ gender, data = car_gender, mean)` where `.` indicates all other variables). Then we create a radar plot where the color indicates the gender. Since the labels are multiple words long we can rotate them to make them fit better (`theme(axis.text.x = element_text(angle = c(-30,...)))`).
 
 
-```r
+``` r
 library(ggiraphExtra)
 carsharing$gender <- factor(carsharing$Q26, levels = c(1,2), labels = c("F", "M"))
 car_gender <- carsharing[,c(q6_columns, "gender")]
@@ -1275,7 +1275,7 @@ ggRadar(car_gender_mean, aes(color = gender) ) +
 We can also create a pairplot to compare statistics across groups using the `ggPair` function. Notice that despite the last two functions are provided by the `ggiraphExtra` package, they are producing `ggplot2` compatible plots. Thus, we can still use `ggplot2` layers for theme and coloring. 
 
 
-```r
+``` r
 #ggPair(car_gender_mean, horizontal = TRUE, aes(color = gender)) +
 #  ggtitle("Average response across genders") +
 #  theme_bw() +
@@ -1287,7 +1287,7 @@ We can also create a pairplot to compare statistics across groups using the `ggP
 For [likert](https://core.ecu.edu/wuenschk/StatHelp/Likert.htm) scales that range for example from "strongly agree" to "strongly disagree" a diverging barplot is appropriate. The `likert` function from the `HH` package can be used to easily create such a plot. Unfortunately, this function does not produce a `ggplot` and therefore we need slightly different syntax. The legend is called `key` in the `likert` plot and we can format the automatically generated `key` using `auto.key = list(columns = 2, title= "")`, producing two columns and removing the legend title. In addition we can add vertical lines to the plot with `panel.abline(v=seq(-100,50,by=50),col="lightgrey")` which has to be wrapped in a function that finally generates the plot.
 
 
-```r
+``` r
 library(HH)
 carsharing_benefits <- carsharing[, startsWith(names(carsharing), "Q13_")]
 carsharing_benefits
@@ -1299,7 +1299,7 @@ carsharing_benefits
   </script>
 </div>
 
-```r
+``` r
 benefit_labels <- questions_carsharing[ startsWith(names(carsharing), "Q13_")]
 names(carsharing_benefits) <- str_extract(benefit_labels, "(?<=- ).*")
 carsharing_benefits <- pivot_longer(carsharing_benefits, cols = everything())
@@ -1312,7 +1312,7 @@ carsharing_benefits
   </script>
 </div>
 
-```r
+``` r
 carsharing_benefits$value <- factor(carsharing_benefits$value, 
                                     levels = 1:7, 
                                     labels = c(
@@ -1343,7 +1343,7 @@ likert(table(carsharing_benefits),
 Recall our share-of-wallet plot above
 
 
-```r
+``` r
 shareofwallet_median <- sort(c(by(shareofwallet_data$points, 
                                   shareofwallet_data$type, median)), 
                              decreasing = TRUE)
@@ -1361,7 +1361,7 @@ We set the order of the types of store by ordering the `levels` when we created 
 However, if we already have a factor that we would like to reorder we can use the `fct_reorder` function from the `forcats` package (which has the added benefit of having a cat themed package in our project). This function takes the factor as the first argument. The second argument is the variable by which we want to sort and the third is the function applied in order to sort the groups in the factor (ascending by default). In the example below we sort by the lowest to highest variance (`var`), for example.
 
 
-```r
+``` r
 library(forcats)
 ggplot(shareofwallet_data, aes(y = points, x=fct_reorder(type, points, var))) +
   geom_boxplot() +
@@ -1374,7 +1374,7 @@ ggplot(shareofwallet_data, aes(y = points, x=fct_reorder(type, points, var))) +
 A special version of that function is `fct_infreq` which sorts the factor by frequency of occurrence. We can recreate the topic selection plot with the bars ordered by the total amount of times a topic was selected. Notice also that we can use a slightly different way of creating the plot (without calculating the counts first).
 
 
-```r
+``` r
 topic_selection$rank <- factor(topic_selection$rank, levels = 5:1)
 ggplot(topic_selection, aes(x=fct_infreq(topic), fill=rank)) + 
   geom_bar(stat = "count") +
@@ -1396,7 +1396,7 @@ Another useful factor-reordering functions is `fct_rev` to reverse the order (ca
 In some cases we want to combine multiple factor values to one (e.g., when we do not have enough observations in each group). Let's say we want to combine a 7-point likert scale to only 3 levels for an analysis. We can use the `fct_collapse` function for that.
 
 
-```r
+``` r
 str(carsharing_benefits$value)
 ```
 
@@ -1404,7 +1404,7 @@ str(carsharing_benefits$value)
 ##  Factor w/ 7 levels "strongly disagree",..: 2 4 2 1 5 4 2 6 6 6 ...
 ```
 
-```r
+``` r
 carsharing_benefits$value_collapsed <- fct_collapse(carsharing_benefits$value,
              disagree = c("strongly disagree", "disagree"),
              neutral = c("somewhat disagree", "neutral", "somewhat agree"),
@@ -1423,7 +1423,7 @@ carsharing_benefits[, c("value", "value_collapsed")]
 For some questions predefined answers are provided but participants can also fill in their own answers. In the data this will lead to multiple columns being added for such a question. Below we see the countries the participants were from. We had checkboxes for "Austria" and "Germany" and a text field for all other countries. We can use the `case_when` function from the `dplyr` package to combine the columns. For each row it checks whether the left-hand-side statement (left of `~`) is `TRUE` and either returns the right-hand-side if that is the case or moves on to the next one. By specifying the last statement as `TRUE ~...` we define a default action if none of the above are `TRUE`. 
 
 
-```r
+``` r
 library(dplyr)
 country_questions <-  c("Q28_1", "Q28_2", "Q28_3_TEXT")
 questions_green_consumption[country_questions]
@@ -1438,7 +1438,7 @@ questions_green_consumption[country_questions]
 ##              "Where do you live? - Other - Text"
 ```
 
-```r
+``` r
 green_consumption[,country_questions]
 ```
 
@@ -1448,7 +1448,7 @@ green_consumption[,country_questions]
   </script>
 </div>
 
-```r
+``` r
 green_consumption$country <- as.factor(case_when(
   green_consumption$Q28_1 == 1 ~ "Austria",
   green_consumption$Q28_2 == 1 ~ "Germany",
@@ -1464,7 +1464,7 @@ str(green_consumption$country)
 However, this leads to many factor levels that have very few observations each.
 
 
-```r
+``` r
 fct_count(green_consumption$country)
 ```
 
@@ -1477,7 +1477,7 @@ fct_count(green_consumption$country)
 If we only want to keep "Austria", and "Germany" and combine all other countries to "Other" we can use the convenience function `fct_other` and specify only the levels we want to keep.
 
 
-```r
+``` r
 green_consumption$country_other <- fct_other(green_consumption$country, 
                                              keep = c("Austria", "Germany"))
 green_consumption[, c("country", "country_other")]
@@ -1492,7 +1492,7 @@ green_consumption[, c("country", "country_other")]
 If we do want to keep the countries manually specified we have to check for different spellings for the same country. For string comparisons it can sometimes help to convert all to lower case (e.g., to see that "USA", "Usa", and "usa" are equal)
 
 
-```r
+``` r
 green_consumption$country <- tolower(green_consumption$country)
 unique(green_consumption$country)
 ```
@@ -1507,7 +1507,7 @@ unique(green_consumption$country)
 Then we can easily combine different spellings using `fct_collapse`
 
 
-```r
+``` r
 green_consumption$country <- fct_collapse(green_consumption$country,
                                           usa = c("usa", "united states"),
                                           vietnam = c("viet nam", "vietnam", "hanoi"))
@@ -1522,7 +1522,7 @@ unique(green_consumption$country)
 Finally, we can capitalize all countries (`str_to_title(green_consumption$country)`) and recode the US to be all upper case (`fct_recode(green_consumption$country, USA = "Usa")`).
 
 
-```r
+``` r
 green_consumption$country <- str_to_title(green_consumption$country)
 green_consumption$country <- fct_recode(green_consumption$country, USA = "Usa")
 unique(green_consumption$country)

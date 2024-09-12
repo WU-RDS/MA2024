@@ -105,7 +105,7 @@ As an example, we will be using data obtained from a field experiment with rando
 Let's load and investigate the data first:    
 
 
-```r
+``` r
 library(psych)
 library(ggplot2)
 rm(music_sales)
@@ -123,7 +123,7 @@ str(music_sales)  #inspect data
 ##  $ group     : Factor w/ 2 levels "low_price","high_price": 1 1 1 1 1 1 1 1 1 1 ...
 ```
 
-```r
+``` r
 head(music_sales)  #inspect data
 ```
 
@@ -136,7 +136,7 @@ head(music_sales)  #inspect data
 Inspect descriptives (overall and by group).
 
 
-```r
+``` r
 psych::describe(music_sales$unit_sales)  #overall descriptives
 ```
 
@@ -145,7 +145,7 @@ psych::describe(music_sales$unit_sales)  #overall descriptives
 ## X1    1 102 7.12 6.26      6     6.1 4.45   0  30    30 1.71     3.02 0.62
 ```
 
-```r
+``` r
 describeBy(music_sales$unit_sales, music_sales$group)  #descriptives by group
 ```
 
@@ -164,7 +164,7 @@ describeBy(music_sales$unit_sales, music_sales$group)  #descriptives by group
 In the case of non-parametric tests, the data is better represented by the median (compared to the mean). Thus, we will visualize the data using a boxplot.
 
 
-```r
+``` r
 ggplot(music_sales,aes(x = group, y = unit_sales)) + 
   geom_boxplot() +
   geom_jitter(colour="red", alpha = 0.1) +
@@ -181,7 +181,7 @@ ggplot(music_sales,aes(x = group, y = unit_sales)) +
 Let's assume that one of the parametric assumptions has been violated and we needed to conduct a non-parametric test. Then, the  Mann-Whitney U test is implemented in R using the function ```wilcox.test()```. Using the ranking data as an independent variable and the listening time as a dependent variable, the test could be executed as follows:
 
 
-```r
+``` r
 wilcox.test(unit_sales ~ group, data = music_sales)  #Mann-Whitney U Test
 ```
 
@@ -199,7 +199,7 @@ The p-value is smaller than 0.05, which leads us to reject the null hypothesis, 
 Alternatively, you could also use the `ggstatsplot` package to obtain the result of the test by specifying the argument `type = "nonparametric"` as follows:
 
 
-```r
+``` r
 library(ggstatsplot)
 ggbetweenstats(
   data = music_sales,
@@ -231,7 +231,7 @@ As an example, let's consider a slightly different experimental setup for the mu
 Let's load and investigate the data first:    
 
 
-```r
+``` r
 rm(music_sales_dep)
 music_sales_dep <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/music_experiment_dependent.dat",
     sep = "\t", header = TRUE)  #read in data
@@ -245,7 +245,7 @@ str(music_sales_dep)  #inspect data
 ##  $ unit_sales_high_price: int  9 12 30 18 20 15 2 3 3 9 ...
 ```
 
-```r
+``` r
 head(music_sales_dep)  #inspect data
 ```
 
@@ -258,7 +258,7 @@ head(music_sales_dep)  #inspect data
 We can visualize the data using a boxplot as follows:
 
 
-```r
+``` r
 library(reshape2)
 music_sales_dep_long <- melt(music_sales_dep[, c("unit_sales_low_price", "unit_sales_high_price")]) 
 names(music_sales_dep_long) <- c("group","sales")
@@ -271,7 +271,7 @@ head(music_sales_dep_long)
   </script>
 </div>
 
-```r
+``` r
 ggplot(music_sales_dep_long,aes(x = group, y = sales)) + 
   geom_boxplot() +
   geom_jitter(colour="red", alpha = 0.1) +
@@ -288,7 +288,7 @@ ggplot(music_sales_dep_long,aes(x = group, y = sales)) +
 Again, let's assume that one of the parametric assumptions has been violated and we needed to conduct a non-parametric test. Then the Wilcoxon signed-rank test can be performed with the same command as the Mann-Whitney U test, provided that the argument ```paired``` is set to ```TRUE```.
 
 
-```r
+``` r
 wilcox.test(music_sales_dep$unit_sales_low_price, music_sales_dep$unit_sales_high_price,
     paired = TRUE)  #Wilcoxon signed-rank test
 ```
@@ -307,7 +307,7 @@ Using the 95% confidence level, the result would suggest a significant effect of
 Again, you could also use the `ggstatsplot` package to obtain the result of the test by specifying the argument `type = "nonparametric"` as follows:
 
 
-```r
+``` r
 library(ggstatsplot)
 ggwithinstats(data = music_sales_dep_long, x = group,
     y = sales, path.point = FALSE, type = "nonparametric",
@@ -329,7 +329,7 @@ The Kruskal–Wallis test is the non-parametric counterpart of the one-way ANOVA
 As an example, let's use a data set containing data from an experiment at an online store where products were randomly assigned to three groups with three different levels of promotion (i.e., "low", "medium", "high") and the sales where recorded for these groups. 
 
 
-```r
+``` r
 online_store_promo <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/online_store_promo.dat",
     sep = "\t", header = TRUE)  #read in data
 online_store_promo$Promotion <- factor(online_store_promo$Promotion,
@@ -346,7 +346,7 @@ head(online_store_promo)
 To get a first impression, we can plot the data using a boxplot:
 
 
-```r
+``` r
 #Boxplot
 ggplot(online_store_promo,aes(x = Promotion, y = Sales)) + 
   geom_boxplot() +
@@ -364,7 +364,7 @@ ggplot(online_store_promo,aes(x = Promotion, y = Sales)) +
 To test if there is a difference in medians between the groups, we can carry out the Kruskal-Wallis test using the ```kruskal.test()``` function: 
 
 
-```r
+``` r
 kruskal.test(Sales ~ Promotion, data = online_store_promo)
 ```
 
@@ -381,7 +381,7 @@ The test-statistic follows a chi-square distribution and since the test is signi
 To test for differences between groups, we can, for example, apply post-hoc tests according to Nemenyi for pairwise multiple comparisons of the ranked data using the appropriate function from the ```PMCMR``` package.
 
 
-```r
+``` r
 library(PMCMR)
 library(PMCMRplus)
 kwAllPairsNemenyiTest(x = online_store_promo$Sales,
@@ -396,7 +396,7 @@ kwAllPairsNemenyiTest(x = online_store_promo$Sales,
 The results reveal that there is a significant difference between the "low" and "high" promotion groups. Note that the results are different compared to the results from a parametric test, which we could obtain as follows: 
 
 
-```r
+``` r
 pairwise.t.test(online_store_promo$Sales, online_store_promo$Promotion,
     data = online_store_promo, p.adjust.method = "bonferroni")
 ```
@@ -418,7 +418,7 @@ This difference occurs because non-parametric tests have less power to detect di
 Again, you could also use the `ggstatsplot` package to obtain the result of the test by specifying the argument `type = "nonparametric"` as follows:
 
 
-```r
+``` r
 library(ggstatsplot)
 ggbetweenstats(
   data = online_store_promo,
@@ -458,7 +458,7 @@ Let's use an example: assume a call center where service agents call potential c
 As always, we load the data first:
 
 
-```r
+``` r
 call_center <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/call_center.dat",
     sep = "\t", header = TRUE)  #read in data
 call_center$conversion <- factor(call_center$conversion,
@@ -470,7 +470,7 @@ call_center$agent <- factor(call_center$agent, levels = c(0:1),
 Next, we create a table to check the relative frequencies:
 
 
-```r
+``` r
 rel_freq_table <- as.data.frame(prop.table(table(call_center),
     2))  #conditional relative frequencies
 rel_freq_table
@@ -485,7 +485,7 @@ rel_freq_table
 We could also plot the data to visualize the frequencies using ggplot:
 
 
-```r
+``` r
 ggplot(rel_freq_table, aes(x = agent, y = Freq, fill = conversion)) + #plot data
   geom_col(width = .7) + #position
   geom_text(aes(label = paste0(round(Freq*100,0),"%")), position = position_stack(vjust = 0.5), size = 4) + #add percentages
@@ -509,7 +509,7 @@ $$
 where $\sqrt{p(1-p)}$ is the equivalent to the standard deviation in the formula for the confidence interval for means. Based on the equation, it is easy to compute the confidence intervals for the conversion rates of the call center agents:
 
 
-```r
+``` r
 n1 <- nrow(subset(call_center, agent == "agent_1"))  #number of observations for agent 1
 n2 <- nrow(subset(call_center, agent == "agent_2"))  #number of observations for agent 1
 n1_conv <- nrow(subset(call_center, agent == "agent_1" &
@@ -529,7 +529,7 @@ ci_lower1
 ## [1] 0.6133232
 ```
 
-```r
+``` r
 ci_upper1
 ```
 
@@ -537,7 +537,7 @@ ci_upper1
 ## [1] 0.7200101
 ```
 
-```r
+``` r
 error2 <- qnorm(0.975) * sqrt((p2 * (1 - p2))/n2)
 ci_lower2 <- p2 - error2
 ci_upper2 <- p2 + error2
@@ -548,7 +548,7 @@ ci_lower2
 ## [1] 0.2799899
 ```
 
-```r
+``` r
 ci_upper2
 ```
 
@@ -570,7 +570,7 @@ $$
 If the confidence interval includes zero, then the data does not suggest a difference between the groups. Let's compute the confidence interval for differences in the proportions by hand first:
 
 
-```r
+``` r
 ci_lower <- p1 - p2 - qnorm(0.975) * sqrt(p1 * (1 -
     p1)/n1 + p2 * (1 - p2)/n2)  #95% CI lower bound
 ci_upper <- p1 - p2 + qnorm(0.975) * sqrt(p1 * (1 -
@@ -582,7 +582,7 @@ ci_lower
 ## [1] 0.2578943
 ```
 
-```r
+``` r
 ci_upper
 ```
 
@@ -595,7 +595,7 @@ Now we can see that the 95% confidence interval estimate of the difference betwe
 Instead of computing the intervals by hand, we could also use the ```prop.test()``` function:
 
 
-```r
+``` r
 prop.test(x = c(n1_conv, n2_conv), n = c(n1, n2), conf.level = 0.95)
 ```
 
@@ -633,7 +633,7 @@ where $J$ is the number of cells in the contingency table, $f_o$ are the observe
 The observed cell frequencies can easily be seen from the contingency table: 
 
 
-```r
+``` r
 contigency_table <- table(call_center)
 obs_cell1 <- contigency_table[1, 1]
 obs_cell2 <- contigency_table[1, 2]
@@ -650,7 +650,7 @@ $$
 where $n_r$ are the total observed frequencies per row, $n_c$ are the total observed frequencies per column, and $n$ is the total number of observations. Thus, the expected cell frequencies under the assumption of independence can be calculated as: 
 
 
-```r
+``` r
 n <- nrow(call_center)
 exp_cell1 <- (nrow(call_center[call_center$agent ==
     "agent_1", ]) * nrow(call_center[call_center$conversion ==
@@ -669,7 +669,7 @@ exp_cell4 <- (nrow(call_center[call_center$agent ==
 To sum up, these are the expected cell frequencies
 
 
-```r
+``` r
 data.frame(conversion_no = rbind(exp_cell1, exp_cell3),
     conversion_yes = rbind(exp_cell2, exp_cell4), row.names = c("agent_1",
         "agent_2"))
@@ -684,7 +684,7 @@ data.frame(conversion_no = rbind(exp_cell1, exp_cell3),
 ... and these are the observed cell frequencies
 
 
-```r
+``` r
 data.frame(conversion_no = rbind(obs_cell1, obs_cell2),
     conversion_yes = rbind(obs_cell3, obs_cell4), row.names = c("agent_1",
         "agent_2"))
@@ -699,7 +699,7 @@ data.frame(conversion_no = rbind(obs_cell1, obs_cell2),
 To obtain the test statistic, we simply plug the values into the formula: 
 
 
-```r
+``` r
 chisq_cal <- sum(((obs_cell1 - exp_cell1)^2/exp_cell1),
     ((obs_cell2 - exp_cell2)^2/exp_cell2), ((obs_cell3 -
         exp_cell3)^2/exp_cell3), ((obs_cell4 - exp_cell4)^2/exp_cell4))
@@ -726,7 +726,7 @@ $$
 where $r$ is the number of rows and $c$ is the number of columns in the contingency table. Recall that degrees of freedom are generally the number of values that can vary freely when calculating a statistic. In a 2 by 2 table as in our case, we have 2 variables (or two samples) with 2 levels and in each one we have 1 that vary freely. Hence, in our example the degrees of freedom can be calculated as:
 
 
-```r
+``` r
 df <- (nrow(contigency_table) - 1) * (ncol(contigency_table) -
     1)
 df
@@ -739,7 +739,7 @@ df
 Now, we can derive the critical value given the degrees of freedom and the level of confidence using the ```qchisq()``` function and test if the calculated test statistic is larger than the critical value:
 
 
-```r
+``` r
 chisq_crit <- qchisq(0.95, df)
 chisq_crit
 ```
@@ -748,7 +748,7 @@ chisq_crit
 ## [1] 3.841459
 ```
 
-```r
+``` r
 chisq_cal > chisq_crit
 ```
 
@@ -764,7 +764,7 @@ chisq_cal > chisq_crit
 We could also compute the p-value using the ```pchisq()``` function, which tells us the probability of the observed cell frequencies if the null hypothesis was true (i.e., there was no association):
 
 
-```r
+``` r
 p_val <- 1 - pchisq(chisq_cal, df)
 p_val
 ```
@@ -776,7 +776,7 @@ p_val
 The test statistic can also be calculated in R directly on the contingency table with the function ```chisq.test()```.
 
 
-```r
+``` r
 chisq.test(contigency_table, correct = FALSE)
 ```
 
@@ -793,7 +793,7 @@ Since the p-value is smaller than 0.05 (i.e., the calculated test statistic is l
 Note that the test statistic is sensitive to the sample size. To see this, let's assume that we have a sample of 100 observations instead of 1000 observations:
 
 
-```r
+``` r
 chisq.test(contigency_table/10, correct = FALSE)
 ```
 
@@ -820,7 +820,7 @@ The following guidelines are used to determine the magnitude of the effect size 
 In our example, we can compute the effect sizes for the large and small samples as follows:
 
 
-```r
+``` r
 test_stat <- chisq.test(contigency_table, correct = FALSE)$statistic
 phi1 <- sqrt(test_stat/n)
 test_stat <- chisq.test(contigency_table/10, correct = FALSE)$statistic
@@ -833,7 +833,7 @@ phi1
 ## 0.3333333
 ```
 
-```r
+``` r
 phi2
 ```
 
@@ -855,7 +855,7 @@ where $df_{min}$ refers to the degrees of freedom associated with the variable t
 Note that the ```correct = FALSE``` argument above ensures that the test statistic is computed in the same way as we have done by hand above. By default, ```chisq.test()``` applies a correction to prevent overestimation of statistical significance for small data (called the Yates' correction). The correction is implemented by subtracting the value 0.5 from the computed difference between the observed and expected cell counts in the numerator of the test statistic. This means that the calculated test statistic will be smaller (i.e., more conservative). Although the adjustment may go too far in some instances, you should generally rely on the adjusted results, which can be computed as follows:
 
 
-```r
+``` r
 chisq.test(contigency_table)
 ```
 
@@ -872,7 +872,7 @@ As you can see, the results don't change much in our example, since the differen
 As usual, you could also use the `ggstatsplot` package to obtain the result of the test, this time by using `ggbarstats` function:
 
 
-```r
+``` r
 library(ggstatsplot)
 ggbarstats(data = call_center, x = conversion, y = agent,
     title = "Conversion by agent", xlab = "Agent",
@@ -888,7 +888,7 @@ ggbarstats(data = call_center, x = conversion, y = agent,
 Caution is warranted when the cell counts in the contingency table are small. The usual rule of thumb is that all cell counts should be at least 5 (this may be a little too stringent though). When some cell counts are too small, you can use Fisher's exact test using the ```fisher.test()``` function. 
 
 
-```r
+``` r
 fisher.test(contigency_table)
 ```
 
@@ -913,7 +913,7 @@ The Fisher test, while more conservative, also shows a significant difference be
 To **calculate the required sample size** when comparing proportions, the ```power.prop.test()``` function can be used. For example, we could ask how large our sample needs to be if we would like to compare two groups with conversion rates of 2% and 2.5%, respectively using the conventional settings for $\alpha$ and $\beta$:
 
 
-```r
+``` r
 power.prop.test(p1 = 0.02, p2 = 0.025, sig.level = 0.05,
     power = 0.8)
 ```

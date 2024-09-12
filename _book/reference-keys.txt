@@ -38,6 +38,7 @@ fig:unnamed-chunk-50
 fig:unnamed-chunk-52
 fig:unnamed-chunk-53
 fig:unnamed-chunk-6
+fig:unnamed-chunk-46
 eq:dfT
 fig:unnamed-chunk-23-1
 fig:unnamed-chunk-23-2
@@ -66,7 +67,6 @@ eq:adjustedR2
 eq:stdcoeff
 fig:unnamed-chunk-44
 fig:unnamed-chunk-45
-fig:unnamed-chunk-46
 fig:unnamed-chunk-59
 eq:VIF
 eq:dummycoding

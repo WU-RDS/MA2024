@@ -32,7 +32,7 @@ To see what this means, let's use a simple example. Say, you wanted to explain t
 Let's assume you collect data from 30 respondents and you use 7-point itemized rating scales to measure the extent of agreement to each of these statements. This is the data that you have collected: 
 
 
-```r
+``` r
 factor_analysis <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/toothpaste.dat", 
                           sep = "\t", 
                           header = TRUE) #read in data
@@ -49,7 +49,7 @@ str(factor_analysis) #inspect data
 ##  $ attract_teeth   : int  4 4 3 5 2 4 3 4 3 6 ...
 ```
 
-```r
+``` r
 head(factor_analysis) #inspect data
 ```
 
@@ -64,7 +64,7 @@ A **construct** is a specific type of concept that exists at a higher level of a
 
 <br>
 
-```r
+``` r
 library("Hmisc")
 rcorr(as.matrix(factor_analysis))
 ```
@@ -198,7 +198,7 @@ Now that we have a broad understanding of how factor analysis works, let's use a
 Let's assume, we have collected data from 2,571 respondents and stored the results in the data set "raq.dat".
 
 
-```r
+``` r
 raq_data <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/raq.dat", 
                           sep = "\t", 
                           header = TRUE) #read in data
@@ -209,7 +209,7 @@ raq_data <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master
 Since PCA is based the correlation between variables, the first step is to inspect the correlation matrix, which can be created using the ```cor()``` function. 
 
 
-```r
+``` r
 raq_matrix <- cor(raq_data)
 round(raq_matrix,3)
 ```
@@ -294,7 +294,7 @@ If the variables measure the same construct, we would expect to see a certain de
 Create a dataframe from the correlation matrix and set the diagonal elements to missing since these are always 1:
 
 
-```r
+``` r
 correlations <- as.data.frame(raq_matrix)
 diag(correlations) <- NA
 ```
@@ -302,7 +302,7 @@ diag(correlations) <- NA
 Now we can use the ```apply()``` function to count the number of correlations for each variable that are below a certain threshold (say, 0.3). The ```apply()``` function is very useful as it lets you apply function by the rows or columns in your dataframe. In the following example ```abs(correlations) < 0.3``` returns a logical value for the correlation matrix that returns ```TRUE``` if the statement is true. The second argument ```1``` means that the function should be applied to the rows (```2``` would apply it to the columns). The third argument states the function that should be applied. In our case, we would like to count the number of absolute correlations below 0.3 so we apply the ```sum``` function, which sums the number of ```TRUE``` occurrences by row. The final argument ```na.rm = TRUE``` simply tells R to neglect the missing values that we have created for the diagonals of the matrix.   
 
 
-```r
+``` r
 apply(abs(correlations) < 0.3, 1, sum, na.rm = TRUE)
 ```
 
@@ -316,7 +316,7 @@ apply(abs(correlations) < 0.3, 1, sum, na.rm = TRUE)
 The output shows you the number of correlations below the threshold for each variable. In a similar way, it would also be possible to compute the mean correlation for each variable. 
 
 
-```r
+``` r
 apply(abs(correlations),1,mean,na.rm=TRUE)
 ```
 
@@ -332,7 +332,7 @@ apply(abs(correlations),1,mean,na.rm=TRUE)
 Another way to make the correlations more salient is to plot the correlation matrix using different colors that indicate the strength of the correlations. This can be done using the ```corPolot()``` function from the ```psych``` package. 
 
 
-```r
+``` r
 corPlot(correlations,numbers=TRUE,upper=FALSE,diag=FALSE,main="Correlations between variables")
 ```
 
@@ -344,7 +344,7 @@ corPlot(correlations,numbers=TRUE,upper=FALSE,diag=FALSE,main="Correlations betw
 You will, however, notice that this is a rather subjective approach. The **Bartlett's test** is a statistical test that can be used to test whether all the off-diagonal elements in the population correlation matrix are zero (i.e., whether the population correlation matrix resembles an identify matrix). Thus, it tests whether the correlations are overall too small. If the matrix is an identify matrix, it means that all variables are independent. Thus, a significant test statistic (i.e., p < 0.05) indicates that there is some relationship between variables. The test can be implemented using the ```cortest.bartlett()``` function from the ```psych``` package:
 
 
-```r
+``` r
 library(psych)
 cortest.bartlett(raq_matrix, n = nrow(raq_data))
 ```
@@ -365,7 +365,7 @@ In our example, the p-value is less than 0.05, which is good news since it confi
 The other problem that might occur is that **the correlations are too high**. Actually, a certain degree of multicollinearity is not a problem in PCA. However, it is important to avoid extreme multicollinearity (i.e., variables are highly correlated) and singularity (i.e., variables are perfectly correlated). Multicollinearity causes problems, because it becomes difficult to determine the unique contribution of a variable (as was the case in linear regression analysis). Again, inspecting the entire correlation matrix when there are many variables will be a tedious task. .  
 
 
-```r
+``` r
 apply(abs(correlations) > 0.8, 1, sum, na.rm = TRUE)
 ```
 
@@ -379,7 +379,7 @@ apply(abs(correlations) > 0.8, 1, sum, na.rm = TRUE)
 The results do not suggest any extreme or perfect correlations. Again, there is a more objective measure that could be applied. The **determinant** tells us whether the correlation matrix is singular (determinant = 0), or if all variables are completely unrelated (determinant = 1), or somewhere in between. As a rule of thumb, the determinant should be greater than 0.00001. The ```det()``` function can be used to compute the determinant:
 
 
-```r
+``` r
 det(raq_matrix)
 ```
 
@@ -387,7 +387,7 @@ det(raq_matrix)
 ## [1] 0.0005271037
 ```
 
-```r
+``` r
 det(raq_matrix) > 0.00001
 ```
 
@@ -416,7 +416,7 @@ where $r_{jk}$ is the correlation between two variables of interest and $p_{jk}$
 The KMO measure of sampling adequacy can be computed using the ```KMO()``` function from the ```psych``` package:
 
 
-```r
+``` r
 KMO(raq_data)
 ```
 
@@ -453,7 +453,7 @@ Often, the decision is made based on a combination of different criteria.
 By extracting as many factors as there are variables we can inspect their eigenvalues and make decisions about which factors to extract. Since we have 23 variables, we set the argument ```nfactors``` to 23.
 
 
-```r
+``` r
 pc1 <- principal(raq_data, nfactors = 23, rotate = "none")
 pc1
 ```
@@ -511,29 +511,29 @@ pc1
 ## Q22  0.08  0.15  0.09  0.01  0.04 -0.06  0.02  0.00  0.01 -0.01  0.01  1
 ## Q23 -0.01 -0.07 -0.12 -0.06 -0.03  0.05 -0.03  0.01 -0.01 -0.02  0.00  1
 ##           u2 com
-## Q01 -1.1e-15 6.0
-## Q02 -3.8e-15 6.1
-## Q03  6.7e-16 4.4
+## Q01 -6.7e-16 6.0
+## Q02 -4.4e-15 6.1
+## Q03 -2.2e-16 4.4
 ## Q04 -1.1e-15 4.9
-## Q05 -6.7e-16 5.2
-## Q06 -4.4e-16 4.4
-## Q07 -4.4e-16 4.1
-## Q08 -1.3e-15 5.7
-## Q09 -1.3e-15 5.0
-## Q10  2.2e-16 7.7
-## Q11 -1.3e-15 4.1
-## Q12 -1.6e-15 3.8
-## Q13 -1.6e-15 4.2
-## Q14 -1.1e-15 4.3
-## Q15 -6.7e-16 5.6
-## Q16 -1.8e-15 4.0
-## Q17 -1.6e-15 4.3
+## Q05 -8.9e-16 5.2
+## Q06  1.1e-16 4.4
+## Q07  1.1e-16 4.1
+## Q08 -4.4e-16 5.7
+## Q09 -1.8e-15 5.0
+## Q10 -8.9e-16 7.7
+## Q11 -1.1e-15 4.1
+## Q12 -1.3e-15 3.8
+## Q13 -1.1e-15 4.2
+## Q14 -8.9e-16 4.3
+## Q15 -8.9e-16 5.6
+## Q16 -1.6e-15 4.0
+## Q17 -1.1e-15 4.3
 ## Q18 -1.1e-15 3.4
-## Q19 -8.9e-16 3.5
-## Q20  4.4e-16 8.7
-## Q21 -2.2e-16 4.6
-## Q22  0.0e+00 7.2
-## Q23  1.1e-16 4.2
+## Q19  0.0e+00 3.5
+## Q20  7.8e-16 8.7
+## Q21 -4.4e-16 4.6
+## Q22  3.3e-16 7.2
+## Q23  3.3e-16 4.2
 ## 
 ##                        PC1  PC2  PC3  PC4  PC5  PC6  PC7  PC8  PC9 PC10 PC11
 ## SS loadings           7.29 1.74 1.32 1.23 0.99 0.90 0.81 0.78 0.75 0.72 0.68
@@ -568,7 +568,7 @@ The output is quite complex, but we will focus only on the ```SS loadings``` for
 You can also plot the eigenvalues against the number of factors in order of extraction using a so-called **Scree plot**: 
 
 
-```r
+``` r
 plot(pc1$values, type="b")
 abline(h=1, lty=2)
 ```
@@ -583,7 +583,7 @@ The dashed line is simply a visualization of the rule that we will retain factor
 Now that we know how many components we want to extract, we can rerun the analysis, specifying that number:
 
 
-```r
+``` r
 pc2 <- principal(raq_data, nfactors = 4, rotate = "none")
 pc2
 ```
@@ -640,7 +640,7 @@ Note that there is a difference between PCA and common factor analysis. PCA focu
 You should also take a closer look at the residuals in order to check whether you have extracted the correct number of factors. The difference between the reproduced and the actual correlation matrices are the residuals. We can extract the residuals from our model using the ```factor.residuals()``` function from the ```psych``` package. It takes the original correlation matrix and the factor loadings as arguments:
 
 
-```r
+``` r
 residuals <- factor.residuals(raq_matrix, pc2$loadings)
 round(residuals,3)
 ```
@@ -723,7 +723,7 @@ round(residuals,3)
 Note that the diagonal elements in the residual matrix correspond to the unique variance in each variable that cannot be explained by the factors (i.e., "u2" in the output above). For example, the proportion of unique variance for question 1 is 0.57, which is reflected in the first cell in the residual matrix. The off-diagonal elements represent the difference between the actual correlations and the correlation based on the reproduced correlation matrix for all variable pairs. To see this, the reproduced correlation matrix could be generated by using the ```factor.model()``` function:   
 
 
-```r
+``` r
 reproduced_matrix <- factor.model(pc2$loadings)
 round(reproduced_matrix,3)
 ```
@@ -810,7 +810,7 @@ A measure of fit can now be computed based on the size of the residuals. In the 
 You could also manually compute this statistic by summing over the squared residuals and correlations, take their ratio and subtract it from one (note that we use the ```upper.tri()``` function to use the upper triangle of the matrix only; this has the effect of discarding the diagonal elements and the elements below the diagonal).  
 
 
-```r
+``` r
 ssr <- (sum(residuals[upper.tri((residuals))]^2)) #sum of squared residuals 
 ssc <- (sum(raq_matrix[upper.tri((raq_matrix))]^2)) #sum of squared correlations
 1-(ssr/ssc) #model fit
@@ -823,7 +823,7 @@ ssc <- (sum(raq_matrix[upper.tri((raq_matrix))]^2)) #sum of squared correlations
 In a next step, we check the size of the residuals. **If fewer residuals than 50% have absolute values greater than 0.05 the model is a good fit.** This can be tested using the following code. We first convert the residuals to a matrix and select the upper triangular again to avoid duplicates. Finally, we count all occurrences where the absolute value is larger than 0.05 and divide it by the number of total observations to get the proportion.
 
 
-```r
+``` r
 residuals <- as.matrix(residuals[upper.tri((residuals))])
 large_res <- abs(residuals) > 0.05
 sum(large_res)
@@ -833,7 +833,7 @@ sum(large_res)
 ## [1] 91
 ```
 
-```r
+``` r
 sum(large_res)/nrow(residuals)
 ```
 
@@ -846,7 +846,7 @@ In our example, we can confirm that the proportion of residuals > 0.05 is less t
 Another way to evaluate the residuals is by looking at their mean value (rather, we square the residuals first to account for positive and negative values, compute the mean and then take the square root). 
 
 
-```r
+``` r
 sqrt(mean(residuals^2))
 ```
 
@@ -859,7 +859,7 @@ This means that our mean residual is 0.055 and this value should be as low as po
 Finally, we need to validate if the residuals are approximately normally distributed, which we do by using a histogram, a Q-Q plot and the Shapiro test. 
 
 
-```r
+``` r
 hist(residuals)
 ```
 
@@ -869,7 +869,7 @@ hist(residuals)
 </div>
 
 
-```r
+``` r
 qqnorm(residuals) 
 qqline(residuals)
 ```
@@ -879,7 +879,7 @@ qqline(residuals)
 <p class="caption">(\#fig:unnamed-chunk-23)Q-Q plot</p>
 </div>
 
-```r
+``` r
 shapiro.test(residuals)
 ```
 
@@ -909,7 +909,7 @@ To aid interpretation, it is possible to maximize the loading of a variable on o
 To carry out a orthogonal rotation, we change the rotate option in the ```principal()``` function from “none” to “varimax” (we could also exclude it altogether because varimax is the default if the option is not specified):
 
 
-```r
+``` r
 pc3 <- principal(raq_data, nfactors = 4, rotate = "varimax")
 pc3
 ```
@@ -962,7 +962,7 @@ pc3
 Interpreting the factor loading matrix is a little complex, so we can make it easier by using the ```print.psych()``` function, which we can use to exclude loading below a cutoff from the display and order the variables by their loading within each factor. In the following, we will only display loadings that exceed the value 0.3. 
 
 
-```r
+``` r
 print.psych(pc3, cut = 0.3, sort = TRUE)
 ```
 
@@ -1023,7 +1023,7 @@ As an example, we could name our factors as follows:
 The previous type of rotation (i.e., "varimax") assumed that the the factors are independent. Oblique rotation is another type of rotation that can handle correlation between the factors. The command for an oblique rotation is very similar to that for an orthogonal rotation – we just change the rotate option from “varimax” to “oblimin”.
 
 
-```r
+``` r
 pc4 <- principal(raq_data, nfactors = 4, rotate = "oblimin", scores = TRUE)
 print.psych(pc4, cut = 0.3, sort = TRUE)
 ```
@@ -1087,7 +1087,7 @@ The component correlations indicate that the factors might indeed be correlated,
 Once we have decided on the final model, we can calculate the new variables as the weighted sum of the variables that form a factor. This means, we estimate a person's score on a factor based on their scores on the items that constitute the measurement scales. These scores are also referred to as the **factor scores**. Because we have used the ```scores = TRUE``` argument in the previous command, the factor scores have already been created for us. By default, R uses the regression method to compute the factor scores, which controls for differences in the units of measurement. You can access the residuals as follows: 
 
 
-```r
+``` r
 head(pc4$scores)
 ```
 
@@ -1104,7 +1104,7 @@ head(pc4$scores)
 We can also use the ```cbind()``` function to add the computed factor scores to the existing data set:
 
 
-```r
+``` r
 raq_data <- cbind(raq_data, pc4$scores)
 ```
 
@@ -1134,7 +1134,7 @@ The share of the items common variance (inter-correlation) in the total variance
 To see if the subscales that were derived from the previous PCA exhibit a sufficient degree of reliability, we first create subsets of our data set that contain the respective items for each of the factors (we use the results from the oblimin rotation here):  
 
 
-```r
+``` r
 computer_fear <- raq_data[,c(6,7,10,13,14,15,18)]
 statistics_fear <- raq_data[,c(1,3,4,5,12,16,20,21)]
 math_fear <- raq_data[,c(8,11,17)]
@@ -1145,7 +1145,7 @@ Now we can use the ```alpha()``` function from the ```psych``` package to test t
 
 
 
-```r
+``` r
 psych::alpha(computer_fear)
 ```
 
@@ -1193,7 +1193,7 @@ psych::alpha(computer_fear)
 ## Q18 0.06 0.12 0.31 0.37 0.14    0
 ```
 
-```r
+``` r
 psych::alpha(statistics_fear, keys=c(1,-1,1,1,1,1,1,1))
 ```
 
@@ -1245,7 +1245,7 @@ psych::alpha(statistics_fear, keys=c(1,-1,1,1,1,1,1,1))
 ## Q21 0.09 0.29 0.34 0.26 0.02    0
 ```
 
-```r
+``` r
 psych::alpha(math_fear)
 ```
 
@@ -1281,7 +1281,7 @@ psych::alpha(math_fear)
 ## Q17 0.03 0.10 0.27 0.52 0.08    0
 ```
 
-```r
+``` r
 psych::alpha(peer_evaluation)
 ```
 
@@ -1328,7 +1328,7 @@ The above output would lead us to conclude that the fear of computers, fear of s
 As another example, consider the multi-item scale from the statistical ability questionnaire.  
 
 
-```r
+``` r
 test_data <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/survey2017.dat", 
                         sep = "\t", header = TRUE)
 head(test_data)
@@ -1343,7 +1343,7 @@ head(test_data)
 The four variables "multi_1" - "multi_4" represent the multi-item scales. We can test the reliability of the scale using the ```alpha()``` function (item 4 was reverse coded, hence the "-1" in the ```keys``` vector):  
 
 
-```r
+``` r
 psych::alpha(test_data[,c("multi_1","multi_2","multi_3","multi_4")], keys=c(1,1,1,-1))
 ```
 
@@ -1386,7 +1386,7 @@ psych::alpha(test_data[,c("multi_1","multi_2","multi_3","multi_4")], keys=c(1,1,
 Since the scale exhibits a sufficient degree of reliability, we can compute the new variable as the average score on these items. However, before doing this, we need to recode the reverse coded variable in the appropriate way. It is easy to recode the reverse coded item to be in line with the remaining items on the dimension using the ```recode()``` function from the ```car``` package. 
 
 
-```r
+``` r
 library(car)
 test_data$multi_4_rec = recode(test_data$multi_4, "1=5; 2=4; 3=3; 4=2; 5=1")
 ```
@@ -1394,7 +1394,7 @@ test_data$multi_4_rec = recode(test_data$multi_4, "1=5; 2=4; 3=3; 4=2; 5=1")
 Now we can compute the new variable as the average score of the four items:
 
 
-```r
+``` r
 library(car)
 test_data$new_variable = (test_data$multi_1 + test_data$multi_2 + test_data$multi_3 + test_data$multi_4_rec) / 4
 head(test_data)

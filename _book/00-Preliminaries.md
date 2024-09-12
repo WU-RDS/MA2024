@@ -11,9 +11,6 @@ output:
 ---
 
 
-```
-## Warning: package 'knitr' was built under R version 4.2.3
-```
 
 # (PART) Lecture notes {-}
 
@@ -127,23 +124,23 @@ One of the most important aspects you need to reflect on when choosing an approp
    <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Will behavioral targeting in online advertising increase, on average, the probability of purchasing from our store within the next month? </td>
   </tr>
   <tr>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: #E0E0E0 !important;"> Data </td>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: #E0E0E0 !important;"> <b>Features</b>: user characteristics (age, gender, location, ...), product characteristics of visited pages, ...; </td>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: #E0E0E0 !important;"> <b>Output</b>: making a purchases within the next month<br>
-              <b>Inputs</b>: age, gender, frequency of past purchases, recency of last purchases, monetary value of past purchases, past ad exposures, ... </td>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: #E0E0E0 !important;"> <b>Outcome</b>: making a purchases within the next month<br>
-              <b>Treatment</b>: initiation of targeting campaign<br>
-              <b>Confounders</b>: for non-experimental settings (interest in product category, eligibility criteria used for targeting ...) </td>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: rgba(224, 224, 224, 255) !important;"> Data </td>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: rgba(224, 224, 224, 255) !important;"> &lt;b&gt;Features&lt;/b&gt;: user characteristics (age, gender, location, ...), product characteristics of visited pages, ...; </td>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: rgba(224, 224, 224, 255) !important;"> &lt;b&gt;Output&lt;/b&gt;: making a purchases within the next month&lt;br&gt;
+              &lt;b&gt;Inputs&lt;/b&gt;: age, gender, frequency of past purchases, recency of last purchases, monetary value of past purchases, past ad exposures, ... </td>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: rgba(224, 224, 224, 255) !important;"> |&lt;b&gt;Outcome&lt;/b&gt;: making a purchases within the next month&lt;br&gt;
+              &lt;b&gt;Treatment&lt;/b&gt;: initiation of targeting campaign&lt;br&gt;
+              &lt;b&gt;Confounders&lt;/b&gt;: for non-experimental settings (interest in product category, eligibility criteria used for targeting .. </td>
   </tr>
   <tr>
    <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Example of analytics </td>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Cluster Anaylsis <br> ... </td>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Regression<br>Decision trees<br>Random forests<br>Support vector machines<br>Neural networks<br> ... </td>
-   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Experiments with random assignment<br>
-              Regression<br>
-              Instrumental variables<br>
-              Regression discontinuity<br>
-              Difference-in-differences<br>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Cluster Anaylsis &lt;br&gt; ... </td>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Regression&lt;br&gt;Decision trees&lt;br&gt;Random forests&lt;br&gt;Support vector machines&lt;br&gt;Neural networks&lt;br&gt; ... </td>
+   <td style="text-align:left;width: 100; vertical-align: top !important;background-color: white !important;"> Experiments with random assignment&lt;br&gt;
+              Regression&lt;br&gt;
+              Instrumental variables&lt;br&gt;
+              Regression discontinuity&lt;br&gt;
+              Difference-in-differences&lt;br&gt;
               ... </td>
   </tr>
 </tbody>

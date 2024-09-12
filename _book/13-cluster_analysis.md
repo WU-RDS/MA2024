@@ -231,7 +231,7 @@ ggplot(recommendation, aes(instrumentalness, speechiness,
 We can use the `fviz_cluster` function from the `factoextra` library to get a partial picture. If there are more than 2 variables used for clustering, the package performs a PCA and uses the first two principal components for the visualization.
 
 
-```r
+``` r
 library(factoextra)
 fviz_cluster(kmeans_tracks, data = famous_tracks_scale,
     palette = hcl.colors(3, palette = "Dynamic"), geom = "point",

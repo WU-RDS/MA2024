@@ -1,7 +1,7 @@
 ---
 knit: "bookdown::render_book"
 new_session: TRUE
-title: "Marketing Analytics 2023"
+title: "Marketing Analytics 2024"
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
@@ -75,60 +75,60 @@ The contents on this website are divided into weekly readings. To be able to fol
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Oct. 3 </td>
+   <td style="text-align:left;"> Oct. 1 </td>
    <td style="text-align:left;"> Tuesday </td>
-   <td style="text-align:left;"> 09:00AM - 01:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> 01:00PM - 05:00PM </td>
+   <td style="text-align:left;"> TC.4.01 </td>
    <td style="text-align:left;"> Introduction to the course <br>Basic concepts </td>
    <td style="text-align:left;"> 1 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 9 </td>
+   <td style="text-align:left;"> Oct. 7 </td>
    <td style="text-align:left;"> Monday </td>
    <td style="text-align:left;"> 01:00PM - 05:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> D5.1.001 </td>
    <td style="text-align:left;"> Introduction to R &amp; R Markdown </td>
    <td style="text-align:left;"> 2, 3, 4 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 16 </td>
+   <td style="text-align:left;"> Oct. 14 </td>
    <td style="text-align:left;"> Monday </td>
    <td style="text-align:left;"> 01:00PM - 05:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> D5.1.001 </td>
    <td style="text-align:left;"> Introduction to inferential statistics <br>Hypothesis testing I </td>
    <td style="text-align:left;"> 5, 6.1, 6.2, 6.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 23 </td>
+   <td style="text-align:left;"> Oct. 21 </td>
    <td style="text-align:left;"> Monday </td>
-   <td style="text-align:left;"> 01:00PM - 04:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> 01:00PM - 05:00PM </td>
+   <td style="text-align:left;"> D5.1.001 </td>
    <td style="text-align:left;"> Hypothesis testing II </td>
    <td style="text-align:left;"> 6.4, 6.5, 6.6 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 30 </td>
+   <td style="text-align:left;"> Oct. 28 </td>
    <td style="text-align:left;"> Monday </td>
    <td style="text-align:left;"> 01:00PM - 05:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> D5.1.001 </td>
    <td style="text-align:left;"> Regression I </td>
    <td style="text-align:left;"> 7.1, 7.2, 7.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nov. 6 </td>
+   <td style="text-align:left;"> Nov. 4 </td>
    <td style="text-align:left;"> Monday </td>
    <td style="text-align:left;"> 01:00PM - 05:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> D5.1.001 </td>
    <td style="text-align:left;"> Regression II </td>
    <td style="text-align:left;"> 7.4, 7.5, 7.6 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nov. 13 </td>
+   <td style="text-align:left;"> Nov. 11 </td>
    <td style="text-align:left;"> Monday </td>
    <td style="text-align:left;"> 01:00PM - 05:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
-   <td style="text-align:left;"> Factor analysis <br>Cluster analysis </td>
-   <td style="text-align:left;"> 8, 9 </td>
+   <td style="text-align:left;"> D5.1.001 </td>
+   <td style="text-align:left;"> Mediation, Causality &amp; DAGs </td>
+   <td style="text-align:left;"> WIP </td>
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
@@ -150,60 +150,60 @@ The contents on this website are divided into weekly readings. To be able to fol
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Oct. 4 </td>
+   <td style="text-align:left;"> Oct. 2 </td>
    <td style="text-align:left;"> Wednesday </td>
-   <td style="text-align:left;"> 01:00PM - 05:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> 12:30PM - 04:30PM </td>
+   <td style="text-align:left;"> D4.0.022 </td>
    <td style="text-align:left;"> Introduction to the course <br>Basic concepts </td>
    <td style="text-align:left;"> 1 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 11 </td>
+   <td style="text-align:left;"> Oct. 9 </td>
    <td style="text-align:left;"> Wednesday </td>
-   <td style="text-align:left;"> 12:00PM - 04:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> 12:30PM - 04:30PM </td>
+   <td style="text-align:left;"> D4.0.022 </td>
    <td style="text-align:left;"> Introduction to R &amp; R Markdown </td>
    <td style="text-align:left;"> 2, 3, 4 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 18 </td>
+   <td style="text-align:left;"> Oct. 16 </td>
    <td style="text-align:left;"> Wednesday </td>
-   <td style="text-align:left;"> 12:00PM - 04:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> 12:30PM - 04:30PM </td>
+   <td style="text-align:left;"> D4.0.022 </td>
    <td style="text-align:left;"> Introduction to inferential statistics <br>Hypothesis testing I </td>
    <td style="text-align:left;"> 5, 6.1, 6.2, 6.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 20 </td>
-   <td style="text-align:left;"> Friday </td>
-   <td style="text-align:left;"> 12:00PM - 04:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> Oct. 23 </td>
+   <td style="text-align:left;"> Wednesday </td>
+   <td style="text-align:left;"> 12:30PM - 04:30PM </td>
+   <td style="text-align:left;"> D4.0.022 </td>
    <td style="text-align:left;"> Hypothesis testing II </td>
    <td style="text-align:left;"> 6.4, 6.5, 6.6 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Oct. 25 </td>
+   <td style="text-align:left;"> Oct. 30 </td>
    <td style="text-align:left;"> Wednesday </td>
-   <td style="text-align:left;"> 12:00PM - 04:00PM </td>
-   <td style="text-align:left;"> D3.0.225 </td>
+   <td style="text-align:left;"> 12:30PM - 04:30PM </td>
+   <td style="text-align:left;"> D4.0.022 </td>
    <td style="text-align:left;"> Regression I </td>
    <td style="text-align:left;"> 7.1, 7.2, 7.3 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nov. 8 </td>
+   <td style="text-align:left;"> Nov. 6 </td>
    <td style="text-align:left;"> Wednesday </td>
-   <td style="text-align:left;"> 12:00PM - 04:00PM </td>
-   <td style="text-align:left;"> D3.0.225 </td>
+   <td style="text-align:left;"> 12:30PM - 04:30PM </td>
+   <td style="text-align:left;"> D4.0.022 </td>
    <td style="text-align:left;"> Regression II </td>
    <td style="text-align:left;"> 7.4, 7.5, 7.6 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Nov. 15 </td>
+   <td style="text-align:left;"> Nov. 13 </td>
    <td style="text-align:left;"> Wednesday </td>
-   <td style="text-align:left;"> 12:00PM - 04:00PM </td>
-   <td style="text-align:left;"> D3.0.225 </td>
-   <td style="text-align:left;"> Factor analysis <br>Cluster analysis </td>
-   <td style="text-align:left;"> 8, 9 </td>
+   <td style="text-align:left;"> 12:30PM - 04:30PM </td>
+   <td style="text-align:left;"> D4.0.022 </td>
+   <td style="text-align:left;"> Mediation, Causality &amp; DAGs </td>
+   <td style="text-align:left;"> WIP </td>
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">

@@ -163,7 +163,7 @@ Keep `knitr::opts_chunk$set(echo = TRUE)` to print your code to the document you
 
 
 
-```r
+``` r
 summary(cars)
 ```
 
@@ -177,7 +177,7 @@ summary(cars)
 ##  Max.   :25.0   Max.   :120.00
 ```
 
-```r
+``` r
 plot(dist ~ speed, cars)
 ```
 
@@ -351,7 +351,7 @@ Please use R to solve the tasks. When you finished the assignment, click on the 
 We'll first load the data that is needed for the assignment.
 
 
-```r
+``` r
 library(dplyr)
 library(psych)
 library(ggplot2)
@@ -388,7 +388,7 @@ str(music_data)
 ##  $ sp_fans_artist             : int  3308630 465412 23846 1294 380204 1651866 214001 10742 435457 1897685 ...
 ##  $ shazam_counts              : int  73100 588550 0 0 55482 5281161 0 0 39055 0 ...
 ##  $ artistName                 : chr  "Luan Santana" "Alessia Cara" "Ana Guerra" "Claver Gold feat. Murubutu" ...
-##  $ trackName                  : chr  "Eu, VocÃª, O Mar e Ela" "Growing Pains" "El Remedio" "Ulisse" ...
+##  $ trackName                  : chr  "Eu, Você, O Mar e Ela" "Growing Pains" "El Remedio" "Ulisse" ...
 ##  $ release_date               : chr  "2016-06-20" "2018-06-14" "2018-04-26" "2020-03-31" ...
 ##  $ genre                      : chr  "other" "Pop" "Pop" "HipHop/Rap" ...
 ##  $ label                      : chr  "Independent" "Universal Music" "Universal Music" "Independent" ...
@@ -396,31 +396,31 @@ str(music_data)
 ##  $ expert_rating              : chr  "excellent" "good" "good" "poor" ...
 ```
 
-```r
+``` r
 head(music_data)
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["isrc"],"name":[1],"type":["chr"],"align":["left"]},{"label":["artist_id"],"name":[2],"type":["int"],"align":["right"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["weeks_in_charts"],"name":[4],"type":["int"],"align":["right"]},{"label":["n_regions"],"name":[5],"type":["int"],"align":["right"]},{"label":["danceability"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["song_length"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["song_age"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["explicit"],"name":[15],"type":["int"],"align":["right"]},{"label":["n_playlists"],"name":[16],"type":["int"],"align":["right"]},{"label":["sp_popularity"],"name":[17],"type":["int"],"align":["right"]},{"label":["youtube_views"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["tiktok_counts"],"name":[19],"type":["int"],"align":["right"]},{"label":["ins_followers_artist"],"name":[20],"type":["int"],"align":["right"]},{"label":["monthly_listeners_artist"],"name":[21],"type":["int"],"align":["right"]},{"label":["playlist_total_reach_artist"],"name":[22],"type":["int"],"align":["right"]},{"label":["sp_fans_artist"],"name":[23],"type":["int"],"align":["right"]},{"label":["shazam_counts"],"name":[24],"type":["int"],"align":["right"]},{"label":["artistName"],"name":[25],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[26],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[27],"type":["chr"],"align":["left"]},{"label":["genre"],"name":[28],"type":["chr"],"align":["left"]},{"label":["label"],"name":[29],"type":["chr"],"align":["left"]},{"label":["top10"],"name":[30],"type":["int"],"align":["right"]},{"label":["expert_rating"],"name":[31],"type":["chr"],"align":["left"]}],"data":[{"1":"BRRGE1603547","2":"3679","3":"11944813","4":"141","5":"1","6":"50.9","7":"80.3","8":"4.00","9":"0.050000","10":"46.30","11":"65.1","12":"166.018","13":"3.118650","14":"228.28571","15":"0","16":"450","17":"51","18":"145030723","19":"9740","20":"29613108","21":"4133393","22":"24286416","23":"3308630","24":"73100","25":"Luan Santana","26":"Eu, VocÃª, O Mar e Ela","27":"2016-06-20","28":"other","29":"Independent","30":"1","31":"excellent"},{"1":"USUM71808193","2":"5239","3":"8934097","4":"51","5":"21","6":"35.3","7":"75.5","8":"73.30","9":"0.000000","10":"39.00","11":"43.7","12":"191.153","13":"3.228000","14":"144.28571","15":"0","16":"768","17":"54","18":"13188411","19":"358700","20":"3693566","21":"18367363","22":"143384531","23":"465412","24":"588550","25":"Alessia Cara","26":"Growing Pains","27":"2018-06-14","28":"Pop","29":"Universal Music","30":"0","31":"good"},{"1":"ES5701800181","2":"776407","3":"38835","4":"1","5":"1","6":"68.3","7":"67.6","8":"14.70","9":"0.000000","10":"7.26","11":"43.4","12":"98.992","13":"3.015550","14":"112.28571","15":"0","16":"48","17":"32","18":"6116639","19":"0","20":"623778","21":"888273","22":"4846378","23":"23846","24":"0","25":"Ana Guerra","26":"El Remedio","27":"2018-04-26","28":"Pop","29":"Universal Music","30":"0","31":"good"},{"1":"ITRSE2000050","2":"433730","3":"46766","4":"1","5":"1","6":"70.4","7":"56.8","8":"26.80","9":"0.000253","10":"8.91","11":"49.5","12":"91.007","13":"3.453417","14":"50.71429","15":"0","16":"6","17":"44","18":"0","19":"13","20":"81601","21":"143761","22":"156521","23":"1294","24":"0","25":"Claver Gold feat. Murubutu","26":"Ulisse","27":"2020-03-31","28":"HipHop/Rap","29":"Independent","30":"0","31":"poor"},{"1":"QZJ842000061","2":"526471","3":"2930573","4":"7","5":"4","6":"84.2","7":"57.8","8":"13.80","9":"0.000000","10":"22.80","11":"19.0","12":"74.496","13":"3.946317","14":"58.28571","15":"0","16":"475","17":"52","18":"0","19":"515","20":"11962358","21":"15551876","22":"90841884","23":"380204","24":"55482","25":"Trippie Redd feat. Young Thug","26":"YELL OH","27":"2020-02-07","28":"HipHop/Rap","29":"Universal Music","30":"0","31":"excellent"},{"1":"USIR20400274","2":"1939","3":"72199738","4":"226","5":"8","6":"35.2","7":"91.1","8":"7.47","9":"0.000000","10":"9.95","11":"23.6","12":"148.033","13":"3.716217","14":"876.71429","15":"0","16":"20591","17":"81","18":"20216069","19":"67300","20":"1169284","21":"16224250","22":"80408253","23":"1651866","24":"5281161","25":"The Killers","26":"Mr. Brightside","27":"2004-06-07","28":"Rock","29":"Universal Music","30":"1","31":"fair"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["isrc"],"name":[1],"type":["chr"],"align":["left"]},{"label":["artist_id"],"name":[2],"type":["int"],"align":["right"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["weeks_in_charts"],"name":[4],"type":["int"],"align":["right"]},{"label":["n_regions"],"name":[5],"type":["int"],"align":["right"]},{"label":["danceability"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["song_length"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["song_age"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["explicit"],"name":[15],"type":["int"],"align":["right"]},{"label":["n_playlists"],"name":[16],"type":["int"],"align":["right"]},{"label":["sp_popularity"],"name":[17],"type":["int"],"align":["right"]},{"label":["youtube_views"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["tiktok_counts"],"name":[19],"type":["int"],"align":["right"]},{"label":["ins_followers_artist"],"name":[20],"type":["int"],"align":["right"]},{"label":["monthly_listeners_artist"],"name":[21],"type":["int"],"align":["right"]},{"label":["playlist_total_reach_artist"],"name":[22],"type":["int"],"align":["right"]},{"label":["sp_fans_artist"],"name":[23],"type":["int"],"align":["right"]},{"label":["shazam_counts"],"name":[24],"type":["int"],"align":["right"]},{"label":["artistName"],"name":[25],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[26],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[27],"type":["chr"],"align":["left"]},{"label":["genre"],"name":[28],"type":["chr"],"align":["left"]},{"label":["label"],"name":[29],"type":["chr"],"align":["left"]},{"label":["top10"],"name":[30],"type":["int"],"align":["right"]},{"label":["expert_rating"],"name":[31],"type":["chr"],"align":["left"]}],"data":[{"1":"BRRGE1603547","2":"3679","3":"11944813","4":"141","5":"1","6":"50.9","7":"80.3","8":"4.00","9":"0.050000","10":"46.30","11":"65.1","12":"166.018","13":"3.118650","14":"228.28571","15":"0","16":"450","17":"51","18":"145030723","19":"9740","20":"29613108","21":"4133393","22":"24286416","23":"3308630","24":"73100","25":"Luan Santana","26":"Eu, Você, O Mar e Ela","27":"2016-06-20","28":"other","29":"Independent","30":"1","31":"excellent"},{"1":"USUM71808193","2":"5239","3":"8934097","4":"51","5":"21","6":"35.3","7":"75.5","8":"73.30","9":"0.000000","10":"39.00","11":"43.7","12":"191.153","13":"3.228000","14":"144.28571","15":"0","16":"768","17":"54","18":"13188411","19":"358700","20":"3693566","21":"18367363","22":"143384531","23":"465412","24":"588550","25":"Alessia Cara","26":"Growing Pains","27":"2018-06-14","28":"Pop","29":"Universal Music","30":"0","31":"good"},{"1":"ES5701800181","2":"776407","3":"38835","4":"1","5":"1","6":"68.3","7":"67.6","8":"14.70","9":"0.000000","10":"7.26","11":"43.4","12":"98.992","13":"3.015550","14":"112.28571","15":"0","16":"48","17":"32","18":"6116639","19":"0","20":"623778","21":"888273","22":"4846378","23":"23846","24":"0","25":"Ana Guerra","26":"El Remedio","27":"2018-04-26","28":"Pop","29":"Universal Music","30":"0","31":"good"},{"1":"ITRSE2000050","2":"433730","3":"46766","4":"1","5":"1","6":"70.4","7":"56.8","8":"26.80","9":"0.000253","10":"8.91","11":"49.5","12":"91.007","13":"3.453417","14":"50.71429","15":"0","16":"6","17":"44","18":"0","19":"13","20":"81601","21":"143761","22":"156521","23":"1294","24":"0","25":"Claver Gold feat. Murubutu","26":"Ulisse","27":"2020-03-31","28":"HipHop/Rap","29":"Independent","30":"0","31":"poor"},{"1":"QZJ842000061","2":"526471","3":"2930573","4":"7","5":"4","6":"84.2","7":"57.8","8":"13.80","9":"0.000000","10":"22.80","11":"19.0","12":"74.496","13":"3.946317","14":"58.28571","15":"0","16":"475","17":"52","18":"0","19":"515","20":"11962358","21":"15551876","22":"90841884","23":"380204","24":"55482","25":"Trippie Redd feat. Young Thug","26":"YELL OH","27":"2020-02-07","28":"HipHop/Rap","29":"Universal Music","30":"0","31":"excellent"},{"1":"USIR20400274","2":"1939","3":"72199738","4":"226","5":"8","6":"35.2","7":"91.1","8":"7.47","9":"0.000000","10":"9.95","11":"23.6","12":"148.033","13":"3.716217","14":"876.71429","15":"0","16":"20591","17":"81","18":"20216069","19":"67300","20":"1169284","21":"16224250","22":"80408253","23":"1651866","24":"5281161","25":"The Killers","26":"Mr. Brightside","27":"2004-06-07","28":"Rock","29":"Universal Music","30":"1","31":"fair"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
 You should then convert the variables to the correct types:  
   
-  
-  ```r
-  music_data <-  music_data %>% 
+
+``` r
+music_data <-  music_data %>% 
   mutate(label = as.factor(label), # convert label and genre variables to factor with values as labels
          genre = as.factor(genre)) %>% as.data.frame()
-  ```
+```
 
 ### Q1
 
 Create a new data frame containing the most successful songs of the artist "Billie Eilish" by filtering the original data set by the artist "Billie Eilish" and order the observations in an descending order.  
 
 
-```r
+``` r
 billie_eilish <- music_data %>% 
   select(artistName,trackName,streams) %>% #select relevant variables
   filter(artistName == "Billie Eilish") %>% #filter by artist name
@@ -441,7 +441,7 @@ Create a new data frame containing the 100 overall most successful songs in the 
 Here you could simply arrange the whole data set by streams and then take 100 first rows using the `head()`-function:
   
 
-```r
+``` r
 top_100 <- music_data %>% 
   select(artistName,trackName,streams) %>% #select relevant variables
   arrange(desc(streams)) %>% #arrange by number of streams (in descending order)
@@ -451,7 +451,7 @@ top_100
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["artistName"],"name":[1],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Ed Sheeran","2":"Shape of You","3":"2165692479"},{"1":"Tones and I","2":"Dance Monkey","3":"1909947000"},{"1":"Billie Eilish","2":"bad guy","3":"1459149566"},{"1":"Lewis Capaldi","2":"Someone You Loved","3":"1419867299"},{"1":"Shawn Mendes feat. Camila Cabello","2":"SeÃ±orita","3":"1156206588"},{"1":"XXXTENTACION","2":"SAD!","3":"1103693478"},{"1":"Lady Gaga feat. Bradley Cooper","2":"Shallow","3":"1095593020"},{"1":"Ed Sheeran","2":"Perfect","3":"1045189446"},{"1":"Marshmello feat. Bastille","2":"Happier","3":"1040018252"},{"1":"Post Malone","2":"Circles","3":"1033994547"},{"1":"Travis Scott","2":"SICKO MODE","3":"1032407145"},{"1":"Post Malone","2":"Better Now","3":"1020891071"},{"1":"Roddy Ricch","2":"The Box","3":"995059793"},{"1":"Luis Fonsi feat. Daddy Yankee feat. Justin Bieber","2":"Despacito - Remix","3":"956567836"},{"1":"James Arthur","2":"Say You Won't Let Go","3":"949840761"},{"1":"Kendrick Lamar","2":"HUMBLE.","3":"946692345"},{"1":"XXXTENTACION","2":"Jocelyn Flores","3":"936906948"},{"1":"Harry Styles","2":"Watermelon Sugar","3":"912812908"},{"1":"DaBaby feat. Roddy Ricch","2":"ROCKSTAR (feat. Roddy Ricch)","3":"908563621"},{"1":"Dua Lipa","2":"New Rules","3":"899361369"},{"1":"Travis Scott","2":"goosebumps","3":"885410605"},{"1":"Post Malone feat. Quavo","2":"Congratulations","3":"876828681"},{"1":"Post Malone","2":"I Fall Apart","3":"853129702"},{"1":"Maroon 5","2":"Memories","3":"840176116"},{"1":"Ariana Grande","2":"7 rings","3":"829033275"},{"1":"The Chainsmokers feat. Coldplay","2":"Something Just Like This","3":"818014494"},{"1":"Maroon 5 feat. Cardi B","2":"Girls Like You (feat. Cardi B)","3":"808796253"},{"1":"Post Malone feat. 21 Savage","2":"rockstar","3":"798643747"},{"1":"Cardi B feat. Bad Bunny feat. J Balvin","2":"I Like It","3":"788587558"},{"1":"24kGoldn feat. iann dior","2":"Mood (feat. Iann Dior)","3":"764725273"},{"1":"Drake","2":"God's Plan","3":"760650552"},{"1":"Halsey","2":"Without Me","3":"757392659"},{"1":"KAROL G feat. Nicki Minaj","2":"Tusa","3":"756602731"},{"1":"Juice WRLD","2":"Lucid Dreams","3":"743680155"},{"1":"Billie Eilish feat. Khalid","2":"lovely (with Khalid)","3":"736917003"},{"1":"XXXTENTACION","2":"Moonlight","3":"728758339"},{"1":"Calvin Harris feat. Dua Lipa","2":"One Kiss (with Dua Lipa)","3":"725852183"},{"1":"Powfu feat. beabadoobee","2":"death bed (feat. beabadoobee)","3":"721854372"},{"1":"Lil Uzi Vert","2":"XO Tour Llif3","3":"718056532"},{"1":"Luis Fonsi feat. Daddy Yankee","2":"Despacito (Featuring Daddy Yankee)","3":"716267413"},{"1":"DJ Snake feat. Selena Gomez feat. Ozuna feat. Cardi B","2":"Taki Taki (with Selena Gomez, Ozuna & Cardi B)","3":"711683906"},{"1":"Ava Max","2":"Sweet but Psycho","3":"708945613"},{"1":"Post Malone feat. Swae Lee","2":"Sunflower - Spider-Man: Into the Spider-Verse","3":"698637220"},{"1":"Lewis Capaldi","2":"Before You Go","3":"673256732"},{"1":"Travis Scott","2":"HIGHEST IN THE ROOM","3":"671834884"},{"1":"French Montana feat. Swae Lee","2":"Unforgettable","3":"664523097"},{"1":"Dua Lipa","2":"Don't Start Now","3":"662931410"},{"1":"Ed Sheeran feat. Justin Bieber","2":"I Don't Care (with Justin Bieber)","3":"661619647"},{"1":"Ed Sheeran feat. Khalid","2":"Beautiful People (feat. Khalid)","3":"645594217"},{"1":"Daddy Yankee feat. Snow","2":"Con Calma","3":"641512230"},{"1":"5 Seconds of Summer","2":"Youngblood","3":"630620840"},{"1":"Cardi B feat. Megan Thee Stallion","2":"WAP (feat. Megan Thee Stallion)","3":"628693128"},{"1":"Drake","2":"In My Feelings","3":"628416077"},{"1":"Bruno Mars","2":"That's What I Like","3":"626610789"},{"1":"Dua Lipa","2":"IDGAF","3":"625837067"},{"1":"Khalid","2":"Young Dumb & Broke","3":"620192359"},{"1":"Charlie Puth","2":"Attention","3":"618037150"},{"1":"Panic! At The Disco","2":"High Hopes","3":"617513542"},{"1":"Dynoro feat. Gigi D'Agostino","2":"In My Mind","3":"617150168"},{"1":"The Chainsmokers feat. Halsey","2":"Closer","3":"616860951"},{"1":"Harry Styles","2":"Adore You","3":"605863996"},{"1":"Marshmello feat. Khalid","2":"Silence","3":"597974176"},{"1":"Bad Bunny feat. Drake","2":"MIA (feat. Drake)","3":"597084944"},{"1":"Logic feat. Alessia Cara feat. Khalid","2":"1-800-273-8255","3":"595389235"},{"1":"Billie Eilish","2":"everything i wanted","3":"594991676"},{"1":"J Balvin feat. Willy William","2":"Mi Gente","3":"591160912"},{"1":"Post Malone","2":"Wow.","3":"590232906"},{"1":"Kygo feat. Selena Gomez","2":"It Ain't Me (with Selena Gomez)","3":"589126392"},{"1":"Pedro CapÃ³ feat. Farruko","2":"Calma - Remix","3":"586985863"},{"1":"Mithoon feat. Arijit Singh","2":"Chal Ghar Chalen (From \"\"Malang - Unleash The Madness\"\") [Mithoon feat. Arijit Singh]","3":"582308170"},{"1":"Mariah Carey","2":"All I Want for Christmas Is You","3":"581830387"},{"1":"Post Malone feat. 21 Savage","2":"rockstar","3":"567757276"},{"1":"Marshmello feat. Anne-Marie","2":"FRIENDS","3":"566399912"},{"1":"Dua Lipa","2":"Don't Start Now","3":"559248821"},{"1":"Post Malone feat. Swae Lee","2":"Sunflower - Spider-Man: Into the Spider-Verse","3":"557862968"},{"1":"Camila Cabello feat. Young Thug","2":"Havana","3":"554032710"},{"1":"Bad Bunny feat. Tainy","2":"Callaita","3":"551285702"},{"1":"ZAYN feat. Taylor Swift","2":"I Donâ\\200\\231t Wanna Live Forever (Fifty Shades Darker) - From \"\"Fifty Shades Darker (Original Motion Picture Soundtrack)\"\"","3":"550678451"},{"1":"Tyga feat. Offset","2":"Taste (feat. Offset)","3":"549014318"},{"1":"J. Cole","2":"MIDDLE CHILD","3":"539371861"},{"1":"Lil Baby feat. Gunna","2":"Drip Too Hard","3":"537625961"},{"1":"Post Malone feat. Young Thug","2":"Goodbyes (Feat. Young Thug)","3":"534832406"},{"1":"Regard","2":"Ride It","3":"530000154"},{"1":"Juice WRLD","2":"Robbery","3":"528728435"},{"1":"XXXTENTACION feat. Trippie Redd","2":"Fuck Love (feat. Trippie Redd)","3":"525695922"},{"1":"Topic feat. A7S","2":"Breaking Me (feat. A7S)","3":"524982001"},{"1":"Danny Ocean","2":"Me RehÃºso","3":"523590834"},{"1":"Shawn Mendes","2":"There's Nothing Holdin' Me Back","3":"520429071"},{"1":"Camila Cabello feat. Young Thug","2":"Havana","3":"516295447"},{"1":"Justin Bieber feat. Quavo","2":"Intentions","3":"514862825"},{"1":"Post Malone feat. Ty Dolla $ign","2":"Psycho (feat. Ty Dolla $ign)","3":"513812937"},{"1":"Nio Garcia feat. Casper Magico feat. Bad Bunny feat. Darell feat. Ozuna feat. Nicky Jam","2":"Te BotÃ© - Remix","3":"513303473"},{"1":"Sam Smith","2":"Too Good At Goodbyes - Edit","3":"512836763"},{"1":"Anuel AA feat. Daddy Yankee feat. KAROL G feat. J Balvin feat. Ozuna","2":"China","3":"511648110"},{"1":"Doja Cat","2":"Say So","3":"507466329"},{"1":"BlocBoy JB feat. Drake","2":"Look Alive (feat. Drake)","3":"504359415"},{"1":"Meek Mill feat. Drake","2":"Going Bad (feat. Drake)","3":"504025912"},{"1":"Sam Smith feat. Normani","2":"Dancing With A Stranger (with Normani)","3":"502577475"},{"1":"Ed Sheeran","2":"Castle on the Hill","3":"498013905"},{"1":"Zedd feat. Alessia Cara","2":"Stay (with Alessia Cara)","3":"490037377"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["artistName"],"name":[1],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Ed Sheeran","2":"Shape of You","3":"2165692479"},{"1":"Tones and I","2":"Dance Monkey","3":"1909947000"},{"1":"Billie Eilish","2":"bad guy","3":"1459149566"},{"1":"Lewis Capaldi","2":"Someone You Loved","3":"1419867299"},{"1":"Shawn Mendes feat. Camila Cabello","2":"Señorita","3":"1156206588"},{"1":"XXXTENTACION","2":"SAD!","3":"1103693478"},{"1":"Lady Gaga feat. Bradley Cooper","2":"Shallow","3":"1095593020"},{"1":"Ed Sheeran","2":"Perfect","3":"1045189446"},{"1":"Marshmello feat. Bastille","2":"Happier","3":"1040018252"},{"1":"Post Malone","2":"Circles","3":"1033994547"},{"1":"Travis Scott","2":"SICKO MODE","3":"1032407145"},{"1":"Post Malone","2":"Better Now","3":"1020891071"},{"1":"Roddy Ricch","2":"The Box","3":"995059793"},{"1":"Luis Fonsi feat. Daddy Yankee feat. Justin Bieber","2":"Despacito - Remix","3":"956567836"},{"1":"James Arthur","2":"Say You Won't Let Go","3":"949840761"},{"1":"Kendrick Lamar","2":"HUMBLE.","3":"946692345"},{"1":"XXXTENTACION","2":"Jocelyn Flores","3":"936906948"},{"1":"Harry Styles","2":"Watermelon Sugar","3":"912812908"},{"1":"DaBaby feat. Roddy Ricch","2":"ROCKSTAR (feat. Roddy Ricch)","3":"908563621"},{"1":"Dua Lipa","2":"New Rules","3":"899361369"},{"1":"Travis Scott","2":"goosebumps","3":"885410605"},{"1":"Post Malone feat. Quavo","2":"Congratulations","3":"876828681"},{"1":"Post Malone","2":"I Fall Apart","3":"853129702"},{"1":"Maroon 5","2":"Memories","3":"840176116"},{"1":"Ariana Grande","2":"7 rings","3":"829033275"},{"1":"The Chainsmokers feat. Coldplay","2":"Something Just Like This","3":"818014494"},{"1":"Maroon 5 feat. Cardi B","2":"Girls Like You (feat. Cardi B)","3":"808796253"},{"1":"Post Malone feat. 21 Savage","2":"rockstar","3":"798643747"},{"1":"Cardi B feat. Bad Bunny feat. J Balvin","2":"I Like It","3":"788587558"},{"1":"24kGoldn feat. iann dior","2":"Mood (feat. Iann Dior)","3":"764725273"},{"1":"Drake","2":"God's Plan","3":"760650552"},{"1":"Halsey","2":"Without Me","3":"757392659"},{"1":"KAROL G feat. Nicki Minaj","2":"Tusa","3":"756602731"},{"1":"Juice WRLD","2":"Lucid Dreams","3":"743680155"},{"1":"Billie Eilish feat. Khalid","2":"lovely (with Khalid)","3":"736917003"},{"1":"XXXTENTACION","2":"Moonlight","3":"728758339"},{"1":"Calvin Harris feat. Dua Lipa","2":"One Kiss (with Dua Lipa)","3":"725852183"},{"1":"Powfu feat. beabadoobee","2":"death bed (feat. beabadoobee)","3":"721854372"},{"1":"Lil Uzi Vert","2":"XO Tour Llif3","3":"718056532"},{"1":"Luis Fonsi feat. Daddy Yankee","2":"Despacito (Featuring Daddy Yankee)","3":"716267413"},{"1":"DJ Snake feat. Selena Gomez feat. Ozuna feat. Cardi B","2":"Taki Taki (with Selena Gomez, Ozuna & Cardi B)","3":"711683906"},{"1":"Ava Max","2":"Sweet but Psycho","3":"708945613"},{"1":"Post Malone feat. Swae Lee","2":"Sunflower - Spider-Man: Into the Spider-Verse","3":"698637220"},{"1":"Lewis Capaldi","2":"Before You Go","3":"673256732"},{"1":"Travis Scott","2":"HIGHEST IN THE ROOM","3":"671834884"},{"1":"French Montana feat. Swae Lee","2":"Unforgettable","3":"664523097"},{"1":"Dua Lipa","2":"Don't Start Now","3":"662931410"},{"1":"Ed Sheeran feat. Justin Bieber","2":"I Don't Care (with Justin Bieber)","3":"661619647"},{"1":"Ed Sheeran feat. Khalid","2":"Beautiful People (feat. Khalid)","3":"645594217"},{"1":"Daddy Yankee feat. Snow","2":"Con Calma","3":"641512230"},{"1":"5 Seconds of Summer","2":"Youngblood","3":"630620840"},{"1":"Cardi B feat. Megan Thee Stallion","2":"WAP (feat. Megan Thee Stallion)","3":"628693128"},{"1":"Drake","2":"In My Feelings","3":"628416077"},{"1":"Bruno Mars","2":"That's What I Like","3":"626610789"},{"1":"Dua Lipa","2":"IDGAF","3":"625837067"},{"1":"Khalid","2":"Young Dumb & Broke","3":"620192359"},{"1":"Charlie Puth","2":"Attention","3":"618037150"},{"1":"Panic! At The Disco","2":"High Hopes","3":"617513542"},{"1":"Dynoro feat. Gigi D'Agostino","2":"In My Mind","3":"617150168"},{"1":"The Chainsmokers feat. Halsey","2":"Closer","3":"616860951"},{"1":"Harry Styles","2":"Adore You","3":"605863996"},{"1":"Marshmello feat. Khalid","2":"Silence","3":"597974176"},{"1":"Bad Bunny feat. Drake","2":"MIA (feat. Drake)","3":"597084944"},{"1":"Logic feat. Alessia Cara feat. Khalid","2":"1-800-273-8255","3":"595389235"},{"1":"Billie Eilish","2":"everything i wanted","3":"594991676"},{"1":"J Balvin feat. Willy William","2":"Mi Gente","3":"591160912"},{"1":"Post Malone","2":"Wow.","3":"590232906"},{"1":"Kygo feat. Selena Gomez","2":"It Ain't Me (with Selena Gomez)","3":"589126392"},{"1":"Pedro Capó feat. Farruko","2":"Calma - Remix","3":"586985863"},{"1":"Mithoon feat. Arijit Singh","2":"Chal Ghar Chalen (From \"\"Malang - Unleash The Madness\"\") [Mithoon feat. Arijit Singh]","3":"582308170"},{"1":"Mariah Carey","2":"All I Want for Christmas Is You","3":"581830387"},{"1":"Post Malone feat. 21 Savage","2":"rockstar","3":"567757276"},{"1":"Marshmello feat. Anne-Marie","2":"FRIENDS","3":"566399912"},{"1":"Dua Lipa","2":"Don't Start Now","3":"559248821"},{"1":"Post Malone feat. Swae Lee","2":"Sunflower - Spider-Man: Into the Spider-Verse","3":"557862968"},{"1":"Camila Cabello feat. Young Thug","2":"Havana","3":"554032710"},{"1":"Bad Bunny feat. Tainy","2":"Callaita","3":"551285702"},{"1":"ZAYN feat. Taylor Swift","2":"I Don’t Wanna Live Forever (Fifty Shades Darker) - From \"\"Fifty Shades Darker (Original Motion Picture Soundtrack)\"\"","3":"550678451"},{"1":"Tyga feat. Offset","2":"Taste (feat. Offset)","3":"549014318"},{"1":"J. Cole","2":"MIDDLE CHILD","3":"539371861"},{"1":"Lil Baby feat. Gunna","2":"Drip Too Hard","3":"537625961"},{"1":"Post Malone feat. Young Thug","2":"Goodbyes (Feat. Young Thug)","3":"534832406"},{"1":"Regard","2":"Ride It","3":"530000154"},{"1":"Juice WRLD","2":"Robbery","3":"528728435"},{"1":"XXXTENTACION feat. Trippie Redd","2":"Fuck Love (feat. Trippie Redd)","3":"525695922"},{"1":"Topic feat. A7S","2":"Breaking Me (feat. A7S)","3":"524982001"},{"1":"Danny Ocean","2":"Me Rehúso","3":"523590834"},{"1":"Shawn Mendes","2":"There's Nothing Holdin' Me Back","3":"520429071"},{"1":"Camila Cabello feat. Young Thug","2":"Havana","3":"516295447"},{"1":"Justin Bieber feat. Quavo","2":"Intentions","3":"514862825"},{"1":"Post Malone feat. Ty Dolla $ign","2":"Psycho (feat. Ty Dolla $ign)","3":"513812937"},{"1":"Nio Garcia feat. Casper Magico feat. Bad Bunny feat. Darell feat. Ozuna feat. Nicky Jam","2":"Te Boté - Remix","3":"513303473"},{"1":"Sam Smith","2":"Too Good At Goodbyes - Edit","3":"512836763"},{"1":"Anuel AA feat. Daddy Yankee feat. KAROL G feat. J Balvin feat. Ozuna","2":"China","3":"511648110"},{"1":"Doja Cat","2":"Say So","3":"507466329"},{"1":"BlocBoy JB feat. Drake","2":"Look Alive (feat. Drake)","3":"504359415"},{"1":"Meek Mill feat. Drake","2":"Going Bad (feat. Drake)","3":"504025912"},{"1":"Sam Smith feat. Normani","2":"Dancing With A Stranger (with Normani)","3":"502577475"},{"1":"Ed Sheeran","2":"Castle on the Hill","3":"498013905"},{"1":"Zedd feat. Alessia Cara","2":"Stay (with Alessia Cara)","3":"490037377"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
@@ -462,7 +462,7 @@ Which genres are most popular? Group the data by genre and compute the sum of st
 Using `dplyr` functions, you could first group the observations by genre, then summarize the streams using `sum()`:
   
 
-```r
+``` r
 genres_popularity <- music_data %>% 
   group_by(genre) %>% #group by genre
   summarize(streams = sum(streams)) #compute sum of streams per genre
@@ -482,7 +482,7 @@ Which music label is most successful? Group the data by music label and compute 
 Just like in the previous task, it would be enough to group the observations (in this case, by labels), and get the sums and averages of streams:
   
 
-```r
+``` r
 label_success <- music_data %>% 
   group_by(label) %>% #group by label
   summarize(sum_streams = sum(streams),
@@ -503,7 +503,7 @@ How do the songs differ in terms of the song features? Please first select the r
 All audio features (danceability, energy, speechiness, instrumentalness, liveness, valence, and tempo) are variables measured on a **ratio scale**, which means that we can evaluate their **average values**. We can use `describeBy()` function, which displays mean by default alongside with range and other values:
   
 
-```r
+``` r
 library(psych)
 describeBy(select(music_data, danceability, energy,
     speechiness, instrumentalness, liveness, valence,
@@ -514,114 +514,114 @@ describeBy(select(music_data, danceability, energy,
 ## 
 ##  Descriptive statistics by group 
 ## group: Classics/Jazz
-##                  vars  n   mean    sd   min    max  range   se
-## danceability        1 80  46.00 18.34  7.33  83.70  76.37 2.05
-## energy              2 80  30.85 19.51  0.26  85.00  84.74 2.18
-## speechiness         3 80   6.11  6.55  2.46  46.70  44.24 0.73
-## instrumentalness    4 80  11.34 25.65  0.00  96.10  96.10 2.87
-## liveness            5 80  13.44  7.63  4.61  39.50  34.89 0.85
-## valence             6 80  38.24 24.30  3.60  90.00  86.40 2.72
-## tempo               7 80 113.23 33.74 56.72 232.69 175.97 3.77
+##                  vars  n   mean    sd median   min    max  range   se
+## danceability        1 80  46.00 18.34  46.60  7.33  83.70  76.37 2.05
+## energy              2 80  30.85 19.51  28.10  0.26  85.00  84.74 2.18
+## speechiness         3 80   6.11  6.55   3.92  2.46  46.70  44.24 0.73
+## instrumentalness    4 80  11.34 25.65   0.02  0.00  96.10  96.10 2.87
+## liveness            5 80  13.44  7.63  10.55  4.61  39.50  34.89 0.85
+## valence             6 80  38.24 24.30  30.95  3.60  90.00  86.40 2.72
+## tempo               7 80 113.23 33.74 108.45 56.72 232.69 175.97 3.77
 ## ------------------------------------------------------------ 
 ## group: Country
-##                  vars   n   mean    sd   min    max  range   se
-## danceability        1 504  59.67 11.98 19.20  92.20  73.00 0.53
-## energy              2 504  69.71 18.71  4.84  97.70  92.86 0.83
-## speechiness         3 504   5.16  4.10  2.48  35.10  32.62 0.18
-## instrumentalness    4 504   0.24  4.04  0.00  89.10  89.10 0.18
-## liveness            5 504  23.70 21.43  3.35  98.50  95.15 0.95
-## valence             6 504  58.90 21.08  7.40  96.70  89.30 0.94
-## tempo               7 504 124.52 31.19 48.72 203.93 155.21 1.39
+##                  vars   n   mean    sd median   min    max  range   se
+## danceability        1 504  59.67 11.98  59.70 19.20  92.20  73.00 0.53
+## energy              2 504  69.71 18.71  75.00  4.84  97.70  92.86 0.83
+## speechiness         3 504   5.16  4.10   3.78  2.48  35.10  32.62 0.18
+## instrumentalness    4 504   0.24  4.04   0.00  0.00  89.10  89.10 0.18
+## liveness            5 504  23.70 21.43  13.95  3.35  98.50  95.15 0.95
+## valence             6 504  58.90 21.08  61.85  7.40  96.70  89.30 0.94
+## tempo               7 504 124.52 31.19 125.10 48.72 203.93 155.21 1.39
 ## ------------------------------------------------------------ 
 ## group: Electro/Dance
-##                  vars    n   mean    sd   min   max  range   se
-## danceability        1 2703  66.55 11.87 22.40  97.3  74.90 0.23
-## energy              2 2703  74.51 13.99  2.62  99.9  97.28 0.27
-## speechiness         3 2703   7.82  6.33  2.37  47.4  45.03 0.12
-## instrumentalness    4 2703   5.05 16.75  0.00  98.5  98.50 0.32
-## liveness            5 2703  18.57 14.12  2.21  96.5  94.29 0.27
-## valence             6 2703  47.50 21.49  3.15  97.8  94.65 0.41
-## tempo               7 2703 120.74 19.42 73.99 215.9 141.91 0.37
+##                  vars    n   mean    sd median   min   max  range   se
+## danceability        1 2703  66.55 11.87  67.40 22.40  97.3  74.90 0.23
+## energy              2 2703  74.51 13.99  76.20  2.62  99.9  97.28 0.27
+## speechiness         3 2703   7.82  6.33   5.38  2.37  47.4  45.03 0.12
+## instrumentalness    4 2703   5.05 16.75   0.00  0.00  98.5  98.50 0.32
+## liveness            5 2703  18.57 14.12  13.00  2.21  96.5  94.29 0.27
+## valence             6 2703  47.50 21.49  47.80  3.15  97.8  94.65 0.41
+## tempo               7 2703 120.74 19.42 122.00 73.99 215.9 141.91 0.37
 ## ------------------------------------------------------------ 
 ## group: German Folk
-##                  vars   n   mean    sd   min    max  range   se
-## danceability        1 539  63.03 15.36 20.60  96.40  75.80 0.66
-## energy              2 539  61.73 22.56  5.48  99.90  94.42 0.97
-## speechiness         3 539   9.80 10.20  2.45  49.90  47.45 0.44
-## instrumentalness    4 539   1.75 10.02  0.00  96.10  96.10 0.43
-## liveness            5 539  18.65 15.38  1.91  98.80  96.89 0.66
-## valence             6 539  56.07 24.07  6.92  98.00  91.08 1.04
-## tempo               7 539 119.38 28.53 58.69 202.12 143.43 1.23
+##                  vars   n   mean    sd median   min    max  range   se
+## danceability        1 539  63.03 15.36  65.20 20.60  96.40  75.80 0.66
+## energy              2 539  61.73 22.56  66.60  5.48  99.90  94.42 0.97
+## speechiness         3 539   9.80 10.20   4.91  2.45  49.90  47.45 0.44
+## instrumentalness    4 539   1.75 10.02   0.00  0.00  96.10  96.10 0.43
+## liveness            5 539  18.65 15.38  12.30  1.91  98.80  96.89 0.66
+## valence             6 539  56.07 24.07  58.30  6.92  98.00  91.08 1.04
+## tempo               7 539 119.38 28.53 118.06 58.69 202.12 143.43 1.23
 ## ------------------------------------------------------------ 
 ## group: HipHop/Rap
-##                  vars     n   mean    sd   min    max  range   se
-## danceability        1 21131  73.05 12.30  8.39  98.00  89.61 0.08
-## energy              2 21131  65.10 13.28  0.54  99.00  98.46 0.09
-## speechiness         3 21131  20.92 13.55  2.54  96.60  94.06 0.09
-## instrumentalness    4 21131   0.61  5.03  0.00  97.80  97.80 0.03
-## liveness            5 21131  16.90 12.49  1.19  97.60  96.41 0.09
-## valence             6 21131  49.04 20.73  3.33  97.90  94.57 0.14
-## tempo               7 21131 121.68 28.22 38.80 230.27 191.47 0.19
+##                  vars     n   mean    sd median   min    max  range   se
+## danceability        1 21131  73.05 12.30   74.8  8.39  98.00  89.61 0.08
+## energy              2 21131  65.10 13.28   65.7  0.54  99.00  98.46 0.09
+## speechiness         3 21131  20.92 13.55   19.0  2.54  96.60  94.06 0.09
+## instrumentalness    4 21131   0.61  5.03    0.0  0.00  97.80  97.80 0.03
+## liveness            5 21131  16.90 12.49   12.1  1.19  97.60  96.41 0.09
+## valence             6 21131  49.04 20.73   49.0  3.33  97.90  94.57 0.14
+## tempo               7 21131 121.68 28.22  122.0 38.80 230.27 191.47 0.19
 ## ------------------------------------------------------------ 
 ## group: other
-##                  vars    n   mean    sd   min    max  range   se
-## danceability        1 5228  64.53 15.39  7.83  96.70  88.87 0.21
-## energy              2 5228  63.91 20.46  3.32  98.80  95.48 0.28
-## speechiness         3 5228   9.30 10.38  2.36  95.50  93.14 0.14
-## instrumentalness    4 5228   0.72  6.32  0.00  97.00  97.00 0.09
-## liveness            5 5228  21.91 20.27  1.51  99.10  97.59 0.28
-## valence             6 5228  60.16 22.73  3.84  99.00  95.16 0.31
-## tempo               7 5228 123.65 31.98 46.72 210.16 163.44 0.44
+##                  vars    n   mean    sd median   min    max  range   se
+## danceability        1 5228  64.53 15.39  67.00  7.83  96.70  88.87 0.21
+## energy              2 5228  63.91 20.46  67.70  3.32  98.80  95.48 0.28
+## speechiness         3 5228   9.30 10.38   5.58  2.36  95.50  93.14 0.14
+## instrumentalness    4 5228   0.72  6.32   0.00  0.00  97.00  97.00 0.09
+## liveness            5 5228  21.91 20.27  13.30  1.51  99.10  97.59 0.28
+## valence             6 5228  60.16 22.73  62.15  3.84  99.00  95.16 0.31
+## tempo               7 5228 123.65 31.98 120.01 46.72 210.16 163.44 0.44
 ## ------------------------------------------------------------ 
 ## group: Pop
-##                  vars     n   mean    sd min   max range   se
-## danceability        1 30069  63.74 14.46   0  98.3  98.3 0.08
-## energy              2 30069  62.91 18.62   0 100.0 100.0 0.11
-## speechiness         3 30069   9.85 10.20   0  95.6  95.6 0.06
-## instrumentalness    4 30069   1.16  7.76   0  98.7  98.7 0.04
-## liveness            5 30069  17.26 13.16   0  98.9  98.9 0.08
-## valence             6 30069  50.33 22.57   0  98.7  98.7 0.13
-## tempo               7 30069 120.94 28.44   0 217.4 217.4 0.16
+##                  vars     n   mean    sd median min   max range   se
+## danceability        1 30069  63.74 14.46  65.10   0  98.3  98.3 0.08
+## energy              2 30069  62.91 18.62  65.00   0 100.0 100.0 0.11
+## speechiness         3 30069   9.85 10.20   5.37   0  95.6  95.6 0.06
+## instrumentalness    4 30069   1.16  7.76   0.00   0  98.7  98.7 0.04
+## liveness            5 30069  17.26 13.16  12.20   0  98.9  98.9 0.08
+## valence             6 30069  50.33 22.57  49.20   0  98.7  98.7 0.13
+## tempo               7 30069 120.94 28.44 119.99   0 217.4 217.4 0.16
 ## ------------------------------------------------------------ 
 ## group: R&B
-##                  vars    n   mean    sd   min    max  range   se
-## danceability        1 1881  67.97 13.43  8.66  97.00  88.34 0.31
-## energy              2 1881  61.25 15.80  2.46  96.10  93.64 0.36
-## speechiness         3 1881  12.34 10.10  2.29  85.60  83.31 0.23
-## instrumentalness    4 1881   0.96  6.86  0.00  94.20  94.20 0.16
-## liveness            5 1881  16.04 11.62  2.07  89.10  87.03 0.27
-## valence             6 1881  52.83 23.01  3.21  98.20  94.99 0.53
-## tempo               7 1881 120.17 32.02 58.39 215.93 157.54 0.74
+##                  vars    n   mean    sd median   min    max  range   se
+## danceability        1 1881  67.97 13.43  70.10  8.66  97.00  88.34 0.31
+## energy              2 1881  61.25 15.80  62.30  2.46  96.10  93.64 0.36
+## speechiness         3 1881  12.34 10.10   8.38  2.29  85.60  83.31 0.23
+## instrumentalness    4 1881   0.96  6.86   0.00  0.00  94.20  94.20 0.16
+## liveness            5 1881  16.04 11.62  11.60  2.07  89.10  87.03 0.27
+## valence             6 1881  52.83 23.01  54.10  3.21  98.20  94.99 0.53
+## tempo               7 1881 120.17 32.02 111.00 58.39 215.93 157.54 0.74
 ## ------------------------------------------------------------ 
 ## group: Reggae
-##                  vars   n   mean    sd   min    max  range   se
-## danceability        1 121  75.06  9.33 40.40  94.40  54.00 0.85
-## energy              2 121  67.61 14.91 14.50  91.10  76.60 1.36
-## speechiness         3 121  11.96  8.69  2.62  36.30  33.68 0.79
-## instrumentalness    4 121   1.82  9.52  0.00  86.10  86.10 0.87
-## liveness            5 121  18.02 14.89  1.38  78.40  77.02 1.35
-## valence             6 121  69.73 18.38 13.80  96.60  82.80 1.67
-## tempo               7 121 111.80 31.03 66.86 214.02 147.17 2.82
+##                  vars   n   mean    sd median   min    max  range   se
+## danceability        1 121  75.06  9.33  76.70 40.40  94.40  54.00 0.85
+## energy              2 121  67.61 14.91  69.60 14.50  91.10  76.60 1.36
+## speechiness         3 121  11.96  8.69   7.85  2.62  36.30  33.68 0.79
+## instrumentalness    4 121   1.82  9.52   0.00  0.00  86.10  86.10 0.87
+## liveness            5 121  18.02 14.89  12.70  1.38  78.40  77.02 1.35
+## valence             6 121  69.73 18.38  73.40 13.80  96.60  82.80 1.67
+## tempo               7 121 111.80 31.03 100.04 66.86 214.02 147.17 2.82
 ## ------------------------------------------------------------ 
 ## group: Rock
-##                  vars    n   mean    sd   min    max  range   se
-## danceability        1 4214  54.75 13.98  6.28  98.00  91.72 0.22
-## energy              2 4214  67.77 21.37  1.37  99.80  98.43 0.33
-## speechiness         3 4214   6.19  5.22  2.22  54.60  52.38 0.08
-## instrumentalness    4 4214   5.69 17.47  0.00  98.20  98.20 0.27
-## liveness            5 4214  18.65 14.52  2.08  98.80  96.72 0.22
-## valence             6 4214  45.65 22.53  2.62  97.30  94.68 0.35
-## tempo               7 4214 122.25 28.70 46.22 209.79 163.57 0.44
+##                  vars    n   mean    sd median   min    max  range   se
+## danceability        1 4214  54.75 13.98  55.00  6.28  98.00  91.72 0.22
+## energy              2 4214  67.77 21.37  70.85  1.37  99.80  98.43 0.33
+## speechiness         3 4214   6.19  5.22   4.32  2.22  54.60  52.38 0.08
+## instrumentalness    4 4214   5.69 17.47   0.00  0.00  98.20  98.20 0.27
+## liveness            5 4214  18.65 14.52  12.50  2.08  98.80  96.72 0.22
+## valence             6 4214  45.65 22.53  44.00  2.62  97.30  94.68 0.35
+## tempo               7 4214 122.25 28.70 120.02 46.22 209.79 163.57 0.44
 ## ------------------------------------------------------------ 
 ## group: Soundtrack
-##                  vars   n   mean    sd   min    max  range   se
-## danceability        1 326  52.82 16.25 15.00  91.50  76.50 0.90
-## energy              2 326  52.05 21.96  1.26  97.90  96.64 1.22
-## speechiness         3 326   6.82  7.51  2.42  81.80  79.38 0.42
-## instrumentalness    4 326   5.02 19.37  0.00  93.50  93.50 1.07
-## liveness            5 326  17.49 14.80  2.37  84.20  81.83 0.82
-## valence             6 326  37.99 22.44  3.09  96.50  93.41 1.24
-## tempo               7 326 119.50 30.80 60.81 205.54 144.73 1.71
+##                  vars   n   mean    sd median   min    max  range   se
+## danceability        1 326  52.82 16.25  54.10 15.00  91.50  76.50 0.90
+## energy              2 326  52.05 21.96  50.20  1.26  97.90  96.64 1.22
+## speechiness         3 326   6.82  7.51   3.99  2.42  81.80  79.38 0.42
+## instrumentalness    4 326   5.02 19.37   0.00  0.00  93.50  93.50 1.07
+## liveness            5 326  17.49 14.80  11.85  2.37  84.20  81.83 0.82
+## valence             6 326  37.99 22.44  32.30  3.09  96.50  93.41 1.24
+## tempo               7 326 119.50 30.80 118.03 60.81 205.54 144.73 1.71
 ```
 
 
@@ -632,7 +632,7 @@ How many songs in the data set are associated with each label?
 You could use `table()` to get the number of songs by label:
   
 
-```r
+``` r
 table(music_data$label)
 ```
 
@@ -648,7 +648,7 @@ table(music_data$label)
 Which share of streams do the different genres account for?
   
 
-```r
+``` r
 genre_streams <- music_data %>%
     group_by(genre) %>%
     summarise(genre_streams = sum(streams))  #first compute sum of streams by genre
@@ -670,7 +670,7 @@ Create a histogram for the variable "Valence"
 This is a simple plot of valence distribution across all songs in your data (we can see that it follows normal distribution):
   
 
-```r
+``` r
 ggplot(music_data, aes(x = valence)) + geom_histogram(binwidth = 4,
     col = "white", fill = "lavenderblush3") + labs(x = "Valence",
     y = "Frequency") + theme_minimal()
@@ -686,7 +686,7 @@ ggplot(music_data, aes(x = valence)) + geom_histogram(binwidth = 4,
 Create a grouped boxplot for the variable "energy" by genre.
 
 
-```r
+``` r
 ggplot(music_data, aes(x = genre, y = energy, color = genre)) +
     geom_boxplot(coef = 3) + labs(x = "Genre", y = "Energy") +
     theme_minimal() + coord_flip()
@@ -704,7 +704,7 @@ Create a scatterplot for the variables "valence" and "energy"
 Finally, we can visualize the relationship between valence and energy of songs in our data:
   
 
-```r
+``` r
 ggplot(music_data, aes(x = valence, y = energy)) +
     geom_point(shape = 1) + labs(x = "Valence", y = "Energy") +
     theme_minimal()
@@ -724,7 +724,7 @@ ggplot(music_data, aes(x = valence, y = energy)) +
 **Load data**
 
 
-```r
+``` r
 library(pastecs)
 library(ggplot2)
 library(psych)
@@ -746,7 +746,7 @@ customer_data_a <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/m
 
 Let's have a quick look at the revenues that we have in our data:
 
-```r
+``` r
 psych::describe(customer_data_a$revenue)
 ```
 
@@ -756,7 +756,7 @@ psych::describe(customer_data_a$revenue)
   </script>
 </div>
 
-```r
+``` r
 ggplot(customer_data_a, aes(revenue)) + geom_histogram(col = "white",
     fill = "lavenderblush3", bins = 50) + geom_vline(data = customer_data_a %>%
     dplyr::summarise(mean = mean(revenue)), aes(xintercept = mean),
@@ -770,7 +770,7 @@ ggplot(customer_data_a, aes(revenue)) + geom_histogram(col = "white",
 To compute the confidence interval for the average revenue per customer, we will need three things: 1) the *mean* $\bar x$, 2) the *standard error* ($s \over \sqrt{n}$), and 3) the *critical value* for a t-distribution ($t_{crit}$; we will use a t-distribution, because we are not sure of the variance in the population; for this assignment, also the normal distribution and the corresponding $z$-score would have been counted as correct).
 
 
-```r
+``` r
 mean <- mean(customer_data_a$revenue)  #calculate the mean
 sd <- sd(customer_data_a$revenue)
 n <- nrow(customer_data_a)
@@ -783,7 +783,7 @@ The confidence interval can be computed as follows:
 $$CI_{rev} = \bar x \pm t_{ \alpha \over 2}*SE_{\bar x}$$
   
 
-```r
+``` r
 ci_lower <- mean - t_crit * se
 ci_upper <- mean + t_crit * se
 ci_lower
@@ -793,7 +793,7 @@ ci_lower
 ## [1] 1364.34
 ```
 
-```r
+``` r
 ci_upper
 ```
 
@@ -804,7 +804,7 @@ ci_upper
 You could also use one-sample `t.test()` function to calculate the CIs around the mean:
 
 
-```r
+``` r
 t.test(customer_data_a$revenue)$conf.int
 ```
 
@@ -827,7 +827,7 @@ $$H_0: \mu_0 = \mu_1 \\ H_1: \mu_0 \neq \mu_1$$
 
 We need to transform the variable *exp_group* into a factor variable and inspect the data using descriptive statistics:
 
-```r
+``` r
 customer_data_a$exp_group <- factor(customer_data_a$exp_group,
     levels = c(0, 1), labels = c("control", "treatment"))
 
@@ -853,7 +853,7 @@ It can already be seen that the mean revenue is higher in the treatment group.
 
 Next, we should visualize the data. For this, we can use plot of means or boxplot:
 
-```r
+``` r
 mean_data <- summarySE(customer_data_a, measurevar = "revenue",
     groupvars = c("exp_group"))
 
@@ -883,9 +883,8 @@ As we can see in both the descriptive statistics and the plot, the revenues were
 * R automatically performs Welch's t-test, which corrects for unequal variance.  
 
 
-```r
-t.test(revenue ~ exp_group, data = customer_data_a,
-    paired = FALSE)
+``` r
+t.test(revenue ~ exp_group, data = customer_data_a)
 ```
 
 ```
@@ -906,7 +905,7 @@ The test is significant, since the **p-value is smaller than 0.05**, leading us 
 
 We should also calculate the effect size:
 
-```r
+``` r
 cohensD(revenue ~ exp_group, data = customer_data_a)
 ```
 
@@ -917,7 +916,7 @@ This magnitude of the effect size (0.30) suggests that the **effect of the perso
 
 We can visualize the results of the test using `ggstatsplot`:
 
-```r
+``` r
 ggbetweenstats(
   data = customer_data_a,
   plot.type = "box",
@@ -939,7 +938,7 @@ The results show that revenues are **higher in the treatment group (Mean = 1506.
 
 Now we can test if the new personalization feature has an effect on *time spent on our website*. 
 
-```r
+``` r
 describeBy(customer_data_a$time_on_site, customer_data_a$exp_group)  #describe control and treatment groups for time on site
 ```
 
@@ -960,7 +959,7 @@ describeBy(customer_data_a$time_on_site, customer_data_a$exp_group)  #describe c
 ```
 
 
-```r
+``` r
 mean_data_time <- summarySE(customer_data_a, measurevar = "time_on_site",
     groupvars = c("exp_group"))
 
@@ -993,9 +992,8 @@ We use the __independent-means t-test__ again:
 * The groups are independent
 
 
-```r
-t.test(time_on_site ~ exp_group, data = customer_data_a,
-    paired = FALSE)
+``` r
+t.test(time_on_site ~ exp_group, data = customer_data_a)
 ```
 
 ```
@@ -1012,7 +1010,7 @@ t.test(time_on_site ~ exp_group, data = customer_data_a,
 ##                626.2759                640.4530
 ```
 
-```r
+``` r
 cohensD(time_on_site ~ exp_group, data = customer_data_a)
 ```
 
@@ -1023,7 +1021,7 @@ cohensD(time_on_site ~ exp_group, data = customer_data_a)
 The test results show that the difference that we observed before is **not statistically significant as p-value is >0.05**. Alternatively, we can see that **the confidence interval around the difference in means includes 0** (which is the value of difference in means from the null hypothesis). Therefore, **we cannot reject the null hypothesis**. The effect is very small.
 
 
-```r
+``` r
 ggbetweenstats(
   data = customer_data_a,
   plot.type = "box",
@@ -1052,7 +1050,7 @@ Finally, we can conclude from this study that the personalization feature causes
 
 Given the **effect size = 0.1**, **significance level = 0.05**, and **power = 0.8**, sample size for each group will be:
 
-```r
+``` r
 pwr.t.test(d = 0.1, sig.level = 0.05, power = 0.8,
     type = c("two.sample"), alternative = c("two.sided"))
 ```
@@ -1080,7 +1078,7 @@ To achieve our desired effect size of 0.1, a significance level of 0.5 and a pow
 **Load data**
   
 
-```r
+``` r
 customer_data_b <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_2.csv",
     sep = ",", header = TRUE)  #read in data
 # head(customer_data_b) str(customer_data_b)
@@ -1092,7 +1090,7 @@ $$H_0: \mu_D = 0 \\ H_1: \mu_D \neq 0$$
   
 Again, we start with descriptive statistics to get a feel for the data: 
 
-```r
+``` r
 psych::describe(customer_data_b[!is.na(customer_data_b$time_on_site_2),
     c("time_on_site_1", "time_on_site_2")])
 ```
@@ -1106,7 +1104,7 @@ psych::describe(customer_data_b[!is.na(customer_data_b$time_on_site_2),
 
 We can observe the difference in means from the table above; we can also visualize the data:
 
-```r
+``` r
 # Plot of means
 customer_data_long <- melt(customer_data_b[!is.na(customer_data_b$time_on_site_2),
     c("time_on_site_1", "time_on_site_2")])
@@ -1135,7 +1133,7 @@ ggplot(customer_data_long, aes(x = layout, y = time_on_site)) +
 It appears that there is a difference in the means. To test whether it is significant, we need to run a t-test again. However, this time we need a slightly different version of the t-test because *the same customers* are observed for the two page layouts (i.e., the same customers are shown both layouts). This means that we need a __dependent means t-test__, or **paired samples t-test**. The other assumptions are virtually identical to the independent-means t-test. The test can be executed in R by adding ```paired = TRUE``` to the code.   
 
 
-```r
+``` r
 t.test(customer_data_b$time_on_site_2, customer_data_b$time_on_site_1,
     mu = 0, alternative = "two.sided", conf.level = 0.95,
     paired = TRUE)
@@ -1159,7 +1157,7 @@ The p-value is again lower than the chosen significance level of 5% (i.e., p < .
 
 We can now find out how strong this effect is: it is actually rather small.
 
-```r
+``` r
 cohensD(customer_data_b$time_on_site_1, customer_data_b$time_on_site_2,
     method = "paired")
 ```
@@ -1171,7 +1169,7 @@ cohensD(customer_data_b$time_on_site_1, customer_data_b$time_on_site_2,
 Alternatively, you could also use the `ggstatsplot` package to conduct the tests and extract the relevant information from there: 
   
 
-```r
+``` r
 ggwithinstats(data = customer_data_long, x = layout,
     y = time_on_site, path.point = FALSE, path.mean = TRUE,
     title = "Time on site for different page layouts",
@@ -1195,7 +1193,7 @@ The conclusion from this test would be that the alternative page layout increase
 **Load data**
   
 
-```r
+``` r
 customer_data_c <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_3.csv",
     sep = ",", header = TRUE)  #read in data
 # head(customer_data_c) str(customer_data_c)
@@ -1212,7 +1210,7 @@ The appropriate test for such a hypothesis is one-way ANOVA since we have a *met
 
 First, we need to recode relevant variables into factors and give them more descriptive level names: 
 
-```r
+``` r
 customer_data_c$retargeting <- factor(customer_data_c$retargeting,
     levels = c(1, 2, 3), labels = c("no retargeting",
         "generic retargeting", "dynamic retargeting"))
@@ -1220,7 +1218,7 @@ customer_data_c$retargeting <- factor(customer_data_c$retargeting,
 
 Next we calculate summary statistics for the data and build an appropriate plot.
 
-```r
+``` r
 describeBy(customer_data_c$revenue, customer_data_c$retargeting)
 ```
 
@@ -1246,7 +1244,7 @@ describeBy(customer_data_c$revenue, customer_data_c$retargeting)
 ## X1 31.48
 ```
 
-```r
+``` r
 # Plot of means
 mean_data_2 <- summarySE(customer_data_c, measurevar = "revenue",
     groupvars = c("retargeting"))
@@ -1276,7 +1274,7 @@ Both the summary statistics and the plots hint at the fact that the means may no
 The first assumption is satisfied due to the fact that *the participants were randomly assigned* to the advertisement groups. To see if we need to worry about distributional assumptions we first take a look at the number of observations in each advertising group.
 
 
-```r
+``` r
 table(customer_data_c$retargeting)  #check number of observations by group
 ```
 
@@ -1287,7 +1285,7 @@ table(customer_data_c$retargeting)  #check number of observations by group
 ```
 Due to the fact that there are always *more than 30 observations in each group* we can rely on the central limit theorem to satisfy the distributional assumptions. You can still test this assumption using Shapiro-Wilk normality test and plots:
 
-```r
+``` r
 # test for normal distribution of variables - no
 # need because n > 30
 by(customer_data_c$revenue, customer_data_c$retargeting,
@@ -1319,7 +1317,7 @@ by(customer_data_c$revenue, customer_data_c$retargeting,
 ## W = 0.99777, p-value = 0.4959
 ```
 
-```r
+``` r
 # shapiro.test(customer_data_c[customer_data_c$retargeting
 # == 'no retargeting', ]$revenue)
 # shapiro.test(customer_data_c[customer_data_c$retargeting
@@ -1345,7 +1343,7 @@ qqline(customer_data_c[customer_data_c$retargeting ==
 
 Homogeneity of variances can be checked with *Levene's test* (implemented as ```leveneTest()``` from the ```car``` package). The null hypothesis of this test is that the variances are equal, with the alternative hypothesis being that the variances are not all equal. Note that this step could also be skipped and replaced by the use of the robust ANOVA using the `oneway.test()` function. 
 
-```r
+``` r
 leveneTest(revenue ~ retargeting, data = customer_data_c)
 ```
 
@@ -1357,7 +1355,7 @@ leveneTest(revenue ~ retargeting, data = customer_data_c)
 
 As we can see, we cannot reject the H0 of variances being equal, thus we can proceed with ANOVA. 
 
-```r
+``` r
 aov <- aov(revenue ~ retargeting, data = customer_data_c)
 summary(aov)  #if levene's test would be significant, compute the Welch's F-ratio instead
 ```
@@ -1370,7 +1368,7 @@ summary(aov)  #if levene's test would be significant, compute the Welch's F-rati
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
-```r
+``` r
 lsr::etaSquared(aov)
 ```
 
@@ -1379,7 +1377,7 @@ lsr::etaSquared(aov)
 ## retargeting 0.04937865  0.04937865
 ```
 
-```r
+``` r
 summary(aov)[[1]]$"Sum Sq"[1]/(summary(aov)[[1]]$"Sum Sq"[1] +
     summary(aov)[[1]]$"Sum Sq"[2])  #another way
 ```
@@ -1390,7 +1388,7 @@ summary(aov)[[1]]$"Sum Sq"[1]/(summary(aov)[[1]]$"Sum Sq"[1] +
 
 Or, as was mentioned, you could also run a more robust test with `oneway.test()`:
 
-```r
+``` r
 oneway.test(revenue ~ retargeting, data = customer_data_c)
 ```
 
@@ -1407,7 +1405,7 @@ In both tests, the **p-value is way smaller than 0.05**, which we chose as our s
 
 Again, there is an option to show the test results in a graph:
 
-```r
+``` r
 library(ggstatsplot)
 ggbetweenstats(
   data = customer_data_c,
@@ -1437,7 +1435,7 @@ ggbetweenstats(
 
 Next we will briefly inspect the residuals of the ANOVA to see if the assumptions of the test really are justified.
 
-```r
+``` r
 plot(aov, 1)
 plot(aov, 2)
 ```
@@ -1451,7 +1449,7 @@ The second plot is a QQ-plot of the residuals, meant as a quick visual check to 
 To further confirm that the residuals are roughly normally distributed we employ the **Shapiro-Wilk test**. The null hypothesis is that the distribution of the data is normal, with the alternative hypothesis positing that the data is not normally distributed.
 
 
-```r
+``` r
 shapiro.test(resid(aov))
 ```
 
@@ -1476,7 +1474,7 @@ $$1) H_0: \mu_1 = \mu_2; H_1: \mu_1 \neq \mu_2 \\
 Here we will conduct both the Bonferroni correction as well as Tukey's HSD test, however, either would be sufficient for your homework. Bonferroni's correction conducts multiple pairwise t-tests, with the null hypothesis being that of equal means in each case and the alternative hypothesis stating that the means are unequal.
 
 
-```r
+``` r
 # bonferroni
 pairwise.t.test(customer_data_c$revenue, customer_data_c$retargeting,
     data = customer_data_c, p.adjust.method = "bonferroni")
@@ -1503,7 +1501,7 @@ generic retargeting vs. no retargeting
 
 Alternatively, you could have also chosen to use Tukey's HSD to conduct the post-hoc test:
 
-```r
+``` r
 # tukey correction using the mult-comp package
 library(multcomp)
 tukeys <- glht(aov, linfct = mcp(retargeting = "Tukey"))
@@ -1525,9 +1523,9 @@ summary(tukeys)
 ## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
 ## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
 ##                                                Pr(>|t|)    
-## generic retargeting - no retargeting == 0       0.00354 ** 
-## dynamic retargeting - no retargeting == 0      < 0.0001 ***
-## dynamic retargeting - generic retargeting == 0 < 0.0001 ***
+## generic retargeting - no retargeting == 0       0.00368 ** 
+## dynamic retargeting - no retargeting == 0       < 0.001 ***
+## dynamic retargeting - generic retargeting == 0  < 0.001 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -1536,7 +1534,7 @@ Tukey's correction confirms the conclusion from the Bonferroni test. There seems
 
 We can estimate the difference in means with corresponding confidence intervals:
 
-```r
+``` r
 confint(tukeys)
 ```
 
@@ -1549,18 +1547,18 @@ confint(tukeys)
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
-## Quantile = 2.3453
+## Quantile = 2.345
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.5000 229.7404
-## dynamic retargeting - no retargeting == 0      443.4211 343.8799 542.9623
-## dynamic retargeting - generic retargeting == 0 310.3009 212.0064 408.5954
+## generic retargeting - no retargeting == 0      133.1202  36.5120 229.7284
+## dynamic retargeting - no retargeting == 0      443.4211 343.8923 542.9500
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0186 408.5832
 ```
 
-```r
+``` r
 par(mar = c(5, 19, 4, 2))  #the mar parameter changes the margins around created plots. This is done so the labels on the side of the Tukey plot are visible (however, this was not expected)
 plot(tukeys)
 ```
@@ -1580,7 +1578,7 @@ $$H_0: \bar{\mu}_1 =  \bar{\mu}_2 = \bar{\mu}_3  \\ H_1: \bar{\mu}_1 \neq \bar{\
 Let's inspect the descriptive statistics first:
   
 
-```r
+``` r
 # Descriptive statistics for NPS, split by group
 describeBy(customer_data_c$nps, customer_data_c$retargeting)
 ```
@@ -1603,7 +1601,7 @@ describeBy(customer_data_c$nps, customer_data_c$retargeting)
 
 A good way to visualize ordinal data is through a boxplot.
 
-```r
+``` r
 ggplot(data = customer_data_c, aes(x = retargeting,
     y = nps)) + geom_boxplot(color = "lavenderblush4") +
     geom_jitter(colour = "lavenderblush3", alpha = 0.1) +
@@ -1617,7 +1615,7 @@ The descriptive statistics and boxplot seem to indicate that the median NPS with
 The only assumption that we require for this test is that the *dependent variable is at least ordinal*, which is fulfilled for customer ranks. Hence we can move on to performing the test:
 
 
-```r
+``` r
 kruskal.test(nps ~ retargeting, data = customer_data_c)
 ```
 
@@ -1631,7 +1629,7 @@ kruskal.test(nps ~ retargeting, data = customer_data_c)
 ```
 
 
-```r
+``` r
 ggbetweenstats(
   data = customer_data_c,
   plot.type = "box",
@@ -1653,7 +1651,7 @@ The **p-value is below 0.05 and thus we reject the null hypothesis of equal medi
 
 We should not forget to test for differences between groups using a **post-hoc test**. Nemenyi test for pairwise multiple comparisons of the ranked data can be used:
 
-```r
+``` r
 library(PMCMRplus)
 PMCMRplus::kwAllPairsNemenyiTest(x = customer_data_c$nps,
     g = customer_data_c$retargeting, dist = "Tukey")
@@ -1674,7 +1672,7 @@ It appears that the differences between median NPS for "no retargeting vs. gener
 **Load data**
 
 
-```r
+``` r
 customer_data_d <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_4.csv",
     sep = ",", header = TRUE)  #read in data
 # head(customer_data_d) str(customer_data_d)
@@ -1688,7 +1686,7 @@ $$H_0: \pi_1 = \pi_2 \\ H_1: \pi_1 \neq \pi_2$$
 
 First, we will recode the relevant variables into factors and give them more descriptive level names:
 
-```r
+``` r
 customer_data_d$conversion <- factor(customer_data_d$conversion,
     levels = c(0, 1), labels = c("no", "yes"))
 customer_data_d$exp_group <- factor(customer_data_d$exp_group,
@@ -1698,7 +1696,7 @@ customer_data_d$exp_group <- factor(customer_data_d$exp_group,
 Don't forget to create a summary plot to get a feeling for the data.
 
 
-```r
+``` r
 #conditional relative frequencies
 rel_freq_table <- as.data.frame(prop.table(table(customer_data_d$exp_group, customer_data_d$conversion), 1))
 names(rel_freq_table) <- c("group", "conversion", "freq") # changing names of the columns
@@ -1711,7 +1709,7 @@ rel_freq_table
   </script>
 </div>
 
-```r
+``` r
 library(colorspace)
 ggplot(rel_freq_table, aes(x = group, y = freq, fill = conversion)) + #plot data
   geom_col(width = .7) + 
@@ -1726,7 +1724,7 @@ ggplot(rel_freq_table, aes(x = group, y = freq, fill = conversion)) + #plot data
 We see that our conversion seems to be slightly better for the group with the personalization feature, but let´s check whether these proportions are significantly different.
 
 
-```r
+``` r
 n1 <- nrow(subset(customer_data_d, exp_group == "control"))  #number of observations for control group
 n2 <- nrow(subset(customer_data_d, exp_group == "treatment"))  #number of observations for treatment group
 n1_conv <- nrow(subset(customer_data_d, exp_group ==
@@ -1740,8 +1738,7 @@ prop.test(x = c(n1_conv, n2_conv), n = c(n1, n2), conf.level = 0.95,
 
 ```
 ## 
-## 	2-sample test for equality of proportions without continuity
-## 	correction
+## 	2-sample test for equality of proportions without continuity correction
 ## 
 ## data:  c(n1_conv, n2_conv) out of c(n1, n2)
 ## X-squared = 7.3461, df = 1, p-value = 0.006721
@@ -1755,7 +1752,7 @@ prop.test(x = c(n1_conv, n2_conv), n = c(n1, n2), conf.level = 0.95,
 
 
 
-```r
+``` r
 table_1 <- table(customer_data_d$conversion, customer_data_d$exp_group)
 chisq.test(table_1, correct = FALSE)  #without Yates correction
 ```
@@ -1769,7 +1766,7 @@ chisq.test(table_1, correct = FALSE)  #without Yates correction
 ```
 
 
-```r
+``` r
 test_stat <- chisq.test(table_1, correct = FALSE)$statistic
 n <- nrow(customer_data_d)
 phi1 <- sqrt(test_stat/n)
@@ -1786,7 +1783,7 @@ It can be clearly seen from the test that **p-value is < 0.05**, so the result o
 
 Finally, we can use `ggbarstats()` for the test results visualization:
 
-```r
+``` r
 library(ggstatsplot)
 library(ghibli)
 ggbarstats(data = customer_data_d, x = conversion,
@@ -1806,7 +1803,7 @@ The test (as well as the graph above) shows that **the conversion rate for the t
 **Assignment A: Multiple linear regression**
 
 
-```r
+``` r
 library(tidyverse)
 library(psych)
 library(Hmisc)
@@ -1833,7 +1830,7 @@ This equation will be used later to turn the output of the regression analysis (
 
 To save the formula, simply assign it to an object:
 
-```r
+``` r
 formula <- sales ~ tv_adspend + online_adspend + radio_adspend
 ```
 
@@ -1844,7 +1841,7 @@ You can use this formula in the regression formula.
 The descriptive statistics can be checked using the ```describe()``` function:
   
 
-```r
+``` r
 psych::describe(sales_data)
 ```
 
@@ -1866,7 +1863,7 @@ psych::describe(sales_data)
 Inspecting the correlation matrix reveals that the sales variable is positively correlated with TV advertising and online advertising expenditures. The correlations among the independent variables appear to be low to moderate. 
   
 
-```r
+``` r
 rcorr(as.matrix(sales_data[, c("sales", "tv_adspend",
     "online_adspend", "radio_adspend")]))
 ```
@@ -1892,7 +1889,7 @@ rcorr(as.matrix(sales_data[, c("sales", "tv_adspend",
 Since we have continuous variables, we use scatterplots to investigate the relationship between sales and each of the predictor variables.
 
 
-```r
+``` r
 ggplot(sales_data, aes(x = tv_adspend, y = sales)) +
     geom_point(shape = 1) + geom_smooth(method = "lm",
     fill = "gray", color = "lavenderblush3", alpha = 0.1) +
@@ -1901,7 +1898,7 @@ ggplot(sales_data, aes(x = tv_adspend, y = sales)) +
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-54-1.png" width="672" style="display: block; margin: auto;" />
 
-```r
+``` r
 ggplot(sales_data, aes(x = online_adspend, y = sales)) +
     geom_point(shape = 1) + geom_smooth(method = "lm",
     fill = "gray", color = "lavenderblush3", alpha = 0.1) +
@@ -1910,7 +1907,7 @@ ggplot(sales_data, aes(x = online_adspend, y = sales)) +
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-54-2.png" width="672" style="display: block; margin: auto;" />
 
-```r
+``` r
 ggplot(sales_data, aes(x = radio_adspend, y = sales)) +
     geom_point(shape = 1) + geom_smooth(method = "lm",
     fill = "gray", color = "lavenderblush3", alpha = 0.1) +
@@ -1926,7 +1923,7 @@ Further steps include estimate of a multiple linear regression model in order to
 ### Q3
                                                                                                                              The estimate the model, we will use the ```lm()``` function:
 
-```r
+``` r
 linear_model <- lm(formula, data = sales_data)  #estimate linear model
 # summary(linear_model)
 ```
@@ -1937,7 +1934,7 @@ linear_model <- lm(formula, data = sales_data)  #estimate linear model
 To check for outliers, we extract the studentized residuals from our model and test if there are any absolute values larger than 3.
 
 
-```r
+``` r
 sales_data$stud_resid <- rstudent(linear_model)
 plot(1:nrow(sales_data), sales_data$stud_resid, ylim = c(-3.3,
     3.3))
@@ -1953,7 +1950,7 @@ Since there are no residuals with absolute values larger than 3, we conclude tha
 To test for influential observations, we use Cook's Distance. You may use the following two plots to verify if any Cook's Distance values are larger than the cutoff of 1.
 
 
-```r
+``` r
 plot(linear_model, 4)
 plot(linear_model, 5)
 ```
@@ -1965,7 +1962,7 @@ Since all values are well below the cutoff, we conclude that influential observa
 Next, we test if a linear specification appears feasible. You could test this using the added variable plots:
 
 
-```r
+``` r
 avPlots(linear_model, col.lines = palette()[2])
 ```
 
@@ -1974,7 +1971,7 @@ avPlots(linear_model, col.lines = palette()[2])
 The plots suggest that the linear specification is appropriate. In addition, you could also use the residuals plot to see if the linear specification is appropriate. The red line is a smoothed curve through the residuals plot and if it deviates from the dashed grey horizontal line a lot, this would suggest that a linear specification is not appropriate. 
 
 
-```r
+``` r
 plot(linear_model, 1)
 ```
 
@@ -1987,7 +1984,7 @@ In this example, the red line is close to the dashed grey line, so the linear sp
 Next, we test if the residual variance is approximately the same at all levels of the predicted outcome variables (i.e., homoscedasticity). To do this, we use the residuals plot again.
 
 
-```r
+``` r
 plot(linear_model, 1)
 ```
 
@@ -1996,7 +1993,7 @@ plot(linear_model, 1)
 The spread of residuals at different levels of the predicted outcome does not appear to be very different. Thus, we can conclude that heteroscedasticity is unlikely to be a problem. We can also confirm this conclusion by using the Breusch-Pagan test, which shows an insignificant results, meaning that we cannot reject the Null Hypothesis of equal variances.
 
 
-```r
+``` r
 bptest(linear_model)
 ```
 
@@ -2013,7 +2010,7 @@ bptest(linear_model)
 Next, we test if the residuals are approximately normally distributed using the Q-Q plot from the output:
 
 
-```r
+``` r
 plot(linear_model, 2)
 ```
 
@@ -2022,7 +2019,7 @@ plot(linear_model, 2)
 The Q-Q plot does not suggest a severe deviation from a normal distribution. This could also be validated using the Shapiro test (we again can't reject the Null Hypothesis that suggests normal distribution):
 
 
-```r
+``` r
 shapiro.test(resid(linear_model))
 ```
 
@@ -2043,7 +2040,7 @@ We actually wouldn't need to test this assumption here since there is not natura
 To test for linear dependence of the regressors, we first test the bivariate correlations for any extremely high correlations (i.e., >0.8).
 
 
-```r
+``` r
 rcorr(as.matrix(sales_data[, c("tv_adspend", "online_adspend",
     "radio_adspend")]))
 ```
@@ -2067,7 +2064,7 @@ rcorr(as.matrix(sales_data[, c("tv_adspend", "online_adspend",
 The results show that the bivariate correlations are low to moderate. This can also be shown in plots:
 
 
-```r
+``` r
 plot(sales_data[,c("tv_adspend","online_adspend","radio_adspend")])
 ggcorrmat(data = sales_data[,c("tv_adspend", "online_adspend", "radio_adspend")],matrix.type = "upper",colors = c("skyblue4", "white", "palevioletred4")
 #title = "Correlalogram of independent variables",
@@ -2079,7 +2076,7 @@ ggcorrmat(data = sales_data[,c("tv_adspend", "online_adspend", "radio_adspend")]
 In the next step, we compute the variance inflation factor for each predictor variable. The values should be close to 1 and values larger than 4 indicate potential problems with the linear dependence of regressors.  
 
 
-```r
+``` r
 vif(linear_model)
 ```
 
@@ -2095,7 +2092,7 @@ Here, all VIF values are well below the cutoff, indicating that there are no pro
 In a next step, we will investigate the results from the model using the ```summary()``` function.
 
 
-```r
+``` r
 summary(linear_model)
 ```
 
@@ -2138,7 +2135,7 @@ The interpretation of the coefficients is as follows:
 You should always provide a measure of uncertainty that is associated with the estimates. You could compute the confidence intervals around the coefficients using the ```confint()``` function.
 
 
-```r
+``` r
 confint(linear_model)
 ```
 
@@ -2155,7 +2152,7 @@ The results show that, for example, with a 95% probability the effect of online 
 Although the variables are measured on the same scale, you should still test the relative influence by inspecting the standardized coefficients that express the effects in terms of standard deviations.
 
 
-```r
+``` r
 lm.beta(linear_model)
 ```
 
@@ -2181,7 +2178,7 @@ The result of the test is provided in the output above (**F-statistic: 468.1 on 
 Regarding the model fit, the R<sup>2</sup> statistic tells us that approximately 86% of the variance can be explained by the model. This can be visualized as follows: 
 
 
-```r
+``` r
 sales_data$yhat <- predict(linear_model)
 ggplot(sales_data, aes(yhat, sales)) + geom_point(size = 2,
     shape = 1) + scale_x_continuous(name = "predicted values") +
@@ -2194,7 +2191,7 @@ ggplot(sales_data, aes(yhat, sales)) + geom_point(size = 2,
 Of course, you could have also used the functions included in the ggstatsplot package to report the results from your regression model.
 
 
-```r
+``` r
 ggcoefstats(x = linear_model, k = 3, title = "Sales predicted by adspend, airplay, & starpower")
 ```
 
@@ -2207,7 +2204,7 @@ $$\hat{Sales} = \beta_0 + \beta_1*150 + \beta_2*26 + \beta_3*15 $$
 The coefficients can be extracted from the summary of the linear model and used for quick sales value prediction as follows:
 
 
-```r
+``` r
 summary(linear_model)$coefficients[1, 1] + summary(linear_model)$coefficients[2,
     1] * 150 + summary(linear_model)$coefficients[3,
     1] * 26 + summary(linear_model)$coefficients[4,
@@ -2225,7 +2222,7 @@ This means that given the planned marketing mix, we would expect to sell around 
 Equivalently one can use the `predict` function 
 
 
-```r
+``` r
 predict(linear_model, data.frame(tv_adspend = 150,
     online_adspend = 26, radio_adspend = 15))
 ```
@@ -2238,7 +2235,7 @@ predict(linear_model, data.frame(tv_adspend = 150,
 **Assignment B: Logistic regression**
 
 
-```r
+``` r
 music_data <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/music_data_group.csv",
     sep = ";", header = TRUE, dec = ",")
 music_data$genre <- as.factor(music_data$genre)
@@ -2253,7 +2250,7 @@ where $\beta_0$ is the intercept coefficient, and $\beta_1$, $\beta_2$, and $\be
 We should create the model using `glm()` and have a look at the summary:
 
 
-```r
+``` r
 mult_logit_model <- glm(top10 ~ weeks_in_charts + song_age +
     label, family = binomial(link = "logit"), data = music_data)
 summary(mult_logit_model)
@@ -2264,10 +2261,6 @@ summary(mult_logit_model)
 ## Call:
 ## glm(formula = top10 ~ weeks_in_charts + song_age + label, family = binomial(link = "logit"), 
 ##     data = music_data)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -5.6045  -0.3220  -0.2694  -0.2028   3.8245  
 ## 
 ## Coefficients:
 ##                         Estimate  Std. Error z value            Pr(>|z|)    
@@ -2290,7 +2283,7 @@ summary(mult_logit_model)
 ```
 
 
-```r
+``` r
 confint(mult_logit_model)
 ```
 
@@ -2311,7 +2304,7 @@ confint(mult_logit_model)
 From the summary of the model we can see that weeks in charts, age of song, and label can be used to predict if a song will end up in top-10 or not. We can also assess the model fit:
 
 
-```r
+``` r
 logisticPseudoR2s <- function(LogModel) {
     dev <- LogModel$deviance
     nullDev <- LogModel$null.deviance
@@ -2341,7 +2334,7 @@ logisticPseudoR2s(mult_logit_model)
 To make conclusions about the effect that predictors have on success, we should convert the log-odds ratios to odds ratios using `exp()` function:
 
 
-```r
+``` r
 exp(coef(mult_logit_model))
 ```
 
@@ -2357,7 +2350,7 @@ The results tell us, for example, that when a song is one week older, it is slig
 We should visualize the relationship between IVs and DV:
 
 
-```r
+``` r
 ggplot(music_data, aes(weeks_in_charts, top10)) + geom_point(shape = 1) +
     geom_smooth(method = "glm", method.args = list(family = "binomial"),
         se = FALSE, color = "lavenderblush3") + theme_minimal()
@@ -2369,7 +2362,7 @@ ggplot(music_data, aes(weeks_in_charts, top10)) + geom_point(shape = 1) +
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-79-1.png" width="672" />
 
-```r
+``` r
 ggplot(music_data, aes(song_age, top10)) + geom_point(shape = 1) +
     geom_smooth(method = "glm", method.args = list(family = "binomial"),
         se = FALSE, color = "lavenderblush3") + theme_minimal()
@@ -2384,7 +2377,7 @@ ggplot(music_data, aes(song_age, top10)) + geom_point(shape = 1) +
 There are several ways of plotting the effect of factor variables. Let's do it as follows to gain a better understanding of predicted values in logistic regression:
 
 
-```r
+``` r
 library(forcats)
 labels <- as.factor(c("Warner Music", "Sony Music",
     "Independent", "Universal Music"))
@@ -2410,7 +2403,7 @@ For factor variables, it would be also fine to plot the proportion plots (e.g., 
 To find out which other variables might have a significant effect on the chart performance, we can either load variables one-by-one manually or use a step-wise approach. For the latter, we basically need a model to start with (usually it's a "null" model, however, we already have a model that works for us, i.e., `mult_logit_model`) and the most loaded model that includes all the variables (we will only drop all character and date variables). Let's create it in the next step (please note that we already drop some variables that potentially might be influenced if a song appears in top-10: streams, sp_popularity, n_regions, etc.)
 
 
-```r
+``` r
 music_data$explicit <- factor(music_data$explicit,levels = c(0,1), labels = c("not explicit", "explicit"))
 full_model <- glm(top10 ~ weeks_in_charts + song_age + label + #our basic model. Next we add the rest of the variables to it:
                     danceability + energy + speechiness + instrumentalness + liveness + valence + tempo + song_length +
@@ -2420,7 +2413,7 @@ full_model <- glm(top10 ~ weeks_in_charts + song_age + label + #our basic model.
 Let's have a look at how the fullest model possible works:
 
 
-```r
+``` r
 summary(full_model)
 ```
 
@@ -2431,10 +2424,6 @@ summary(full_model)
 ##     energy + speechiness + instrumentalness + liveness + valence + 
 ##     tempo + song_length + explicit + n_playlists + genre, family = binomial(link = "logit"), 
 ##     data = music_data)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -5.4936  -0.3174  -0.2192  -0.1425   4.5267  
 ## 
 ## Coefficients:
 ##                          Estimate   Std. Error z value             Pr(>|z|)    
@@ -2479,7 +2468,7 @@ summary(full_model)
 We don't really need to go too much in details and apply step-by-step comparisons of the models using the suggested variables, so we can pick five significant factors from the summary above. For example, we can proceed with the model as follows:
 
 
-```r
+``` r
 final_model <- glm(top10 ~ weeks_in_charts + song_age + label + #our basic model. Next we add the rest of the variables to it:
 danceability + liveness + tempo + song_length + n_playlists,family = binomial(link = 'logit'), data = music_data)
 summary(final_model)
@@ -2491,10 +2480,6 @@ summary(final_model)
 ## glm(formula = top10 ~ weeks_in_charts + song_age + label + danceability + 
 ##     liveness + tempo + song_length + n_playlists, family = binomial(link = "logit"), 
 ##     data = music_data)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -5.4825  -0.3163  -0.2419  -0.1724   4.5433  
 ## 
 ## Coefficients:
 ##                          Estimate   Std. Error z value             Pr(>|z|)    
@@ -2522,7 +2507,7 @@ summary(final_model)
 ```
 
 
-```r
+``` r
 logisticPseudoR2s(final_model)
 ```
 
@@ -2533,7 +2518,7 @@ logisticPseudoR2s(final_model)
 ## Nagelkerke R^2            0.484
 ```
 
-```r
+``` r
 exp(coef(final_model))
 ```
 
@@ -2548,7 +2533,7 @@ exp(coef(final_model))
 ##           0.72927145           1.00026014
 ```
 
-```r
+``` r
 # confint(final_model)
 ```
 
@@ -2558,7 +2543,7 @@ The interpretation of odds ratios stays the same (and should be discussed in you
 If we still want to choose a parsimonious model using step-wise comparisons, we can do it as follows: the function below takes the "base" model, adds variables from the fullest model one-by-one to it, and shows the new models' performance:
 
 
-```r
+``` r
 step(mult_logit_model, #our base model
      scope = list(upper = full_model), 
      direction = "both",

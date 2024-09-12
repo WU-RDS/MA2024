@@ -28,7 +28,7 @@ We test hypotheses because we are confined to taking samples – we rarely work 
 Let us again begin by assuming we know the entire population using the example of music listening times among students from the previous example. As a reminder, the following plot shows the distribution of music listening times in the population of WU students. 
 
 
-```r
+``` r
 library(tidyverse)
 library(ggplot2)
 library(latex2exp)
@@ -69,7 +69,7 @@ Accepting the alternative hypothesis in turn will often lead to changes in opini
 In order to quantify the concept of "sufficient evidence" we look at the theoretical distribution of the sample means given our null hypothesis and the sample standard error. Using the available information we can infer the sampling distribution for our null hypothesis. Recall that the standard deviation of the sampling distribution (i.e., the standard error of the mean) is given by $\sigma_{\bar x}={\sigma \over \sqrt{n}}$, and thus can be computed as follows:
 
 
-```r
+``` r
 mean_pop <- mean(hours)
 sigma <- sd(hours)  #population standard deviation
 n <- 50  #sample size
@@ -88,7 +88,7 @@ Since we know from the central limit theorem that the sampling distribution is n
 We also know that 95% of the probability is within 1.96 standard deviations from the mean. Values higher than that are rather unlikely, if our hypothesis about the population mean was indeed true. This is shown by the shaded area, also known as the "rejection region". To test our hypothesis that the population mean is equal to $10$, let us take a random sample from the population.
 
 
-```r
+``` r
 set.seed(12567)
 H_0 <- 10
 student_sample <- sample(1:25000, size = 50, replace = FALSE)
@@ -127,7 +127,7 @@ $$
 This standardized value (or "z-score") is also referred to as a **test statistic**. Let's compute the test statistic for our example above:
 
 
-```r
+``` r
 z_score <- (mean_sample - H_0)/(sigma/sqrt(n))
 z_score
 ```
@@ -139,7 +139,7 @@ z_score
 To make a decision on whether the difference can be deemed statistically significant, we now need to compare this calculated test statistic to a meaningful threshold. In order to do so, we need to decide on a significance level $\alpha$, which expresses the probability of finding an effect that does not actually exist (i.e., Type I Error). You can find a detailed discussion of this point at the end of this chapter. For now, we will adopt the widely accepted significance level of 5% and set $\alpha$ to 0.05. The critical value for the normal distribution and $\alpha$ = 0.05 can be computed using the ```qnorm()``` function as follows:
 
 
-```r
+``` r
 z_crit <- qnorm(0.975)
 z_crit
 ```
@@ -151,7 +151,7 @@ z_crit
 We use ```0.975``` and not ```0.95``` since we are running a two-sided test and need to account for the rejection region at the other end of the distribution. Recall that for the normal distribution, 95% of the total probability falls within 1.96 standard deviations of the mean, so that higher (absolute) values provide evidence against the null hypothesis. Generally, we speak of a statistically significant effect if the (absolute) calculated test statistic is larger than the (absolute) critical value. We can easily check if this is the case in our example:
 
 
-```r
+``` r
 abs(z_score) > abs(z_crit)
 ```
 
@@ -176,7 +176,7 @@ Here, $\bar X$ denotes the sample mean and $s$ the sample standard deviation. Th
 Notice that as $n$ gets larger, the t-distribution gets closer and closer to the normal distribution, reflecting the fact that the uncertainty introduced by $s$ is reduced. To summarize, we now have an estimate for the standard deviation of the distribution of the sample mean (i.e., $SE_{\bar x}$) and an appropriate distribution that takes into account the necessary uncertainty (i.e., the t-distribution). Let us now compute the t-statistic according to the formula above:
 
 
-```r
+``` r
 SE <- (sd(music_listening_sample$hours)/sqrt(n))
 t_score <- (mean_sample - H_0)/SE
 t_score
@@ -189,7 +189,7 @@ t_score
 Notice that the value of the t-statistic is higher compared to the z-score (4.29). This can be attributed to the fact that by using the $s$ as and estimate of $\sigma$, we underestimate the true population standard deviation. Hence, the critical value would need to be larger to adjust for this. This is what the t-distribution does. Let us compute the critical value from the t-distribution with ```n - 1```degrees of freedom.     
 
 
-```r
+``` r
 df = n - 1
 t_crit <- qt(0.975, df = df)
 t_crit
@@ -202,7 +202,7 @@ t_crit
 Again, we use ```0.975``` and not ```0.95``` since we are running a two-sided test and need to account for the rejection region at the other end of the distribution. Notice that the new critical value based on the t-distributionis larger, to reflect the uncertainty when estimating $\sigma$ from $s$. Now we can see that the calculated test statistic is still larger than the critical value.  
 
 
-```r
+``` r
 abs(t_score) > abs(t_crit)
 ```
 
@@ -223,7 +223,7 @@ Something to keep in mind here is the fact the test statistic is a function of t
 In the previous section, we computed the test statistic, which tells us how close our sample is to the null hypothesis. The p-value corresponds to the probability that the test statistic would take a value as extreme or more extreme than the one that we actually observed, **assuming that the null hypothesis is true**. It is important to note that this is a **conditional probability**: we compute the probability of observing a sample mean (or a more extreme value) conditional on the assumption that the null hypothesis is true. The ```pnorm()```function can be used to compute this probability. It is the cumulative probability distribution function of the `normal distribution. Cumulative probability means that the function returns the probability that the test statistic will take a value **less than or equal to** the calculated test statistic given the degrees of freedom. However, we are interested in obtaining the probability of observing a test statistic **larger than or equal to** the calculated test statistic under the null hypothesis (i.e., the p-value). Thus, we need to subtract the cumulative probability from 1. In addition, since we are running a two-sided test, we need to multiply the probability by 2 to account for the rejection region at the other side of the distribution.  
 
 
-```r
+``` r
 p_value <- 2 * (1 - pt(abs(t_score), df = df))
 p_value
 ```
@@ -248,7 +248,7 @@ $$
 It is easy to compute this interval manually:
 
 
-```r
+``` r
 ci_lower <- (mean_sample) - qt(0.975, df = df) * SE
 ci_upper <- (mean_sample) + qt(0.975, df = df) * SE
 ci_lower
@@ -258,7 +258,7 @@ ci_lower
 ## [1] 15.02606
 ```
 
-```r
+``` r
 ci_upper
 ```
 
@@ -352,7 +352,7 @@ We choose the conventional 5% significance level.
 Provide descriptive statistics using the ```describe()``` function: 
 
 
-```r
+``` r
 library(psych)
 psych::describe(student_sample)
 ```
@@ -366,7 +366,7 @@ psych::describe(student_sample)
 From this, we can already see that the mean is different from the hypothesized value. The question however remains, whether this difference is significantly different, given the sample size and the variability in the data. Since we only have one continuous variable, we can visualize the distribution in a histogram. 
 
 
-```r
+``` r
 ggplot(music_listening_sample) + geom_histogram(aes(x = hours),
     fill = "white", color = "black", bins = 20) + theme_bw() +
     labs(title = "Distribution of values in the sample",
@@ -380,7 +380,7 @@ ggplot(music_listening_sample) + geom_histogram(aes(x = hours),
 In the beginning of the chapter, we saw, how you could conduct significance test by hand. However, R has built-in routines that you can use to conduct the analyses. The ```t.test()``` function can be used to conduct the test. To test if the listening time among WU students was 10, you can use the following code:
 
 
-```r
+``` r
 H_0 <- 10
 t.test(music_listening_sample$hours, mu = H_0, alternative = "two.sided")
 ```
@@ -404,7 +404,7 @@ Note that if you would have stated a directional hypothesis (i.e., the mean is e
 Note that you could also combine the results from the statistical test and the visualization using the `ggstatsplot` package as follows. 
 
 
-```r
+``` r
 library(ggstatsplot)
 gghistostats(
   data = music_listening_sample, # dataframe from which variable is to be taken
@@ -426,7 +426,7 @@ gghistostats(
 )
 ```
 
-<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" />
+<img src="07-hypothesis_testing_files/figure-html/histostats_hypotest-1.png" width="672" style="display: block; margin: auto;" />
 
 You may nice some additional output in this plot related to the measure of effect size (Cohen's d). Don't worry about it at this stage, we will come back to this later in this chapter. 
 
@@ -462,7 +462,7 @@ As an example, imagine that a music streaming service would like to introduce a 
 </div>
 
 
-```r
+``` r
 hours_a_b <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/hours_a_b.csv",
     sep = ",", header = TRUE)
 head(hours_a_b)
@@ -477,7 +477,7 @@ head(hours_a_b)
 This data set contains two variables: the variable ```hours``` indicates the music listening times (in hours) and the variable ```group``` indicates from which group the observation comes, where 'A' refers to the control group (with the standard service) and 'B' refers to the experimental group (with the new playlist feature). Let's first look at the descriptive statistics by group using the ```describeBy``` function:
 
 
-```r
+``` r
 library(psych)
 describeBy(hours_a_b$hours, hours_a_b$group)
 ```
@@ -520,7 +520,7 @@ $$
 Remember that we usually don't have access to the entire population so that we can not observe $\delta$ and have to estimate is from a sample statistic, which we define as $d = \bar x_1-\bar x_2$, i.e., the difference between the sample means from group a ($\bar x_1$) and group b ($\bar x_2$). But can we really estimate $d$ from $\delta$? Remember from the previous chapter, that we could estimate $\mu$ from $\bar x$, because if we (hypothetically) take a larger number of samples, the distribution of the means of these samples (the sampling distribution) will be normally distributed and its mean will be (in the limit) equal to the population mean. It turns out that we can use the same underlying logic here. The above samples were drawn from two different populations with $\mu_1$ and $\mu_2$. Let us compute the difference in means between these two populations:       
 
 
-```r
+``` r
 delta_pop <- mean(hours_population_1) - mean(hours_population_2)
 delta_pop
 ```
@@ -532,7 +532,7 @@ delta_pop
 This means that the true difference between the mean listening times of groups a and b is -7.42. Let us now repeat the exercise from the previous chapter: let us repeatedly draw a large number of $20,000$ random samples of 100 users from each of these populations, compute the difference (i.e., $d$, our estimate of $\delta$), store the difference for each draw and create a histogram of $d$.
 
 
-```r
+``` r
 set.seed(321)
 hours_population_1 <- rgamma(25000, shape = 2, scale = 10)
 hours_population_2 <- rgamma(25000, shape = 2.5, scale = 11)
@@ -552,12 +552,12 @@ ggplot(data.frame(mean_delta)) + geom_histogram(aes(x = mean_delta),
     samples, round(mean(mean_delta), 2))))
 ```
 
-<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-24-1.png" width="672" />
+<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
 This gives us the sampling distribution of the mean differences between the samples. You will notice that this distribution follows a normal distribution and is centered around the true difference between the populations. This means that, on average, the difference between two sample means $d$ is a good estimate of $\delta$. In our example, the difference between $\bar x_1$ and $\bar x_2$ is:
 
 
-```r
+``` r
 mean_x1 <- mean(hours_a_b[hours_a_b$group == "A", "hours"])
 mean_x1
 ```
@@ -566,7 +566,7 @@ mean_x1
 ## [1] 18.11224
 ```
 
-```r
+``` r
 mean_x2 <- mean(hours_a_b[hours_a_b$group == "B", "hours"])
 mean_x2
 ```
@@ -575,7 +575,7 @@ mean_x2
 ## [1] 28.5
 ```
 
-```r
+``` r
 d <- mean_x1 - mean_x2
 d
 ```
@@ -601,7 +601,7 @@ $$
 Hence, for our example, we can calculate the standard error as follows: 
 
 
-```r
+``` r
 n1 <- 98
 n2 <- 112
 s1 <- var(hours_a_b[hours_a_b$group == "A", "hours"])
@@ -612,7 +612,7 @@ s1
 ## [1] 146.4924
 ```
 
-```r
+``` r
 s2 <- var(hours_a_b[hours_a_b$group == "B", "hours"])
 s2
 ```
@@ -621,7 +621,7 @@ s2
 ## [1] 322.9189
 ```
 
-```r
+``` r
 SE_x1_x2 <- sqrt(s1/n1 + s2/n2)
 SE_x1_x2
 ```
@@ -645,7 +645,7 @@ $$
 Note that according to our hypothesis $\mu_1-\mu_2=0$, so that we can calculate the t-statistic as: 
 
 
-```r
+``` r
 t_score <- d/SE_x1_x2
 t_score
 ```
@@ -682,7 +682,7 @@ We choose the conventional 5% significance level.
 We can compute the descriptive statistics for each group separately, using the ```describeBy()``` function:
 
 
-```r
+``` r
 library(psych)
 describeBy(hours_a_b$hours, hours_a_b$group)
 ```
@@ -702,30 +702,30 @@ describeBy(hours_a_b$hours, hours_a_b$group)
 This already shows us that the mean between groups A and B are different. We can visualize the data using a boxplot and a histogram. 
 
 
-```r
+``` r
 ggplot(hours_a_b, aes(x = group, y = hours)) + geom_boxplot() +
     geom_jitter(alpha = 0.2, color = "red") + labs(x = "Group",
     y = "Listening time (hours)") + ggtitle("Boxplot of listening times") +
     theme_bw()
 ```
 
-<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-29-1.png" width="672" />
+<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
-```r
+``` r
 ggplot(hours_a_b, aes(hours)) + geom_histogram(col = "black",
     fill = "darkblue") + labs(x = "Listening time (hours)",
     y = "Frequency") + ggtitle("Histogram of listening times") +
     facet_wrap(~group) + theme_bw()
 ```
 
-<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-29-2.png" width="672" />
+<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-28-2.png" width="672" />
 
 **5. Conduct significance test**
 
 To conduct the independent means t-test, we can use the ```t.test()``` function:
 
 
-```r
+``` r
 t.test(hours ~ group, data = hours_a_b, mu = 0, alternative = "two.sided",
     conf.level = 0.95, var.equal = FALSE)
 ```
@@ -747,7 +747,7 @@ t.test(hours ~ group, data = hours_a_b, mu = 0, alternative = "two.sided",
 Again, we could combine the results of the statistical test and the visualization using the `ggstatsplot` package. 
 
 
-```r
+``` r
 library(ggstatsplot)
 ggbetweenstats(
   data = hours_a_b,
@@ -763,7 +763,7 @@ ggbetweenstats(
 )
 ```
 
-<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" />
+<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" />
 
 **6. Report results and draw a marketing conclusion**
 
@@ -789,7 +789,7 @@ Imagine, for example, a slightly different experimental setup for the above expe
 </div>
 
 
-```r
+``` r
 hours_a_b_paired <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/hours_a_b_paired.csv",
     sep = ",", header = TRUE)
 head(hours_a_b_paired)
@@ -820,7 +820,7 @@ $$
 where $\delta$ denotes the difference between the observed listening times from the two consecutive months **of the same users**. As is the previous example, since we do not observe the entire population, we estimate $\delta$ based on the sample using $d$, which is the difference in mean listening time between the two months for our sample. Note that we assume that everything else (e.g., number of new releases) remained constant over the two month to keep it simple. We can show as above that the sampling distribution follows a normal distribution with a mean that is (in the limit) the same as the population mean. This means, again, that the difference in sample means is a good estimate for the difference in population means. Let's compute a new variable $d$, which is the difference between two month. 
 
 
-```r
+``` r
 hours_a_b_paired$d <- hours_a_b_paired$hours_a - hours_a_b_paired$hours_b
 head(hours_a_b_paired)
 ```
@@ -834,7 +834,7 @@ head(hours_a_b_paired)
 Note that we now have a new variable, which is the difference in listening times (in hours) between the two months. The mean of this difference is:
 
 
-```r
+``` r
 mean_d <- mean(hours_a_b_paired$d)
 mean_d
 ```
@@ -851,7 +851,7 @@ $$
 Hence, we can compute the standard error as:
 
 
-```r
+``` r
 n <- nrow(hours_a_b_paired)
 SE_d <- sd(hours_a_b_paired$d)/sqrt(n)
 SE_d
@@ -869,7 +869,7 @@ $$
 on 99 (i.e., n-1) degrees of freedom. Now we can compute the t-statistic as follows:
 
 
-```r
+``` r
 t_score <- mean_d/SE_d
 t_score
 ```
@@ -878,7 +878,7 @@ t_score
 ## [1] -5.41482
 ```
 
-```r
+``` r
 qt(0.975, df = 99)
 ```
 
@@ -914,7 +914,7 @@ We choose the conventional 5% significance level.
 We can compute the descriptive statistics for each month separately, using the ```describe()``` function:
 
 
-```r
+``` r
 library(psych)
 describe(hours_a_b_paired)
 ```
@@ -930,7 +930,7 @@ This already shows us that the mean between the two months are different. We can
 To plot the data, we need to do some restructuring first, since the variables are now stored in two different columns ("hours_a" and "hours_b"). This is also known as the "wide" format. To plot the data we need all observations to be stored in one variable. This is also known as the "long" format. We can use the ```melt(...)``` function from the ```reshape2```package to "melt" the two variable into one column to plot the data. 
 
 
-```r
+``` r
 library(reshape2)
 hours_a_b_paired_long <- melt(hours_a_b_paired[, c("hours_a",
     "hours_b")])
@@ -947,30 +947,30 @@ head(hours_a_b_paired_long)
 Now we are ready to plot the data:
 
 
-```r
+``` r
 ggplot(hours_a_b_paired_long, aes(x = group, y = hours)) +
     geom_boxplot() + geom_jitter(alpha = 0.2, color = "red") +
     labs(x = "Group", y = "Listening time (hours)") +
     ggtitle("Boxplot of listening times") + theme_bw()
 ```
 
-<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-40-1.png" width="672" />
+<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-39-1.png" width="672" />
 
-```r
+``` r
 ggplot(hours_a_b_paired_long, aes(hours)) + geom_histogram(col = "black",
     fill = "darkblue") + labs(x = "Listening time (hours)",
     y = "Frequency") + ggtitle("Histogram of listening times") +
     facet_wrap(~group) + theme_bw()
 ```
 
-<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-40-2.png" width="672" />
+<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-39-2.png" width="672" />
 
 **5. Conduct significance test**
 
 To conduct the dependent means t-test, we can use the ```t.test()``` function with the argument ```paired = TRUE```:
 
 
-```r
+``` r
 t.test(hours_a_b_paired$hours_a, hours_a_b_paired$hours_b,
     mu = 0, alternative = "two.sided", conf.level = 0.95,
     paired = TRUE)
@@ -992,7 +992,7 @@ t.test(hours_a_b_paired$hours_a, hours_a_b_paired$hours_b,
 Again, we could combine the results of the statistical test and the visualization using the `ggstatsplot` package. 
 
 
-```r
+``` r
 library(ggstatsplot)
 ggwithinstats(data = hours_a_b_paired_long, x = group,
     y = hours, path.point = FALSE, path.mean = TRUE,
@@ -1002,7 +1002,7 @@ ggwithinstats(data = hours_a_b_paired_long, x = group,
 )
 ```
 
-<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-42-1.png" width="672" style="display: block; margin: auto;" />
+<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-41-1.png" width="672" style="display: block; margin: auto;" />
 
 **6. Report results and draw a marketing conclusion**
 
@@ -1056,7 +1056,7 @@ In order to test more subtle effects (smaller effect sizes), you need a larger s
 If you wish to obtain a standardized measure of the effect, you may compute the effect size (Cohen's d) using the ```cohensD()``` function from the ```lsr``` package. Using the examples from the independent-means t-test above, we would use: 
 
 
-```r
+``` r
 library(lsr)
 cohensD(hours ~ group, data = hours_a_b)
 ```
@@ -1070,7 +1070,7 @@ According to the thresholds defined above, this effect would be judged to be a s
 For the dependent-means t-test, we would use: 
 
 
-```r
+``` r
 cohensD(hours_a_b_paired$hours_a, hours_a_b_paired$hours_b,
     method = "paired")
 ```
@@ -1086,7 +1086,7 @@ When constructing an experimental design, your goal should be to maximize the po
 For example, what sample size do we need (per group) to identify an effect with d = 0.6, &alpha; = 0.05, and power = 0.8:
 
 
-```r
+``` r
 library(pwr)
 pwr.t.test(d = 0.6, sig.level = 0.05, power = 0.8,
     type = c("two.sample"), alternative = c("two.sided"))
@@ -1108,7 +1108,7 @@ pwr.t.test(d = 0.6, sig.level = 0.05, power = 0.8,
 Or we could ask, what is the power of our test with 51 observations in each group, d = 0.6, and &alpha; = 0.05:
 
 
-```r
+``` r
 pwr.t.test(n = 51, d = 0.6, sig.level = 0.05, type = c("two.sample"),
     alternative = c("two.sided"))
 ```
@@ -1164,7 +1164,7 @@ It is also crucial to **determine the sample size before you run the experiment*
 This is called p-hacking and should be avoided at all costs. Assuming that both groups come from the same population (i.e., there is **no difference** in the means): What is the likelihood that the result will be significant at some point? In other words, what is the likelihood that you will draw the wrong conclusion from your data that there is an effect, while there is none? This is shown in the following graph using simulated data - the color red indicates significant test results that arise although there is no effect (i.e., false positives).  
 
 <div class="figure" style="text-align: center">
-<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-47-1.png" alt="p-hacking (red indicates false positives)" width="672" />
-<p class="caption">(\#fig:unnamed-chunk-47)p-hacking (red indicates false positives)</p>
+<img src="07-hypothesis_testing_files/figure-html/unnamed-chunk-46-1.png" alt="p-hacking (red indicates false positives)" width="672" />
+<p class="caption">(\#fig:unnamed-chunk-46)p-hacking (red indicates false positives)</p>
 </div>
 
