@@ -273,7 +273,7 @@ head(music_data)
 
 You should then convert the variables to the correct types:  
   
-  ```{r convert_variables, message=FALSE, warning=FALSE}
+```{r convert_variables, message=FALSE, warning=FALSE}
 music_data <-  music_data %>% 
   mutate(label = as.factor(label), # convert label and genre variables to factor with values as labels
          genre = as.factor(genre)) %>% as.data.frame()
@@ -524,8 +524,8 @@ As we can see in both the descriptive statistics and the plot, the revenues were
 * If a customer was exposed to the feature or not was assigned randomly (i.e., the groups are independent);
 * R automatically performs Welch's t-test, which corrects for unequal variance.  
 
-```{r warning = F, message = F, echo=T, eval=T}
-t.test(revenue ~ exp_group, data = customer_data_a, paired = FALSE)
+```{r, warning = FALSE, message = FALSE, echo=TRUE, eval=TRUE}
+t.test(revenue ~ exp_group, data = customer_data_a)
 ```
 
 The test is significant, since the **p-value is smaller than 0.05**, leading us to **reject the null hypothesis that there is no difference in the mean revenue**. The p-value states the probability of finding a difference of the observed magnitude or higher, if the null hypothesis was in fact true (i.e., if there was in fact no difference between the populations). Effectively, this means that **the personalization feature had an effect on the average expenditure**. Another thing we can extract from this test result is the confidence interval around the difference in means. **Since 0** (i.e., hypothetical difference in means from H0) **is not included in the interval**, it is not a plausible value, confirming the conclusion to reject the null hypothesis.
