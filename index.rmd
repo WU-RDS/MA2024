@@ -1,7 +1,7 @@
 ---
 knit: "bookdown::render_book"
 new_session: TRUE
-title: "Marketing Analytics 2023"
+title: "Marketing Analytics 2024"
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
@@ -28,6 +28,7 @@ if(!"BiocManager" %in% installed.packages()) install.packages("BiocManager")
 if(!"EBImage" %in% installed.packages()) BiocManager::install("EBImage")
 if(!"devtools" %in% installed.packages()) install.packages("devtools")
 if(!"robCompositions" %in% installed.packages()) devtools::install_github("matthias-da/robCompositions")
+reqPackages <- c(reqPackages, "formatR")
 reqPackages <- reqPackages[!reqPackages %in% installed.packages()]
 lapply(reqPackages, install.packages)
 #knitr::clean_cache(clean = FALSE, path = knitr::opts_chunk$get("cache.path"))
@@ -84,13 +85,13 @@ The contents on this website are divided into weekly readings. To be able to fol
 library(dplyr)
 library(kableExtra)
 mytable = data.frame(
-    Date = c("Oct. 3", 
-             "Oct. 9", 
-             "Oct. 16",
-             "Oct. 23",
-             "Oct. 30",
-             "Nov. 6",
-             "Nov. 13"
+    Date = c("Oct. 1", 
+             "Oct. 7", 
+             "Oct. 14",
+             "Oct. 21",
+             "Oct. 28",
+             "Nov. 4",
+             "Nov. 11"
              ),
     Day = c("Tuesday", 
              "Monday", 
@@ -100,21 +101,21 @@ mytable = data.frame(
              "Monday",
              "Monday"
              ),
-    Time = c("09:00AM - 01:00PM",
+    Time = c("01:00PM - 05:00PM",
              "01:00PM - 05:00PM", 
              "01:00PM - 05:00PM", 
-             "01:00PM - 04:00PM",
+             "01:00PM - 05:00PM",
              "01:00PM - 05:00PM",
              "01:00PM - 05:00PM",
              "01:00PM - 05:00PM"
              ),
-    Room = c("TC.-1.61", 
-             "TC.-1.61", 
-             "TC.-1.61",
-             "TC.-1.61",
-             "TC.-1.61",
-             "TC.-1.61",
-             "TC.-1.61"
+    Room = c("TC.4.01", 
+             "D5.1.001", 
+             "D5.1.001",
+             "D5.1.001",
+             "D5.1.001",
+             "D5.1.001",
+             "D5.1.001"
              ),
     Topics = c("Introduction to the course <br>Basic concepts", 
                "Introduction to R & R Markdown", 
@@ -122,7 +123,7 @@ mytable = data.frame(
                "Hypothesis testing II",
                "Regression I",
                "Regression II",
-               "Factor analysis <br>Cluster analysis"
+               "Mediation, Causality & DAGs"
                ),
     Chapters = c("1",
                  "2, 3, 4", 
@@ -130,7 +131,7 @@ mytable = data.frame(
                  "6.4, 6.5, 6.6",
                  "7.1, 7.2, 7.3",
                  "7.4, 7.5, 7.6",
-                 "8, 9"
+                 "WIP"
                  ))
 
 #pander::pander(mytable, keep.line.breaks = TRUE, style = 'grid', justify = 'left')
@@ -148,37 +149,38 @@ mytable %>% kable(escape = F, format = "html", col.names = gsub("[_]", " ", name
 library(dplyr)
 library(kableExtra)
 mytable = data.frame(
-    Date = c("Oct. 4", 
-             "Oct. 11", 
-             "Oct. 18",
-             "Oct. 20",
-             "Oct. 25",
-             "Nov. 8",
-             "Nov. 15"
+    Date = c("Oct. 2", 
+             "Oct. 9", 
+             "Oct. 16",
+             "Oct. 23",
+             "Oct. 30",
+             "Nov. 6",
+             "Nov. 13"
              ),
     Day = c("Wednesday", 
             "Wednesday", 
             "Wednesday",
-            "Friday",
+            "Wednesday",
             "Wednesday",
             "Wednesday",
             "Wednesday"
              ),
-    Time = c("01:00PM - 05:00PM",
-             "12:00PM - 04:00PM", 
-             "12:00PM - 04:00PM", 
-             "12:00PM - 04:00PM",
-             "12:00PM - 04:00PM",
-             "12:00PM - 04:00PM",
-             "12:00PM - 04:00PM"
+    Time = c(
+             "12:30PM - 04:30PM", 
+             "12:30PM - 04:30PM", 
+             "12:30PM - 04:30PM", 
+             "12:30PM - 04:30PM", 
+             "12:30PM - 04:30PM", 
+             "12:30PM - 04:30PM", 
+             "12:30PM - 04:30PM"
              ),
-    Room = c("TC.-1.61", 
-             "TC.-1.61", 
-             "TC.-1.61",
-             "TC.-1.61",
-             "D3.0.225",
-             "D3.0.225",
-             "D3.0.225"
+    Room = c("D4.0.022", 
+             "D4.0.022",
+             "D4.0.022",
+             "D4.0.022",
+             "D4.0.022",
+             "D4.0.022",
+             "D4.0.022"
              ),
     Topics = c("Introduction to the course <br>Basic concepts", 
                "Introduction to R & R Markdown", 
@@ -186,7 +188,7 @@ mytable = data.frame(
                "Hypothesis testing II",
                "Regression I",
                "Regression II",
-               "Factor analysis <br>Cluster analysis"
+               "Mediation, Causality & DAGs"
                ),
     Chapters = c("1",
                  "2, 3, 4", 
@@ -194,7 +196,7 @@ mytable = data.frame(
                  "6.4, 6.5, 6.6",
                  "7.1, 7.2, 7.3",
                  "7.4, 7.5, 7.6",
-                 "8, 9"
+                 "WIP"
                  ))
 
 #pander::pander(mytable, keep.line.breaks = TRUE, style = 'grid', justify = 'left')
