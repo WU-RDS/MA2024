@@ -500,7 +500,7 @@ Note that if you would have stated a directional hypothesis (i.e., the mean is e
 
 Note that you could also combine the results from the statistical test and the visualization using the `ggstatsplot` package as follows. 
 
-```{r, message = FALSE, warning=FALSE, fig.align="center"}
+```{r histostats_hypotest, message = FALSE, warning=FALSE, fig.align="center"}
 library(ggstatsplot)
 gghistostats(
   data = music_listening_sample, # dataframe from which variable is to be taken
