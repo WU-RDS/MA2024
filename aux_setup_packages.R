@@ -19,7 +19,7 @@ c("tidyverse", "dplyr", "COVID19", "gtrendsR", "jsonlite", "qualtRics",
 "gridExtra", "logistf", "mfx", "plotly", "bookdown", "tufte", 
 "PMCMRplus", "GPArotation", "EBImage", "data.table", "fRegression", 
 "readr", "packrat", "BiocManager", "skimr", "gganimate", "gmodels", 
-"shiny", "xtable", "learnr", "checkr", "rJava", "venneuler", 
+"shiny", "xtable", "learnr", "chk", "rJava", "venneuler",
 "tidyverse", "dplyr", "COVID19", "gtrendsR", "jsonlite", "qualtRics", 
 "rvest", "stringr", "knitr", "psych", "summarytools", "colorspace", 
 "ggExtra", "ggmap", "ggstatsplot", "ggthemes", "gtools", "Rmisc", 
@@ -31,5 +31,5 @@ c("tidyverse", "dplyr", "COVID19", "gtrendsR", "jsonlite", "qualtRics",
 "rmarkdown", "DescTools", "pmr", "rstatix", "robCompositions", 
 "pastecs", "ggpubr", "plyr", "haven", "openssl", "readxl", "latex2exp", 
 "skimr", "cowplot", "gridExtra", "logistf", "mfx", "plotly")
-lapply(function(x) install.packages(x), standard_installs[!standard_installs %in% installed.packages()])
+lapply(standard_installs[!standard_installs %in% installed.packages()], \(x) install.packages(x) )
 
