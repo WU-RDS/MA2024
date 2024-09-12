@@ -588,7 +588,7 @@ We use the __independent-means t-test__ again:
 * The groups are independent
 
 ```{r warning = F, message = F, echo=T, eval=T}
-t.test(time_on_site ~ exp_group, data = customer_data_a, paired = FALSE)
+t.test(time_on_site ~ exp_group, data = customer_data_a)
 cohensD(time_on_site ~ exp_group, data = customer_data_a)
 ```
 
