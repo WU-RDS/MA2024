@@ -1655,9 +1655,9 @@ generic retargeting vs. no retargeting</p>
 ## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
 ## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
 ##                                                Pr(&gt;|t|)    
-## generic retargeting - no retargeting == 0       0.00359 ** 
-## dynamic retargeting - no retargeting == 0       &lt; 0.001 ***
-## dynamic retargeting - generic retargeting == 0  &lt; 0.001 ***
+## generic retargeting - no retargeting == 0       0.00356 ** 
+## dynamic retargeting - no retargeting == 0      &lt; 0.0001 ***
+## dynamic retargeting - generic retargeting == 0 &lt; 0.0001 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)</code></pre>
@@ -1672,15 +1672,15 @@ generic retargeting vs. no retargeting</p>
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
-## Quantile = 2.3455
+## Quantile = 2.3454
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.4919 229.7485
-## dynamic retargeting - no retargeting == 0      443.4211 343.8715 542.9707
-## dynamic retargeting - generic retargeting == 0 310.3009 211.9981 408.6037</code></pre>
+## generic retargeting - no retargeting == 0      133.1202  36.4966 229.7438
+## dynamic retargeting - no retargeting == 0      443.4211 343.8764 542.9658
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0029 408.5989</code></pre>
 <div class="sourceCode" id="cb752"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb752-1"><a href="r-markdown.html#cb752-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">19</span>, <span class="dv">4</span>, <span class="dv">2</span>))  <span class="co">#the mar parameter changes the margins around created plots. This is done so the labels on the side of the Tukey plot are visible (however, this was not expected)</span></span>
 <span id="cb752-2"><a href="r-markdown.html#cb752-2" tabindex="-1"></a><span class="fu">plot</span>(tukeys)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" /></p>

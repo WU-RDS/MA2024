@@ -219,8 +219,7 @@ We understand that the self-study format might pose challenges to the learning p
 #### Individual assignments {-}
 
 There will be 4 individual assignments complemented with optional coaching sessions. Note that the assignments need to be submitted in the [R Markdown format](https://rmarkdown.rstudio.com/) (see chapter 10) via CANVAS WU. There will be a coaching session dedicated to the R Markdown reporting format in the second session, when the first homework is assigned. 
-
-Your main point of contact for the individual assignments will be Julia Wetschnig ([julia.wetschnig@wu.ac.at](mailto:julia.wetschnig@wu.ac.at)). You may contact Julia to schedule individual coaching sessions during the times indicated in the table below. These coaching sessions will be held online. However, please make sure that you have exhausted all other resources to solve a particular problem, such as the online tutorial, the forum on CANVAS WU, and other web resources (see below) before you schedule a coaching session. If you feel that other students might have similar questions and would benefit from an answer to a particular question, you should post the question in the forum on CANVAS WU.
+Your main point of contact for the individual assignments will be Elizaveta Patrikeeva  ([elizaveta.patrikeeva@wu.ac.at](elizaveta.patrikeeva@wu.ac.at)). You may contact Elizaveta to schedule individual coaching sessions during the times indicated in the table below. These coaching sessions will be held online. However, please make sure that you have exhausted all other resources to solve a particular problem, such as the online tutorial, the forum on CANVAS WU, and other web resources (see below) before you schedule a coaching session. If you feel that other students might have similar questions and would benefit from an answer to a particular question, you should post the question in the forum on CANVAS WU.
 
 <br>
 **Assignment schedule - Group A**
@@ -261,7 +260,7 @@ Your main point of contact for the individual assignments will be Julia Wetschni
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
-<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group A. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Julia.<br>           If you need to schedule a meeting, please contact Julia at least one day in advance (julia.wetschnig@wu.ac.at).</td></tr></tfoot>
+<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group A. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Elizaveta.<br>           If you need to schedule a meeting, please contact Elizaveta at least one day in advance (elizaveta.patrikeeva@wu.ac.at).</td></tr></tfoot>
 </table>
 
 <br>
@@ -303,9 +302,9 @@ Your main point of contact for the individual assignments will be Julia Wetschni
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
-<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group B. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Julia.<br>           If you need to schedule a meeting, please contact Julia at least one day in advance (elizaveta.patrikeeva@wu.ac.at).</td></tr></tfoot>
+<span style="font-style: italic;">Note: </span> <sup></sup> Dates and times are indicated for group B. <br>           Dates indicated with '*' are optional time slots for individual online video coaching sessions with Elizaveta.<br>           If you need to schedule a meeting, please contact Elizaveta at least one day in advance (elizaveta.patrikeeva@wu.ac.at).</td></tr></tfoot>
 </table>
-]
+
 <br>
 
 #### Group project {-}
@@ -340,18 +339,18 @@ Again, please make sure that you have exhausted all other resources to solve a p
 <tbody>
   <tr>
    <td style="text-align:left;"> Intro to Questionnaire design </td>
-   <td style="text-align:left;"> Nov. 20, 01:00PM - 05:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> Nov. 18, 01:00PM - 05:00PM </td>
+   <td style="text-align:left;"> D5.1.001 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Questionnaire coaching* </td>
-   <td style="text-align:left;"> Nov. 27, 12:30PM - 04:30PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> Nov. 25, 01:00PM - 05:00PM </td>
+   <td style="text-align:left;"> D5.1.001 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Data analysis coaching* </td>
-   <td style="text-align:left;"> Dec. 11, 02:00PM - 06:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> Dec. 09, 01:00PM - 05:00PM </td>
+   <td style="text-align:left;"> D5.1.001 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> (Pre-recorded) presentation submission </td>
@@ -378,18 +377,18 @@ Again, please make sure that you have exhausted all other resources to solve a p
 <tbody>
   <tr>
    <td style="text-align:left;"> Intro to Questionnaire design </td>
-   <td style="text-align:left;"> Nov. 22, 12:00PM - 04:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> Nov. 20, 12:30PM - 04:30PM </td>
+   <td style="text-align:left;"> D4.0.022 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Questionnaire coaching* </td>
-   <td style="text-align:left;"> Nov. 29, 12:00PM - 04:00PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> Nov. 27, 02:00PM - 06:00PM </td>
+   <td style="text-align:left;"> D4.0.022 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Data analysis coaching* </td>
-   <td style="text-align:left;"> Dec. 13, 10:30AM - 02:30PM </td>
-   <td style="text-align:left;"> TC.-1.61 </td>
+   <td style="text-align:left;"> Dec. 13, 01:00PM - 05:00PM </td>
+   <td style="text-align:left;"> TC.3.01 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> (Pre-recorded) presentation submission </td>
@@ -509,7 +508,7 @@ Please also make use of the abundance of web resources. For students who would l
 
 ### Contact {-}
 
-We are happy to answer your questions, so feel free to send us a short email - either to Daniel Winkler ([daniel.winkler\@wu.ac.at](mailto:daniel.winkler\@wu.ac.at)), Julia Wetschnig ([julia.wetschnig@wu.ac.at](mailto:julia.wetschnig@wu.ac.at)), or myself ([nils.wloemert@wu.ac.at](mailto:nils.wloemert@wu.ac.at)). We will be available during the weekly sessions to clarify your questions. Daniel will be your point of contact for questions regarding the group project and Julia will be your point of contact for the individual assignments. **However, please note that before you contact us, you should try to solve problems on your own first (e.g., by using the online tutorial, doing research online, asking questions via the online forum, or discussion with your class mates).** 
+We are happy to answer your questions, so feel free to send us a short email - either to Daniel Winkler ([daniel.winkler\@wu.ac.at](mailto:daniel.winkler\@wu.ac.at)), Elizaveta Patrikeeva ([elizaveta.patrikeeva@wu.ac.at](mailto:elizaveta.patrikeeva@wu.ac.at)), or myself ([nils.wloemert@wu.ac.at](mailto:nils.wloemert@wu.ac.at)). We will be available during the weekly sessions to clarify your questions. Daniel will be your point of contact for questions regarding the group project and Elizaveta will be your point of contact for the individual assignments. **However, please note that before you contact us, you should try to solve problems on your own first (e.g., by using the online tutorial, doing research online, asking questions via the online forum, or discussion with your class mates).** 
 
 ### Acknowledgements {-}
 
