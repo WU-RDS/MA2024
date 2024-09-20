@@ -342,6 +342,8 @@ e.g.
 
 [Greek letters](https://en.wikipedia.org/wiki/Greek_alphabet#Letters) are preceded by a `\` followed by their name (`$\beta$` = $\beta$). In order to capitalize them simply capitalize the first letter of the name (`$\Gamma$` = $\Gamma$).
 
+<!--
+
 ## Assignment 1
 
 We'll use the music data set from the last session as the basis for the assignment. 
@@ -1523,7 +1525,7 @@ summary(tukeys)
 ## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
 ## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
 ##                                                Pr(>|t|)    
-## generic retargeting - no retargeting == 0       0.00356 ** 
+## generic retargeting - no retargeting == 0       0.00364 ** 
 ## dynamic retargeting - no retargeting == 0      < 0.0001 ***
 ## dynamic retargeting - generic retargeting == 0 < 0.0001 ***
 ## ---
@@ -1547,15 +1549,15 @@ confint(tukeys)
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
-## Quantile = 2.3454
+## Quantile = 2.3451
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.4966 229.7438
-## dynamic retargeting - no retargeting == 0      443.4211 343.8764 542.9658
-## dynamic retargeting - generic retargeting == 0 310.3009 212.0029 408.5989
+## generic retargeting - no retargeting == 0      133.1202  36.5093 229.7312
+## dynamic retargeting - no retargeting == 0      443.4211 343.8894 542.9528
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0158 408.5860
 ```
 
 ``` r
@@ -2840,3 +2842,4 @@ step(mult_logit_model, #our base model
 <br>
 <br>
 
+-->
