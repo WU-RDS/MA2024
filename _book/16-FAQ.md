@@ -68,7 +68,7 @@ print("hello"))
 ```
 
 ```
-## Error: <text>:1:15: unexpected ')'
+## Error in parse(text = input): <text>:1:15: unexpected ')'
 ## 1: print("hello"))
 ##                   ^
 ```
@@ -80,7 +80,7 @@ There is one too many closing parenthesis here.
 ```
 
 ```
-## Error: <text>:1:4: unexpected '/'
+## Error in parse(text = input): <text>:1:4: unexpected '/'
 ## 1: 1 +/
 ##        ^
 ```
@@ -92,7 +92,7 @@ The "/" symbol may not follow the "+" symbol without any additional objects.
 ```
 
 ```
-## Error: <text>:1:3: unexpected numeric constant
+## Error in parse(text = input): <text>:1:3: unexpected numeric constant
 ## 1: 1 2
 ##       ^
 ```
@@ -105,7 +105,7 @@ x <- 3
 ```
 
 ```
-## Error: <text>:2:2: unexpected symbol
+## Error in parse(text = input): <text>:2:2: unexpected symbol
 ## 1: x <- 3
 ## 2: 2x
 ##     ^

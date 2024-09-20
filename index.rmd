@@ -233,21 +233,21 @@ mytable_sub_1 = data.frame(
              "Assignment 4: Factor and cluster analysis"
              ),
     Assigned = c(
-      "Oct. 9",
-      "Oct. 16",
-      "Oct. 30",
-      "Nov. 13"
+      "Oct. 7",
+      "Oct. 14",
+      "Oct. 28",
+      "Nov. 11"
     ),
-    Coaching = c("Oct. 11, 04:00PM-06:00PM (online)*", 
-                 "Oct. 25, 04:00PM-06:00PM (online)*",
-                 "Nov. 8, 04:00PM-06:00PM (online)*",
-                 "Nov. 22, 04:00PM-06:00PM (online)*"
+    Coaching = c("Oct. 11, 02:00PM-04:00PM (online)*", 
+                 "Oct. 18, 04:00PM-06:00PM (online)*",
+                 "Nov. 8, 02:00PM-04:00PM (online)*",
+                 "Nov. 22, 03:00PM-05:00PM (online)*"
              ),
     Submission = c(
-      "Oct. 15, 11:59PM",
-      "Oct. 29, 11:59PM",
-      "Nov. 12, 11:59PM",
-      "Nov. 26, 11:59PM"
+      "Oct. 13, 11:59PM",
+      "Oct. 27, 11:59PM",
+      "Nov. 10, 11:59PM",
+      "Nov. 24, 11:59PM"
     )
     )
 
@@ -276,21 +276,21 @@ mytable_sub_1 = data.frame(
              "Assignment 4: Factor and cluster analysis"
              ),
     Assigned = c(
-      "Oct. 11",
-      "Oct. 18",
-      "Oct. 25",
-      "Nov. 15"
+      "Oct. 09",
+      "Oct. 16",
+      "Oct. 30",
+      "Nov. 13"
     ),
-    Coaching = c("Oct. 16, 09:00PM-11:00AM (online)*", 
-                 "Oct. 23, 09:00AM-11:00AM (online)*",
-                 "Nov. 9, 02:00PM-04:00PM (online)*",
-                 "Nov. 23, 02:00PM-04:00PM (online)*"
+    Coaching = c("Oct. 11, 04:00PM-06:00PM (online)*", 
+                 "Oct. 25, 02:00PM-04:00PM (online)*",
+                 "Nov. 8, 04:00PM-06:00PM (online)*",
+                 "Nov. 22, 05:00PM-07:00PM (online)*"
              ),
     Submission = c(
-      "Oct. 17, 11:59PM",
-      "Oct. 31, 11:59PM",
-      "Nov. 14, 11:59PM",
-      "Nov. 28, 11:59PM"
+      "Oct. 15, 11:59PM",
+      "Oct. 29, 11:59PM",
+      "Nov. 12, 11:59PM",
+      "Nov. 26, 11:59PM"
     )
     )
 
@@ -299,13 +299,13 @@ mytable_sub_1 %>% kable(escape = F,  col.names = gsub("[_]", " ", names(mytable_
   kable_paper(c("hover"), full_width = F) %>%
   footnote(general = "Dates and times are indicated for group B. 
            Dates indicated with '*' are optional time slots for individual online video coaching sessions with Julia.
-           If you need to schedule a meeting, please contact Julia at least one day in advance (julia.wetschnig@wu.ac.at).",
+           If you need to schedule a meeting, please contact Julia at least one day in advance (elizaveta.patrikeeva@wu.ac.at).",
            general_title = "Note: ", 
            footnote_as_chunk = T, title_format = c("italic")
            ) 
 #%>%   row_spec(c(1,3,6), background = "#E0E0E0")
 ```
-
+]
 <br>
 
 #### Group project {-}
