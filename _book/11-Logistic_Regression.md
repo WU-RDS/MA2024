@@ -185,7 +185,7 @@ exp(coef(logit_model ))
 
 ```
 ##          (Intercept)         danceability 
-##        0.00004355897 26532731.71142458543
+##        0.00004355897 26532731.71142364293
 ```
 
 Notice that the coefficient is extremely large. That is (partly) due to the fact that the danceability variable is constrained to values between $0$ and $1$ and the coefficients are for a unit change. We can make the "unit-change" interpretation more meaningful by multiplying the danceability index by $100$. This linear transformation does not affect the model fit or the p-values.
@@ -510,14 +510,10 @@ summary(logistf(Y~X))
 ## 
 ## Model fitted by Penalized ML
 ## Coefficients:
-##                    coef  se(coef)   lower 0.95 upper 0.95      Chisq          p
-## (Intercept) -0.98871643 1.2135184 -10.21693673   1.884508 0.59231445 0.44152553
-## X1           0.33195133 0.1832767   0.04170297   1.463409 5.31583569 0.02113246
-## X2           0.08250405 0.5109798  -2.17888664   3.379327 0.01980379 0.88808646
-##             method
-## (Intercept)      2
-## X1               2
-## X2               2
+##                    coef  se(coef)   lower 0.95 upper 0.95      Chisq          p method
+## (Intercept) -0.98871643 1.2135184 -10.21693673   1.884508 0.59231445 0.44152553      2
+## X1           0.33195133 0.1832767   0.04170297   1.463409 5.31583569 0.02113246      2
+## X2           0.08250405 0.5109798  -2.17888664   3.379327 0.01980379 0.88808646      2
 ## 
 ## Method: 1-Wald, 2-Profile penalized log-likelihood, 3-None
 ## 

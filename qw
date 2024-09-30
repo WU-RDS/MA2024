@@ -1,0 +1,22 @@
+[0;1;32m●[0m syncthing.service - Syncthing - Open Source Continuous File Synchronization
+     Loaded: loaded (]8;;file://dw-P15v-Gen-3/usr/lib/systemd/user/syncthing.service/usr/lib/systemd/user/syncthing.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Thu 2024-09-26 09:37:14 CEST; 9h ago
+       Docs: ]8;;man:syncthing(1)man:syncthing(1)]8;;
+   Main PID: 6768 (syncthing)
+      Tasks: 36 (limit: 37956)
+     Memory: 3.4G (peak: 3.5G)
+        CPU: 3min 26.255s
+     CGroup: /user.slice/user-1000.slice/user@1000.service/app.slice/syncthing.service
+             ├─[0;38;5;245m6768 /usr/bin/syncthing serve --no-browser --no-restart --logflags=0[0m
+             └─[0;38;5;245m6801 /usr/bin/syncthing serve --no-browser --no-restart --logflags=0[0m
+
+Sep 26 17:38:18 dw-P15v-Gen-3 syncthing[6768]: [YPTL3] INFO: Listen (BEP/relay): TLS handshake: EOF
+Sep 26 17:38:34 dw-P15v-Gen-3 syncthing[6768]: [YPTL3] INFO: Lost primary connection to RZD2DEP at [fd7a:115c:a1e0::7501:3758]:22000-[fd7a:115c:a1e0:ab12:4843:cd96:6241:454]:22000/tcp-client/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P30-5VOO8BF0DE4BAPC250U1N6FHGI: reading length: read tcp [fd7a:115c:a1e0::7501:3758]:22000->[fd7a:115c:a1e0:ab12:4843:cd96:6241:454]:22000: read: connection reset by peer (0 remain)
+Sep 26 17:38:34 dw-P15v-Gen-3 syncthing[6768]: [YPTL3] INFO: Connection to RZD2DEP at [fd7a:115c:a1e0::7501:3758]:22000-[fd7a:115c:a1e0:ab12:4843:cd96:6241:454]:22000/tcp-client/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P30-5VOO8BF0DE4BAPC250U1N6FHGI closed: reading length: read tcp [fd7a:115c:a1e0::7501:3758]:22000->[fd7a:115c:a1e0:ab12:4843:cd96:6241:454]:22000: read: connection reset by peer
+Sep 26 17:38:35 dw-P15v-Gen-3 syncthing[6768]: [YPTL3] INFO: Established secure connection to RZD2DEP at [fd7a:115c:a1e0::7501:3758]:22000-[fd7a:115c:a1e0:ab12:4843:cd96:6241:454]:22000/tcp-server/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P30-5VOQLLS2IQ1AAMDU19DBVE8U72
+Sep 26 17:38:35 dw-P15v-Gen-3 syncthing[6768]: [YPTL3] INFO: Device RZD2DEP client is "syncthing v1.27.12" named "Daniels-MacBook-Pro.local" at [fd7a:115c:a1e0::7501:3758]:22000-[fd7a:115c:a1e0:ab12:4843:cd96:6241:454]:22000/tcp-server/TLS1.3-TLS_AES_128_GCM_SHA256/WAN-P30-5VOQLLS2IQ1AAMDU19DBVE8U72
+Sep 26 19:17:57 dw-P15v-Gen-3 syncthing[6768]: [YPTL3] INFO: quic://0.0.0.0:22000 resolved external address quic://137.208.57.180:22000 (via stun.counterpath.com:3478)
+Sep 26 19:18:19 dw-P15v-Gen-3 syncthing[6768]: [YPTL3] INFO: Joined relay relay://176.9.17.157:22067
+Sep 26 19:35:36 dw-P15v-Gen-3 syncthing[6768]: [YPTL3] INFO: Puller (folder "_work_system" (uqkqr-luqgl), item "10_19_development/10_research/10.13_artist_politics/figures/political_exposure.jpg"): syncing: shortcut file (setting permissions): chmod /home/daniel/_work_system/10_19_development/10_research/10.13_artist_politics/figures/political_exposure.jpg: no such file or directory
+Sep 26 19:35:36 dw-P15v-Gen-3 syncthing[6768]: [YPTL3] INFO: "_work_system" (uqkqr-luqgl): Failed to sync 1 items
+Sep 26 19:35:36 dw-P15v-Gen-3 syncthing[6768]: [YPTL3] INFO: Folder "_work_system" (uqkqr-luqgl) isn't making sync progress - retrying in 1m0s.

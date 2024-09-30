@@ -478,16 +478,6 @@ In case you would like to learn more about the capabilities of R related to the 
 
 **We strongly encourage you to ask your questions via the online forum** on the course page on the WU learning platform. The purpose of the forum is to allow you to discuss questions related to the contents with your class mates and us. Please make use of this forum as much as possible and ask questions if something remained unclear. Remember that there are no stupid questions! And if you know the answer to a question that is asked in the forum, it is also a good exercise to explain the concepts to your classmates. 
 
-### DataCamp {-}
-
-<center>
-
-![](./images/logo_datacamp.jpeg){width=50%}
-
-</center>
-
-Please also make use of the abundance of web resources. For students who would like to further train the materials covered in class, we recommend DataCamp, an online platform that offers interactive courses in data science at different levels. To facilitate the learning process you will obtain full access to the entire DataCamp course curriculum for the duration of the course. You will receive and invitation via your WU student email address.   
-
 ### Other web-resources {-}
 
 * __"[https://www.r-project.org/](https://www.r-project.org/)"__ official website
