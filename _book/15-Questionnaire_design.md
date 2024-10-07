@@ -1,8 +1,10 @@
 ---
+keep_md: true
 output:
   html_document: 
     toc: yes
     df_print: paged
+    keep_md: true
   html_notebook: default
   pdf_document:
     toc: yes
@@ -147,6 +149,8 @@ Bear in mind that the nature of the IV, together with DV, affects your choice of
 <img src="mlp-regression.png" width="60%" style="display: block; margin: auto;" />
 
 On a more general note, in many cases it is also interesting to think about potential interaction effects (e.g., is the effect of variable X stronger for group A vs. B?). It rarely happens that an effect of one variable on another is the same for all people and there is usually heterogeneity between them. It could even be that the main effect of one variable on another variable is insignificant because the effect is positive for one group of people and negative for another group of people so that the effects cancel each other out. 
+
+</div>
 
 #### Method of data collection  
 

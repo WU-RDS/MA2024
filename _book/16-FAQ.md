@@ -1,19 +1,12 @@
----
-output:
-  html_document: 
-    toc: yes
-    df_print: paged
-  html_notebook: default
-  pdf_document:
-    toc: yes
----
+
 <link rel="stylesheet" type="text/css" media="all" href="style.css" />
 
 
 
-# (PART) FAQ {-}
 
-# FAQ
+# (PART) FAQs {-}
+
+# FAQs
 
 In this section, we provide answers to questions that students of previous cohorts encountered. We grouped the answers by topic and hope that you will find the answers useful.  
 

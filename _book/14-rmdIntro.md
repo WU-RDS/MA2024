@@ -1507,8 +1507,8 @@ summary(tukeys)
 ## Linear Hypotheses:
 ##                                                Estimate Std. Error t value Pr(>|t|)    
 ## generic retargeting - no retargeting == 0        133.12      41.20   3.231  0.00359 ** 
-## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447  < 0.001 ***
-## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404  < 0.001 ***
+## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447 < 0.0001 ***
+## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404 < 0.0001 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -1530,15 +1530,15 @@ confint(tukeys)
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
-## Quantile = 2.3457
+## Quantile = 2.3451
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.4827 229.7577
-## dynamic retargeting - no retargeting == 0      443.4211 343.8621 542.9802
-## dynamic retargeting - generic retargeting == 0 310.3009 211.9888 408.6130
+## generic retargeting - no retargeting == 0      133.1202  36.5075 229.7329
+## dynamic retargeting - no retargeting == 0      443.4211 343.8876 542.9546
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0140 408.5878
 ```
 
 ``` r
