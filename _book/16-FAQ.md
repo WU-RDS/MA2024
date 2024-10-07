@@ -4,7 +4,7 @@
 
 
 
-# (PART) FAQs {-}
+# (PART) FAQ {-}
 
 # FAQ
 
