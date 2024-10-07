@@ -6,7 +6,7 @@
 
 # (PART) FAQs {-}
 
-# FAQs
+# FAQ
 
 In this section, we provide answers to questions that students of previous cohorts encountered. We grouped the answers by topic and hope that you will find the answers useful.  
 

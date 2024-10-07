@@ -299,7 +299,7 @@ working-with-factors
 reordering-factors
 combining-collapsing-factors
 handling-choice-and-text-input
-faqs
+faq
 common-error-messages
 installation-of-r-packages
 issues-with-statistics-and-data
