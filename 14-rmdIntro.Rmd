@@ -252,6 +252,177 @@ kable(mathy.df, escape=FALSE) %>%
 
 [Greek letters](https://en.wikipedia.org/wiki/Greek_alphabet#Letters) are preceded by a `\` followed by their name (`$\beta$` = $\beta$). In order to capitalize them simply capitalize the first letter of the name (`$\Gamma$` = $\Gamma$).
 
+## Assignment 1
+
+### Load libraries and data
+
+For your convenience the following code will load the required `tidyverse` library as well as the data. Make sure to convert each of the variables you use for you analysis to the appropriate data types (e.g., `Date`, `factor`).
+
+```{r load_data_a1, message=FALSE, warning=FALSE}
+library(tidyverse)
+music_data <- read.csv2("https://raw.githubusercontent.com/WU-RDS/MA2024/main/data/music_data_fin.csv")
+str(music_data)
+head(music_data, 2) 
+```
+
+### Task 1
+
+1. Determine the most popular song by the artist "BTS".
+2. Create a new `data.frame` that only contains songs by "BTS" (Bonus: Also include songs that feature both BTS and other artists, see e.g., "BTS feat. Charli XCX")
+3. Save the `data.frame` sorted by success (number of streams) with the most popular songs occurring first.
+
+```{r question_1_a1}
+# provide your code here 
+## 1.
+music_data |>
+  filter(artistName == "BTS") |>
+  slice_max(order_by = streams, n = 1) |>
+  select(artistName, trackName)
+## 2.
+bts_data <- music_data |>
+  filter(str_detect(artistName, "BTS")) |>
+  arrange(desc(streams))
+distinct(bts_data, artistName)
+head(bts_data)
+tail(bts_data)
+```
+
+### Task 2
+
+Create a new `data.frame` containing the 100 most streamed songs. 
+
+```{r question_2_a1}
+# provide your code here 
+top100 <- slice_max(music_data, order_by = streams, n = 100)
+range(top100$streams)
+```
+
+### Task 3
+
+1. Determine the most popular genres. 
+    
+- Group the data by genre and calculate the total number of streams within each genre. 
+- Sort the result to show the most popular genre first.
+
+2. Create a bar plot in which the heights of the bars correspond to the total number of streams within a genre (Bonus: order the bars by their height)
+
+
+```{r question_3_a1}
+# provide your code here 
+genre_data <- music_data |>
+  summarize(.by = genre, total_streams = sum(streams)) |>
+  arrange(desc(total_streams)) |>
+  mutate(genre = fct_reorder(as.factor(genre), total_streams))
+head(genre_data)
+ggplot(genre_data, aes(y = genre, x = total_streams)) +
+  geom_bar(stat="identity")
+```
+
+
+### Task 4
+
+1. Rank the music labels by their success (total number of streams of all their songs)
+2. Show the total number of streams as well as the average and the median of all songs by label. (Bonus: Also add the artist and track names and the number of streams of each label's top song to the result)
+
+
+```{r question_4_a1}
+# provide your code here 
+label_data <- music_data |>
+  summarize(
+    .by = label, 
+    total_streams = sum(streams), 
+    avg_streams = mean(streams), 
+    med_streams = median(streams), 
+    top_song_artist = artistName[which.max(streams)],
+    top_song_title = trackName[which.max(streams)],
+    top_song_streams = max(streams)
+    ) |>
+  mutate(label_rank = dense_rank(-total_streams)) |>
+  arrange(desc(total_streams))
+label_data
+```
+
+
+### Task 5
+
+1. How do genres differ in terms of song features (audio features + song length + explicitness + song age)?
+
+- Select appropriate summary statistics for each of the variables and highlight the differences between genres using the summary statistics.
+- Create an appropriate plot showing the differences of "energy" across genres.
+   
+
+```{r question_5_a1}
+# provide your code here
+music_data |>
+  summarize(.by = genre, across(danceability:explicit, 
+                                list("avg" = mean,
+                                     "std.dev" = sd,
+                                     "median" = median, 
+                                     "pct_10" = \(x) quantile(x, 0.1), 
+                                     "pct_90" = \(x) quantile(x, 0.9))
+                                )
+            )
+ggplot(music_data, aes(x = fct_reorder(factor(genre), energy, median), y = energy)) +
+    geom_boxplot() +
+    theme(axis.title.x = element_blank()) +
+    scale_x_discrete(guide = guide_axis(n.dodge=2))
+
+```
+
+
+### Task 6
+
+Visualize the number of songs by label. 
+
+```{r question_6_a1}
+# provide your code here 
+music_data |>
+  summarize(.by = label, n_songs = n_distinct(isrc)) |>
+  mutate(label = fct_reorder(as.factor(label), n_songs)) |>
+  ggplot(aes(y = label, x = n_songs)) +
+    geom_bar(stat = "identity")
+```
+
+
+### Task 7
+
+Visualize the average monthly artist listeners (`monthly_listeners_artist`) by genre.
+
+```{r question_7_a1}
+# provide your code here 
+music_data |>
+  summarize(.by = genre, avg_m_listeners = mean(monthly_listeners_artist)) |>
+  mutate(genre = fct_reorder(factor(genre), avg_m_listeners)) |>
+ggplot(aes(x = avg_m_listeners, y = genre)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Average monthly artist listeners")
+```
+
+### Task 8
+
+Create a histogram of the variable "valence".
+
+```{r question_8_a1}
+# provide your code here 
+ggplot(music_data, aes(x = valence)) +
+  geom_histogram()
+```
+
+### Task 9
+
+Create a scatter plot showing `youtube_views` and `shazam_counts` (Bonus: add a linear regression line). Interpret the plot briefly.
+
+```{r question_9_a1}
+# provide your code here 
+ggplot(music_data, aes(x = youtube_views, y = shazam_counts)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+On average Youtube views and Shazam counts show a positive coefficient in the linear regression. However, the relationship does not appear to be linear.
+
+
+
 <!--
 
 ## Assignment 1

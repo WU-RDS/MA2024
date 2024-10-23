@@ -246,6 +246,17 @@ perfect-prediction-logit
 example
 r-markdown
 introduction-to-r-markdown
+assignment-1
+load-libraries-and-data
+task-1
+task-2
+task-3
+task-4
+task-5
+task-6
+task-7
+task-8
+task-9
 survey-design-analysis
 your-tasks
 topics-for-the-group-project
