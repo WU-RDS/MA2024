@@ -1,15 +1,5 @@
 ---
-title: "Causal Pitchfork - The Data"
-subtitle: '[Data-based Storytelling](https://dwinkler.org/storytelling)'
-author: 
-- Daniel Winkler
-- Nils Wlömert
-format: 
-  html:
-    code-fold: true
-    table-of-contents: true
-date: "Updated: `r Sys.Date()`"
-bibliography: data_storytelling.bib
+title: "Regression III"
 ---
 
 ```{r}
@@ -20,19 +10,24 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Introduction
+# Causal Modeling & Mediation analysis
 
-
-This document deals with a fundamental question of causal inference: **Which variables should be included in a causal model?** [see @cinelli2020crash] To answer this question two points need to be clear:
+This chapter deals with a fundamental question of causal inference: **Which variables should be included in a causal model?** [see @cinelli2020crash] To answer this question two points need to be clear:
 
 1. In general each causal model only investigates the causal effect of a single independent variable, $x_k$, on the dependent variable $y$. The coefficients associated with all other variables, $x_{j\neq k}$, cannot (automatically) be interpreted as causal relationships. As regression coefficients are commonly presented in a single table, it is often unclear to the reader which coefficients can be interpreted as causal [see @westreich2013table].
 2. Statistical significance (or any other statistical test) does not give us any idea about the causal model. To illustrate this, the following figure shows three statistically significant relationships between the variables $x$ and $y$ (all t-stats $> 9$). However, by construction there is no causal relationship between them in two of these examples. Even more concerning: In one case the _exclusion_ of a control variable leads to spurious correlation (leftmost plot) while in the other the _inclusion_ of the control variable does the same (rightmost plot).
 
 
-```{r intro}
+```{r intro, warnings=FALSE}
 #| fig-width: 12
 library(tidyverse)
 library(patchwork)
+library(ggdag)
+library(gt)
+library(dagitty)
+library(ggeffects)
+library(parameters)
+library(marginaleffects)
 set.seed(11)
 ## Fork
 # n ... number of observations
@@ -76,15 +71,65 @@ plt_collider <- ggplot(data_collider, aes(x_a, y_a)) +
 plt_fork + plt_pipe + plt_collider
 ```
 
+# Overview and important concepts
+
+In order to learn about causal modeling we need to introduce a few concepts. First, we will talk about _Directed Acyclic Graphs_ (or DAGs) and _d-separation_. Then, we will introduce three types of scenarios, the fork, the pipe, and the collider, and relate those to the concepts of omitted variable bias and mediation. Finally, we will implement and interpret mediation analysis.
+
+## Directed Acyclic Graphs (DAGs)
+
+A _graph_ is a construct that consists of nodes, in our case variables, and edges connecting (some of) the nodes, in our case relationships between the variables. _Directed_ graphs have the additional property that the connections go in a particular direction. In the context of causal modeling, the causal relationship can only go in one direction. For example the direction would be from an influencer marketing campaign to subsequent sales. In general, we will not allow for any "cycles" of causality (i.e., starting from $X$ it must be impossible to end up at $X$ again when going in the direction of the edges) and thus call the graphs _acyclic_. 
+
+Let's start with the simple scenario in which an influencer marketing campaign has a positive influence on sales (assuming no other variables are relevant). The DAG would look as follows:
+
+```{r, fig.height=1.8}
+dagify(y ~ x, coords = list(x = c(x = 1, y = 2), y = c(x = 1, y = 1))) |>
+  tidy_dagitty() |>
+  mutate(fill = ifelse(name == "y", "Sales", "Influencer Marketing")) |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(size = 7, aes(color = fill), ) +
+  geom_dag_edges(show.legend = FALSE, aes(label = "+", label_size = 9), vjust=-1) +
+  theme_dag() +
+  theme(
+    legend.title = element_blank(),
+    legend.position = "top"
+  )
+```
+
+In this case a simple linear regression could be used to identify the marginal effect of spending an additional Euro on influencer marketing on sales. Looking at the following plot a log-log relationship seems appropriate.
+
+```{r, echo=FALSE, fig.height=4, fig.width=7}
+set.seed(12)
+options(scipen = 5)
+influencer_marketing <- runif(300, 0, 10)
+log_sales <- log(12) + 0.2 * log(influencer_marketing) + rnorm(300, 0, 0.1) 
+sales <- exp(log_sales)
+ggplot(data.frame(sales, influencer_marketing), aes(x = influencer_marketing, y = sales)) +
+  geom_point() +
+  theme_minimal() +
+  labs(y = "Sales", x = "Spending on Influencer Marketing") +
+ggplot(data.frame(sales, influencer_marketing), aes(x = log(influencer_marketing), y = log(sales))) +
+  geom_point() +
+  theme_minimal() +
+  labs(y = "log(Sales)", x = "log(Spending on Influencer Marketing)")
+```
+
+
+
+```{r}
+summary(lm(log(sales) ~ log(influencer_marketing)))
+```
+
+Note that while the causal relationship only goes in one direction, the correlation is "symmetric" in the sense that we could als switch `sales` and `influencer_marketing` in the model and would still get "significant" results. 
+
+```{r}
+summary(lm(log(influencer_marketing) ~ log(sales)))
+```
+
 
 # The Fork (Good control)
 
-```{r fork}
-#| fig.height = 2.5
+```{r fork, fig.height = 2.5}
 set.seed(42)
-library(ggdag)
-library(gt)
-library(dagitty)
 confounder <- dagify(x ~ d, y ~ d,
   coords = list(
     x = c(x = 1, y = 2, d = 1.5),
@@ -105,7 +150,7 @@ confounder <- dagify(x ~ d, y ~ d,
 confounder
 ```
 
-A typical dataset with a confounder will exhibit correlation between the treatment $X$ and outcome $y.$ This relationship is not causal! In the example below we have a binary confounder $d$ (Yes/No) that is d-connected with both $X$ and $y$ ($X$ and $y$ are not d-connected) 
+A typical dataset with a **confounder** will exhibit correlation between the treatment $X$ and outcome $y.$ This relationship is not causal! In the example below we have a binary confounder $d$ (Yes/No) that is d-connected with both $X$ and $y$ ($X$ and $y$ are not d-connected) 
 
 ```{r fork_no}
 set.seed(11)
@@ -398,7 +443,7 @@ med2
 set.seed(11)
 X <- 100 * rnorm(n)
 M <- 10 + 0.5 * X + 5 * rnorm(n)
-Y <- -25 + 4 * X + 3 * M + 10 * rnorm(n)
+Y <- -25 + 0.2 * X + 3 * M + 10 * rnorm(n)
 X_on_M <- lm(M ~ X)
 avg_direct_effect <- lm(Y ~ X + M)
 total_effect <- lm(Y ~ X)
@@ -431,40 +476,83 @@ gt(mediation_effects, rowname_col = 'effect')  |>
   tab_header(title = "Causal Mediation Analysis")
 ```
 
-Alternatively, the mediation analysis can be performed using the `mediation` package:
-
-
-```{r}
-#| message: false
-#| code-fold: false
-library(mediation)
-mediation_result <- mediate(X_on_M, avg_direct_effect, 
-                            treat = 'X', mediator = 'M',
-                            boot = TRUE, sims = 1000)
-summary(mediation_result)
-```
-### Estimation using Process
+### Estimation using PROCESS
 
 In research settings the PROCESS macro by Andrew Hayes is very popular. 
-The following code _should_ download and source the macro for you but will definitely break in the future (try changing the `v42` part of the link to `v43` or `v44` etc. or obtain a new link from [the website](https://haskayne.ucalgary.ca/CCRAM/resource-hub) if it does):
+The following code _should_ download and source the macro for you but will definitely break in the future (try changing the `v43` part of the link to `v44` or `v45` etc. or obtain a new link from [the website](https://haskayne.ucalgary.ca/CCRAM/resource-hub) if it does):
 
-```{r}
-#| eval: false
-#| code-fold: false
-#| file: source_process_macro.R
+```{r, eval=TRUE, cache=TRUE}
+## Download and source the PROCESS macro by Andrew F. Hayes
+temp <- tempfile()
+process_macro_dl <- "https://www.afhayes.com/public/processv43.zip"
+download.file(process_macro_dl,temp)
+files <- unzip(temp, list = TRUE)
+fname <- files$Name[endsWith(files$Name, "process.R")]
+source(unz(temp, fname))
+unlink(temp)
+rm(files)
+rm(fname)
+rm(process_macro_dl)
+rm(temp)
 ```
 
 Alternatively download the program from [here](https://haskayne.ucalgary.ca/CCRAM/resource-hub) and source the `process.R` file manually. 
 
-PROCESS model 4 (not run):
+PROCESS model 4:
 
-```{r}
-#| eval: false
-#| code-fold: false
-process(data.frame(Y, X, M), y = 'Y', x = 'X', m = 'M', model = 4)
+```{r, eval=TRUE}
+process(
+  data.frame(Y, X, M), y = 'Y', x = 'X', m = 'M', model = 4,
+  progress = 0, seed = 1
+  )
 ```
 
 
+### Comparison to moderation
+
+TODO
+
+```{r, fig.height=3}
+coords <- tribble(
+  ~name,    ~x,  ~y,
+  "x",      1,   1,
+  "y",      2,   1,
+  "w",      1.5, 0.5,
+  "holder", 1.5, 1.05
+)
+
+dagify(
+  y ~ x,
+  holder ~ w,
+  coords = coords
+) |>
+  tidy_dagitty() |>
+  mutate(fill = ifelse(name == "w", "Moderator", "variables of interest")) |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) + 
+    geom_dag_point(data = function(x) filter(x, name != "holder"), aes(color = fill), size = 7) +
+    geom_dag_edges() + 
+    geom_dag_text(data = function(x) filter(x, name != "holder")) +
+    theme_dag() +
+    theme(legend.position = "top", legend.title = element_blank())
+```
+
+
+```{r, fig.height=4, fig.width = 7}
+set.seed(1)
+X_mod <- rnorm(10000, 0, 5)
+Moderator <- rnorm(10000, 0, 35) 
+Y_mod <- -0.15 * X_mod + 0.002 * X_mod * Moderator + rnorm(10000, sd = 4)
+moderation_df <- data.frame(y = Y_mod, x = X_mod - mean(X_mod), w = Moderator - mean(Moderator))
+moderated_ols <- lm(y ~ x*w, data = moderation_df)
+
+pred_resp <- predict_response(moderated_ols, c("x", "w"))
+plot(johnson_neyman(pred_resp)) 
+```
+
+```{r}
+process(moderation_df, y = "y", x = "x", w="w", model=1, jn=1, seed=123)
+summary(moderated_ols)
+```
 
 
 # Appendix: How the sausage is made
