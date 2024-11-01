@@ -816,7 +816,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 80  13.44  7.63  10.55  4.61  39.50  34.89 0.85
 ## valence             6 80  38.24 24.30  30.95  3.60  90.00  86.40 2.72
 ## tempo               7 80 113.23 33.74 108.45 56.72 232.69 175.97 3.77
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: Country
 ##                  vars   n   mean    sd median   min    max  range   se
 ## danceability        1 504  59.67 11.98  59.70 19.20  92.20  73.00 0.53
@@ -826,7 +826,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 504  23.70 21.43  13.95  3.35  98.50  95.15 0.95
 ## valence             6 504  58.90 21.08  61.85  7.40  96.70  89.30 0.94
 ## tempo               7 504 124.52 31.19 125.10 48.72 203.93 155.21 1.39
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: Electro/Dance
 ##                  vars    n   mean    sd median   min   max  range   se
 ## danceability        1 2703  66.55 11.87  67.40 22.40  97.3  74.90 0.23
@@ -836,7 +836,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 2703  18.57 14.12  13.00  2.21  96.5  94.29 0.27
 ## valence             6 2703  47.50 21.49  47.80  3.15  97.8  94.65 0.41
 ## tempo               7 2703 120.74 19.42 122.00 73.99 215.9 141.91 0.37
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: German Folk
 ##                  vars   n   mean    sd median   min    max  range   se
 ## danceability        1 539  63.03 15.36  65.20 20.60  96.40  75.80 0.66
@@ -846,7 +846,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 539  18.65 15.38  12.30  1.91  98.80  96.89 0.66
 ## valence             6 539  56.07 24.07  58.30  6.92  98.00  91.08 1.04
 ## tempo               7 539 119.38 28.53 118.06 58.69 202.12 143.43 1.23
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: HipHop/Rap
 ##                  vars     n   mean    sd median   min    max  range   se
 ## danceability        1 21131  73.05 12.30   74.8  8.39  98.00  89.61 0.08
@@ -856,7 +856,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 21131  16.90 12.49   12.1  1.19  97.60  96.41 0.09
 ## valence             6 21131  49.04 20.73   49.0  3.33  97.90  94.57 0.14
 ## tempo               7 21131 121.68 28.22  122.0 38.80 230.27 191.47 0.19
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: other
 ##                  vars    n   mean    sd median   min    max  range   se
 ## danceability        1 5228  64.53 15.39  67.00  7.83  96.70  88.87 0.21
@@ -866,7 +866,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 5228  21.91 20.27  13.30  1.51  99.10  97.59 0.28
 ## valence             6 5228  60.16 22.73  62.15  3.84  99.00  95.16 0.31
 ## tempo               7 5228 123.65 31.98 120.01 46.72 210.16 163.44 0.44
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: Pop
 ##                  vars     n   mean    sd median min   max range   se
 ## danceability        1 30069  63.74 14.46  65.10   0  98.3  98.3 0.08
@@ -876,7 +876,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 30069  17.26 13.16  12.20   0  98.9  98.9 0.08
 ## valence             6 30069  50.33 22.57  49.20   0  98.7  98.7 0.13
 ## tempo               7 30069 120.94 28.44 119.99   0 217.4 217.4 0.16
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: R&B
 ##                  vars    n   mean    sd median   min    max  range   se
 ## danceability        1 1881  67.97 13.43  70.10  8.66  97.00  88.34 0.31
@@ -886,7 +886,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 1881  16.04 11.62  11.60  2.07  89.10  87.03 0.27
 ## valence             6 1881  52.83 23.01  54.10  3.21  98.20  94.99 0.53
 ## tempo               7 1881 120.17 32.02 111.00 58.39 215.93 157.54 0.74
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: Reggae
 ##                  vars   n   mean    sd median   min    max  range   se
 ## danceability        1 121  75.06  9.33  76.70 40.40  94.40  54.00 0.85
@@ -896,7 +896,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 121  18.02 14.89  12.70  1.38  78.40  77.02 1.35
 ## valence             6 121  69.73 18.38  73.40 13.80  96.60  82.80 1.67
 ## tempo               7 121 111.80 31.03 100.04 66.86 214.02 147.17 2.82
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: Rock
 ##                  vars    n   mean    sd median   min    max  range   se
 ## danceability        1 4214  54.75 13.98  55.00  6.28  98.00  91.72 0.22
@@ -906,7 +906,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 4214  18.65 14.52  12.50  2.08  98.80  96.72 0.22
 ## valence             6 4214  45.65 22.53  44.00  2.62  97.30  94.68 0.35
 ## tempo               7 4214 122.25 28.70 120.02 46.22 209.79 163.57 0.44
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: Soundtrack
 ##                  vars   n   mean    sd median   min    max  range   se
 ## danceability        1 326  52.82 16.25  54.10 15.00  91.50  76.50 0.90
@@ -1132,12 +1132,16 @@ describeBy(customer_data_a$revenue, customer_data_a$exp_group)  #describe contro
 ## 
 ##  Descriptive statistics by group 
 ## group: control
-##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 685 1288.58 675.54   1245 1269.56 751.68   1 3726  3725 0.31    -0.35 25.81
-## ------------------------------------------------------------------------------------------------------------------------------- 
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 685 1288.58 675.54   1245 1269.56 751.68   1 3726  3725 0.31    -0.35
+##       se
+## X1 25.81
+## ------------------------------------------------------------ 
 ## group: treatment
-##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 744 1506.27 751.71 1507.5 1480.48 774.66   3 4179  4176 0.34    -0.17 27.56
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 744 1506.27 751.71 1507.5 1480.48 774.66   3 4179  4176 0.34    -0.17
+##       se
+## X1 27.56
 ```
 It can already be seen that the mean revenue is higher in the treatment group. 
 
@@ -1236,12 +1240,16 @@ describeBy(customer_data_a$time_on_site, customer_data_a$exp_group)  #describe c
 ## 
 ##  Descriptive statistics by group 
 ## group: control
-##    vars   n   mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 685 626.28 285.76    607  621.75 309.86   1 1504  1503 0.17    -0.44 10.92
-## ------------------------------------------------------------------------------------------------------------------------------- 
+##    vars   n   mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 685 626.28 285.76    607  621.75 309.86   1 1504  1503 0.17    -0.44
+##       se
+## X1 10.92
+## ------------------------------------------------------------ 
 ## group: treatment
-##    vars   n   mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 744 640.45 287.01    629  634.19 292.07  23 1622  1599 0.23    -0.23 10.52
+##    vars   n   mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 744 640.45 287.01    629  634.19 292.07  23 1622  1599 0.23    -0.23
+##       se
+## X1 10.52
 ```
 
 
@@ -1512,16 +1520,22 @@ describeBy(customer_data_c$revenue, customer_data_c$retargeting)
 ## 
 ##  Descriptive statistics by group 
 ## group: no retargeting
-##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 737 2166.14 791.85   2168 2158.39 796.16 190 4462  4272 0.08    -0.32 29.17
-## ------------------------------------------------------------------------------------------------------------------------------- 
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 737 2166.14 791.85   2168 2158.39 796.16 190 4462  4272 0.08    -0.32
+##       se
+## X1 29.17
+## ------------------------------------------------------------ 
 ## group: generic retargeting
-##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 777 2299.26 786.85   2289 2291.99 770.95  89 5541  5452 0.15     0.22 28.23
-## ------------------------------------------------------------------------------------------------------------------------------- 
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 777 2299.26 786.85   2289 2291.99 770.95  89 5541  5452 0.15     0.22
+##       se
+## X1 28.23
+## ------------------------------------------------------------ 
 ## group: dynamic retargeting
-##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 690 2609.56 826.81   2594 2605.37 836.19 513 5036  4523 0.05    -0.24 31.48
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 690 2609.56 826.81   2594 2605.37 836.19 513 5036  4523 0.05    -0.24
+##       se
+## X1 31.48
 ```
 
 ``` r
@@ -1580,7 +1594,7 @@ by(customer_data_c$revenue, customer_data_c$retargeting,
 ## data:  dd[x, ]
 ## W = 0.99692, p-value = 0.1719
 ## 
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## customer_data_c$retargeting: generic retargeting
 ## 
 ## 	Shapiro-Wilk normality test
@@ -1588,7 +1602,7 @@ by(customer_data_c$revenue, customer_data_c$retargeting,
 ## data:  dd[x, ]
 ## W = 0.99705, p-value = 0.1682
 ## 
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## customer_data_c$retargeting: dynamic retargeting
 ## 
 ## 	Shapiro-Wilk normality test
@@ -1677,7 +1691,8 @@ oneway.test(revenue ~ retargeting, data = customer_data_c)
 ## 	One-way analysis of means (not assuming equal variances)
 ## 
 ## data:  revenue and retargeting
-## F = 55.412, num df = 2.0, denom df = 1454.6, p-value < 0.00000000000000022
+## F = 55.412, num df = 2.0, denom df = 1454.6, p-value <
+## 0.00000000000000022
 ```
 
 In both tests, the **p-value is way smaller than 0.05**, which we chose as our significance level, meaning that we **reject the null hypothesis of the means being equal** in the three advertising groups. 
@@ -1797,10 +1812,14 @@ summary(tukeys)
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
 ## Linear Hypotheses:
-##                                                Estimate Std. Error t value Pr(>|t|)    
-## generic retargeting - no retargeting == 0        133.12      41.20   3.231  0.00366 ** 
-## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447  < 0.001 ***
-## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404  < 0.001 ***
+##                                                Estimate Std. Error t value
+## generic retargeting - no retargeting == 0        133.12      41.20   3.231
+## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
+## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
+##                                                Pr(>|t|)    
+## generic retargeting - no retargeting == 0       0.00361 ** 
+## dynamic retargeting - no retargeting == 0      < 0.0001 ***
+## dynamic retargeting - generic retargeting == 0 < 0.0001 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -1822,15 +1841,15 @@ confint(tukeys)
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
-## Quantile = 2.3453
+## Quantile = 2.3451
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.4998 229.7406
-## dynamic retargeting - no retargeting == 0      443.4211 343.8797 542.9626
-## dynamic retargeting - generic retargeting == 0 310.3009 212.0062 408.5956
+## generic retargeting - no retargeting == 0      133.1202  36.5076 229.7328
+## dynamic retargeting - no retargeting == 0      443.4211 343.8877 542.9545
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0141 408.5876
 ```
 
 ``` r
@@ -1864,11 +1883,11 @@ describeBy(customer_data_c$nps, customer_data_c$retargeting)
 ## group: no retargeting
 ##    vars   n mean   sd median trimmed  mad min max range  skew kurtosis  se
 ## X1    1 737 6.52 2.72      7    6.64 4.45   2  10     8 -0.17    -1.29 0.1
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: generic retargeting
 ##    vars   n mean   sd median trimmed  mad min max range  skew kurtosis   se
 ## X1    1 777 7.19 2.59      7    7.24 2.97   3  11     8 -0.12    -1.28 0.09
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: dynamic retargeting
 ##    vars   n mean   sd median trimmed  mad min max range  skew kurtosis  se
 ## X1    1 690 8.16 2.58      8     8.2 2.97   4  12     8 -0.15    -1.23 0.1
@@ -1899,7 +1918,8 @@ kruskal.test(nps ~ retargeting, data = customer_data_c)
 ## 	Kruskal-Wallis rank sum test
 ## 
 ## data:  nps by retargeting
-## Kruskal-Wallis chi-squared = 120.93, df = 2, p-value < 0.00000000000000022
+## Kruskal-Wallis chi-squared = 120.93, df = 2, p-value <
+## 0.00000000000000022
 ```
 
 
@@ -2120,12 +2140,18 @@ psych::describe(sales_data)
 ```
 
 ```
-##                vars   n   mean    sd median trimmed    mad min   max range skew kurtosis   se
-## tv_adspend        1 236 148.65 89.77 141.85  147.45 117.27 1.1 299.6 298.5 0.12    -1.26 5.84
-## online_adspend    2 236  25.61 14.33  24.35   24.70  14.53 1.6  74.9  73.3 0.61     0.08 0.93
-## radio_adspend     3 236  27.70 12.57  27.00   27.36  13.34 2.0  63.0  61.0 0.22    -0.53 0.82
-## sales             4 236  14.83  5.40  14.15   14.72   5.93 1.4  29.0  27.6 0.16    -0.57 0.35
-## market_id         5 236 118.50 68.27 118.50  118.50  87.47 1.0 236.0 235.0 0.00    -1.22 4.44
+##                vars   n   mean    sd median trimmed    mad min   max range skew
+## tv_adspend        1 236 148.65 89.77 141.85  147.45 117.27 1.1 299.6 298.5 0.12
+## online_adspend    2 236  25.61 14.33  24.35   24.70  14.53 1.6  74.9  73.3 0.61
+## radio_adspend     3 236  27.70 12.57  27.00   27.36  13.34 2.0  63.0  61.0 0.22
+## sales             4 236  14.83  5.40  14.15   14.72   5.93 1.4  29.0  27.6 0.16
+## market_id         5 236 118.50 68.27 118.50  118.50  87.47 1.0 236.0 235.0 0.00
+##                kurtosis   se
+## tv_adspend        -1.26 5.84
+## online_adspend     0.08 0.93
+## radio_adspend     -0.53 0.82
+## sales             -0.57 0.35
+## market_id         -1.22 4.44
 ```
 
 Inspecting the correlation matrix reveals that the sales variable is positively correlated with TV advertising and online advertising expenditures. The correlations among the independent variables appear to be low to moderate. 
@@ -2607,8 +2633,10 @@ exp(coef(mult_logit_model))
 ```
 
 ```
-##          (Intercept)      weeks_in_charts             song_age      labelSony Music labelUniversal Music    labelWarner Music 
-##           0.02270102           1.01262635           0.99877873           1.81021850           2.38482742           1.69572138
+##          (Intercept)      weeks_in_charts             song_age 
+##           0.02270102           1.01262635           0.99877873 
+##      labelSony Music labelUniversal Music    labelWarner Music 
+##           1.81021850           2.38482742           1.69572138
 ```
 
 The results tell us, for example, that when a song is one week older, it is slightly less likely to get to the top-10 chart. If we are concerned about the labels to which the songs belong, we can see that in comparison to rather unknown (independent) labels, songs from Universal are 2.38 times more likely to appear in the top-10 chart.
@@ -2789,10 +2817,14 @@ exp(coef(final_model))
 ```
 
 ```
-##          (Intercept)      weeks_in_charts             song_age      labelSony Music labelUniversal Music    labelWarner Music         danceability             liveness 
-##           0.01121953           1.01267388           0.99802434           1.55574581           1.86645257           1.45762271           1.01745850           1.00864988 
-##                tempo          song_length          n_playlists 
-##           1.00364363           0.72927145           1.00026014
+##          (Intercept)      weeks_in_charts             song_age 
+##           0.01121953           1.01267388           0.99802434 
+##      labelSony Music labelUniversal Music    labelWarner Music 
+##           1.55574581           1.86645257           1.45762271 
+##         danceability             liveness                tempo 
+##           1.01745850           1.00864988           1.00364363 
+##          song_length          n_playlists 
+##           0.72927145           1.00026014
 ```
 
 ``` r
@@ -2825,7 +2857,7 @@ step(mult_logit_model, #our base model
 ## + explicit          1    27376 27390   146.8 < 0.00000000000000022 ***
 ## + valence           1    27445 27459    77.7 < 0.00000000000000022 ***
 ## + liveness          1    27480 27494    42.9      0.00000000005728 ***
-## + tempo             1    27504 27518    19.4      0.00001085601585 ***
+## + tempo             1    27504 27518    19.4      0.00001085601584 ***
 ## + speechiness       1    27510 27524    12.9             0.0003209 ***
 ## + instrumentalness  1    27516 27530     7.2             0.0071563 ** 
 ## + energy            1    27519 27533     3.8             0.0523575 .  
@@ -3076,14 +3108,24 @@ step(mult_logit_model, #our base model
 ##     data = music_data)
 ## 
 ## Coefficients:
-##          (Intercept)       weeks_in_charts              song_age       labelSony Music  labelUniversal Music     labelWarner Music           n_playlists  
-##            -8.250268              0.012811             -0.001929              0.310207              0.500078              0.259754              0.000269  
-##         genreCountry    genreElectro/Dance      genreGerman Folk       genreHipHop/Rap            genreother              genrePop              genreR&B  
-##             6.052952              4.617654              3.393965              4.565679              5.429574              4.007876              5.019629  
-##          genreReggae             genreRock       genreSoundtrack           song_length      explicitexplicit          danceability                 tempo  
-##             4.456428              4.142870              4.896580             -0.289024             -0.707333              0.013872              0.002971  
-##             liveness                energy           speechiness               valence  
-##             0.005182             -0.005303             -0.003541              0.001534  
+##          (Intercept)       weeks_in_charts              song_age  
+##            -8.250268              0.012811             -0.001929  
+##      labelSony Music  labelUniversal Music     labelWarner Music  
+##             0.310207              0.500078              0.259754  
+##          n_playlists          genreCountry    genreElectro/Dance  
+##             0.000269              6.052952              4.617654  
+##     genreGerman Folk       genreHipHop/Rap            genreother  
+##             3.393965              4.565679              5.429574  
+##             genrePop              genreR&B           genreReggae  
+##             4.007876              5.019629              4.456428  
+##            genreRock       genreSoundtrack           song_length  
+##             4.142870              4.896580             -0.289024  
+##     explicitexplicit          danceability                 tempo  
+##            -0.707333              0.013872              0.002971  
+##             liveness                energy           speechiness  
+##             0.005182             -0.005303             -0.003541  
+##              valence  
+##             0.001534  
 ## 
 ## Degrees of Freedom: 66795 Total (i.e. Null);  66771 Residual
 ## Null Deviance:	    43430 

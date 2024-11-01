@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 Regression | Marketing Analytics 2024</title>
+  <title>7 Regression | Regression III</title>
   <meta name="description" content="An Introduction to Data Analytics Using R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 Regression | Marketing Analytics 2024" />
+  <meta property="og:title" content="7 Regression | Regression III" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="An Introduction to Data Analytics Using R" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 Regression | Marketing Analytics 2024" />
+  <meta name="twitter:title" content="7 Regression | Regression III" />
   
   <meta name="twitter:description" content="An Introduction to Data Analytics Using R" />
   
@@ -30,7 +30,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="hypothesis-testing.html"/>
 <link rel="next" href="r-markdown.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery-3.6.1/jquery-3.6.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -54,13 +54,21 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -319,6 +327,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.2" data-path="regression.html"><a href="regression.html#technical-details-of-the-model"><i class="fa fa-check"></i><b>7.6.2</b> Technical details of the model</a></li>
 <li class="chapter" data-level="7.6.3" data-path="regression.html"><a href="regression.html#estimation-in-r"><i class="fa fa-check"></i><b>7.6.3</b> Estimation in R</a></li>
 </ul></li>
+<li class="chapter" data-level="7.7" data-path="regression.html"><a href="regression.html#causal-modeling-mediation-analysis"><i class="fa fa-check"></i><b>7.7</b> Causal Modeling &amp; Mediation Analysis</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="regression.html"><a href="regression.html#directed-acyclic-graphs-dags"><i class="fa fa-check"></i><b>7.7.1</b> Directed Acyclic Graphs (DAGs)</a></li>
+<li class="chapter" data-level="7.7.2" data-path="regression.html"><a href="regression.html#the-fork-good-control"><i class="fa fa-check"></i><b>7.7.2</b> The Fork (Good control)</a></li>
+<li class="chapter" data-level="7.7.3" data-path="regression.html"><a href="regression.html#the-pipe-bad-control"><i class="fa fa-check"></i><b>7.7.3</b> The Pipe (Bad control)</a></li>
+<li class="chapter" data-level="7.7.4" data-path="regression.html"><a href="regression.html#the-collider-bad-control"><i class="fa fa-check"></i><b>7.7.4</b> The Collider (Bad control)</a></li>
+<li class="chapter" data-level="7.7.5" data-path="regression.html"><a href="regression.html#omitted-variable-bias-confounders"><i class="fa fa-check"></i><b>7.7.5</b> Omitted Variable Bias (Confounders)</a></li>
+<li class="chapter" data-level="7.7.6" data-path="regression.html"><a href="regression.html#mediation-analysis"><i class="fa fa-check"></i><b>7.7.6</b> Mediation analysis</a></li>
+<li class="chapter" data-level="7.7.7" data-path="regression.html"><a href="regression.html#effect-moderation-interactions"><i class="fa fa-check"></i><b>7.7.7</b> Effect Moderation (Interactions)</a></li>
+<li class="chapter" data-level="7.7.8" data-path="regression.html"><a href="regression.html#summary"><i class="fa fa-check"></i><b>7.7.8</b> Summary</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="regression.html"><a href="regression.html#learning-check-5"><i class="fa fa-check"></i>Learning check</a></li>
 <li class="chapter" data-level="" data-path="regression.html"><a href="regression.html#references-4"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
@@ -426,6 +445,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.9" data-path="faq.html"><a href="faq.html#new-questions"><i class="fa fa-check"></i><b>10.9</b> New questions</a></li>
 </ul></li>
+<li class="part"><span><b>VI FAQ</b></span></li>
+<li class="chapter" data-level="11" data-path="faq-1.html"><a href="faq-1.html"><i class="fa fa-check"></i><b>11</b> FAQ</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="faq-1.html"><a href="faq-1.html#common-error-messages-1"><i class="fa fa-check"></i><b>11.1</b> Common error messages</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#a-general-note-on-error-messages-1"><i class="fa fa-check"></i>A general note on error messages</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-filefile-rt-cannot-open-the-connection-1"><i class="fa fa-check"></i>Error in file(file, “rt”): cannot open the connection</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-unexpected-symbol-in-call-1"><i class="fa fa-check"></i>Error: unexpected ‘SYMBOL’ in “CALL”</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call-object-of-type-closure-is-not-subsettable-1"><i class="fa fa-check"></i>Error in CALL : object of type ‘closure’ is not subsettable</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call_with_-operator-is-invalid-for-atomic-vectors-1"><i class="fa fa-check"></i>Error in CALL_WITH_$: $ operator is invalid for atomic vectors</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call-object-name-not-found-1"><i class="fa fa-check"></i>Error in CALL: object ‘NAME’ not found</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call-could-not-find-function-function-1"><i class="fa fa-check"></i>Error in CALL: could not find function “FUNCTION”</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call-incorrect-number-of-dimension-1"><i class="fa fa-check"></i>Error in CALL: incorrect number of dimension</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="faq-1.html"><a href="faq-1.html#installation-of-r-packages-1"><i class="fa fa-check"></i><b>11.2</b> Installation of R packages</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#what-are-the-different-ways-to-install-r-packages-1"><i class="fa fa-check"></i>What are the different ways to install R packages?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#i-cannot-install-packages-due-to-error-in-contrib.urlrepossource-or-warning-message-package-packagename-is-not-available-for-this-version-of-r-1"><i class="fa fa-check"></i>I cannot install packages due to “Error in contrib.url(repos,”source”)” or “Warning message: package ‘PACKAGENAME’ is not available for this version of R”</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#some-libraries-with-graphical-output-e.g.-summarytools-magick-fail-to-installload-properly-on-macos-1"><i class="fa fa-check"></i>Some libraries with graphical output (e.g., summarytools, magick) fail to install/load properly on MacOS</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#i-cannot-install-some-packages-on-macos-1"><i class="fa fa-check"></i>I cannot install some packages on MacOS</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="faq-1.html"><a href="faq-1.html#issues-with-statistics-and-data-1"><i class="fa fa-check"></i><b>11.3</b> Issues with statistics and data</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#why-does-a-multi-item-scale-lead-to-increased-reliability-1"><i class="fa fa-check"></i>Why does a multi-item scale lead to increased reliability?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#why-can-demeaningstandardization-lead-to-missing-values-1"><i class="fa fa-check"></i>Why can demeaning/standardization lead to missing values?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#the-confidence-interval-ci-of-the-mean-seems-very-small-compared-to-the-dispersion-of-my-sample.-can-this-be-correct-1"><i class="fa fa-check"></i>The confidence interval (CI) of the mean seems very small compared to the dispersion of my sample. Can this be correct?</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="faq-1.html"><a href="faq-1.html#errors-related-to-specific-methods-1"><i class="fa fa-check"></i><b>11.4</b> Errors related to specific methods</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#logistic-regression-2"><i class="fa fa-check"></i>Logistic regression</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#when-using-logistic-regression-error-in-weights-y-non-numeric-argument-to-binary-operator-1"><i class="fa fa-check"></i>When using logistic regression: Error in weights * y : non-numeric argument to binary operator</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="faq-1.html"><a href="faq-1.html#general-settings-and-options-1"><i class="fa fa-check"></i><b>11.5</b> General settings and options</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#numbers-are-formatted-weirdly-1"><i class="fa fa-check"></i>Numbers are formatted weirdly</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="faq-1.html"><a href="faq-1.html#data-visualizationoutput-issues-1"><i class="fa fa-check"></i><b>11.6</b> Data visualization/output issues</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#how-can-the-geom-colors-in-a-ggplot-be-changed-1"><i class="fa fa-check"></i>How can the <code>geom</code> colors in a <code>ggplot</code> be changed?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#why-are-some-histograms-displayed-differently-1"><i class="fa fa-check"></i>Why are some histograms displayed differently?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#some-labels-in-plots-are-cut-off.-how-can-i-extend-the-plot-margins-1"><i class="fa fa-check"></i>Some labels in plots are cut off. How can I extend the plot margins?</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="faq-1.html"><a href="faq-1.html#issues-with-functions-and-function-arguments-1"><i class="fa fa-check"></i><b>11.7</b> Issues with functions and function arguments</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#problems-with-factor-and-as.factor-1"><i class="fa fa-check"></i>Problems with <code>factor</code> and <code>as.factor</code></a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#how-can-i-find-an-explanation-of-the-output-of-a-function-1"><i class="fa fa-check"></i>How can I find an explanation of the output of a function?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#what-does-the-margin-argument-do-1"><i class="fa fa-check"></i>What does the <code>MARGIN</code> argument do?</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="faq-1.html"><a href="faq-1.html#issues-with-r-markdown-1"><i class="fa fa-check"></i><b>11.8</b> Issues with R Markdown</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#i-get-an-error-when-knitting-to-pdf-but-it-works-for-html-1"><i class="fa fa-check"></i>I get an error when <code>knit</code>ting to PDF but it works for HTML</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#i-am-not-sure-where-r-code-latex-math-and-text-go-1"><i class="fa fa-check"></i>I am not sure where R-code, LaTeX math, and text go</a></li>
+</ul></li>
+<li class="chapter" data-level="11.9" data-path="faq-1.html"><a href="faq-1.html#new-questions-1"><i class="fa fa-check"></i><b>11.9</b> New questions</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -435,7 +509,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Marketing Analytics 2024</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Regression III</a>
           </h1>
         </div>
 
@@ -2324,7 +2398,7 @@ f(\mathbf{X}) = P(y_i = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 * x_{1,i} + \be
 <p>The coefficients of the model give the change in the <a href="https://en.wikipedia.org/wiki/Odds#Statistical_usage">log odds</a> of the dependent variable due to a unit change in the regressor. This makes the exact interpretation of the coefficients difficult, but we can still interpret the signs and the p-values which will tell us if a variable has a significant positive or negative impact on the probability of the dependent variable being <span class="math inline">\(1\)</span>. In order to get the odds ratios we can simply take the exponent of the coefficients.</p>
 <div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="regression.html#cb621-1" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(logit_model ))</span></code></pre></div>
 <pre><code>##          (Intercept)         danceability 
-##        0.00004355897 26532731.71142364293</code></pre>
+##        0.00004355897 26532731.71142458543</code></pre>
 <p>Notice that the coefficient is extremely large. That is (partly) due to the fact that the danceability variable is constrained to values between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> and the coefficients are for a unit change. We can make the “unit-change” interpretation more meaningful by multiplying the danceability index by <span class="math inline">\(100\)</span>. This linear transformation does not affect the model fit or the p-values.</p>
 <div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="regression.html#cb623-1" tabindex="-1"></a><span class="co">#Re-scale independet variable</span></span>
 <span id="cb623-2"><a href="regression.html#cb623-2" tabindex="-1"></a>chart_data<span class="sc">$</span>danceability_100 <span class="ot">&lt;-</span> chart_data<span class="sc">$</span>danceability<span class="sc">*</span><span class="dv">100</span> </span>
@@ -2518,17 +2592,4680 @@ f(\mathbf{X}) = P(y_i = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 * x_{1,i} + \be
 ## 
 ## Model fitted by Penalized ML
 ## Coefficients:
-##                    coef  se(coef)   lower 0.95 upper 0.95      Chisq          p method
-## (Intercept) -0.98871643 1.2135184 -10.21693673   1.884508 0.59231445 0.44152553      2
-## X1           0.33195133 0.1832767   0.04170297   1.463409 5.31583569 0.02113246      2
-## X2           0.08250405 0.5109798  -2.17888664   3.379327 0.01980379 0.88808646      2
+##                    coef  se(coef)   lower 0.95 upper 0.95      Chisq          p
+## (Intercept) -0.98871643 1.2135184 -10.21693673   1.884508 0.59231445 0.44152553
+## X1           0.33195133 0.1832767   0.04170297   1.463409 5.31583569 0.02113246
+## X2           0.08250405 0.5109798  -2.17888664   3.379327 0.01980379 0.88808646
+##             method
+## (Intercept)      2
+## X1               2
+## X2               2
 ## 
 ## Method: 1-Wald, 2-Profile penalized log-likelihood, 3-None
 ## 
 ## Likelihood ratio test=5.800986 on 2 df, p=0.05499609, n=8
 ## Wald test = 3.744738 on 2 df, p = 0.153759</code></pre>
+
 </div>
 </div>
+</div>
+</div>
+<div id="causal-modeling-mediation-analysis" class="section level2 hasAnchor" number="7.7">
+<h2><span class="header-section-number">7.7</span> Causal Modeling &amp; Mediation Analysis<a href="regression.html#causal-modeling-mediation-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This chapter deals with a fundamental question of causal inference: <strong>Which variables should be included in a causal model?</strong> (see Cinelli et al. 2020) To answer this question two points need to be clear:</p>
+<ol style="list-style-type: decimal">
+<li>In general each causal model only investigates the causal effect of a single independent variable, <span class="math inline">\(x_k\)</span>, on the dependent variable <span class="math inline">\(y\)</span>. The coefficients associated with all other variables, <span class="math inline">\(x_{j\neq k}\)</span>, cannot (automatically) be interpreted as causal relationships. As regression coefficients are commonly presented in a single table, it is often unclear to the reader which coefficients can be interpreted as causal (see Westreich et al. 2013).</li>
+<li>Statistical significance (or any other statistical test) does not give us any idea about the causal model. To illustrate this, the following figure shows three statistically significant relationships between the variables <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> (all t-stats <span class="math inline">\(&gt; 9\)</span>). However, by construction there is no causal relationship between them in two of these examples. Even more concerning: In one case the <em>exclusion</em> of a control variable leads to spurious correlation (leftmost plot) while in the other the <em>inclusion</em> of the control variable does the same (rightmost plot).</li>
+</ol>
+<p><img src="12-causal_modeling_files/figure-html/intro-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>In order to learn about causal modeling we need to introduce a few concepts. First, we will talk about <em>Directed Acyclic Graphs</em> (or DAGs). Then, we will introduce three types of scenarios, the fork, the pipe, and the collider, and relate those to the concepts of omitted variable bias and mediation. Finally, we will implement and interpret mediation analysis.</p>
+<div id="directed-acyclic-graphs-dags" class="section level3 hasAnchor" number="7.7.1">
+<h3><span class="header-section-number">7.7.1</span> Directed Acyclic Graphs (DAGs)<a href="regression.html#directed-acyclic-graphs-dags" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A <em>graph</em> is a construct that consists of nodes, in our case variables, and edges connecting (some of) the nodes, in our case relationships between the variables. <em>Directed</em> graphs have the additional property that the connections go in a particular direction. In the context of causal modeling, the causal relationship can only go in one direction. For example the direction would be from an influencer marketing campaign to subsequent sales. In general, we will not allow for any “cycles” of causality (i.e., starting from <span class="math inline">\(X\)</span> it must be impossible to end up at <span class="math inline">\(X\)</span> again when going in the direction of the edges) and thus call the graphs <em>acyclic</em>. In addition, we need the concept of <em>d-connection</em>. Variable <span class="math inline">\(x\)</span> is said to be d-connected to variable <span class="math inline">\(y\)</span> if it is possible to go from <span class="math inline">\(x\)</span> to <span class="math inline">\(y\)</span> in the direction of the edges (this might be a direct connection or there might be additional variables, i.e., mediators, inbetween; more on that later).</p>
+<p>Let’s start with the simple scenario in which an influencer marketing campaign has a positive influence on sales (assuming no other variables are relevant). The DAG would look as follows showing the d-connection between influencer marketing and sales:</p>
+<p><img src="12-causal_modeling_files/figure-html/unnamed-chunk-2-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>In this case a simple linear regression could be used to identify the marginal effect of spending an additional Euro on influencer marketing on sales. Looking at the following plot a log-log relationship seems appropriate.</p>
+<p><img src="12-causal_modeling_files/figure-html/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="regression.html#cb658-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log</span>(sales) <span class="sc">~</span> <span class="fu">log</span>(influencer_marketing)))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log(sales) ~ log(influencer_marketing))
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.295432 -0.061417  0.001956  0.063951  0.260460 
+## 
+## Coefficients:
+##                           Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)               2.483627   0.009835  252.52   &lt;2e-16 ***
+## log(influencer_marketing) 0.198591   0.006115   32.48   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.09552 on 298 degrees of freedom
+## Multiple R-squared:  0.7797, Adjusted R-squared:  0.779 
+## F-statistic:  1055 on 1 and 298 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Note that while the causal relationship only goes in one direction, the correlation is “symmetric” in the sense that we could als switch <code>sales</code> and <code>influencer_marketing</code> in the model and would still get “significant” results.</p>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="regression.html#cb660-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log</span>(influencer_marketing) <span class="sc">~</span> <span class="fu">log</span>(sales)))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log(influencer_marketing) ~ log(sales))
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -1.3559 -0.3091  0.0122  0.2965  1.3120 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -9.4579     0.3331  -28.39   &lt;2e-16 ***
+## log(sales)    3.9262     0.1209   32.48   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.4247 on 298 degrees of freedom
+## Multiple R-squared:  0.7797, Adjusted R-squared:  0.779 
+## F-statistic:  1055 on 1 and 298 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div id="the-fork-good-control" class="section level3 hasAnchor" number="7.7.2">
+<h3><span class="header-section-number">7.7.2</span> The Fork (Good control)<a href="regression.html#the-fork-good-control" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="12-causal_modeling_files/figure-html/fork-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>A typical dataset with a <strong>confounder</strong> will exhibit correlation between the treatment <span class="math inline">\(X\)</span> and outcome <span class="math inline">\(y.\)</span> This relationship is not causal! In the example below we have a binary confounder <span class="math inline">\(d\)</span> (Yes/No) that is d-connected with both <span class="math inline">\(X\)</span> and <span class="math inline">\(y\)</span> (<span class="math inline">\(X\)</span> and <span class="math inline">\(y\)</span> are not d-connected)</p>
+<p><img src="12-causal_modeling_files/figure-html/fork_no-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div id="wwnszftome" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wwnszftome table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wwnszftome thead, #wwnszftome tbody, #wwnszftome tfoot, #wwnszftome tr, #wwnszftome td, #wwnszftome th {
+  border-style: none;
+}
+
+#wwnszftome p {
+  margin: 0;
+  padding: 0;
+}
+
+#wwnszftome .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wwnszftome .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wwnszftome .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wwnszftome .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wwnszftome .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wwnszftome .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwnszftome .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wwnszftome .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wwnszftome .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wwnszftome .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wwnszftome .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wwnszftome .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wwnszftome .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wwnszftome .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wwnszftome .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wwnszftome .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wwnszftome .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wwnszftome .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wwnszftome .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwnszftome .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wwnszftome .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wwnszftome .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wwnszftome .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwnszftome .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#wwnszftome .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wwnszftome .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwnszftome .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwnszftome .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wwnszftome .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwnszftome .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wwnszftome .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wwnszftome .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wwnszftome .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwnszftome .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wwnszftome .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wwnszftome .gt_left {
+  text-align: left;
+}
+
+#wwnszftome .gt_center {
+  text-align: center;
+}
+
+#wwnszftome .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wwnszftome .gt_font_normal {
+  font-weight: normal;
+}
+
+#wwnszftome .gt_font_bold {
+  font-weight: bold;
+}
+
+#wwnszftome .gt_font_italic {
+  font-style: italic;
+}
+
+#wwnszftome .gt_super {
+  font-size: 65%;
+}
+
+#wwnszftome .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wwnszftome .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wwnszftome .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wwnszftome .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wwnszftome .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wwnszftome .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wwnszftome .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#wwnszftome .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wwnszftome div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="term">term</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="estimate">estimate</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="std.error">std.error</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="statistic">statistic</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="p.value">p.value</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="term" class="gt_row gt_left">(Intercept)</td>
+<td headers="estimate" class="gt_row gt_right">1.0086</td>
+<td headers="std.error" class="gt_row gt_right">0.0671</td>
+<td headers="statistic" class="gt_row gt_right">15.0351</td>
+<td headers="p.value" class="gt_row gt_right">0.0000</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">x</td>
+<td headers="estimate" class="gt_row gt_right">0.4672</td>
+<td headers="std.error" class="gt_row gt_right">0.0464</td>
+<td headers="statistic" class="gt_row gt_right">10.0576</td>
+<td headers="p.value" class="gt_row gt_right">0.0000</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>However once we take the confounder into account the association vanishes which reflects the lack of a causal relationship in this case (note that for simplicity the regression lines in the plot are not the same as the model output shown).</p>
+<p><img src="12-causal_modeling_files/figure-html/fork_yes-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div id="xnfyeflxox" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xnfyeflxox table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#xnfyeflxox thead, #xnfyeflxox tbody, #xnfyeflxox tfoot, #xnfyeflxox tr, #xnfyeflxox td, #xnfyeflxox th {
+  border-style: none;
+}
+
+#xnfyeflxox p {
+  margin: 0;
+  padding: 0;
+}
+
+#xnfyeflxox .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xnfyeflxox .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#xnfyeflxox .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xnfyeflxox .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xnfyeflxox .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xnfyeflxox .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xnfyeflxox .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xnfyeflxox .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xnfyeflxox .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xnfyeflxox .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xnfyeflxox .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xnfyeflxox .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xnfyeflxox .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#xnfyeflxox .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#xnfyeflxox .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xnfyeflxox .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xnfyeflxox .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xnfyeflxox .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xnfyeflxox .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xnfyeflxox .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#xnfyeflxox .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#xnfyeflxox .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#xnfyeflxox .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xnfyeflxox .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#xnfyeflxox .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#xnfyeflxox .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xnfyeflxox .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xnfyeflxox .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xnfyeflxox .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xnfyeflxox .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xnfyeflxox .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xnfyeflxox .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xnfyeflxox .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xnfyeflxox .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xnfyeflxox .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xnfyeflxox .gt_left {
+  text-align: left;
+}
+
+#xnfyeflxox .gt_center {
+  text-align: center;
+}
+
+#xnfyeflxox .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xnfyeflxox .gt_font_normal {
+  font-weight: normal;
+}
+
+#xnfyeflxox .gt_font_bold {
+  font-weight: bold;
+}
+
+#xnfyeflxox .gt_font_italic {
+  font-style: italic;
+}
+
+#xnfyeflxox .gt_super {
+  font-size: 65%;
+}
+
+#xnfyeflxox .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#xnfyeflxox .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#xnfyeflxox .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#xnfyeflxox .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#xnfyeflxox .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#xnfyeflxox .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#xnfyeflxox .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#xnfyeflxox .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#xnfyeflxox div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="term">term</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="estimate">estimate</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="std.error">std.error</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="statistic">statistic</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="p.value">p.value</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="term" class="gt_row gt_left">(Intercept)</td>
+<td headers="estimate" class="gt_row gt_right">0.4426</td>
+<td headers="std.error" class="gt_row gt_right">0.0633</td>
+<td headers="statistic" class="gt_row gt_right">6.9879</td>
+<td headers="p.value" class="gt_row gt_right">0.0000</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">x</td>
+<td headers="estimate" class="gt_row gt_right">0.0526</td>
+<td headers="std.error" class="gt_row gt_right">0.0617</td>
+<td headers="statistic" class="gt_row gt_right">0.8519</td>
+<td headers="p.value" class="gt_row gt_right">0.3947</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">dNo</td>
+<td headers="estimate" class="gt_row gt_right">1.9350</td>
+<td headers="std.error" class="gt_row gt_right">0.1364</td>
+<td headers="statistic" class="gt_row gt_right">14.1815</td>
+<td headers="p.value" class="gt_row gt_right">0.0000</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">x:dNo</td>
+<td headers="estimate" class="gt_row gt_right">−0.0616</td>
+<td headers="std.error" class="gt_row gt_right">0.0914</td>
+<td headers="statistic" class="gt_row gt_right">−0.6741</td>
+<td headers="p.value" class="gt_row gt_right">0.5006</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>Examples and ways to deal with confounders are shown <a href="regression.html#omitted-variable-bias-confounders">below</a>.</p>
+</div>
+<div id="the-pipe-bad-control" class="section level3 hasAnchor" number="7.7.3">
+<h3><span class="header-section-number">7.7.3</span> The Pipe (Bad control)<a href="regression.html#the-pipe-bad-control" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="12-causal_modeling_files/figure-html/pipe-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>If we have a mediator in our data the picture looks very similar to the previous one. In addition, taking the mediator into account also has a similar effect: we remove the association between <span class="math inline">\(X\)</span> and <span class="math inline">\(y\)</span>. However, in this case that is not what we want since <span class="math inline">\(X\)</span> and <span class="math inline">\(y\)</span> are d-connected. <span class="math inline">\(X\)</span> causes <span class="math inline">\(y\)</span> through <span class="math inline">\(z\)</span> (note that for simplicity the regression lines in the second plot are not the same as the model output shown). Examples of such relationships and the corresponding models are discussed in <a href="regression.html#mediation-analysis">Mediation analysis</a>.</p>
+<p><img src="12-causal_modeling_files/figure-html/pipe_no-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div id="yddmpykkrx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yddmpykkrx table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#yddmpykkrx thead, #yddmpykkrx tbody, #yddmpykkrx tfoot, #yddmpykkrx tr, #yddmpykkrx td, #yddmpykkrx th {
+  border-style: none;
+}
+
+#yddmpykkrx p {
+  margin: 0;
+  padding: 0;
+}
+
+#yddmpykkrx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#yddmpykkrx .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#yddmpykkrx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#yddmpykkrx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#yddmpykkrx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yddmpykkrx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yddmpykkrx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#yddmpykkrx .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#yddmpykkrx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#yddmpykkrx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#yddmpykkrx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#yddmpykkrx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#yddmpykkrx .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#yddmpykkrx .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#yddmpykkrx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#yddmpykkrx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#yddmpykkrx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#yddmpykkrx .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#yddmpykkrx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yddmpykkrx .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#yddmpykkrx .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#yddmpykkrx .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#yddmpykkrx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yddmpykkrx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#yddmpykkrx .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#yddmpykkrx .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yddmpykkrx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yddmpykkrx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#yddmpykkrx .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yddmpykkrx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#yddmpykkrx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#yddmpykkrx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yddmpykkrx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yddmpykkrx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#yddmpykkrx .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#yddmpykkrx .gt_left {
+  text-align: left;
+}
+
+#yddmpykkrx .gt_center {
+  text-align: center;
+}
+
+#yddmpykkrx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#yddmpykkrx .gt_font_normal {
+  font-weight: normal;
+}
+
+#yddmpykkrx .gt_font_bold {
+  font-weight: bold;
+}
+
+#yddmpykkrx .gt_font_italic {
+  font-style: italic;
+}
+
+#yddmpykkrx .gt_super {
+  font-size: 65%;
+}
+
+#yddmpykkrx .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#yddmpykkrx .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#yddmpykkrx .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#yddmpykkrx .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#yddmpykkrx .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#yddmpykkrx .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#yddmpykkrx .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#yddmpykkrx .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#yddmpykkrx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="term">term</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="estimate">estimate</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="std.error">std.error</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="statistic">statistic</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="p.value">p.value</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="term" class="gt_row gt_left">(Intercept)</td>
+<td headers="estimate" class="gt_row gt_right">0.9028</td>
+<td headers="std.error" class="gt_row gt_right">0.0586</td>
+<td headers="statistic" class="gt_row gt_right">15.4170</td>
+<td headers="p.value" class="gt_row gt_right">0.0000</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">x</td>
+<td headers="estimate" class="gt_row gt_right">0.5804</td>
+<td headers="std.error" class="gt_row gt_right">0.0593</td>
+<td headers="statistic" class="gt_row gt_right">9.7944</td>
+<td headers="p.value" class="gt_row gt_right">0.0000</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p><img src="12-causal_modeling_files/figure-html/pipe_yes-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div id="xbycoxbxjq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xbycoxbxjq table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#xbycoxbxjq thead, #xbycoxbxjq tbody, #xbycoxbxjq tfoot, #xbycoxbxjq tr, #xbycoxbxjq td, #xbycoxbxjq th {
+  border-style: none;
+}
+
+#xbycoxbxjq p {
+  margin: 0;
+  padding: 0;
+}
+
+#xbycoxbxjq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xbycoxbxjq .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#xbycoxbxjq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xbycoxbxjq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xbycoxbxjq .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xbycoxbxjq .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xbycoxbxjq .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xbycoxbxjq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xbycoxbxjq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xbycoxbxjq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xbycoxbxjq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xbycoxbxjq .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xbycoxbxjq .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#xbycoxbxjq .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#xbycoxbxjq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xbycoxbxjq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xbycoxbxjq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xbycoxbxjq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xbycoxbxjq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xbycoxbxjq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#xbycoxbxjq .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#xbycoxbxjq .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#xbycoxbxjq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xbycoxbxjq .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#xbycoxbxjq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#xbycoxbxjq .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xbycoxbxjq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xbycoxbxjq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xbycoxbxjq .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xbycoxbxjq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xbycoxbxjq .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xbycoxbxjq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xbycoxbxjq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xbycoxbxjq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xbycoxbxjq .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xbycoxbxjq .gt_left {
+  text-align: left;
+}
+
+#xbycoxbxjq .gt_center {
+  text-align: center;
+}
+
+#xbycoxbxjq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xbycoxbxjq .gt_font_normal {
+  font-weight: normal;
+}
+
+#xbycoxbxjq .gt_font_bold {
+  font-weight: bold;
+}
+
+#xbycoxbxjq .gt_font_italic {
+  font-style: italic;
+}
+
+#xbycoxbxjq .gt_super {
+  font-size: 65%;
+}
+
+#xbycoxbxjq .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#xbycoxbxjq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#xbycoxbxjq .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#xbycoxbxjq .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#xbycoxbxjq .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#xbycoxbxjq .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#xbycoxbxjq .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#xbycoxbxjq .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#xbycoxbxjq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="term">term</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="estimate">estimate</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="std.error">std.error</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="statistic">statistic</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="p.value">p.value</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="term" class="gt_row gt_left">(Intercept)</td>
+<td headers="estimate" class="gt_row gt_right">−0.0393</td>
+<td headers="std.error" class="gt_row gt_right">0.0755</td>
+<td headers="statistic" class="gt_row gt_right">−0.5205</td>
+<td headers="p.value" class="gt_row gt_right">0.6029</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">x</td>
+<td headers="estimate" class="gt_row gt_right">−0.0185</td>
+<td headers="std.error" class="gt_row gt_right">0.0787</td>
+<td headers="statistic" class="gt_row gt_right">−0.2349</td>
+<td headers="p.value" class="gt_row gt_right">0.8143</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">z</td>
+<td headers="estimate" class="gt_row gt_right">2.0562</td>
+<td headers="std.error" class="gt_row gt_right">0.1137</td>
+<td headers="statistic" class="gt_row gt_right">18.0855</td>
+<td headers="p.value" class="gt_row gt_right">0.0000</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">x:z</td>
+<td headers="estimate" class="gt_row gt_right">−0.0324</td>
+<td headers="std.error" class="gt_row gt_right">0.1146</td>
+<td headers="statistic" class="gt_row gt_right">−0.2826</td>
+<td headers="p.value" class="gt_row gt_right">0.7776</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+<div id="the-collider-bad-control" class="section level3 hasAnchor" number="7.7.4">
+<h3><span class="header-section-number">7.7.4</span> The Collider (Bad control)<a href="regression.html#the-collider-bad-control" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="12-causal_modeling_files/figure-html/unnamed-chunk-6-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>The collider is a special case. There is no association between <span class="math inline">\(X\)</span> and <span class="math inline">\(y\)</span> as long as we do <strong>not</strong> account for the collider in the model. However, by accounting for the collider we implicitly learn about <span class="math inline">\(y\)</span> as well (we use <span class="math inline">\(X\)</span> as the predictor). Since the collider is caused by <span class="math inline">\(X\)</span> and <span class="math inline">\(y\)</span>, we can figure out what <span class="math inline">\(y\)</span> must be once we know <span class="math inline">\(X\)</span> and the collider similar to solving a simple equation you would see in high-school.</p>
+<p><img src="12-causal_modeling_files/figure-html/unnamed-chunk-7-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div id="pyddmpykkr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#pyddmpykkr table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pyddmpykkr thead, #pyddmpykkr tbody, #pyddmpykkr tfoot, #pyddmpykkr tr, #pyddmpykkr td, #pyddmpykkr th {
+  border-style: none;
+}
+
+#pyddmpykkr p {
+  margin: 0;
+  padding: 0;
+}
+
+#pyddmpykkr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pyddmpykkr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pyddmpykkr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pyddmpykkr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pyddmpykkr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pyddmpykkr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pyddmpykkr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pyddmpykkr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pyddmpykkr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pyddmpykkr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pyddmpykkr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pyddmpykkr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pyddmpykkr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#pyddmpykkr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#pyddmpykkr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pyddmpykkr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pyddmpykkr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pyddmpykkr .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pyddmpykkr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pyddmpykkr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pyddmpykkr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pyddmpykkr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#pyddmpykkr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pyddmpykkr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pyddmpykkr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pyddmpykkr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pyddmpykkr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pyddmpykkr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pyddmpykkr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pyddmpykkr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pyddmpykkr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pyddmpykkr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pyddmpykkr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pyddmpykkr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pyddmpykkr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pyddmpykkr .gt_left {
+  text-align: left;
+}
+
+#pyddmpykkr .gt_center {
+  text-align: center;
+}
+
+#pyddmpykkr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pyddmpykkr .gt_font_normal {
+  font-weight: normal;
+}
+
+#pyddmpykkr .gt_font_bold {
+  font-weight: bold;
+}
+
+#pyddmpykkr .gt_font_italic {
+  font-style: italic;
+}
+
+#pyddmpykkr .gt_super {
+  font-size: 65%;
+}
+
+#pyddmpykkr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#pyddmpykkr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pyddmpykkr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pyddmpykkr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pyddmpykkr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pyddmpykkr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pyddmpykkr .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#pyddmpykkr .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#pyddmpykkr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="term">term</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="estimate">estimate</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="std.error">std.error</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="statistic">statistic</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="p.value">p.value</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="term" class="gt_row gt_left">(Intercept)</td>
+<td headers="estimate" class="gt_row gt_right">0.0203</td>
+<td headers="std.error" class="gt_row gt_right">0.0449</td>
+<td headers="statistic" class="gt_row gt_right">0.4519</td>
+<td headers="p.value" class="gt_row gt_right">0.6515</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">x</td>
+<td headers="estimate" class="gt_row gt_right">0.0307</td>
+<td headers="std.error" class="gt_row gt_right">0.0455</td>
+<td headers="statistic" class="gt_row gt_right">0.6754</td>
+<td headers="p.value" class="gt_row gt_right">0.4997</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p><img src="12-causal_modeling_files/figure-html/unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div id="xxbycoxbxj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xxbycoxbxj table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#xxbycoxbxj thead, #xxbycoxbxj tbody, #xxbycoxbxj tfoot, #xxbycoxbxj tr, #xxbycoxbxj td, #xxbycoxbxj th {
+  border-style: none;
+}
+
+#xxbycoxbxj p {
+  margin: 0;
+  padding: 0;
+}
+
+#xxbycoxbxj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xxbycoxbxj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#xxbycoxbxj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xxbycoxbxj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xxbycoxbxj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xxbycoxbxj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xxbycoxbxj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xxbycoxbxj .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xxbycoxbxj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xxbycoxbxj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xxbycoxbxj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xxbycoxbxj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xxbycoxbxj .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#xxbycoxbxj .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#xxbycoxbxj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xxbycoxbxj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xxbycoxbxj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xxbycoxbxj .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xxbycoxbxj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xxbycoxbxj .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#xxbycoxbxj .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#xxbycoxbxj .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#xxbycoxbxj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xxbycoxbxj .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#xxbycoxbxj .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#xxbycoxbxj .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xxbycoxbxj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xxbycoxbxj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xxbycoxbxj .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xxbycoxbxj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xxbycoxbxj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xxbycoxbxj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xxbycoxbxj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xxbycoxbxj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xxbycoxbxj .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xxbycoxbxj .gt_left {
+  text-align: left;
+}
+
+#xxbycoxbxj .gt_center {
+  text-align: center;
+}
+
+#xxbycoxbxj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xxbycoxbxj .gt_font_normal {
+  font-weight: normal;
+}
+
+#xxbycoxbxj .gt_font_bold {
+  font-weight: bold;
+}
+
+#xxbycoxbxj .gt_font_italic {
+  font-style: italic;
+}
+
+#xxbycoxbxj .gt_super {
+  font-size: 65%;
+}
+
+#xxbycoxbxj .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#xxbycoxbxj .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#xxbycoxbxj .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#xxbycoxbxj .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#xxbycoxbxj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#xxbycoxbxj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#xxbycoxbxj .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#xxbycoxbxj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#xxbycoxbxj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="term">term</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="estimate">estimate</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="std.error">std.error</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="statistic">statistic</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="p.value">p.value</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="term" class="gt_row gt_left">(Intercept)</td>
+<td headers="estimate" class="gt_row gt_right">0.8614</td>
+<td headers="std.error" class="gt_row gt_right">0.0538</td>
+<td headers="statistic" class="gt_row gt_right">16.0142</td>
+<td headers="p.value" class="gt_row gt_right">0.0000</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">x</td>
+<td headers="estimate" class="gt_row gt_right">0.5328</td>
+<td headers="std.error" class="gt_row gt_right">0.0422</td>
+<td headers="statistic" class="gt_row gt_right">12.6293</td>
+<td headers="p.value" class="gt_row gt_right">0.0000</td></tr>
+    <tr><td headers="term" class="gt_row gt_left">aYes</td>
+<td headers="estimate" class="gt_row gt_right">−1.6663</td>
+<td headers="std.error" class="gt_row gt_right">0.0834</td>
+<td headers="statistic" class="gt_row gt_right">−19.9822</td>
+<td headers="p.value" class="gt_row gt_right">0.0000</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<p>To illustrate the concept of a collider let’s look at an example:</p>
+<p><strong>Does product quality have an effect on marketing effectiveness?</strong></p>
+<p>Imagine a scenario in which product quality and marketing effectiveness are actually unrelated but both contribute to product success.</p>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-f0dff5e20bbda6f2a82c" style="width:576px;height:240px;"></div>
+<script type="application/json" data-for="htmlwidget-f0dff5e20bbda6f2a82c">{"x":{"diagram":"\ngraph LR\n    A[Product Quality] --> C[Product Success]\n    B[Marketing Effectiveness] --> C\n"},"evals":[],"jsHooks":[]}</script>
+<p>We might estimate the following models. Model (1) is correctly specified, and model (2) includes the collider. Note that neither <span class="math inline">\(R^2\)</span> nor the p-values would lead us to choose the correct model. Including the collider leads to a spurious negative correlation between product quality and marketing effectiveness. Based on this result a marketing manager could incorrectly conclude that only low-quality products should be advertised.</p>
+<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="regression.html#cb662-1" tabindex="-1"></a>mod_correct <span class="ot">&lt;-</span> <span class="fu">lm</span>(marketing_effectiveness <span class="sc">~</span> prod_qual, data_effectiveness)</span>
+<span id="cb662-2"><a href="regression.html#cb662-2" tabindex="-1"></a>mod_collider <span class="ot">&lt;-</span>  <span class="fu">lm</span>(marketing_effectiveness <span class="sc">~</span> prod_qual <span class="sc">+</span> success, data_effectiveness)</span>
+<span id="cb662-3"><a href="regression.html#cb662-3" tabindex="-1"></a>stargazer<span class="sc">::</span><span class="fu">stargazer</span>(</span>
+<span id="cb662-4"><a href="regression.html#cb662-4" tabindex="-1"></a>  mod_correct, mod_collider,</span>
+<span id="cb662-5"><a href="regression.html#cb662-5" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&quot;html&quot;</span></span>
+<span id="cb662-6"><a href="regression.html#cb662-6" tabindex="-1"></a>)</span></code></pre></div>
+<table style="text-align:center">
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="2">
+marketing_effectiveness
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+prod_qual
+</td>
+<td>
+0.031
+</td>
+<td>
+-0.470<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.045)
+</td>
+<td>
+(0.042)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+successYes
+</td>
+<td>
+</td>
+<td>
+1.676<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.082)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+0.020
+</td>
+<td>
+-0.839<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.045)
+</td>
+<td>
+(0.054)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+500
+</td>
+<td>
+500
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.001
+</td>
+<td>
+0.455
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+-0.001
+</td>
+<td>
+0.453
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+1.005 (df = 498)
+</td>
+<td>
+0.743 (df = 497)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+0.456 (df = 1; 498)
+</td>
+<td>
+207.705<sup>***</sup> (df = 2; 497)
+</td>
+</tr>
+<tr>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="2" style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+</div>
+<div id="omitted-variable-bias-confounders" class="section level3 hasAnchor" number="7.7.5">
+<h3><span class="header-section-number">7.7.5</span> Omitted Variable Bias (Confounders)<a href="regression.html#omitted-variable-bias-confounders" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://wu-rds.github.io/MA2024/regression.html#omitted-variables">Recall</a> that variables that influence both the outcome and other independent variables will bias the coefficients of those other independent variables if left out of a model. This bias is referred to as “Omitted Variable Bias” (short OVB) since it occurs due to the omission of a crucial variable. OVB occurs whenever a confounder (see <a href="regression.html#the-fork-good-control">The Fork</a>) is left out of the model and constitutes a serious threat to causal interpretation of the coefficients. The good news is that OVB (typically) only occurs with observational data and can be mitigated by manipulating the focal variable <span class="math inline">\(x\)</span> in an experiment. If done correctly, the variation in <span class="math inline">\(x\)</span> is completely controlled by the marketing manager, e.g., through multiple conditions in a randomized experiment. Therefore, the (potentially unobserved) confounder is no longer responsible for the variation in <span class="math inline">\(x\)</span>. In other words, the path from the confounder to <span class="math inline">\(x\)</span> is eliminated and OVB is no longer present. To illustrate this, imagine two scenarios in which we try to estimate the effectiveness of a nike shoe ad. In the first scenario we simply compare consumers that were shown the ad with those who were not shown the ad. However, we omit the fact that the ad was shown to users that searched for the term “nike running shoes” and not to others. This will bias the lower path (Ad -&gt; Purchase) in the following DAG:</p>
+<p><img src="12-causal_modeling_files/figure-html/unnamed-chunk-12-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>In a second scenario we randomly assign each consumer to be shown the ad (treated) or not (control). In this case the confounder is no longer responsible for the variation in <span class="math inline">\(x\)</span>, i.e., searching for the shoe did not cause the ad to be shown, since each person was randomly assigned to be shown the ad. The DAG becomes</p>
+<p><img src="12-causal_modeling_files/figure-html/unnamed-chunk-13-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>Note that if we omit the variable indicating whether someone has searched for a shoe or not it is still part of the error term, i.e., we likely increase the error variance, but our causal effect of the ad on purchase is now unbiased (and consistent). If we do observe whether someone searched for the shoe or not we can still add it as a control variable, potentially decreasing the standard error of our estimate.</p>
+<p>The bad news is that we are unable to run randomized experiments in many situations. Therefore, it is valuable to understand the magnitude of the OVB. The magnitude of the OVB depends on how strongly correlated the confounder is with the included variable <span class="math inline">\(x\)</span>. To illustrate this take a look at the equations representing the situation in <a href="regression.html#the-fork-good-control">The Fork</a>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+x &amp;= \alpha_0 + \alpha_1 d + \varepsilon_x \\
+y &amp;= \beta_0 + \beta_1 d + \varepsilon_y
+\end{aligned}
+\]</span></p>
+<p>However, we might be unaware of the confounder <span class="math inline">\(d\)</span> but still be interested in the causal effect of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span>. Therefore, we might be inclined to estimate the following (misspecified) model</p>
+<p><span class="math display">\[
+y = \gamma_0 + \gamma_1 x + \epsilon_y
+\]</span></p>
+<p>We know (based on the equations above) that the true effect of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span> is <span class="math inline">\(0\)</span> as it is entirely caused by <span class="math inline">\(d\)</span>. In order to investigate the magnitude of the OVB we mistakenly view <span class="math inline">\(d\)</span> as a function of <span class="math inline">\(x\)</span> (see <a href="regression.html#mediation-analysis">Mediation analysis</a>):</p>
+<p><span class="math display">\[
+d = \theta_0 + \theta_1 x + \varepsilon_d,
+\]</span></p>
+<p>plug the incorrectly specified model for <span class="math inline">\(d\)</span> into the correctly specified model for <span class="math inline">\(y\)</span>, and take the derivative with respect to <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+y &amp;= \tilde \beta_0 + \beta_1 (\theta_0 + \theta_1 x + \varepsilon_d) + \epsilon_y \\
+  &amp;= \tilde \beta_0 + \beta_1 \theta_0 + \beta_1 \theta_1 x + \beta_1 \varepsilon_d + \epsilon_y \\
+{\delta \over \delta x}  &amp;= \beta_1 \theta_1
+\end{aligned}
+\]</span></p>
+<p>Note that <span class="math inline">\(\gamma_1 = \beta_1 \theta_1\)</span>.</p>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="regression.html#cb663-1" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span>
+<span id="cb663-2"><a href="regression.html#cb663-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
+<span id="cb663-3"><a href="regression.html#cb663-3" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb663-4"><a href="regression.html#cb663-4" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">4</span> <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> d <span class="sc">+</span> <span class="dv">10</span> <span class="sc">*</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb663-5"><a href="regression.html#cb663-5" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">25</span> <span class="sc">+</span> <span class="dv">10</span> <span class="sc">*</span> d <span class="sc">+</span> <span class="dv">10</span> <span class="sc">*</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb663-6"><a href="regression.html#cb663-6" tabindex="-1"></a><span class="fu">stargazer</span>(</span>
+<span id="cb663-7"><a href="regression.html#cb663-7" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> d <span class="sc">+</span> x),</span>
+<span id="cb663-8"><a href="regression.html#cb663-8" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> x), <span class="do">## gamma</span></span>
+<span id="cb663-9"><a href="regression.html#cb663-9" tabindex="-1"></a>  <span class="fu">lm</span>(y <span class="sc">~</span> d), <span class="do">## beta</span></span>
+<span id="cb663-10"><a href="regression.html#cb663-10" tabindex="-1"></a>  <span class="fu">lm</span>(d <span class="sc">~</span> x), <span class="do">## theta</span></span>
+<span id="cb663-11"><a href="regression.html#cb663-11" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&#39;html&#39;</span>)</span></code></pre></div>
+<table style="text-align:center">
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="4">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="3">
+y
+</td>
+<td>
+d
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+<td>
+(4)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+d
+</td>
+<td>
+9.996<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+9.997<sup>***</sup>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.023)
+</td>
+<td>
+</td>
+<td>
+(0.005)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+x
+</td>
+<td>
+0.003
+</td>
+<td>
+19.096<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+1.910<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.046)
+</td>
+<td>
+(0.173)
+</td>
+<td>
+</td>
+<td>
+(0.017)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+24.889<sup>***</sup>
+</td>
+<td>
+97.282<sup>***</sup>
+</td>
+<td>
+24.878<sup>***</sup>
+</td>
+<td>
+7.242<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.488)
+</td>
+<td>
+(8.789)
+</td>
+<td>
+(0.456)
+</td>
+<td>
+(0.878)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+500
+</td>
+<td>
+500
+</td>
+<td>
+500
+</td>
+<td>
+500
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+1.000
+</td>
+<td>
+0.961
+</td>
+<td>
+1.000
+</td>
+<td>
+0.961
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+1.000
+</td>
+<td>
+0.961
+</td>
+<td>
+1.000
+</td>
+<td>
+0.961
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+10.204 (df = 497)
+</td>
+<td>
+195.949 (df = 498)
+</td>
+<td>
+10.193 (df = 498)
+</td>
+<td>
+19.576 (df = 498)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+2,343,560.000<sup>***</sup> (df = 2; 497)
+</td>
+<td>
+12,212.740<sup>***</sup> (df = 1; 498)
+</td>
+<td>
+4,696,511.000<sup>***</sup> (df = 1; 498)
+</td>
+<td>
+12,242.150<sup>***</sup> (df = 1; 498)
+</td>
+</tr>
+<tr>
+<td colspan="5" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="4" style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="regression.html#cb664-1" tabindex="-1"></a><span class="do">## See coef of regression y ~ x</span></span>
+<span id="cb664-2"><a href="regression.html#cb664-2" tabindex="-1"></a>beta1 <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">lm</span>(y<span class="sc">~</span>d))[<span class="st">&#39;d&#39;</span>]</span>
+<span id="cb664-3"><a href="regression.html#cb664-3" tabindex="-1"></a>theta1 <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">lm</span>(d<span class="sc">~</span>x))[<span class="st">&#39;x&#39;</span>]</span>
+<span id="cb664-4"><a href="regression.html#cb664-4" tabindex="-1"></a>beta1 <span class="sc">*</span> theta1</span></code></pre></div>
+<pre><code>   d </code></pre>
+<p>19.09598</p>
+<p>Notice that without theoretical knowledge about the data it is not clear which variable should be the “outcome” and which the “independent” variable since we could estimate either direction using OLS. In the example above we know (“from theory”) that <span class="math inline">\(d\)</span> causes <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> but we estimate models where <span class="math inline">\(x\)</span> is the explanatory variable. As one might guess there is a clear relationship between coefficients estimated with one or the other variable on the left hand side.</p>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="regression.html#cb666-1" tabindex="-1"></a>theta_1 <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">lm</span>(d<span class="sc">~</span>x))[<span class="st">&#39;x&#39;</span>]</span>
+<span id="cb666-2"><a href="regression.html#cb666-2" tabindex="-1"></a>alpha_1 <span class="ot">&lt;-</span> <span class="fu">coef</span>(<span class="fu">lm</span>(x<span class="sc">~</span>d))[<span class="st">&#39;d&#39;</span>]</span></code></pre></div>
+<p>To be exact we have to adjust for the respective variances of the variables:</p>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="regression.html#cb667-1" tabindex="-1"></a>alpha_1 <span class="sc">*</span> <span class="fu">var</span>(d)<span class="sc">/</span><span class="fu">var</span>(x)</span></code></pre></div>
+<pre><code>##        d 
+## 1.910091</code></pre>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="regression.html#cb669-1" tabindex="-1"></a>theta_1</span></code></pre></div>
+<pre><code>##        x 
+## 1.910091</code></pre>
+</div>
+<div id="mediation-analysis" class="section level3 hasAnchor" number="7.7.6">
+<h3><span class="header-section-number">7.7.6</span> Mediation analysis<a href="regression.html#mediation-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Mediation analysis is often used to show a causal process. A company might, for example, run an influencer campaign aimed at changing consumers’ perceptions of a brand being “old fashioned”. In order to assess the effectiveness of the influencer, they run two separate campaigns. The “control group” is simply shown the product (without the influencer) while the “treated group” is shown the influencer campaign. In both cases they ask the consumers about their perception of the brand (modern vs. old fashioned) and about their purchase intention.</p>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-6a9facf4abbd24cd04ab" style="width:576px;height:192px;"></div>
+<script type="application/json" data-for="htmlwidget-6a9facf4abbd24cd04ab">{"x":{"diagram":"\ngraph LR\n    Influencer-->Modern[Perceived as Modern]\n    Modern-->Purchase\n    Influencer-->Purchase\n"},"evals":[],"jsHooks":[]}</script>
+<p>The first arrow in the upper path represents the effectiveness of the influencer to change consumers’ minds about the brand. The second arrow in the upper path represents the additional purchases that happen because consumers perceive the brand as more modern. The lower path represents a (possible) direct effect of the influencer campaign on purchases (without changing consumers’ minds). These are consumers who still perceive the brand as old fashioned but nonetheless purchase the product as a result of the campaign. Note that these are hypothesized paths. The “existence” (non-zero relationship) of those arrows and the relative magnitude of these effects is what we are trying to test!</p>
+<p>As the total causal effect a variable <span class="math inline">\(x\)</span> has on the outcome <span class="math inline">\(y\)</span> can be (partly) mediated through another variable <span class="math inline">\(m\)</span>, we cannot just include <span class="math inline">\(m\)</span> in the model. However, we can decompose the effect into a direct and mediated part. Either of part can be <span class="math inline">\(0\)</span> but we can easily test whether that is the case. The decomposition has two parts: First, calculate the effect the variable of interest (<span class="math inline">\(x\)</span>) has on the mediator (<span class="math inline">\(m\)</span>):</p>
+<p><span class="math display">\[
+m = \alpha_0 + \alpha_1 x + \varepsilon_m
+\]</span></p>
+<p>Note that we use “alpha” (<span class="math inline">\(\alpha\)</span>) for the regression coefficients to distinguish them from the parameters below. They can nonetheless be estimated using OLS.</p>
+<p>Second, calculate the full model for the outcome (<span class="math inline">\(y\)</span>) including both <span class="math inline">\(x\)</span> and <span class="math inline">\(m\)</span>:</p>
+<p><span class="math display">\[
+y = \beta_0 + \beta_1 x + \beta_2 m + \varepsilon_y
+\]</span></p>
+<p>Now <span class="math inline">\(\beta_1\)</span> is the <em>average direct effect</em> (ADE) of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span>. That is the part that is not mediated through <span class="math inline">\(m\)</span>. In <a href="regression.html#the-pipe-bad-control">The Pipe</a>, <span class="math inline">\(\beta_1=0\)</span> since there is no direct connection from <span class="math inline">\(x\)</span> to <span class="math inline">\(y\)</span>. The <em>average causal mediation effect</em> (ACME) can be calculated as <span class="math inline">\(\alpha_1 * \beta_2\)</span>. Intuitively, “how much would a unit increase in <span class="math inline">\(x\)</span> change <span class="math inline">\(m\)</span>” times “how much would an increase in <span class="math inline">\(m\)</span> change <span class="math inline">\(y\)</span>”. The total effect of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span> can be seen more clearly by plugging in the model for <span class="math inline">\(m\)</span> in the second equation and taking the derivative with respect to <span class="math inline">\(x\)</span>:</p>
+<p><span class="math display">\[
+\begin{aligned}
+y &amp;= \beta_0 + \beta_1 x + \beta_2 m + \varepsilon_y \\
+  &amp;= \beta_0 + \beta_1 x + \beta_2 (\alpha_0 + \alpha_1 x + \varepsilon_m) + \varepsilon_y \\
+  &amp;= \beta_0 + \beta_1 x + \beta_2 \alpha_0 + \beta_2 \alpha_1 x + \beta_2 \varepsilon_m + \varepsilon_y \\
+\text{total effect} := \frac{\delta y}{\delta x} &amp;= \underbrace{\beta_1}_{\text{ADE}} + \underbrace{\beta_2 \alpha_1}_{\text{ACME}}
+\end{aligned}
+\]</span></p>
+<p>Note that if we are only interested in the <em>total effect</em> we can omit the mediator <span class="math inline">\(m\)</span> from the model and estimate:</p>
+<p><span class="math display">\[
+y = \gamma_0 + \gamma_1 x + \epsilon_y
+\]</span>
+where <span class="math inline">\(\gamma_1 = \beta_1 + \beta_2 \alpha_1\)</span> (again: all these equations can be estimated using OLS). In that case we are using OVB in our favor: By omitting <span class="math inline">\(m\)</span> its effect on <span class="math inline">\(y\)</span> is picked up by <span class="math inline">\(x\)</span> to exactly the degree that <span class="math inline">\(x\)</span> and <span class="math inline">\(m\)</span> are correlated. However, in contrast to the previous example that is exactly what we want since <span class="math inline">\(m\)</span> is caused by <span class="math inline">\(x\)</span> as well!</p>
+<p>Notable changes to <a href="regression.html#the-pipe-bad-control">The Pipe</a>:</p>
+<ul>
+<li>We have both direct and indirect effects of <span class="math inline">\(x\)</span> on <span class="math inline">\(y\)</span></li>
+<li>The mediator <span class="math inline">\(m\)</span> is continuous instead of binary</li>
+</ul>
+<p><img src="12-causal_modeling_files/figure-html/unnamed-chunk-18-1.png" width="576" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="regression.html#cb671-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">11</span>)</span>
+<span id="cb671-2"><a href="regression.html#cb671-2" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb671-3"><a href="regression.html#cb671-3" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> X <span class="sc">+</span> <span class="dv">5</span> <span class="sc">*</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb671-4"><a href="regression.html#cb671-4" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">25</span> <span class="sc">+</span> <span class="fl">0.2</span> <span class="sc">*</span> X <span class="sc">+</span> <span class="dv">3</span> <span class="sc">*</span> M <span class="sc">+</span> <span class="dv">10</span> <span class="sc">*</span> <span class="fu">rnorm</span>(n)</span>
+<span id="cb671-5"><a href="regression.html#cb671-5" tabindex="-1"></a>X_on_M <span class="ot">&lt;-</span> <span class="fu">lm</span>(M <span class="sc">~</span> X)</span>
+<span id="cb671-6"><a href="regression.html#cb671-6" tabindex="-1"></a>avg_direct_effect <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X <span class="sc">+</span> M)</span>
+<span id="cb671-7"><a href="regression.html#cb671-7" tabindex="-1"></a>total_effect <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X)</span>
+<span id="cb671-8"><a href="regression.html#cb671-8" tabindex="-1"></a><span class="fu">stargazer</span>(</span>
+<span id="cb671-9"><a href="regression.html#cb671-9" tabindex="-1"></a>  X_on_M, </span>
+<span id="cb671-10"><a href="regression.html#cb671-10" tabindex="-1"></a>  avg_direct_effect, </span>
+<span id="cb671-11"><a href="regression.html#cb671-11" tabindex="-1"></a>  total_effect, </span>
+<span id="cb671-12"><a href="regression.html#cb671-12" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">&#39;html&#39;</span>)</span></code></pre></div>
+<table style="text-align:center">
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="3">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+M
+</td>
+<td colspan="2">
+Y
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+X
+</td>
+<td>
+0.502<sup>***</sup>
+</td>
+<td>
+0.195<sup>***</sup>
+</td>
+<td>
+1.702<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.002)
+</td>
+<td>
+(0.046)
+</td>
+<td>
+(0.008)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+M
+</td>
+<td>
+</td>
+<td>
+3.006<sup>***</sup>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.091)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+10.102<sup>***</sup>
+</td>
+<td>
+-25.181<sup>***</sup>
+</td>
+<td>
+5.182<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.225)
+</td>
+<td>
+(1.026)
+</td>
+<td>
+(0.815)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+500
+</td>
+<td>
+500
+</td>
+<td>
+500
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.990
+</td>
+<td>
+0.996
+</td>
+<td>
+0.988
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.990
+</td>
+<td>
+0.996
+</td>
+<td>
+0.988
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+5.023 (df = 498)
+</td>
+<td>
+10.204 (df = 497)
+</td>
+<td>
+18.218 (df = 498)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+48,670.140<sup>***</sup> (df = 1; 498)
+</td>
+<td>
+68,470.640<sup>***</sup> (df = 2; 497)
+</td>
+<td>
+42,616.510<sup>***</sup> (df = 1; 498)
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="3" style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="regression.html#cb672-1" tabindex="-1"></a>avg_causal_mediation_effect <span class="ot">&lt;-</span> <span class="fu">coef</span>(X_on_M)[<span class="st">&#39;X&#39;</span>] <span class="sc">*</span> <span class="fu">coef</span>(avg_direct_effect)[<span class="st">&#39;M&#39;</span>]</span>
+<span id="cb672-2"><a href="regression.html#cb672-2" tabindex="-1"></a>total_effect_alternative <span class="ot">&lt;-</span> <span class="fu">coef</span>(avg_direct_effect)[<span class="st">&#39;X&#39;</span>] <span class="sc">+</span> avg_causal_mediation_effect</span>
+<span id="cb672-3"><a href="regression.html#cb672-3" tabindex="-1"></a>proportion_mediated <span class="ot">&lt;-</span> avg_causal_mediation_effect <span class="sc">/</span> total_effect_alternative</span></code></pre></div>
+<div id="ysvncaouxv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ysvncaouxv table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ysvncaouxv thead, #ysvncaouxv tbody, #ysvncaouxv tfoot, #ysvncaouxv tr, #ysvncaouxv td, #ysvncaouxv th {
+  border-style: none;
+}
+
+#ysvncaouxv p {
+  margin: 0;
+  padding: 0;
+}
+
+#ysvncaouxv .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ysvncaouxv .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ysvncaouxv .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ysvncaouxv .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ysvncaouxv .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ysvncaouxv .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ysvncaouxv .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ysvncaouxv .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ysvncaouxv .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ysvncaouxv .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ysvncaouxv .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ysvncaouxv .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ysvncaouxv .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ysvncaouxv .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ysvncaouxv .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ysvncaouxv .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ysvncaouxv .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ysvncaouxv .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ysvncaouxv .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ysvncaouxv .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ysvncaouxv .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ysvncaouxv .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ysvncaouxv .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ysvncaouxv .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ysvncaouxv .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ysvncaouxv .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ysvncaouxv .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ysvncaouxv .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ysvncaouxv .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ysvncaouxv .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ysvncaouxv .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ysvncaouxv .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ysvncaouxv .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ysvncaouxv .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ysvncaouxv .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ysvncaouxv .gt_left {
+  text-align: left;
+}
+
+#ysvncaouxv .gt_center {
+  text-align: center;
+}
+
+#ysvncaouxv .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ysvncaouxv .gt_font_normal {
+  font-weight: normal;
+}
+
+#ysvncaouxv .gt_font_bold {
+  font-weight: bold;
+}
+
+#ysvncaouxv .gt_font_italic {
+  font-style: italic;
+}
+
+#ysvncaouxv .gt_super {
+  font-size: 65%;
+}
+
+#ysvncaouxv .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ysvncaouxv .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ysvncaouxv .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ysvncaouxv .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ysvncaouxv .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ysvncaouxv .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ysvncaouxv .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ysvncaouxv .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ysvncaouxv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="2" class="gt_heading gt_title gt_font_normal gt_bottom_border" style>Causal Mediation Analysis</td>
+    </tr>
+    
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><th id="stub_1_1" scope="row" class="gt_row gt_left gt_stub">Average Causal Mediation Effect (ACME):</th>
+<td headers="stub_1_1 value" class="gt_row gt_right">1.508</td></tr>
+    <tr><th id="stub_1_2" scope="row" class="gt_row gt_left gt_stub">Average Direct Effect (ADE):</th>
+<td headers="stub_1_2 value" class="gt_row gt_right">0.195</td></tr>
+    <tr><th id="stub_1_3" scope="row" class="gt_row gt_left gt_stub">Total Effect:</th>
+<td headers="stub_1_3 value" class="gt_row gt_right">1.702</td></tr>
+    <tr><th id="stub_1_4" scope="row" class="gt_row gt_left gt_stub">Total Effect (alternative):</th>
+<td headers="stub_1_4 value" class="gt_row gt_right">1.702</td></tr>
+    <tr><th id="stub_1_5" scope="row" class="gt_row gt_left gt_stub">Proportion Mediated:</th>
+<td headers="stub_1_5 value" class="gt_row gt_right">0.886</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+<div id="estimation-using-process" class="section level4 hasAnchor" number="7.7.6.1">
+<h4><span class="header-section-number">7.7.6.1</span> Estimation using PROCESS<a href="regression.html#estimation-using-process" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In research settings the PROCESS macro by Andrew Hayes is very popular.
+The following code <em>should</em> download and source the macro for you but will definitely break in the future (try changing the <code>v43</code> part of the link to <code>v44</code> or <code>v45</code> etc. or obtain a new link from <a href="https://haskayne.ucalgary.ca/CCRAM/resource-hub">the website</a> if it does):</p>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="regression.html#cb673-1" tabindex="-1"></a><span class="do">## Download and source the PROCESS macro by Andrew F. Hayes</span></span>
+<span id="cb673-2"><a href="regression.html#cb673-2" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb673-3"><a href="regression.html#cb673-3" tabindex="-1"></a>process_macro_dl <span class="ot">&lt;-</span> <span class="st">&quot;https://www.afhayes.com/public/processv43.zip&quot;</span></span>
+<span id="cb673-4"><a href="regression.html#cb673-4" tabindex="-1"></a><span class="fu">download.file</span>(process_macro_dl,temp)</span>
+<span id="cb673-5"><a href="regression.html#cb673-5" tabindex="-1"></a>files <span class="ot">&lt;-</span> <span class="fu">unzip</span>(temp, <span class="at">list =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb673-6"><a href="regression.html#cb673-6" tabindex="-1"></a>fname <span class="ot">&lt;-</span> files<span class="sc">$</span>Name[<span class="fu">endsWith</span>(files<span class="sc">$</span>Name, <span class="st">&quot;process.R&quot;</span>)]</span>
+<span id="cb673-7"><a href="regression.html#cb673-7" tabindex="-1"></a><span class="fu">source</span>(<span class="fu">unz</span>(temp, fname))</span></code></pre></div>
+<pre><code>## 
+## ********************* PROCESS for R Version 4.3.1 ********************* 
+##  
+##            Written by Andrew F. Hayes, Ph.D.  www.afhayes.com              
+##    Documentation available in Hayes (2022). www.guilford.com/p/hayes3   
+##  
+## *********************************************************************** 
+##  
+## PROCESS is now ready for use.
+## Copyright 2020-2023 by Andrew F. Hayes ALL RIGHTS RESERVED
+## Workshop schedule at http://haskayne.ucalgary.ca/CCRAM
+## </code></pre>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="regression.html#cb675-1" tabindex="-1"></a><span class="fu">unlink</span>(temp)</span>
+<span id="cb675-2"><a href="regression.html#cb675-2" tabindex="-1"></a><span class="fu">rm</span>(files)</span>
+<span id="cb675-3"><a href="regression.html#cb675-3" tabindex="-1"></a><span class="fu">rm</span>(fname)</span>
+<span id="cb675-4"><a href="regression.html#cb675-4" tabindex="-1"></a><span class="fu">rm</span>(process_macro_dl)</span>
+<span id="cb675-5"><a href="regression.html#cb675-5" tabindex="-1"></a><span class="fu">rm</span>(temp)</span></code></pre></div>
+<p>Alternatively download the program from <a href="https://haskayne.ucalgary.ca/CCRAM/resource-hub">here</a> and source the <code>process.R</code> file manually.</p>
+<p>PROCESS model 4:</p>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="regression.html#cb676-1" tabindex="-1"></a><span class="fu">process</span>(</span>
+<span id="cb676-2"><a href="regression.html#cb676-2" tabindex="-1"></a>  <span class="fu">data.frame</span>(Y, X, M), <span class="at">y =</span> <span class="st">&#39;Y&#39;</span>, <span class="at">x =</span> <span class="st">&#39;X&#39;</span>, <span class="at">m =</span> <span class="st">&#39;M&#39;</span>, <span class="at">model =</span> <span class="dv">4</span>,</span>
+<span id="cb676-3"><a href="regression.html#cb676-3" tabindex="-1"></a>  <span class="at">progress =</span> <span class="dv">0</span>, <span class="at">seed =</span> <span class="dv">1</span>, <span class="at">plot =</span> <span class="dv">1</span></span>
+<span id="cb676-4"><a href="regression.html#cb676-4" tabindex="-1"></a>  )</span></code></pre></div>
+<pre><code>## 
+## ********************* PROCESS for R Version 4.3.1 ********************* 
+##  
+##            Written by Andrew F. Hayes, Ph.D.  www.afhayes.com              
+##    Documentation available in Hayes (2022). www.guilford.com/p/hayes3   
+##  
+## *********************************************************************** 
+##          
+## Model : 4
+##     Y : Y
+##     X : X
+##     M : M
+## 
+## Sample size: 500
+## 
+## Custom seed: 1
+## 
+## 
+## *********************************************************************** 
+## Outcome Variable: M
+## 
+## Model Summary: 
+##           R      R-sq       MSE          F       df1       df2         p
+##      0.9949    0.9899   25.2333 48670.1431    1.0000  498.0000    0.0000
+## 
+## Model: 
+##              coeff        se         t         p      LLCI      ULCI
+## constant   10.1015    0.2246   44.9659    0.0000    9.6601   10.5429
+## X           0.5015    0.0023  220.6131    0.0000    0.4971    0.5060
+## 
+## *********************************************************************** 
+## Outcome Variable: Y
+## 
+## Model Summary: 
+##           R      R-sq       MSE          F       df1       df2         p
+##      0.9982    0.9964  104.1125 68470.6372    2.0000  497.0000    0.0000
+## 
+## Model: 
+##              coeff        se         t         p      LLCI      ULCI
+## constant  -25.1811    1.0265  -24.5317    0.0000  -27.1979  -23.1643
+## X           0.1945    0.0459    4.2390    0.0000    0.1044    0.2847
+## M           3.0058    0.0910   33.0227    0.0000    2.8270    3.1847
+## 
+## *********************************************************************** 
+## Bootstrapping in progress. Please wait.
+## 
+## **************** DIRECT AND INDIRECT EFFECTS OF X ON Y ****************
+## 
+## Direct effect of X on Y:
+##      effect        se         t         p      LLCI      ULCI
+##      0.1945    0.0459    4.2390    0.0000    0.1044    0.2847
+## 
+## Indirect effect(s) of X on Y:
+##      Effect    BootSE  BootLLCI  BootULCI
+## M    1.5075    0.0483    1.4151    1.6050
+## 
+## ******************** ANALYSIS NOTES AND ERRORS ************************ 
+## 
+## Level of confidence for all confidence intervals in output: 95
+## 
+## Number of bootstraps for percentile bootstrap confidence intervals: 5000</code></pre>
+<p>Let’s assume the <span class="math inline">\(x\)</span> in this case is the influencer campaign, <span class="math inline">\(m\)</span> is consumers’ brand perceptionm, and <span class="math inline">\(y\)</span> is their purchase intention. We can present the results as follows</p>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="regression.html#cb678-1" tabindex="-1"></a><span class="fu">library</span>(DiagrammeR)</span>
+<span id="cb678-2"><a href="regression.html#cb678-2" tabindex="-1"></a></span>
+<span id="cb678-3"><a href="regression.html#cb678-3" tabindex="-1"></a><span class="fu">mermaid</span>(<span class="st">&quot;</span></span>
+<span id="cb678-4"><a href="regression.html#cb678-4" tabindex="-1"></a><span class="st">graph LR</span></span>
+<span id="cb678-5"><a href="regression.html#cb678-5" tabindex="-1"></a><span class="st">    Influencer--&gt;|0.5***|Modern[Perceived as Modern]</span></span>
+<span id="cb678-6"><a href="regression.html#cb678-6" tabindex="-1"></a><span class="st">    Modern--&gt;|3.0***|Purchase</span></span>
+<span id="cb678-7"><a href="regression.html#cb678-7" tabindex="-1"></a><span class="st">    Influencer--&gt;|0.2***|Purchase</span></span>
+<span id="cb678-8"><a href="regression.html#cb678-8" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-f6827287a18a74508d93" style="width:576px;height:192px;"></div>
+<script type="application/json" data-for="htmlwidget-f6827287a18a74508d93">{"x":{"diagram":"\ngraph LR\n    Influencer-->|0.5***|Modern[Perceived as Modern]\n    Modern-->|3.0***|Purchase\n    Influencer-->|0.2***|Purchase\n"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="effect-moderation-interactions" class="section level3 hasAnchor" number="7.7.7">
+<h3><span class="header-section-number">7.7.7</span> Effect Moderation (Interactions)<a href="regression.html#effect-moderation-interactions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In mediation there are causal relationships between the focal variable <span class="math inline">\(x\)</span> and the mediator <span class="math inline">\(m\)</span>, as well as, between <span class="math inline">\(m\)</span> and the outcome <span class="math inline">\(y\)</span>. In contrast, moderation describes a situation in which the relationship between the focal variable <span class="math inline">\(x\)</span> and the outcome <span class="math inline">\(y\)</span> is changed (e.g., in magnitude and/or direction) depending on the value of a moderator variable <span class="math inline">\(w\)</span>. For example, the effectiveness of a marketing campaign highlighting the ecological benefits of a product might depend on consumers’ perception of the brand’s environmental footprint. If it is in line with consumers’ perceptions the campaign might be very effective, but if they perceive the campaign as “green-washing” they might even start to boycott the product.</p>
+<p><img src="12-causal_modeling_files/figure-html/unnamed-chunk-25-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p>To understand the different effects <span class="math inline">\(x\)</span> has on <span class="math inline">\(y\)</span> we can plot regression lines for different values of the moderator. Note for example, that the effect of <span class="math inline">\(x\)</span> is negative for negative values of the moderator and positive for large positive values (e.g., in the range <span class="math inline">\((103, 131]\)</span>) of the moderator.</p>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="regression.html#cb679-1" tabindex="-1"></a>moderation_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">y =</span> Y_mod, <span class="at">x =</span> X_mod <span class="sc">-</span> <span class="fu">mean</span>(X_mod), <span class="at">w =</span> Moderator <span class="sc">-</span> <span class="fu">mean</span>(Moderator))</span>
+<span id="cb679-2"><a href="regression.html#cb679-2" tabindex="-1"></a><span class="fu">ggplot</span>(moderation_df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> <span class="fu">cut</span>(w, <span class="dv">10</span>))) <span class="sc">+</span> </span>
+<span id="cb679-3"><a href="regression.html#cb679-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb679-4"><a href="regression.html#cb679-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb679-5"><a href="regression.html#cb679-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb679-6"><a href="regression.html#cb679-6" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">&quot;Moderator&quot;</span>, <span class="at">nrow =</span> <span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb679-7"><a href="regression.html#cb679-7" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>)</span></code></pre></div>
+<p><img src="12-causal_modeling_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>To understand for which values of the moderator the slope is significant (and in which direction) we can use the so-called Johnson-Neyman intervals.</p>
+<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="regression.html#cb680-1" tabindex="-1"></a>moderated_ols <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x<span class="sc">*</span>w, <span class="at">data =</span> moderation_df)</span>
+<span id="cb680-2"><a href="regression.html#cb680-2" tabindex="-1"></a>pred_resp <span class="ot">&lt;-</span> <span class="fu">predict_response</span>(moderated_ols, <span class="fu">c</span>(<span class="st">&quot;x&quot;</span>, <span class="st">&quot;w&quot;</span>))</span>
+<span id="cb680-3"><a href="regression.html#cb680-3" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">johnson_neyman</span>(pred_resp)) </span></code></pre></div>
+<pre><code>## The association between `x` and `y` is negative for values of `w` lower
+##   than 63 and positive for values higher than 80. Inside the interval of
+##   [63.00, 80.00], there were no clear associations.</code></pre>
+<p><img src="12-causal_modeling_files/figure-html/jn-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>In PROCESS the simple moderation model is <code>model=1</code>. <code>jn=1</code> will give us the Johnson-Neyman intervals.</p>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="regression.html#cb682-1" tabindex="-1"></a><span class="fu">process</span>(moderation_df, <span class="at">y =</span> <span class="st">&quot;y&quot;</span>, <span class="at">x =</span> <span class="st">&quot;x&quot;</span>, <span class="at">w=</span><span class="st">&quot;w&quot;</span>, <span class="at">model=</span><span class="dv">1</span>, <span class="at">jn=</span><span class="dv">1</span>, <span class="at">seed=</span><span class="dv">123</span>)</span></code></pre></div>
+<pre><code>## 
+## ********************* PROCESS for R Version 4.3.1 ********************* 
+##  
+##            Written by Andrew F. Hayes, Ph.D.  www.afhayes.com              
+##    Documentation available in Hayes (2022). www.guilford.com/p/hayes3   
+##  
+## *********************************************************************** 
+##          
+## Model : 1
+##     Y : y
+##     X : x
+##     W : w
+## 
+## Sample size: 10000
+## 
+## Custom seed: 123
+## 
+## 
+## *********************************************************************** 
+## Outcome Variable: y
+## 
+## Model Summary: 
+##           R      R-sq       MSE         F       df1       df2         p
+##      0.3872    0.1499    4.0626  587.5743    3.0000 9996.0000    0.0000
+## 
+## Model: 
+##              coeff        se         t         p      LLCI      ULCI
+## constant    0.0199    0.0202    0.9880    0.3232   -0.0196    0.0594
+## x          -0.1506    0.0040  -37.8143    0.0000   -0.1584   -0.1428
+## w          -0.0000    0.0006   -0.0306    0.9756   -0.0012    0.0011
+## Int_1       0.0021    0.0001   18.2215    0.0000    0.0019    0.0024
+## 
+## Product terms key:
+## Int_1  :  x  x  w      
+## 
+## Test(s) of highest order unconditional interaction(s):
+##       R2-chng         F       df1       df2         p
+## X*W    0.0282  332.0221    1.0000 9996.0000    0.0000
+## ----------
+## Focal predictor: x (X)
+##       Moderator: w (W)
+## 
+## Conditional effects of the focal predictor at values of the moderator(s):
+##           w    effect        se         t         p      LLCI      ULCI
+##    -34.4241   -0.2238    0.0057  -39.5735    0.0000   -0.2349   -0.2127
+##     -0.5204   -0.1517    0.0040  -38.0881    0.0000   -0.1595   -0.1439
+##     34.5525   -0.0771    0.0057  -13.6031    0.0000   -0.0882   -0.0660
+## 
+## Moderator value(s) defining Johnson-Neyman significance region(s):
+##       Value   % below   % above
+##     63.0982   96.2500    3.7500
+##     80.1945   98.7300    1.2700
+## 
+## Conditional effect of focal predictor at values of the moderator:
+##           w    effect        se         t         p      LLCI      ULCI
+##   -150.4507   -0.4705    0.0180  -26.1377    0.0000   -0.5058   -0.4352
+##   -135.6572   -0.4390    0.0163  -26.8993    0.0000   -0.4710   -0.4071
+##   -120.8638   -0.4076    0.0147  -27.8148    0.0000   -0.4363   -0.3789
+##   -106.0703   -0.3761    0.0130  -28.9315    0.0000   -0.4016   -0.3506
+##    -91.2768   -0.3447    0.0114  -30.3153    0.0000   -0.3670   -0.3224
+##    -76.4833   -0.3132    0.0098  -32.0546    0.0000   -0.3324   -0.2941
+##    -61.6899   -0.2818    0.0082  -34.2565    0.0000   -0.2979   -0.2656
+##    -46.8964   -0.2503    0.0068  -36.9926    0.0000   -0.2636   -0.2370
+##    -32.1029   -0.2188    0.0055  -40.0388    0.0000   -0.2296   -0.2081
+##    -17.3094   -0.1874    0.0045  -41.9763    0.0000   -0.1961   -0.1786
+##     -2.5160   -0.1559    0.0040  -39.0534    0.0000   -0.1638   -0.1481
+##     12.2775   -0.1245    0.0042  -29.4074    0.0000   -0.1328   -0.1162
+##     27.0710   -0.0930    0.0051  -18.2950    0.0000   -0.1030   -0.0831
+##     41.8644   -0.0616    0.0063   -9.7650    0.0000   -0.0739   -0.0492
+##     56.6579   -0.0301    0.0077   -3.8998    0.0001   -0.0452   -0.0150
+##     63.0982   -0.0164    0.0084   -1.9602    0.0500   -0.0328    0.0000
+##     71.4514    0.0013    0.0092    0.1460    0.8840   -0.0168    0.0195
+##     80.1945    0.0199    0.0102    1.9602    0.0500    0.0000    0.0399
+##     86.2449    0.0328    0.0108    3.0303    0.0024    0.0116    0.0540
+##    101.0383    0.0643    0.0124    5.1628    0.0000    0.0399    0.0887
+##    115.8318    0.0957    0.0141    6.7916    0.0000    0.0681    0.1233
+##    130.6253    0.1272    0.0158    8.0709    0.0000    0.0963    0.1581
+## 
+## ******************** ANALYSIS NOTES AND ERRORS ************************ 
+## 
+## Level of confidence for all confidence intervals in output: 95
+## 
+## W values in conditional tables are the 16th, 50th, and 84th percentiles.</code></pre>
+<p>Comparison to the standard <code>lm</code> output:</p>
+<table style="text-align:center">
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="1" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+y
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+x
+</td>
+<td>
+-0.151<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+w
+</td>
+<td>
+-0.00002
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+x:w
+</td>
+<td>
+0.002<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.0001)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+0.020
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.020)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+10,000
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.150
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.150
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error
+</td>
+<td>
+2.016 (df = 9996)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic
+</td>
+<td>
+587.574<sup>***</sup> (df = 3; 9996)
+</td>
+</tr>
+<tr>
+<td colspan="2" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
+</div>
+<div id="summary" class="section level3 hasAnchor" number="7.7.8">
+<h3><span class="header-section-number">7.7.8</span> Summary<a href="regression.html#summary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In this chapter we learned about causal modeling. There are four types of relationships we need to handle differently when trying to identify causal effects:</p>
+<ul>
+<li>Confounders <span class="math inline">\(\Rightarrow\)</span> control variables or <a href="regression.html#omitted-variable-bias-confounders">randomized experiments</a></li>
+<li>Mediators <span class="math inline">\(\Rightarrow\)</span> <a href="regression.html#mediation-analysis">mediation analysis</a> or omit from model (if we are only interested in the total effect)</li>
+<li>Colliders <span class="math inline">\(\Rightarrow\)</span> always omit from model</li>
+<li>Moderators <span class="math inline">\(\Rightarrow\)</span> <a href="regression.html#effect-moderation-interactions">interactions</a> or omit from model (if we are not interested in effect heterogeneity)</li>
+</ul>
 </div>
 </div>
 <div id="learning-check-5" class="section level2 unnumbered hasAnchor">
@@ -2639,12 +7376,45 @@ f(\mathbf{X}) = P(y_i = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 * x_{1,i} + \be
 <li><label><input type="checkbox" />Ordinal scale</label></li>
 <li><label><input type="checkbox" />Nominal scale</label></li>
 </ul>
+<p><strong>(LV7.15) What is the difference between a confounder and a mediator?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />A confounder is a variable that influences both the dependent and independent variable, while a mediator is a variable that is influenced by the independent variable and influences the dependent variable.</label></li>
+<li><label><input type="checkbox" />A confounder can be omitted from the model but a mediator cannot.</label></li>
+<li><label><input type="checkbox" />A mediator can only be omitted if we conduct a randomized experiment.</label></li>
+<li><label><input type="checkbox" />A confounder can only be omitted if we conduct a randomized experiment.</label></li>
+</ul>
+<p><strong>(LV7.16) Assume a simplified world in which a firms hiring decisions are based only on technical skills and personal skills (there are no other connections). Which of the following statements are correct if we are interested in the effect personal skills have on technical skills?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Technical skills and personal skills are correlated.</label></li>
+<li><label><input type="checkbox" />We have to add information about hiring to the model since that is a confounder.</label></li>
+<li><label><input type="checkbox" />A simple model regressing technical skills on personal skills will give us the correct effect (without any control variables).</label></li>
+<li><label><input type="checkbox" />We expect the coefficient associated with technical skill to be significant if and only if we also add hiring decisions to the model (assume model assumptions are fulfilled and error variance is sufficiently small).</label></li>
+</ul>
+<p><strong>(LV7.17) You observe that a particular marketing campaign in your company is very effective when shown to women but has no effect on men. In that case gender is a…</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Confounder</label></li>
+<li><label><input type="checkbox" />Mediator</label></li>
+<li><label><input type="checkbox" />Collider</label></li>
+<li><label><input type="checkbox" />Moderator</label></li>
+</ul>
+<p><strong>(LV7.18) You observe that more creative ads lead to higher consumer engagement which in turn leads to increased purchase intention. In addition the ads also have a direct effect on purchase intention.</strong></p>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-b8541aa25e7e882286cf" style="width:576px;height:240px;"></div>
+<script type="application/json" data-for="htmlwidget-b8541aa25e7e882286cf">{"x":{"diagram":"\ngraph LR\n    Creative-->Engagement\n    Engagement-->Purchase\n    Creative-->Purchase\n        "},"evals":[],"jsHooks":[]}</script>
+<p><strong>Unfortunately, the data measuring consumer engagement was lost when a laptop was stolen from your office. Which effects can you correctly identify using the remaining data (whether the more creative ad was shown and purchase intention)?</strong></p>
+<ul class="task-list">
+<li><label><input type="checkbox" />The direct effect of creative ads on purchase intention.</label></li>
+<li><label><input type="checkbox" />The total effect of creative ads on purchase intention.</label></li>
+<li><label><input type="checkbox" />The estimated effect is biased.</label></li>
+<li><label><input type="checkbox" />The direct effect of creative ads on purchase intention and the total effect of creative ads on purchase intention.</label></li>
+</ul>
 </div>
 <div id="references-4" class="section level2 unnumbered hasAnchor">
 <h2>References<a href="regression.html#references-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Field, A., Miles J., &amp; Field, Z. (2012): Discovering Statistics Using R. Sage Publications (<strong>chapters 6, 7, 8</strong>).</li>
 <li>James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013): An Introduction to Statistical Learning with Applications in R, Springer (<strong>chapter 3</strong>)</li>
+<li>Cinelli, C., A. Forney, and J. Pearl. (2020): “A Crash Course in Good and Bad Controls.” SSRN 3689437.</li>
+<li>Westreich, D., and S. Greenland. (2013): “The Table 2 Fallacy: Presenting and Interpreting Confounder and Modifier Coefficients.” American Journal of Epidemiology 177 (4): 292–98.</li>
 </ul>
 
 </div>

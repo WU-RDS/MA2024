@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Introduction | Marketing Analytics 2024</title>
+  <title>Introduction | Regression III</title>
   <meta name="description" content="An Introduction to Data Analytics Using R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Introduction | Marketing Analytics 2024" />
+  <meta property="og:title" content="Introduction | Regression III" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="An Introduction to Data Analytics Using R" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction | Marketing Analytics 2024" />
+  <meta name="twitter:title" content="Introduction | Regression III" />
   
   <meta name="twitter:description" content="An Introduction to Data Analytics Using R" />
   
@@ -30,7 +30,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="index.html"/>
 <link rel="next" href="preliminaries.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery-3.6.1/jquery-3.6.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -54,13 +54,21 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -319,6 +327,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.2" data-path="regression.html"><a href="regression.html#technical-details-of-the-model"><i class="fa fa-check"></i><b>7.6.2</b> Technical details of the model</a></li>
 <li class="chapter" data-level="7.6.3" data-path="regression.html"><a href="regression.html#estimation-in-r"><i class="fa fa-check"></i><b>7.6.3</b> Estimation in R</a></li>
 </ul></li>
+<li class="chapter" data-level="7.7" data-path="regression.html"><a href="regression.html#causal-modeling-mediation-analysis"><i class="fa fa-check"></i><b>7.7</b> Causal Modeling &amp; Mediation Analysis</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="regression.html"><a href="regression.html#directed-acyclic-graphs-dags"><i class="fa fa-check"></i><b>7.7.1</b> Directed Acyclic Graphs (DAGs)</a></li>
+<li class="chapter" data-level="7.7.2" data-path="regression.html"><a href="regression.html#the-fork-good-control"><i class="fa fa-check"></i><b>7.7.2</b> The Fork (Good control)</a></li>
+<li class="chapter" data-level="7.7.3" data-path="regression.html"><a href="regression.html#the-pipe-bad-control"><i class="fa fa-check"></i><b>7.7.3</b> The Pipe (Bad control)</a></li>
+<li class="chapter" data-level="7.7.4" data-path="regression.html"><a href="regression.html#the-collider-bad-control"><i class="fa fa-check"></i><b>7.7.4</b> The Collider (Bad control)</a></li>
+<li class="chapter" data-level="7.7.5" data-path="regression.html"><a href="regression.html#omitted-variable-bias-confounders"><i class="fa fa-check"></i><b>7.7.5</b> Omitted Variable Bias (Confounders)</a></li>
+<li class="chapter" data-level="7.7.6" data-path="regression.html"><a href="regression.html#mediation-analysis"><i class="fa fa-check"></i><b>7.7.6</b> Mediation analysis</a></li>
+<li class="chapter" data-level="7.7.7" data-path="regression.html"><a href="regression.html#effect-moderation-interactions"><i class="fa fa-check"></i><b>7.7.7</b> Effect Moderation (Interactions)</a></li>
+<li class="chapter" data-level="7.7.8" data-path="regression.html"><a href="regression.html#summary"><i class="fa fa-check"></i><b>7.7.8</b> Summary</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="regression.html"><a href="regression.html#learning-check-5"><i class="fa fa-check"></i>Learning check</a></li>
 <li class="chapter" data-level="" data-path="regression.html"><a href="regression.html#references-4"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
@@ -426,6 +445,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.9" data-path="faq.html"><a href="faq.html#new-questions"><i class="fa fa-check"></i><b>10.9</b> New questions</a></li>
 </ul></li>
+<li class="part"><span><b>VI FAQ</b></span></li>
+<li class="chapter" data-level="11" data-path="faq-1.html"><a href="faq-1.html"><i class="fa fa-check"></i><b>11</b> FAQ</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="faq-1.html"><a href="faq-1.html#common-error-messages-1"><i class="fa fa-check"></i><b>11.1</b> Common error messages</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#a-general-note-on-error-messages-1"><i class="fa fa-check"></i>A general note on error messages</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-filefile-rt-cannot-open-the-connection-1"><i class="fa fa-check"></i>Error in file(file, “rt”): cannot open the connection</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-unexpected-symbol-in-call-1"><i class="fa fa-check"></i>Error: unexpected ‘SYMBOL’ in “CALL”</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call-object-of-type-closure-is-not-subsettable-1"><i class="fa fa-check"></i>Error in CALL : object of type ‘closure’ is not subsettable</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call_with_-operator-is-invalid-for-atomic-vectors-1"><i class="fa fa-check"></i>Error in CALL_WITH_$: $ operator is invalid for atomic vectors</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call-object-name-not-found-1"><i class="fa fa-check"></i>Error in CALL: object ‘NAME’ not found</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call-could-not-find-function-function-1"><i class="fa fa-check"></i>Error in CALL: could not find function “FUNCTION”</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call-incorrect-number-of-dimension-1"><i class="fa fa-check"></i>Error in CALL: incorrect number of dimension</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="faq-1.html"><a href="faq-1.html#installation-of-r-packages-1"><i class="fa fa-check"></i><b>11.2</b> Installation of R packages</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#what-are-the-different-ways-to-install-r-packages-1"><i class="fa fa-check"></i>What are the different ways to install R packages?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#i-cannot-install-packages-due-to-error-in-contrib.urlrepossource-or-warning-message-package-packagename-is-not-available-for-this-version-of-r-1"><i class="fa fa-check"></i>I cannot install packages due to “Error in contrib.url(repos,”source”)” or “Warning message: package ‘PACKAGENAME’ is not available for this version of R”</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#some-libraries-with-graphical-output-e.g.-summarytools-magick-fail-to-installload-properly-on-macos-1"><i class="fa fa-check"></i>Some libraries with graphical output (e.g., summarytools, magick) fail to install/load properly on MacOS</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#i-cannot-install-some-packages-on-macos-1"><i class="fa fa-check"></i>I cannot install some packages on MacOS</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="faq-1.html"><a href="faq-1.html#issues-with-statistics-and-data-1"><i class="fa fa-check"></i><b>11.3</b> Issues with statistics and data</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#why-does-a-multi-item-scale-lead-to-increased-reliability-1"><i class="fa fa-check"></i>Why does a multi-item scale lead to increased reliability?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#why-can-demeaningstandardization-lead-to-missing-values-1"><i class="fa fa-check"></i>Why can demeaning/standardization lead to missing values?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#the-confidence-interval-ci-of-the-mean-seems-very-small-compared-to-the-dispersion-of-my-sample.-can-this-be-correct-1"><i class="fa fa-check"></i>The confidence interval (CI) of the mean seems very small compared to the dispersion of my sample. Can this be correct?</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="faq-1.html"><a href="faq-1.html#errors-related-to-specific-methods-1"><i class="fa fa-check"></i><b>11.4</b> Errors related to specific methods</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#logistic-regression-2"><i class="fa fa-check"></i>Logistic regression</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#when-using-logistic-regression-error-in-weights-y-non-numeric-argument-to-binary-operator-1"><i class="fa fa-check"></i>When using logistic regression: Error in weights * y : non-numeric argument to binary operator</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="faq-1.html"><a href="faq-1.html#general-settings-and-options-1"><i class="fa fa-check"></i><b>11.5</b> General settings and options</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#numbers-are-formatted-weirdly-1"><i class="fa fa-check"></i>Numbers are formatted weirdly</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="faq-1.html"><a href="faq-1.html#data-visualizationoutput-issues-1"><i class="fa fa-check"></i><b>11.6</b> Data visualization/output issues</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#how-can-the-geom-colors-in-a-ggplot-be-changed-1"><i class="fa fa-check"></i>How can the <code>geom</code> colors in a <code>ggplot</code> be changed?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#why-are-some-histograms-displayed-differently-1"><i class="fa fa-check"></i>Why are some histograms displayed differently?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#some-labels-in-plots-are-cut-off.-how-can-i-extend-the-plot-margins-1"><i class="fa fa-check"></i>Some labels in plots are cut off. How can I extend the plot margins?</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="faq-1.html"><a href="faq-1.html#issues-with-functions-and-function-arguments-1"><i class="fa fa-check"></i><b>11.7</b> Issues with functions and function arguments</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#problems-with-factor-and-as.factor-1"><i class="fa fa-check"></i>Problems with <code>factor</code> and <code>as.factor</code></a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#how-can-i-find-an-explanation-of-the-output-of-a-function-1"><i class="fa fa-check"></i>How can I find an explanation of the output of a function?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#what-does-the-margin-argument-do-1"><i class="fa fa-check"></i>What does the <code>MARGIN</code> argument do?</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="faq-1.html"><a href="faq-1.html#issues-with-r-markdown-1"><i class="fa fa-check"></i><b>11.8</b> Issues with R Markdown</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#i-get-an-error-when-knitting-to-pdf-but-it-works-for-html-1"><i class="fa fa-check"></i>I get an error when <code>knit</code>ting to PDF but it works for HTML</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#i-am-not-sure-where-r-code-latex-math-and-text-go-1"><i class="fa fa-check"></i>I am not sure where R-code, LaTeX math, and text go</a></li>
+</ul></li>
+<li class="chapter" data-level="11.9" data-path="faq-1.html"><a href="faq-1.html#new-questions-1"><i class="fa fa-check"></i><b>11.9</b> New questions</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -435,7 +509,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Marketing Analytics 2024</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Regression III</a>
           </h1>
         </div>
 

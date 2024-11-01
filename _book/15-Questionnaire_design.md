@@ -768,8 +768,9 @@ green_consumption$Q33[c(1,2,6,24,34,58,82,98,102,157,158)]
 ```
 
 ```
-##  [1] "02.50"         "3"             "04,50"         "5,10€"         "€4,--"         "04.00 Euro"    "15 USD"        "90,000.00"     "$5"            NA             
-## [11] "Error picture"
+##  [1] "02.50"         "3"             "04,50"         "5,10€"        
+##  [5] "€4,--"         "04.00 Euro"    "15 USD"        "90,000.00"    
+##  [9] "$5"            NA              "Error picture"
 ```
 
 The first two examples can be converted to numbers easily:
@@ -856,8 +857,9 @@ green_consumption$Q33[c(1,2,6,24,34,58,82,98,102,157,158)]
 ```
 
 ```
-##  [1] "02.50"         "3"             "04.50"         "5.10"          "4."            "04.00 "        "15 USD"        "90000.00"      "$5"            NA             
-## [11] "Error picture"
+##  [1] "02.50"         "3"             "04.50"         "5.10"         
+##  [5] "4."            "04.00 "        "15 USD"        "90000.00"     
+##  [9] "$5"            NA              "Error picture"
 ```
 
 Values in a different currency can be converted using a given exchange rate. We first look for rows including `$` or `USD` using the `grepl` function which unfortunately uses a slightly different syntax than `stringr`. Since `$` also has a special meaning we need to prepend `\\` to let R know that we mean a literal `$`.
@@ -893,8 +895,9 @@ green_consumption$Q33[c(1,2,6,24,34,58,82,98,102,157,158)]
 ```
 
 ```
-##  [1] "02.50"         "3"             "04.50"         "5.10"          "4."            "04.00 "        "13.5"          "90000.00"      "4.5"           NA             
-## [11] "Error picture"
+##  [1] "02.50"         "3"             "04.50"         "5.10"         
+##  [5] "4."            "04.00 "        "13.5"          "90000.00"     
+##  [9] "4.5"           NA              "Error picture"
 ```
 
 Once we have formatted all values that are actually numbers correctly we can simply convert the whole variable to numeric replacing all non-numeric values with `NA` (which will result in a warning that we can ignore):
@@ -905,7 +908,8 @@ as.numeric(green_consumption$Q33[c(1,2,6,24,34,58,82,98,102,157,158)])
 ```
 
 ```
-##  [1]     2.5     3.0     4.5     5.1     4.0     4.0    13.5 90000.0     4.5      NA      NA
+##  [1]     2.5     3.0     4.5     5.1     4.0     4.0    13.5 90000.0     4.5
+## [10]      NA      NA
 ```
 For the whole variable:
 
@@ -989,8 +993,10 @@ q6_answers
 ```
 
 ```
-## [1] "to visit somebody"               "to go shopping"                  "to commute (work)"               "to commute (education)"         
-## [5] "to transport goods"              "to escort somebody"              "for business reasons"            "for airport transfer"           
+## [1] "to visit somebody"               "to go shopping"                 
+## [3] "to commute (work)"               "to commute (education)"         
+## [5] "to transport goods"              "to escort somebody"             
+## [7] "for business reasons"            "for airport transfer"           
 ## [9] "for leisure/cultural activities"
 ```
 
@@ -1133,7 +1139,9 @@ shareofwallet_answers
 ```
 
 ```
-## [1] "Discounter"               "Supermarket"              "Farmers market"           "Directly from the farmer" "Other:"                   "Other: - Text"
+## [1] "Discounter"               "Supermarket"             
+## [3] "Farmers market"           "Directly from the farmer"
+## [5] "Other:"                   "Other: - Text"
 ```
 
 ``` r
@@ -1143,8 +1151,12 @@ c(na.omit(shareofwallet_text))
 ```
 
 ```
-## [1] "Online"                                              "Small family owned market"                           "Grocery Store"                                      
-## [4] "Got Chicken & self made bread from my mother in-law" "Online"                                              "Small grocery store"                                
+## [1] "Online"                                             
+## [2] "Small family owned market"                          
+## [3] "Grocery Store"                                      
+## [4] "Got Chicken & self made bread from my mother in-law"
+## [5] "Online"                                             
+## [6] "Small grocery store"                                
 ## [7] "Organic shops"
 ```
 
@@ -1422,8 +1434,12 @@ questions_green_consumption[country_questions]
 ```
 
 ```
-##                                            Q28_1                                            Q28_2                                       Q28_3_TEXT 
-## "Where do you live? - Selected Choice - Austria" "Where do you live? - Selected Choice - Germany"              "Where do you live? - Other - Text"
+##                                            Q28_1 
+## "Where do you live? - Selected Choice - Austria" 
+##                                            Q28_2 
+## "Where do you live? - Selected Choice - Germany" 
+##                                       Q28_3_TEXT 
+##              "Where do you live? - Other - Text"
 ```
 
 ``` r
@@ -1486,8 +1502,10 @@ unique(green_consumption$country)
 ```
 
 ```
-##  [1] "austria"       "finland"       "germany"       "viet nam"      NA              "australia"     "vietnam"       "uzbekistan"    "portu"         "usa"          
-## [11] "united states" "singapore"     "hanoi"         "norway"
+##  [1] "austria"       "finland"       "germany"       "viet nam"     
+##  [5] NA              "australia"     "vietnam"       "uzbekistan"   
+##  [9] "portu"         "usa"           "united states" "singapore"    
+## [13] "hanoi"         "norway"
 ```
 
 Then we can easily combine different spellings using `fct_collapse`
@@ -1501,8 +1519,9 @@ unique(green_consumption$country)
 ```
 
 ```
-##  [1] austria    finland    germany    vietnam    <NA>       australia  uzbekistan portu      usa        singapore  norway    
-## Levels: australia austria finland germany vietnam norway portu singapore usa uzbekistan
+##  [1] austria    finland    germany    vietnam    <NA>       australia 
+##  [7] uzbekistan portu      usa        singapore  norway    
+## 10 Levels: australia austria finland germany vietnam norway portu ... uzbekistan
 ```
 Finally, we can capitalize all countries (`str_to_title(green_consumption$country)`) and recode the US to be all upper case (`fct_recode(green_consumption$country, USA = "Usa")`).
 
@@ -1514,7 +1533,8 @@ unique(green_consumption$country)
 ```
 
 ```
-##  [1] Austria    Finland    Germany    Vietnam    <NA>       Australia  Uzbekistan Portu      USA        Singapore  Norway    
-## Levels: Australia Austria Finland Germany Norway Portu Singapore USA Uzbekistan Vietnam
+##  [1] Austria    Finland    Germany    Vietnam    <NA>       Australia 
+##  [7] Uzbekistan Portu      USA        Singapore  Norway    
+## 10 Levels: Australia Austria Finland Germany Norway Portu Singapore ... Vietnam
 ```
 

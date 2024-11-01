@@ -488,7 +488,7 @@ describeBy(hours_a_b$hours, hours_a_b$group)
 ## group: A
 ##    vars  n  mean   sd median trimmed   mad min max range skew kurtosis   se
 ## X1    1 98 18.11 12.1     15   16.88 10.38   2  65    63 1.08     1.21 1.22
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: B
 ##    vars   n mean    sd median trimmed   mad min max range skew kurtosis  se
 ## X1    1 112 28.5 17.97   24.5   26.56 15.57   1  83    82 0.96     0.82 1.7
@@ -693,7 +693,7 @@ describeBy(hours_a_b$hours, hours_a_b$group)
 ## group: A
 ##    vars  n  mean   sd median trimmed   mad min max range skew kurtosis   se
 ## X1    1 98 18.11 12.1     15   16.88 10.38   2  65    63 1.08     1.21 1.22
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: B
 ##    vars   n mean    sd median trimmed   mad min max range skew kurtosis  se
 ## X1    1 112 28.5 17.97   24.5   26.56 15.57   1  83    82 0.96     0.82 1.7

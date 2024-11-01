@@ -1,0 +1,850 @@
+---
+title: "Regression III"
+---
+
+```{r, include=FALSE}
+options(digits = 7, scipen = 999)
+knitr::opts_chunk$set(
+  echo = TRUE, message = FALSE, warnings = FALSE,
+  fig.width = 6, fig.height = 6, fig.align = "center",
+  tidy.opts=list(width.cutoff=75), tidy=FALSE, rownames.print = FALSE, rows.print = 10
+)
+```
+
+## Causal Modeling & Mediation Analysis
+
+This chapter deals with a fundamental question of causal inference: **Which variables should be included in a causal model?** (see Cinelli et al. 2020) To answer this question two points need to be clear:
+
+1. In general each causal model only investigates the causal effect of a single independent variable, $x_k$, on the dependent variable $y$. The coefficients associated with all other variables, $x_{j\neq k}$, cannot (automatically) be interpreted as causal relationships. As regression coefficients are commonly presented in a single table, it is often unclear to the reader which coefficients can be interpreted as causal (see Westreich et al. 2013).
+2. Statistical significance (or any other statistical test) does not give us any idea about the causal model. To illustrate this, the following figure shows three statistically significant relationships between the variables $x$ and $y$ (all t-stats $> 9$). However, by construction there is no causal relationship between them in two of these examples. Even more concerning: In one case the _exclusion_ of a control variable leads to spurious correlation (leftmost plot) while in the other the _inclusion_ of the control variable does the same (rightmost plot).
+
+
+```{r intro, warnings=FALSE, fig.width=12, echo=FALSE}
+library(tidyverse)
+library(patchwork)
+library(ggdag)
+library(gt)
+library(dagitty)
+library(ggeffects)
+library(parameters)
+library(marginaleffects)
+set.seed(11)
+## Fork
+# n ... number of observations
+n <- 500
+# d ... binary confounder
+d <- rbinom(n, 1, 0.5)
+x <- 1.5 * d + rnorm(n)
+y <- 0.4 + 2 * d + rnorm(n)
+data_fork <- data.frame(x, y, d = factor(d, levels = c(0, 1), labels = c("Yes", "No")))
+plt_fork <- ggplot(data_fork, aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal() +
+  ggtitle("Relation due to omitted confounder")
+## Pipe
+set.seed(11)
+x <- 1 * rnorm(n)
+z <- rbinom(n, 1, boot::inv.logit(2 * x + rnorm(n)))
+y <- 2 * z + rnorm(n)
+data_pipe <- data.frame(x, z = factor(z, levels = c(0, 1), labels = c("Yes", "No")), y)
+plt_pipe <- ggplot(data_pipe, aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal() +
+  ggtitle("Relation through mediator")
+## Collider
+set.seed(11)
+x <- rnorm(n)
+y <- rnorm(n)
+a <- rbinom(n, 1, boot::inv.logit(9 * x - 9 * y + rnorm(n)))
+data_collider <- data.frame(x, y, a = factor(a, levels = c(0, 1), labels = c("No", "Yes")))
+data_collider$x_a <- resid(lm(x ~ 0 + a))
+data_collider$y_a <- resid(lm(y ~ 0 + a))
+plt_collider <- ggplot(data_collider, aes(x_a, y_a)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal() +
+  labs(x = "x", y = "y") +
+  theme(legend.position = "top") +
+  ggtitle("Relation due to included collider")
+plt_fork + plt_pipe + plt_collider
+```
+
+In order to learn about causal modeling we need to introduce a few concepts. First, we will talk about _Directed Acyclic Graphs_ (or DAGs). Then, we will introduce three types of scenarios, the fork, the pipe, and the collider, and relate those to the concepts of omitted variable bias and mediation. Finally, we will implement and interpret mediation analysis.
+
+### Directed Acyclic Graphs (DAGs)
+
+A _graph_ is a construct that consists of nodes, in our case variables, and edges connecting (some of) the nodes, in our case relationships between the variables. _Directed_ graphs have the additional property that the connections go in a particular direction. In the context of causal modeling, the causal relationship can only go in one direction. For example the direction would be from an influencer marketing campaign to subsequent sales. In general, we will not allow for any "cycles" of causality (i.e., starting from $X$ it must be impossible to end up at $X$ again when going in the direction of the edges) and thus call the graphs _acyclic_. In addition, we need the concept of _d-connection_. Variable $x$ is said to be d-connected to variable $y$ if it is possible to go from $x$ to $y$ in the direction of the edges (this might be a direct connection or there might be additional variables, i.e., mediators, inbetween; more on that later).
+
+Let's start with the simple scenario in which an influencer marketing campaign has a positive influence on sales (assuming no other variables are relevant). The DAG would look as follows showing the d-connection between influencer marketing and sales:
+
+```{r, echo=FALSE, fig.height=1.8}
+dagify(y ~ x, coords = list(x = c(x = 1, y = 2), y = c(x = 1, y = 1))) |>
+  tidy_dagitty() |>
+  mutate(fill = ifelse(name == "y", "Sales", "Influencer Marketing")) |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(size = 7, aes(color = fill), ) +
+  geom_dag_edges(show.legend = FALSE, aes(label = "+", label_size = 9), vjust=-1) +
+  theme_dag() +
+  theme(
+    legend.title = element_blank(),
+    legend.position = "top"
+  )
+```
+
+In this case a simple linear regression could be used to identify the marginal effect of spending an additional Euro on influencer marketing on sales. Looking at the following plot a log-log relationship seems appropriate.
+
+```{r, echo=FALSE, fig.height=4, fig.width=7}
+set.seed(12)
+options(scipen = 5)
+influencer_marketing <- runif(300, 0, 10)
+log_sales <- log(12) + 0.2 * log(influencer_marketing) + rnorm(300, 0, 0.1) 
+sales <- exp(log_sales)
+ggplot(data.frame(sales, influencer_marketing), aes(x = influencer_marketing, y = sales)) +
+  geom_point() +
+  theme_minimal() +
+  labs(y = "Sales", x = "Spending on Influencer Marketing") +
+ggplot(data.frame(sales, influencer_marketing), aes(x = log(influencer_marketing), y = log(sales))) +
+  geom_point() +
+  theme_minimal() +
+  labs(y = "log(Sales)", x = "log(Spending on Influencer Marketing)")
+```
+
+
+
+```{r}
+summary(lm(log(sales) ~ log(influencer_marketing)))
+```
+
+Note that while the causal relationship only goes in one direction, the correlation is "symmetric" in the sense that we could als switch `sales` and `influencer_marketing` in the model and would still get "significant" results. 
+
+```{r}
+summary(lm(log(influencer_marketing) ~ log(sales)))
+```
+
+
+### The Fork (Good control)
+
+```{r fork,echo=FALSE, fig.height = 2.5}
+set.seed(42)
+confounder <- dagify(x ~ d, y ~ d,
+  coords = list(
+    x = c(x = 1, y = 2, d = 1.5),
+    y = c(x = 1, y = 2, d = 2)
+  )
+) |>
+  tidy_dagitty() |>
+  mutate(fill = ifelse(name == "d", "Confounder", "variables of interest")) |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(size = 7, aes(color = fill)) +
+  geom_dag_edges(show.legend = FALSE) +
+  geom_dag_text() +
+  theme_dag() +
+  theme(
+    legend.title = element_blank(),
+    legend.position = "top"
+  )
+confounder
+```
+
+A typical dataset with a **confounder** will exhibit correlation between the treatment $X$ and outcome $y.$ This relationship is not causal! In the example below we have a binary confounder $d$ (Yes/No) that is d-connected with both $X$ and $y$ ($X$ and $y$ are not d-connected) 
+
+```{r fork_no, echo=FALSE}
+set.seed(11)
+# n ... number of observations
+n <- 500
+# d ... binary confounder
+d <- rbinom(n, 1, 0.5)
+x <- 1.5 * d + rnorm(n)
+y <- 0.4 + 2 * d + rnorm(n)
+data_fork <- data.frame(x, y, d = factor(d, levels = c(0, 1), labels = c("Yes", "No")))
+ggplot(data_fork, aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal()
+lm(y ~ x) |>
+  broom::tidy() |>
+  gt() |>
+  fmt_number(
+    columns = estimate:p.value,
+    decimals = 4
+  )
+```
+
+However once we take the confounder into account the association vanishes which reflects the lack of a causal relationship in this case (note that for simplicity the regression lines in the plot are not the same as the model output shown). 
+
+```{r fork_yes, echo=FALSE}
+# options(scipen = 10)
+ggplot(data_fork, aes(x, y, color = d)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal() +
+  theme(legend.position = "top")
+lm(y ~ x * d, data_fork) |>
+  broom::tidy() |>
+  gt() |>
+  fmt_number(
+    columns = estimate:p.value,
+    decimals = 4
+  )
+```
+
+Examples and ways to deal with confounders are shown [below](#omitted-variable-bias-confounders).
+
+### The Pipe (Bad control)
+
+```{r pipe, echo=FALSE, fig.height = 2}
+med <- dagify(z ~ x, y ~ z,
+  coords = list(x = c(x = 1, z = 1.5, y = 2), y = c(x = 1, y = 1, z = 1))
+) |>
+  tidy_dagitty() |>
+  mutate(fill = ifelse(name == "z", "Mediator", "variables of interest")) |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(size = 7, aes(color = fill)) +
+  geom_dag_edges(show.legend = FALSE) +
+  geom_dag_text() +
+  theme_dag() +
+  theme(
+    legend.title = element_blank(),
+    legend.position = "top"
+  )
+med
+```
+
+If we have a mediator in our data the picture looks very similar to the previous one. In addition, taking the mediator into account also has a similar effect: we remove the association between $X$ and $y$. However, in this case that is not what we want since $X$ and $y$ are d-connected. $X$ causes $y$ through $z$ (note that for simplicity the regression lines in the second plot are not the same as the model output shown). Examples of such relationships and the corresponding models are discussed in [Mediation analysis](#mediation-analysis).
+
+
+```{r pipe_no, echo=FALSE}
+set.seed(11)
+x <- 1 * rnorm(n)
+z <- rbinom(n, 1, boot::inv.logit(2 * x + rnorm(n)))
+y <- 2 * z + rnorm(n)
+data_pipe <- data.frame(x, z = factor(z, levels = c(0, 1), labels = c("Yes", "No")), y)
+ggplot(data_pipe, aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal()
+lm(y ~ x) |>
+  broom::tidy() |>
+  gt() |>
+  fmt_number(
+    columns = estimate:p.value,
+    decimals = 4
+  )
+```
+
+
+```{r pipe_yes, echo=FALSE}
+ggplot(data_pipe, aes(x, y, color = z)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal() +
+  theme(legend.position = "top")
+lm(y ~ x * z) |>
+  broom::tidy() |>
+  gt() |>
+  fmt_number(
+    columns = estimate:p.value,
+    decimals = 4
+  )
+```
+
+### The Collider (Bad control)
+
+```{r, fig.height=2.5, echo=FALSE}
+dagify(a ~ x, a ~ y,
+  coords = list(x = c(x = 1, y = 2, a = 1.5), y = c(x = 1, y = 0,  a = 0))
+) |>
+  tidy_dagitty() |>
+  mutate(fill = ifelse(name == "a", "Collider", "variables of interest")) |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(size = 7, aes(color = fill)) +
+  geom_dag_edges(show.legend = FALSE) +
+  geom_dag_text() +
+  theme_dag() +
+  theme(
+    legend.title = element_blank(),
+    legend.position = "top"
+  )
+```
+
+The collider is a special case. There is no association between $X$ and $y$ as long as we do **not** account for the collider in the model. However, by accounting for the collider we implicitly learn about $y$ as well (we use $X$ as the predictor). Since the collider is caused by $X$ and $y$, we can figure out what $y$ must be once we know $X$ and the collider similar to solving a simple equation you would see in high-school.
+
+```{r, echo=FALSE}
+set.seed(11)
+x <- rnorm(n)
+y <- rnorm(n)
+a <- rbinom(n, 1, boot::inv.logit(9 * x - 9 * y + rnorm(n)))
+data_collider <- data.frame(x, y, a = factor(a, levels = c(0, 1), labels = c("No", "Yes")))
+ggplot(data_collider, aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal()
+lm(y ~ x) |>
+  broom::tidy() |>
+  gt() |>
+  fmt_number(columns = estimate:p.value, decimals = 4)
+```
+
+```{r, echo=FALSE}
+data_collider$x_a <- resid(lm(x ~ 0 + a))
+data_collider$y_a <- resid(lm(y ~ 0 + a))
+ggplot(data_collider, aes(x_a, y_a)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal() +
+  labs(x = "x after accounting for a", y = "y after accounting for a") +
+  theme(legend.position = "top")
+lm(y ~ x + a, data_collider) |>
+  broom::tidy() |>
+  gt() |>
+  fmt_number(columns = estimate:p.value, decimals = 4)
+```
+
+To illustrate the concept of a collider let's look at an example:
+
+**Does product quality have an effect on marketing effectiveness?**
+
+Imagine a scenario in which product quality and marketing effectiveness are actually unrelated but both contribute to product success.
+
+```{r, fig.height=2.5, echo=FALSE}
+DiagrammeR::mermaid("
+graph LR
+    A[Product Quality] --> C[Product Success]
+    B[Marketing Effectiveness] --> C
+")
+```
+
+```{r, echo=FALSE}
+set.seed(11)
+x <- rnorm(n)
+y <- rnorm(n)
+a <- rbinom(n, 1, boot::inv.logit(9 * x + 9 * y + rnorm(n)))
+data_effectiveness <- data.frame(prod_qual = x, marketing_effectiveness = y, success = factor(a, levels = c(0, 1), labels = c("No", "Yes")))
+```
+
+We might estimate the following models. Model (1) is correctly specified, and model (2) includes the collider. Note that neither $R^2$ nor the p-values would lead us to choose the correct model. Including the collider leads to a spurious negative correlation between product quality and marketing effectiveness. Based on this result a marketing manager could incorrectly conclude that only low-quality products should be advertised.
+
+```{r, echo=TRUE, results='asis'}
+mod_correct <- lm(marketing_effectiveness ~ prod_qual, data_effectiveness)
+mod_collider <-  lm(marketing_effectiveness ~ prod_qual + success, data_effectiveness)
+stargazer::stargazer(
+  mod_correct, mod_collider,
+  type = "html"
+)
+```
+
+
+### Omitted Variable Bias (Confounders)
+
+[Recall](https://wu-rds.github.io/MA2024/regression.html#omitted-variables) that variables that influence both the outcome and other independent variables will bias the coefficients of those other independent variables if left out of a model. This bias is referred to as "Omitted Variable Bias" (short OVB) since it occurs due to the omission of a crucial variable. OVB occurs whenever a confounder (see [The Fork](#the-fork-good-control)) is left out of the model and constitutes a serious threat to causal interpretation of the coefficients. The good news is that OVB (typically) only occurs with observational data and can be mitigated by manipulating the focal variable $x$ in an experiment. If done correctly, the variation in $x$ is completely controlled by the marketing manager, e.g., through multiple conditions in a randomized experiment. Therefore, the (potentially unobserved) confounder is no longer responsible for the variation in $x$. In other words, the path from the confounder to $x$ is eliminated and OVB is no longer present. To illustrate this, imagine two scenarios in which we try to estimate the effectiveness of a nike shoe ad. In the first scenario we simply compare consumers that were shown the ad with those who were not shown the ad. However, we omit the fact that the ad was shown to users that searched for the term "nike running shoes" and not to others. This will bias the lower path (Ad -> Purchase) in the following DAG:
+
+```{r, echo=FALSE, fig.height=2.5, fig.width=8}
+confounder <- dagify(x ~ d, y ~ d, y ~ x,
+  coords = list(
+    x = c(x = 1, y = 2, d = 1.5),
+    y = c(x = 1, y = 1, d = 2)
+  )
+) |>
+  tidy_dagitty() |>
+  mutate(
+    fill = ifelse(name == "d", "Confounder", "variables of interest"),
+    labs = case_when(
+      name == "d" ~ "Searched for shoe",
+      name == "x" ~ "Ad shown",
+      name == "y" ~ "Purchase"
+    )
+  ) |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_edges(show.legend = FALSE) +
+  geom_dag_label(aes(label = labs), hjust = c(0.5, 0.7, 0.25)) +
+  theme_dag() +
+  theme(
+    legend.title = element_blank(),
+    legend.position = "top"
+  )
+confounder
+```
+
+In a second scenario we randomly assign each consumer to be shown the ad (treated) or not (control). In this case the confounder is no longer responsible for the variation in $x$, i.e., searching for the shoe did not cause the ad to be shown, since each person was randomly assigned to be shown the ad. The DAG becomes
+
+```{r, echo=FALSE, fig.height=2.5, fig.width=8}
+confounder <- dagify(y ~ d, y ~ x,
+  coords = list(
+    x = c(x = 1, y = 2, d = 1.5),
+    y = c(x = 1, y = 1, d = 2)
+  )
+) |>
+  tidy_dagitty() |>
+  mutate(
+    fill = ifelse(name == "d", "Confounder", "variables of interest"),
+    labs = case_when(
+      name == "d" ~ "Searched for shoe",
+      name == "x" ~ "Ad shown",
+      name == "y" ~ "Purchase"
+    )
+  ) |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_edges(show.legend = FALSE) +
+  geom_dag_label(aes(label = labs), hjust = c(0.5, 0.7, 0.25)) +
+  theme_dag() 
+confounder
+```
+
+Note that if we omit the variable indicating whether someone has searched for a shoe or not it is still part of the error term, i.e., we likely increase the error variance, but our causal effect of the ad on purchase is now unbiased (and consistent). If we do observe whether someone searched for the shoe or not we can still add it as a control variable, potentially decreasing the standard error of our estimate.
+
+The bad news is that we are unable to run randomized experiments in many situations. Therefore, it is valuable to understand the magnitude of the OVB. The magnitude of the OVB depends on how strongly correlated the confounder is with the included variable $x$. To illustrate this take a look at the equations representing the situation in [The Fork](#the-fork-good-control):
+
+$$
+\begin{aligned}
+x &= \alpha_0 + \alpha_1 d + \varepsilon_x \\
+y &= \beta_0 + \beta_1 d + \varepsilon_y
+\end{aligned}
+$$
+
+However, we might be unaware of the confounder $d$ but still be interested in the causal effect of $x$ on $y$. Therefore, we might be inclined to estimate the following (misspecified) model
+
+$$
+y = \gamma_0 + \gamma_1 x + \epsilon_y
+$$
+
+We know (based on the equations above) that the true effect of $x$ on $y$ is $0$ as it is entirely caused by $d$. In order to investigate the magnitude of the OVB we mistakenly view $d$ as a function of $x$ (see [Mediation analysis](#mediation-analysis)):
+
+$$
+d = \theta_0 + \theta_1 x + \varepsilon_d,
+$$
+
+plug the incorrectly specified model for $d$ into the correctly specified model for $y$, and take the derivative with respect to $x$:
+
+$$
+\begin{aligned}
+y &= \tilde \beta_0 + \beta_1 (\theta_0 + \theta_1 x + \varepsilon_d) + \epsilon_y \\
+  &= \tilde \beta_0 + \beta_1 \theta_0 + \beta_1 \theta_1 x + \beta_1 \varepsilon_d + \epsilon_y \\
+{\delta \over \delta x}  &= \beta_1 \theta_1
+\end{aligned}
+$$
+
+Note that $\gamma_1 = \beta_1 \theta_1$. 
+
+```{r, results='asis'}
+library(stargazer)
+set.seed(11)
+d <- 100 * rnorm(n)
+x <- -4 + 0.5 * d + 10 * rnorm(n)
+y <- 25 + 10 * d + 10 * rnorm(n)
+stargazer(
+  lm(y ~ d + x),
+  lm(y ~ x), ## gamma
+  lm(y ~ d), ## beta
+  lm(d ~ x), ## theta
+  type = 'html')
+## See coef of regression y ~ x
+beta1 <- coef(lm(y~d))['d']
+theta1 <- coef(lm(d~x))['x']
+beta1 * theta1
+```
+
+Notice that without theoretical knowledge about the data it is not clear which variable should be the "outcome" and which the "independent" variable since we could estimate either direction using OLS. In the example above we know ("from theory") that $d$ causes $x$ and $y$ but we estimate models where $x$ is the explanatory variable. As one might guess there is a clear relationship between coefficients estimated with one or the other variable on the left hand side. 
+
+```{r}
+theta_1 <- coef(lm(d~x))['x']
+alpha_1 <- coef(lm(x~d))['d']
+```
+
+To be exact we have to adjust for the respective variances of the variables:
+
+```{r}
+alpha_1 * var(d)/var(x)
+theta_1
+```
+
+### Mediation analysis
+
+Mediation analysis is often used to show a causal process. A company might, for example, run an influencer campaign aimed at changing consumers' perceptions of a brand being "old fashioned". In order to assess the effectiveness of the influencer, they run two separate campaigns. The "control group" is simply shown the product (without the influencer) while the "treated group" is shown the influencer campaign. In both cases they ask the consumers about their perception of the brand (modern vs. old fashioned) and about their purchase intention. 
+
+```{r, fig.height=2, echo = FALSE}
+library(DiagrammeR)
+mermaid("
+graph LR
+    Influencer-->Modern[Perceived as Modern]
+    Modern-->Purchase
+    Influencer-->Purchase
+")
+```
+
+The first arrow in the upper path represents the effectiveness of the influencer to change consumers' minds about the brand. The second arrow in the upper path represents the additional purchases that happen because consumers perceive the brand as more modern. The lower path represents a (possible) direct effect of the influencer campaign on purchases (without changing consumers' minds). These are consumers who still perceive the brand as old fashioned but nonetheless purchase the product as a result of the campaign. Note that these are hypothesized paths. The "existence" (non-zero relationship) of those arrows and the relative magnitude of these effects is what we are trying to test! 
+
+As the total causal effect a variable $x$ has on the outcome $y$ can be (partly) mediated through another variable $m$, we cannot just include $m$ in the model. However, we can decompose the effect into a direct and mediated part. Either of part can be $0$ but we can easily test whether that is the case. The decomposition has two parts: First, calculate the effect the variable of interest ($x$) has on the mediator ($m$):
+
+$$
+m = \alpha_0 + \alpha_1 x + \varepsilon_m
+$$
+
+Note that we use "alpha" ($\alpha$) for the regression coefficients to distinguish them from the parameters below. They can nonetheless be estimated using OLS.
+
+Second, calculate the full model for the outcome ($y$) including both $x$ and $m$:
+
+$$
+y = \beta_0 + \beta_1 x + \beta_2 m + \varepsilon_y
+$$
+
+Now $\beta_1$ is the _average direct effect_ (ADE) of $x$ on $y$. That is the part that is not mediated through $m$. In [The Pipe](#the-pipe-bad-control), $\beta_1=0$ since there is no direct connection from $x$ to $y$. The _average causal mediation effect_ (ACME) can be calculated as $\alpha_1 * \beta_2$. Intuitively, "how much would a unit increase in $x$ change $m$" times "how much would an increase in $m$ change $y$". The total effect of $x$ on $y$ can be seen more clearly by plugging in the model for $m$ in the second equation and taking the derivative with respect to $x$:
+
+
+$$
+\begin{aligned}
+y &= \beta_0 + \beta_1 x + \beta_2 m + \varepsilon_y \\
+  &= \beta_0 + \beta_1 x + \beta_2 (\alpha_0 + \alpha_1 x + \varepsilon_m) + \varepsilon_y \\
+  &= \beta_0 + \beta_1 x + \beta_2 \alpha_0 + \beta_2 \alpha_1 x + \beta_2 \varepsilon_m + \varepsilon_y \\
+\text{total effect} := \frac{\delta y}{\delta x} &= \underbrace{\beta_1}_{\text{ADE}} + \underbrace{\beta_2 \alpha_1}_{\text{ACME}}
+\end{aligned}
+$$
+
+Note that if we are only interested in the _total effect_ we can omit the mediator $m$ from the model and estimate:
+
+$$
+y = \gamma_0 + \gamma_1 x + \epsilon_y
+$$
+where $\gamma_1 = \beta_1 + \beta_2 \alpha_1$ (again: all these equations can be estimated using OLS). In that case we are using OVB in our favor: By omitting $m$ its effect on $y$ is picked up by $x$ to exactly the degree that $x$ and $m$ are correlated. However, in contrast to the previous example that is exactly what we want since $m$ is caused by $x$ as well!
+
+
+Notable changes to [The Pipe](#the-pipe-bad-control): 
+
+- We have both direct and indirect effects of $x$ on $y$
+- The mediator $m$ is continuous instead of binary
+
+
+```{r, fig.height=2.5, echo=FALSE}
+med2 <- dagify(m ~ x, y ~ m + x,
+  coords = list(x = c(x = 1, m = 1.5, y = 2), y = c(x = 1, y = 1, m = 1.5))
+) |>
+  tidy_dagitty() |>
+  mutate(fill = ifelse(name == "m", "Mediator", "variables of interest")) |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(size = 7, aes(color = fill)) +
+  geom_dag_edges(show.legend = FALSE) +
+  geom_dag_text() +
+  theme_dag() +
+  theme(
+    legend.title = element_blank(),
+    legend.position = "top"
+  )
+med2
+```
+
+
+```{r, results = 'asis'}
+set.seed(11)
+X <- 100 * rnorm(n)
+M <- 10 + 0.5 * X + 5 * rnorm(n)
+Y <- -25 + 0.2 * X + 3 * M + 10 * rnorm(n)
+X_on_M <- lm(M ~ X)
+avg_direct_effect <- lm(Y ~ X + M)
+total_effect <- lm(Y ~ X)
+stargazer(
+  X_on_M, 
+  avg_direct_effect, 
+  total_effect, 
+  type = 'html')
+```
+
+```{r}
+avg_causal_mediation_effect <- coef(X_on_M)['X'] * coef(avg_direct_effect)['M']
+total_effect_alternative <- coef(avg_direct_effect)['X'] + avg_causal_mediation_effect
+proportion_mediated <- avg_causal_mediation_effect / total_effect_alternative
+```
+
+```{r, echo = FALSE}
+mediation_effects <- tribble(
+        ~effect,                                  ~value,
+        "Average Causal Mediation Effect (ACME):", avg_causal_mediation_effect,
+        "Average Direct Effect (ADE):",            coef(avg_direct_effect)['X'],
+        "Total Effect:",                           coef(total_effect)['X'],
+        "Total Effect (alternative):",             total_effect_alternative,
+        "Proportion Mediated:",                    proportion_mediated)
+
+gt(mediation_effects, rowname_col = 'effect')  |>
+  tab_options(column_labels.hidden = TRUE) |>
+  fmt_number(columns = value, decimals = 3) |>
+  tab_header(title = "Causal Mediation Analysis")
+```
+
+#### Estimation using PROCESS
+
+In research settings the PROCESS macro by Andrew Hayes is very popular. 
+The following code _should_ download and source the macro for you but will definitely break in the future (try changing the `v43` part of the link to `v44` or `v45` etc. or obtain a new link from [the website](https://haskayne.ucalgary.ca/CCRAM/resource-hub) if it does):
+
+```{r, eval=TRUE, cache=TRUE}
+## Download and source the PROCESS macro by Andrew F. Hayes
+temp <- tempfile()
+process_macro_dl <- "https://www.afhayes.com/public/processv43.zip"
+download.file(process_macro_dl,temp)
+files <- unzip(temp, list = TRUE)
+fname <- files$Name[endsWith(files$Name, "process.R")]
+source(unz(temp, fname))
+unlink(temp)
+rm(files)
+rm(fname)
+rm(process_macro_dl)
+rm(temp)
+```
+
+Alternatively download the program from [here](https://haskayne.ucalgary.ca/CCRAM/resource-hub) and source the `process.R` file manually. 
+
+PROCESS model 4:
+
+```{r, eval=TRUE}
+process(
+  data.frame(Y, X, M), y = 'Y', x = 'X', m = 'M', model = 4,
+  progress = 0, seed = 1, plot = 1
+  )
+```
+
+Let's assume the $x$ in this case is the influencer campaign, $m$ is consumers' brand perceptionm, and $y$ is their purchase intention. We can present the results as follows
+
+```{r, fig.height=2}
+library(DiagrammeR)
+
+mermaid("
+graph LR
+    Influencer-->|0.5***|Modern[Perceived as Modern]
+    Modern-->|3.0***|Purchase
+    Influencer-->|0.2***|Purchase
+")
+```
+
+
+### Effect Moderation (Interactions)
+
+In mediation there are causal relationships between the focal variable $x$ and the mediator $m$, as well as, between $m$ and the outcome $y$. In contrast, moderation describes a situation in which the relationship between the focal variable $x$ and the outcome $y$ is changed (e.g., in magnitude and/or direction) depending on the value of a moderator variable $w$. For example, the effectiveness of a marketing campaign highlighting the ecological benefits of a product might depend on consumers' perception of the brand's environmental footprint. If it is in line with consumers' perceptions the campaign might be very effective, but if they perceive the campaign as "green-washing" they might even start to boycott the product.
+
+```{r, fig.height=3, echo = FALSE}
+coords <- tribble(
+  ~name,    ~x,  ~y,
+  "x",      1,   1,
+  "y",      2,   1,
+  "w",      1.5, 0.5,
+  "holder", 1.5, 1.05
+)
+
+dagify(
+  y ~ x,
+  holder ~ w,
+  coords = coords
+) |>
+  tidy_dagitty() |>
+  mutate(fill = ifelse(name == "w", "Moderator", "variables of interest")) |>
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) + 
+    geom_dag_point(data = function(x) filter(x, name != "holder"), aes(color = fill), size = 7) +
+    geom_dag_edges() + 
+    geom_dag_text(data = function(x) filter(x, name != "holder")) +
+    theme_dag() +
+    theme(legend.position = "top", legend.title = element_blank())
+```
+
+
+```{r, echo = FALSE}
+set.seed(1)
+X_mod <- rnorm(10000, 0, 5)
+Moderator <- rnorm(10000, 0, 35) 
+Y_mod <- -0.15 * X_mod + 0.002 * X_mod * Moderator + rnorm(10000, sd = 2)
+
+```
+
+To understand the different effects $x$ has on $y$ we can plot regression lines for different values of the moderator. Note for example, that the effect of $x$ is negative for negative values of the moderator and positive for large positive values (e.g., in the range $(103, 131]$) of the moderator.
+
+```{r, fig.height=5, fig.width = 7}
+moderation_df <- data.frame(y = Y_mod, x = X_mod - mean(X_mod), w = Moderator - mean(Moderator))
+ggplot(moderation_df, aes(x = x, y = y, color = cut(w, 10))) + 
+  geom_point(size = 0.1, alpha = 0.8) +
+  geom_smooth(method = "lm", se = FALSE) +
+  theme_minimal() +
+  guides(color = guide_legend(title = "Moderator", nrow = 2)) +
+  theme(legend.position = "top")
+```
+
+To understand for which values of the moderator the slope is significant (and in which direction) we can use the so-called Johnson-Neyman intervals.
+
+```{r, jn, fig.height=4, fig.width=7}
+moderated_ols <- lm(y ~ x*w, data = moderation_df)
+pred_resp <- predict_response(moderated_ols, c("x", "w"))
+plot(johnson_neyman(pred_resp)) 
+```
+
+In PROCESS the simple moderation model is `model=1`. `jn=1` will give us the Johnson-Neyman intervals.
+
+```{r, eval=TRUE}
+process(moderation_df, y = "y", x = "x", w="w", model=1, jn=1, seed=123)
+```
+
+Comparison to the standard `lm` output:
+
+```{r, results = 'asis', echo = FALSE}
+stargazer(moderated_ols, type = 'html')
+```
+
+### Summary
+
+In this chapter we learned about causal modeling. There are four types of relationships we need to handle differently when trying to identify causal effects:
+
+- Confounders $\Rightarrow$ control variables or [randomized experiments](#omitted-variable-bias-confounders)
+- Mediators $\Rightarrow$ [mediation analysis](#mediation-analysis) or omit from model (if we are only interested in the total effect)
+- Colliders $\Rightarrow$ always omit from model
+- Moderators $\Rightarrow$ [interactions](#effect-moderation-interactions) or omit from model (if we are not interested in effect heterogeneity)
+
+## Learning check {-}
+
+**(LC7.1) What is a correlation coefficient?**
+
+- [ ] It describes the difference in means of two variables
+- [ ] It describes the causal relation between two variables
+- [ ] It is the standardized covariance
+- [ ] It describes the degree to which the variation in one variable is related to the variation in another variable
+- [ ] None of the above 
+
+**(LC7.2) Which line through a scatterplot produces the best fit in a linear regression model?**
+
+- [ ] The line associated with the steepest slope parameter
+- [ ] The line that minimizes the sum of the squared deviations of the predicted values (regression line) from the observed values
+- [ ] The line that minimizes the sum of the squared residuals
+- [ ] The line that maximizes the sum of the squared residuals
+- [ ] None of the above 
+
+**(LC7.3) What is the interpretation of the regression coefficient ($\beta_1$=0.05) in a regression model where log(sales) (i.e., log-transformed units) is the dependent variable and log(advertising) (i.e., the log-transformed advertising expenditures in Euro) is the independent variable (i.e., $log(sales)=13.4+0.05∗log(advertising)$)?**
+
+- [ ] An increase in advertising by 1€ leads to an increase in sales by 0.5 units
+- [ ] A 1% increase in advertising leads to a 0.05% increase in sales
+- [ ] A 1% increase in advertising leads to a 5% decrease in sales
+- [ ] An increase in advertising by 1€ leads to an increase in sales by 0.005 units
+- [ ] None of the above
+
+**(LC7.4) Which of the following statements about the adjusted R-squared is TRUE?**
+
+- [ ] It is always larger than the regular $R^{2}$
+- [ ] It increases with every additional variable
+- [ ] It increases only with additional variables that add more explanatory power than pure chance
+- [ ] It contains a “penalty” for including unnecessary variables
+- [ ] None of the above 
+
+**(LC7.5) What does the term overfitting refer to?**
+
+- [ ] A regression model that has too many predictor variables
+- [ ] A regression model that fits to a specific data set so poorly, that it will not generalize to other samples
+- [ ] A regression model that fits to a specific data set so well, that it will only predict well within the sample but not generalize to other samples
+- [ ] A regression model that fits to a specific data set so well, that it will generalize to other samples particularly well
+- [ ] None of the above 
+
+**(LC7.6) What are assumptions of the linear regression model?**
+
+- [ ] Endogeneity
+- [ ] Independent errors
+- [ ] Heteroscedasticity
+- [ ] Linear dependence of regressors
+- [ ] None of the above 
+
+**(LC7.7) What does the problem of heteroscedasticity in a regression model refer to?**
+
+- [ ] The variance of the error term is not constant
+- [ ] A strong linear relationship between the independent variables
+- [ ] The variance of the error term is constant
+- [ ] A correlation between the error term and the independent variables
+- [ ] None of the above 
+
+**(LC7.8) What are properties of the multiplicative regression model (i.e., log-log specification)?**
+
+- [ ] Constant marginal returns
+- [ ] Decreasing marginal returns
+- [ ] Constant elasticity
+- [ ] Increasing marginal returns
+- [ ] None of the above 
+
+**(LC7.9) When do you use a logistic regression model?**
+
+- [ ] When the dependent variable is continuous
+- [ ] When the independent and dependent variables are binary
+- [ ] When the dependent variable is binary
+- [ ] None of the above 
+
+**(LC7.10) What is the correct way to implement a linear regression model in R? (x = independent variable, y = dependent variable)?**
+
+- [ ] `lm(y~x, data=data)`
+- [ ] `lm(x~y + error, data=data)`
+- [ ] `lm(x~y, data=data)`
+- [ ] `lm(y~x + error, data=data)`
+- [ ] None of the above 
+
+
+**(LC7.11) In a logistic regression model, where conversion (1 = conversion, 0 = no conversion) is the dependent variable, you obtain an estimate of your independent variable of 0.18. What is the correct interpretation of the coefficient associated with the independent variable?**
+
+- [ ] If the independent variable increases by 1 unit, the probability of a conversion increases by 0.18%. 
+- [ ] If the independent variable increases by 1 unit, a conversion becomes exp(0.18) = 1.19 times more likely. 
+- [ ] If the independent variable increases by 1%, the probability of conversion increases by 0.18%.
+- [ ] If the independent variable increases by 1%, the probability of conversion increases by 1.19%.
+
+**(LC7.12) What does the term elasticity (e.g., advertising elasticity) refer to?**
+
+- [ ] It expresses the relative change in an outcome variable due to a relative change in the input variable. 
+- [ ] It expresses the unit change in an outcome variable due to a change in the input variable by 1 unit. 
+- [ ] In a regression model: If the independent variable increases by 1%, the outcome changes by $\beta_1$%. 
+- [ ] In a regression model: If the independent variable increases by 1 unit, the outcome changes by $\beta_1$ units.
+
+**(LC7.13) What does the additive assumption of the linear regression model refer to?**
+
+- [ ] The effect of an independent variable on the dependent variable is independent of the values of the other independent variables included in the model.
+- [ ] The effect of an independent variable on the dependent variable is dependent of the values of the other independent variables included in the model.
+- [ ] None of the above.
+
+**(LC7.14) What types of variables can we consider as independent variables in regression models?**
+
+- [ ] Interval scale
+- [ ] Ratio scale
+- [ ] Ordinal scale
+- [ ] Nominal scale
+
+**(LV7.15) What is the difference between a confounder and a mediator?**
+
+- [ ] A confounder is a variable that influences both the dependent and independent variable, while a mediator is a variable that is influenced by the independent variable and influences the dependent variable.
+- [ ] A confounder can be omitted from the model but a mediator cannot.
+- [ ] A mediator can only be omitted if we conduct a randomized experiment.
+- [ ] A confounder can only be omitted if we conduct a randomized experiment.
+
+**(LV7.16) Assume a simplified world in which a firms hiring decisions are based only on technical skills and personal skills (there are no other connections). Which of the following statements are correct if we are interested in the effect personal skills have on technical skills?**
+
+- [ ] Technical skills and personal skills are correlated.
+- [ ] We have to add information about hiring to the model since that is a confounder.
+- [ ] A simple model regressing technical skills on personal skills will give us the correct effect (without any control variables).
+- [ ] We expect the coefficient associated with technical skill to be significant if and only if we also add hiring decisions to the model (assume model assumptions are fulfilled and error variance is sufficiently small).
+
+**(LV7.17) You observe that a particular marketing campaign in your company is very effective when shown to women but has no effect on men. In that case gender is a...**
+
+- [ ] Confounder
+- [ ] Mediator
+- [ ] Collider
+- [ ] Moderator
+
+**(LV7.18) You observe that more creative ads lead to higher consumer engagement which in turn leads to increased purchase intention. In addition the ads also have a direct effect on purchase intention.**
+
+```{r, fig.height=2.5, echo=FALSE}
+DiagrammeR::mermaid("
+graph LR
+    Creative-->Engagement
+    Engagement-->Purchase
+    Creative-->Purchase
+        ")
+```
+
+**Unfortunately, the data measuring consumer engagement was lost when a laptop was stolen from your office. Which effects can you correctly identify using the remaining data (whether the more creative ad was shown and purchase intention)?**
+
+- [ ] The direct effect of creative ads on purchase intention.
+- [ ] The total effect of creative ads on purchase intention.
+- [ ] The estimated effect is biased.
+- [ ] The direct effect of creative ads on purchase intention and the total effect of creative ads on purchase intention.
+
+
+## References {-}
+
+* Field, A., Miles J., & Field, Z. (2012): Discovering Statistics Using R. Sage Publications (**chapters 6, 7, 8**).
+* James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013): An Introduction to Statistical Learning with Applications in R, Springer (**chapter 3**)
+* Cinelli, C., A. Forney, and J. Pearl. (2020): “A Crash Course in Good and Bad Controls.” SSRN 3689437.
+* Westreich, D., and S. Greenland. (2013): “The Table 2 Fallacy: Presenting and Interpreting Confounder and Modifier Coefficients.” American Journal of Epidemiology 177 (4): 292–98.

@@ -1,4 +1,5 @@
 ---
+title: "Logistic Regression"
 output:
   html_document:
     toc: yes
@@ -185,7 +186,7 @@ exp(coef(logit_model ))
 
 ```
 ##          (Intercept)         danceability 
-##        0.00004355897 26532731.71142364293
+##        0.00004355897 26532731.71142458543
 ```
 
 Notice that the coefficient is extremely large. That is (partly) due to the fact that the danceability variable is constrained to values between $0$ and $1$ and the coefficients are for a unit change. We can make the "unit-change" interpretation more meaningful by multiplying the danceability index by $100$. This linear transformation does not affect the model fit or the p-values.
@@ -510,10 +511,14 @@ summary(logistf(Y~X))
 ## 
 ## Model fitted by Penalized ML
 ## Coefficients:
-##                    coef  se(coef)   lower 0.95 upper 0.95      Chisq          p method
-## (Intercept) -0.98871643 1.2135184 -10.21693673   1.884508 0.59231445 0.44152553      2
-## X1           0.33195133 0.1832767   0.04170297   1.463409 5.31583569 0.02113246      2
-## X2           0.08250405 0.5109798  -2.17888664   3.379327 0.01980379 0.88808646      2
+##                    coef  se(coef)   lower 0.95 upper 0.95      Chisq          p
+## (Intercept) -0.98871643 1.2135184 -10.21693673   1.884508 0.59231445 0.44152553
+## X1           0.33195133 0.1832767   0.04170297   1.463409 5.31583569 0.02113246
+## X2           0.08250405 0.5109798  -2.17888664   3.379327 0.01980379 0.88808646
+##             method
+## (Intercept)      2
+## X1               2
+## X2               2
 ## 
 ## Method: 1-Wald, 2-Profile penalized log-likelihood, 3-None
 ## 
@@ -521,119 +526,3 @@ summary(logistf(Y~X))
 ## Wald test = 3.744738 on 2 df, p = 0.153759
 ```
 
-
-
-## Learning check {-}
-
-**(LC7.1) What is a correlation coefficient?**
-
-- [ ] It describes the difference in means of two variables
-- [ ] It describes the causal relation between two variables
-- [ ] It is the standardized covariance
-- [ ] It describes the degree to which the variation in one variable is related to the variation in another variable
-- [ ] None of the above 
-
-**(LC7.2) Which line through a scatterplot produces the best fit in a linear regression model?**
-
-- [ ] The line associated with the steepest slope parameter
-- [ ] The line that minimizes the sum of the squared deviations of the predicted values (regression line) from the observed values
-- [ ] The line that minimizes the sum of the squared residuals
-- [ ] The line that maximizes the sum of the squared residuals
-- [ ] None of the above 
-
-**(LC7.3) What is the interpretation of the regression coefficient ($\beta_1$=0.05) in a regression model where log(sales) (i.e., log-transformed units) is the dependent variable and log(advertising) (i.e., the log-transformed advertising expenditures in Euro) is the independent variable (i.e., $log(sales)=13.4+0.05∗log(advertising)$)?**
-
-- [ ] An increase in advertising by 1€ leads to an increase in sales by 0.5 units
-- [ ] A 1% increase in advertising leads to a 0.05% increase in sales
-- [ ] A 1% increase in advertising leads to a 5% decrease in sales
-- [ ] An increase in advertising by 1€ leads to an increase in sales by 0.005 units
-- [ ] None of the above
-
-**(LC7.4) Which of the following statements about the adjusted R-squared is TRUE?**
-
-- [ ] It is always larger than the regular $R^{2}$
-- [ ] It increases with every additional variable
-- [ ] It increases only with additional variables that add more explanatory power than pure chance
-- [ ] It contains a “penalty” for including unnecessary variables
-- [ ] None of the above 
-
-**(LC7.5) What does the term overfitting refer to?**
-
-- [ ] A regression model that has too many predictor variables
-- [ ] A regression model that fits to a specific data set so poorly, that it will not generalize to other samples
-- [ ] A regression model that fits to a specific data set so well, that it will only predict well within the sample but not generalize to other samples
-- [ ] A regression model that fits to a specific data set so well, that it will generalize to other samples particularly well
-- [ ] None of the above 
-
-**(LC7.6) What are assumptions of the linear regression model?**
-
-- [ ] Endogeneity
-- [ ] Independent errors
-- [ ] Heteroscedasticity
-- [ ] Linear dependence of regressors
-- [ ] None of the above 
-
-**(LC7.7) What does the problem of heteroscedasticity in a regression model refer to?**
-
-- [ ] The variance of the error term is not constant
-- [ ] A strong linear relationship between the independent variables
-- [ ] The variance of the error term is constant
-- [ ] A correlation between the error term and the independent variables
-- [ ] None of the above 
-
-**(LC7.8) What are properties of the multiplicative regression model (i.e., log-log specification)?**
-
-- [ ] Constant marginal returns
-- [ ] Decreasing marginal returns
-- [ ] Constant elasticity
-- [ ] Increasing marginal returns
-- [ ] None of the above 
-
-**(LC7.9) When do you use a logistic regression model?**
-
-- [ ] When the dependent variable is continuous
-- [ ] When the independent and dependent variables are binary
-- [ ] When the dependent variable is binary
-- [ ] None of the above 
-
-**(LC7.10) What is the correct way to implement a linear regression model in R? (x = independent variable, y = dependent variable)?**
-
-- [ ] `lm(y~x, data=data)`
-- [ ] `lm(x~y + error, data=data)`
-- [ ] `lm(x~y, data=data)`
-- [ ] `lm(y~x + error, data=data)`
-- [ ] None of the above 
-
-
-**(LC7.11) In a logistic regression model, where conversion (1 = conversion, 0 = no conversion) is the dependent variable, you obtain an estimate of your independent variable of 0.18. What is the correct interpretation of the coefficient associated with the independent variable?**
-
-- [ ] If the independent variable increases by 1 unit, the probability of a conversion increases by 0.18%. 
-- [ ] If the independent variable increases by 1 unit, a conversion becomes exp(0.18) = 1.19 times more likely. 
-- [ ] If the independent variable increases by 1%, the probability of conversion increases by 0.18%.
-- [ ] If the independent variable increases by 1%, the probability of conversion increases by 1.19%.
-
-**(LC7.12) What does the term elasticity (e.g., advertising elasticity) refer to?**
-
-- [ ] It expresses the relative change in an outcome variable due to a relative change in the input variable. 
-- [ ] It expresses the unit change in an outcome variable due to a change in the input variable by 1 unit. 
-- [ ] In a regression model: If the independent variable increases by 1%, the outcome changes by $\beta_1$%. 
-- [ ] In a regression model: If the independent variable increases by 1 unit, the outcome changes by $\beta_1$ units.
-
-**(LC7.13) What does the additive assumption of the linear regression model refer to?**
-
-- [ ] The effect of an independent variable on the dependent variable is independent of the values of the other independent variables included in the model.
-- [ ] The effect of an independent variable on the dependent variable is dependent of the values of the other independent variables included in the model.
-- [ ] None of the above.
-
-**(LC7.14) What types of variables can we consider as independent variables in regression models?**
-
-- [ ] Interval scale
-- [ ] Ratio scale
-- [ ] Ordinal scale
-- [ ] Nominal scale
-
-
-## References {-}
-
-* Field, A., Miles J., & Field, Z. (2012): Discovering Statistics Using R. Sage Publications (**chapters 6, 7, 8**).
-* James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013): An Introduction to Statistical Learning with Applications in R, Springer (**chapter 3**)

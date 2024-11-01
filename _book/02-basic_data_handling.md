@@ -215,7 +215,8 @@ top_10_track_release_date
 ```
 
 ```
-##  [1] "2017-05-24" "2017-06-23" "2017-07-03" "2017-06-30" "2017-05-05" "2017-06-09" "2017-07-14" "2017-06-16" "2017-05-18" "2017-05-19"
+##  [1] "2017-05-24" "2017-06-23" "2017-07-03" "2017-06-30" "2017-05-05"
+##  [6] "2017-06-09" "2017-07-14" "2017-06-16" "2017-05-18" "2017-05-19"
 ```
 
 In order to check the type of a variable the ```class()``` function is used.
@@ -297,13 +298,13 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching core tidyverse packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──
+## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ## ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
 ## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
 ## ✔ purrr     1.0.2     
-## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
@@ -394,8 +395,9 @@ names(music_data) # returns the names of the variables in the data frame
 ```
 
 ```
-## [1] "top10_track_streams"       "top10_artist_names"        "top10_track_explicit"      "top10_artist_genre"        "top_10_track_release_date"
-## [6] "top10_track_explicit_1"
+## [1] "top10_track_streams"       "top10_artist_names"       
+## [3] "top10_track_explicit"      "top10_artist_genre"       
+## [5] "top_10_track_release_date" "top10_track_explicit_1"
 ```
 
 ```str()``` displays the internal structure of an R object. In the case of a data frame, it returns the class (e.g., numeric, factor, etc.) of each variable, as well as the number of observations and the number of variables. 
@@ -411,7 +413,7 @@ str(music_data) # returns the structure of the data frame
 ##  $ top10_artist_names       : chr  "Axwell /\\ Ingrosso" "Imagine Dragons" "J. Balvin" "Robin Schulz" ...
 ##  $ top10_track_explicit     : Factor w/ 2 levels "not explicit",..: 1 1 1 1 1 1 2 2 1 1
 ##  $ top10_artist_genre       : Factor w/ 5 levels "Alternative",..: 2 1 4 2 2 2 3 2 5 5
-##  $ top_10_track_release_date: Date, format: "2017-05-24" "2017-06-23" "2017-07-03" "2017-06-30" ...
+##  $ top_10_track_release_date: Date, format: "2017-05-24" "2017-06-23" ...
 ##  $ top10_track_explicit_1   : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
 ```
 
@@ -450,8 +452,9 @@ ls(music_data) # list all objects associated with an object
 ```
 
 ```
-## [1] "top_10_track_release_date" "top10_artist_genre"        "top10_artist_names"        "top10_track_explicit"      "top10_track_explicit_1"   
-## [6] "top10_track_streams"
+## [1] "top_10_track_release_date" "top10_artist_genre"       
+## [3] "top10_artist_names"        "top10_track_explicit"     
+## [5] "top10_track_explicit_1"    "top10_track_streams"
 ```
 
 #### Select, append and delete variables to/from data frames

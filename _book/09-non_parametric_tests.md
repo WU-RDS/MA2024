@@ -155,7 +155,7 @@ describeBy(music_sales$unit_sales, music_sales$group)  #descriptives by group
 ## group: low_price
 ##    vars  n mean   sd median trimmed  mad min max range skew kurtosis  se
 ## X1    1 51 8.37 6.44      6    7.17 4.45   2  30    28 1.66     2.22 0.9
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: high_price
 ##    vars  n mean   sd median trimmed  mad min max range skew kurtosis   se
 ## X1    1 51 5.86 5.87      3     4.9 4.45   0  30    30 1.84      4.1 0.82

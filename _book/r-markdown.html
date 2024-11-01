@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8 R Markdown | Marketing Analytics 2024</title>
+  <title>8 R Markdown | Regression III</title>
   <meta name="description" content="An Introduction to Data Analytics Using R" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8 R Markdown | Marketing Analytics 2024" />
+  <meta property="og:title" content="8 R Markdown | Regression III" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="An Introduction to Data Analytics Using R" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8 R Markdown | Marketing Analytics 2024" />
+  <meta name="twitter:title" content="8 R Markdown | Regression III" />
   
   <meta name="twitter:description" content="An Introduction to Data Analytics Using R" />
   
@@ -30,7 +30,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link rel="prev" href="regression.html"/>
 <link rel="next" href="survey-design-analysis.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="libs/jquery-3.6.1/jquery-3.6.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -54,13 +54,21 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.10.0/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
 <link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
 <link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
 <script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -319,6 +327,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.2" data-path="regression.html"><a href="regression.html#technical-details-of-the-model"><i class="fa fa-check"></i><b>7.6.2</b> Technical details of the model</a></li>
 <li class="chapter" data-level="7.6.3" data-path="regression.html"><a href="regression.html#estimation-in-r"><i class="fa fa-check"></i><b>7.6.3</b> Estimation in R</a></li>
 </ul></li>
+<li class="chapter" data-level="7.7" data-path="regression.html"><a href="regression.html#causal-modeling-mediation-analysis"><i class="fa fa-check"></i><b>7.7</b> Causal Modeling &amp; Mediation Analysis</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="regression.html"><a href="regression.html#directed-acyclic-graphs-dags"><i class="fa fa-check"></i><b>7.7.1</b> Directed Acyclic Graphs (DAGs)</a></li>
+<li class="chapter" data-level="7.7.2" data-path="regression.html"><a href="regression.html#the-fork-good-control"><i class="fa fa-check"></i><b>7.7.2</b> The Fork (Good control)</a></li>
+<li class="chapter" data-level="7.7.3" data-path="regression.html"><a href="regression.html#the-pipe-bad-control"><i class="fa fa-check"></i><b>7.7.3</b> The Pipe (Bad control)</a></li>
+<li class="chapter" data-level="7.7.4" data-path="regression.html"><a href="regression.html#the-collider-bad-control"><i class="fa fa-check"></i><b>7.7.4</b> The Collider (Bad control)</a></li>
+<li class="chapter" data-level="7.7.5" data-path="regression.html"><a href="regression.html#omitted-variable-bias-confounders"><i class="fa fa-check"></i><b>7.7.5</b> Omitted Variable Bias (Confounders)</a></li>
+<li class="chapter" data-level="7.7.6" data-path="regression.html"><a href="regression.html#mediation-analysis"><i class="fa fa-check"></i><b>7.7.6</b> Mediation analysis</a></li>
+<li class="chapter" data-level="7.7.7" data-path="regression.html"><a href="regression.html#effect-moderation-interactions"><i class="fa fa-check"></i><b>7.7.7</b> Effect Moderation (Interactions)</a></li>
+<li class="chapter" data-level="7.7.8" data-path="regression.html"><a href="regression.html#summary"><i class="fa fa-check"></i><b>7.7.8</b> Summary</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="regression.html"><a href="regression.html#learning-check-5"><i class="fa fa-check"></i>Learning check</a></li>
 <li class="chapter" data-level="" data-path="regression.html"><a href="regression.html#references-4"><i class="fa fa-check"></i>References</a></li>
 </ul></li>
@@ -426,6 +445,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.9" data-path="faq.html"><a href="faq.html#new-questions"><i class="fa fa-check"></i><b>10.9</b> New questions</a></li>
 </ul></li>
+<li class="part"><span><b>VI FAQ</b></span></li>
+<li class="chapter" data-level="11" data-path="faq-1.html"><a href="faq-1.html"><i class="fa fa-check"></i><b>11</b> FAQ</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="faq-1.html"><a href="faq-1.html#common-error-messages-1"><i class="fa fa-check"></i><b>11.1</b> Common error messages</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#a-general-note-on-error-messages-1"><i class="fa fa-check"></i>A general note on error messages</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-filefile-rt-cannot-open-the-connection-1"><i class="fa fa-check"></i>Error in file(file, “rt”): cannot open the connection</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-unexpected-symbol-in-call-1"><i class="fa fa-check"></i>Error: unexpected ‘SYMBOL’ in “CALL”</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call-object-of-type-closure-is-not-subsettable-1"><i class="fa fa-check"></i>Error in CALL : object of type ‘closure’ is not subsettable</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call_with_-operator-is-invalid-for-atomic-vectors-1"><i class="fa fa-check"></i>Error in CALL_WITH_$: $ operator is invalid for atomic vectors</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call-object-name-not-found-1"><i class="fa fa-check"></i>Error in CALL: object ‘NAME’ not found</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call-could-not-find-function-function-1"><i class="fa fa-check"></i>Error in CALL: could not find function “FUNCTION”</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#error-in-call-incorrect-number-of-dimension-1"><i class="fa fa-check"></i>Error in CALL: incorrect number of dimension</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="faq-1.html"><a href="faq-1.html#installation-of-r-packages-1"><i class="fa fa-check"></i><b>11.2</b> Installation of R packages</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#what-are-the-different-ways-to-install-r-packages-1"><i class="fa fa-check"></i>What are the different ways to install R packages?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#i-cannot-install-packages-due-to-error-in-contrib.urlrepossource-or-warning-message-package-packagename-is-not-available-for-this-version-of-r-1"><i class="fa fa-check"></i>I cannot install packages due to “Error in contrib.url(repos,”source”)” or “Warning message: package ‘PACKAGENAME’ is not available for this version of R”</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#some-libraries-with-graphical-output-e.g.-summarytools-magick-fail-to-installload-properly-on-macos-1"><i class="fa fa-check"></i>Some libraries with graphical output (e.g., summarytools, magick) fail to install/load properly on MacOS</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#i-cannot-install-some-packages-on-macos-1"><i class="fa fa-check"></i>I cannot install some packages on MacOS</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="faq-1.html"><a href="faq-1.html#issues-with-statistics-and-data-1"><i class="fa fa-check"></i><b>11.3</b> Issues with statistics and data</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#why-does-a-multi-item-scale-lead-to-increased-reliability-1"><i class="fa fa-check"></i>Why does a multi-item scale lead to increased reliability?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#why-can-demeaningstandardization-lead-to-missing-values-1"><i class="fa fa-check"></i>Why can demeaning/standardization lead to missing values?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#the-confidence-interval-ci-of-the-mean-seems-very-small-compared-to-the-dispersion-of-my-sample.-can-this-be-correct-1"><i class="fa fa-check"></i>The confidence interval (CI) of the mean seems very small compared to the dispersion of my sample. Can this be correct?</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="faq-1.html"><a href="faq-1.html#errors-related-to-specific-methods-1"><i class="fa fa-check"></i><b>11.4</b> Errors related to specific methods</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#logistic-regression-2"><i class="fa fa-check"></i>Logistic regression</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#when-using-logistic-regression-error-in-weights-y-non-numeric-argument-to-binary-operator-1"><i class="fa fa-check"></i>When using logistic regression: Error in weights * y : non-numeric argument to binary operator</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="faq-1.html"><a href="faq-1.html#general-settings-and-options-1"><i class="fa fa-check"></i><b>11.5</b> General settings and options</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#numbers-are-formatted-weirdly-1"><i class="fa fa-check"></i>Numbers are formatted weirdly</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="faq-1.html"><a href="faq-1.html#data-visualizationoutput-issues-1"><i class="fa fa-check"></i><b>11.6</b> Data visualization/output issues</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#how-can-the-geom-colors-in-a-ggplot-be-changed-1"><i class="fa fa-check"></i>How can the <code>geom</code> colors in a <code>ggplot</code> be changed?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#why-are-some-histograms-displayed-differently-1"><i class="fa fa-check"></i>Why are some histograms displayed differently?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#some-labels-in-plots-are-cut-off.-how-can-i-extend-the-plot-margins-1"><i class="fa fa-check"></i>Some labels in plots are cut off. How can I extend the plot margins?</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="faq-1.html"><a href="faq-1.html#issues-with-functions-and-function-arguments-1"><i class="fa fa-check"></i><b>11.7</b> Issues with functions and function arguments</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#problems-with-factor-and-as.factor-1"><i class="fa fa-check"></i>Problems with <code>factor</code> and <code>as.factor</code></a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#how-can-i-find-an-explanation-of-the-output-of-a-function-1"><i class="fa fa-check"></i>How can I find an explanation of the output of a function?</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#what-does-the-margin-argument-do-1"><i class="fa fa-check"></i>What does the <code>MARGIN</code> argument do?</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="faq-1.html"><a href="faq-1.html#issues-with-r-markdown-1"><i class="fa fa-check"></i><b>11.8</b> Issues with R Markdown</a>
+<ul>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#i-get-an-error-when-knitting-to-pdf-but-it-works-for-html-1"><i class="fa fa-check"></i>I get an error when <code>knit</code>ting to PDF but it works for HTML</a></li>
+<li class="chapter" data-level="" data-path="faq-1.html"><a href="faq-1.html#i-am-not-sure-where-r-code-latex-math-and-text-go-1"><i class="fa fa-check"></i>I am not sure where R-code, LaTeX math, and text go</a></li>
+</ul></li>
+<li class="chapter" data-level="11.9" data-path="faq-1.html"><a href="faq-1.html#new-questions-1"><i class="fa fa-check"></i><b>11.9</b> New questions</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -435,7 +509,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Marketing Analytics 2024</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Regression III</a>
           </h1>
         </div>
 
@@ -572,7 +646,7 @@ summary(cars)
 
 plot(dist~speed, cars)
 ```</code></pre>
-<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="r-markdown.html#cb665-1" tabindex="-1"></a><span class="fu">summary</span>(cars)</span></code></pre></div>
+<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="r-markdown.html#cb691-1" tabindex="-1"></a><span class="fu">summary</span>(cars)</span></code></pre></div>
 <pre><code>##      speed           dist       
 ##  Min.   : 4.0   Min.   :  2.00  
 ##  1st Qu.:12.0   1st Qu.: 26.00  
@@ -580,7 +654,7 @@ plot(dist~speed, cars)
 ##  Mean   :15.4   Mean   : 42.98  
 ##  3rd Qu.:19.0   3rd Qu.: 56.00  
 ##  Max.   :25.0   Max.   :120.00</code></pre>
-<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="r-markdown.html#cb667-1" tabindex="-1"></a><span class="fu">plot</span>(dist <span class="sc">~</span> speed, cars)</span></code></pre></div>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="r-markdown.html#cb693-1" tabindex="-1"></a><span class="fu">plot</span>(dist <span class="sc">~</span> speed, cars)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/cars2-1.png" width="672" /></p>
 <p>A good overview of all available global/chunk options can be found <a href="https://yihui.name/knitr/options/#chunk_options">here</a>.</p>
 </div>
@@ -818,9 +892,9 @@ Code
 <div id="load-libraries-and-data" class="section level3 hasAnchor" number="8.2.1">
 <h3><span class="header-section-number">8.2.1</span> Load libraries and data<a href="r-markdown.html#load-libraries-and-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For your convenience the following code will load the required <code>tidyverse</code> library as well as the data. Make sure to convert each of the variables you use for you analysis to the appropriate data types (e.g., <code>Date</code>, <code>factor</code>).</p>
-<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="r-markdown.html#cb671-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb671-2"><a href="r-markdown.html#cb671-2" tabindex="-1"></a>music_data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/MA2024/main/data/music_data_fin.csv&quot;</span>)</span>
-<span id="cb671-3"><a href="r-markdown.html#cb671-3" tabindex="-1"></a><span class="fu">str</span>(music_data)</span></code></pre></div>
+<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="r-markdown.html#cb697-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb697-2"><a href="r-markdown.html#cb697-2" tabindex="-1"></a>music_data <span class="ot">&lt;-</span> <span class="fu">read.csv2</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/MA2024/main/data/music_data_fin.csv&quot;</span>)</span>
+<span id="cb697-3"><a href="r-markdown.html#cb697-3" tabindex="-1"></a><span class="fu">str</span>(music_data)</span></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    66796 obs. of  31 variables:
 ##  $ isrc                       : chr  &quot;BRRGE1603547&quot; &quot;USUM71808193&quot; &quot;ES5701800181&quot; &quot;ITRSE2000050&quot; ...
 ##  $ artist_id                  : int  3679 5239 776407 433730 526471 1939 210184 212546 4938 119985 ...
@@ -853,7 +927,7 @@ Code
 ##  $ label                      : chr  &quot;Independent&quot; &quot;Universal Music&quot; &quot;Universal Music&quot; &quot;Independent&quot; ...
 ##  $ top10                      : int  1 0 0 0 0 1 0 0 0 0 ...
 ##  $ expert_rating              : chr  &quot;excellent&quot; &quot;good&quot; &quot;good&quot; &quot;poor&quot; ...</code></pre>
-<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="r-markdown.html#cb673-1" tabindex="-1"></a><span class="fu">head</span>(music_data, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="r-markdown.html#cb699-1" tabindex="-1"></a><span class="fu">head</span>(music_data, <span class="dv">2</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["isrc"],"name":[1],"type":["chr"],"align":["left"]},{"label":["artist_id"],"name":[2],"type":["int"],"align":["right"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["weeks_in_charts"],"name":[4],"type":["int"],"align":["right"]},{"label":["n_regions"],"name":[5],"type":["int"],"align":["right"]},{"label":["danceability"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["song_length"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["song_age"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["explicit"],"name":[15],"type":["int"],"align":["right"]},{"label":["n_playlists"],"name":[16],"type":["int"],"align":["right"]},{"label":["sp_popularity"],"name":[17],"type":["int"],"align":["right"]},{"label":["youtube_views"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["tiktok_counts"],"name":[19],"type":["int"],"align":["right"]},{"label":["ins_followers_artist"],"name":[20],"type":["int"],"align":["right"]},{"label":["monthly_listeners_artist"],"name":[21],"type":["int"],"align":["right"]},{"label":["playlist_total_reach_artist"],"name":[22],"type":["int"],"align":["right"]},{"label":["sp_fans_artist"],"name":[23],"type":["int"],"align":["right"]},{"label":["shazam_counts"],"name":[24],"type":["int"],"align":["right"]},{"label":["artistName"],"name":[25],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[26],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[27],"type":["chr"],"align":["left"]},{"label":["genre"],"name":[28],"type":["chr"],"align":["left"]},{"label":["label"],"name":[29],"type":["chr"],"align":["left"]},{"label":["top10"],"name":[30],"type":["int"],"align":["right"]},{"label":["expert_rating"],"name":[31],"type":["chr"],"align":["left"]}],"data":[{"1":"BRRGE1603547","2":"3679","3":"11944813","4":"141","5":"1","6":"50.9","7":"80.3","8":"4.0","9":"0.05","10":"46.3","11":"65.1","12":"166.018","13":"3.11865","14":"228.2857","15":"0","16":"450","17":"51","18":"145030723","19":"9740","20":"29613108","21":"4133393","22":"24286416","23":"3308630","24":"73100","25":"Luan Santana","26":"Eu, Você, O Mar e Ela","27":"2016-06-20","28":"other","29":"Independent","30":"1","31":"excellent"},{"1":"USUM71808193","2":"5239","3":"8934097","4":"51","5":"21","6":"35.3","7":"75.5","8":"73.3","9":"0.00","10":"39.0","11":"43.7","12":"191.153","13":"3.22800","14":"144.2857","15":"0","16":"768","17":"54","18":"13188411","19":"358700","20":"3693566","21":"18367363","22":"143384531","23":"465412","24":"588550","25":"Alessia Cara","26":"Growing Pains","27":"2018-06-14","28":"Pop","29":"Universal Music","30":"0","31":"good"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -867,33 +941,33 @@ Code
 <li>Create a new <code>data.frame</code> that only contains songs by “BTS” (Bonus: Also include songs that feature both BTS and other artists, see e.g., “BTS feat. Charli XCX”)</li>
 <li>Save the <code>data.frame</code> sorted by success (number of streams) with the most popular songs occurring first.</li>
 </ol>
-<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="r-markdown.html#cb674-1" tabindex="-1"></a><span class="co"># provide your code here 1.</span></span>
-<span id="cb674-2"><a href="r-markdown.html#cb674-2" tabindex="-1"></a>music_data <span class="sc">|&gt;</span></span>
-<span id="cb674-3"><a href="r-markdown.html#cb674-3" tabindex="-1"></a>    <span class="fu">filter</span>(artistName <span class="sc">==</span> <span class="st">&quot;BTS&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb674-4"><a href="r-markdown.html#cb674-4" tabindex="-1"></a>    <span class="fu">slice_max</span>(<span class="at">order_by =</span> streams, <span class="at">n =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb674-5"><a href="r-markdown.html#cb674-5" tabindex="-1"></a>    <span class="fu">select</span>(artistName, trackName)</span></code></pre></div>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="r-markdown.html#cb700-1" tabindex="-1"></a><span class="co"># provide your code here 1.</span></span>
+<span id="cb700-2"><a href="r-markdown.html#cb700-2" tabindex="-1"></a>music_data <span class="sc">|&gt;</span></span>
+<span id="cb700-3"><a href="r-markdown.html#cb700-3" tabindex="-1"></a>    <span class="fu">filter</span>(artistName <span class="sc">==</span> <span class="st">&quot;BTS&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb700-4"><a href="r-markdown.html#cb700-4" tabindex="-1"></a>    <span class="fu">slice_max</span>(<span class="at">order_by =</span> streams, <span class="at">n =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb700-5"><a href="r-markdown.html#cb700-5" tabindex="-1"></a>    <span class="fu">select</span>(artistName, trackName)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["artistName"],"name":[1],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"BTS","2":"Dynamite"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="r-markdown.html#cb675-1" tabindex="-1"></a><span class="do">## 2.</span></span>
-<span id="cb675-2"><a href="r-markdown.html#cb675-2" tabindex="-1"></a>bts_data <span class="ot">&lt;-</span> music_data <span class="sc">|&gt;</span></span>
-<span id="cb675-3"><a href="r-markdown.html#cb675-3" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(artistName, <span class="st">&quot;BTS&quot;</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb675-4"><a href="r-markdown.html#cb675-4" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(streams))</span>
-<span id="cb675-5"><a href="r-markdown.html#cb675-5" tabindex="-1"></a><span class="fu">distinct</span>(bts_data, artistName)</span></code></pre></div>
+<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="r-markdown.html#cb701-1" tabindex="-1"></a><span class="do">## 2.</span></span>
+<span id="cb701-2"><a href="r-markdown.html#cb701-2" tabindex="-1"></a>bts_data <span class="ot">&lt;-</span> music_data <span class="sc">|&gt;</span></span>
+<span id="cb701-3"><a href="r-markdown.html#cb701-3" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(artistName, <span class="st">&quot;BTS&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb701-4"><a href="r-markdown.html#cb701-4" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(streams))</span>
+<span id="cb701-5"><a href="r-markdown.html#cb701-5" tabindex="-1"></a><span class="fu">distinct</span>(bts_data, artistName)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["artistName"],"name":[1],"type":["chr"],"align":["left"]}],"data":[{"1":"BTS feat. Halsey"},{"1":"BTS"},{"1":"BTS feat. Lauv"},{"1":"BTS feat. Desiigner feat. Steve Aoki"},{"1":"Steve Aoki feat. BTS"},{"1":"BTS feat. Nicki Minaj"},{"1":"Lil Nas X feat. RM feat. BTS"},{"1":"BTS feat. Charli XCX"},{"1":"BTS feat. Steve Aoki"},{"1":"Lauv feat. BTS"},{"1":"BTS feat. Zara Larsson"},{"1":"BTS feat. Juice WRLD"},{"1":"Halsey feat. SUGA feat. BTS"},{"1":"BTS feat. Lauv feat. Frants"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="r-markdown.html#cb676-1" tabindex="-1"></a><span class="fu">head</span>(bts_data)</span></code></pre></div>
+<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="r-markdown.html#cb702-1" tabindex="-1"></a><span class="fu">head</span>(bts_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["isrc"],"name":[1],"type":["chr"],"align":["left"]},{"label":["artist_id"],"name":[2],"type":["int"],"align":["right"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["weeks_in_charts"],"name":[4],"type":["int"],"align":["right"]},{"label":["n_regions"],"name":[5],"type":["int"],"align":["right"]},{"label":["danceability"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["song_length"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["song_age"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["explicit"],"name":[15],"type":["int"],"align":["right"]},{"label":["n_playlists"],"name":[16],"type":["int"],"align":["right"]},{"label":["sp_popularity"],"name":[17],"type":["int"],"align":["right"]},{"label":["youtube_views"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["tiktok_counts"],"name":[19],"type":["int"],"align":["right"]},{"label":["ins_followers_artist"],"name":[20],"type":["int"],"align":["right"]},{"label":["monthly_listeners_artist"],"name":[21],"type":["int"],"align":["right"]},{"label":["playlist_total_reach_artist"],"name":[22],"type":["int"],"align":["right"]},{"label":["sp_fans_artist"],"name":[23],"type":["int"],"align":["right"]},{"label":["shazam_counts"],"name":[24],"type":["int"],"align":["right"]},{"label":["artistName"],"name":[25],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[26],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[27],"type":["chr"],"align":["left"]},{"label":["genre"],"name":[28],"type":["chr"],"align":["left"]},{"label":["label"],"name":[29],"type":["chr"],"align":["left"]},{"label":["top10"],"name":[30],"type":["int"],"align":["right"]},{"label":["expert_rating"],"name":[31],"type":["chr"],"align":["left"]}],"data":[{"1":"QM6MZ1917908","2":"206557","3":"275102347","4":"709","5":"35","6":"64.5","7":"86.2","8":"9.65","9":"0","10":"19.20","11":"79.8","12":"119.991","13":"3.829550","14":"101.28571","15":"0","16":"2604","17":"83","18":"1169494158","19":"1400000","20":"38700892","21":"26147576","22":"152858657","23":"2166028","24":"2602443","25":"BTS feat. Halsey","26":"Boy With Luv (feat. Halsey)","27":"2019-04-12","28":"other","29":"Independent","30":"1","31":"excellent"},{"1":"QM7282022872","2":"206557","3":"267700100","4":"121","5":"35","6":"74.6","7":"76.5","8":"9.93","9":"0","10":"9.36","11":"73.7","12":"114.044","13":"3.317567","14":"17.28571","15":"0","16":"3582","17":"91","18":"935819744","19":"3000000","20":"38700892","21":"26147576","22":"152858657","23":"2166028","24":"5295990","25":"BTS","26":"Dynamite","27":"2020-08-21","28":"other","29":"Independent","30":"1","31":"good"},{"1":"QM7282022872","2":"206557","3":"261662772","4":"81","5":"35","6":"74.6","7":"76.5","8":"9.93","9":"0","10":"9.36","11":"73.7","12":"114.044","13":"3.317567","14":"29.28571","15":"0","16":"3582","17":"91","18":"935819744","19":"3000000","20":"38700892","21":"26147576","22":"152858657","23":"2166028","24":"5295990","25":"BTS","26":"Dynamite","27":"2020-08-21","28":"other","29":"Independent","30":"1","31":"excellent"},{"1":"QMBZ92051791","2":"206557","3":"98155659","4":"121","5":"35","6":"56.6","7":"71.6","8":"4.24","9":"0","10":"37.00","11":"45.0","12":"81.068","13":"3.458017","14":"17.28571","15":"0","16":"659","17":"89","18":"293571799","19":"908000","20":"38700892","21":"26147576","22":"152858657","23":"2166028","24":"1089231","25":"BTS","26":"Life Goes On","27":"2020-11-20","28":"other","29":"Independent","30":"1","31":"fair"},{"1":"KRA381702187","2":"206557","3":"53816537","4":"906","5":"35","6":"59.8","7":"77.5","8":"5.45","9":"0","10":"6.77","11":"68.7","12":"129.819","13":"3.718717","14":"182.85714","15":"1","16":"2459","17":"72","18":"1226858563","19":"189000","20":"38700892","21":"26147576","22":"152858657","23":"2166028","24":"718165","25":"BTS","26":"DNA","27":"2017-09-18","28":"other","29":"Independent","30":"1","31":"masterpiece"},{"1":"QM4TX2001949","2":"206557","3":"49160372","4":"345","5":"34","6":"58.3","7":"81.7","8":"9.87","9":"0","10":"33.80","11":"43.8","12":"105.936","13":"4.106350","14":"56.28571","15":"0","16":"722","17":"79","18":"339282518","19":"260900","20":"38700892","21":"26147576","22":"152858657","23":"2166028","24":"0","25":"BTS","26":"ON","27":"2020-02-21","28":"other","29":"Independent","30":"1","31":"excellent"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="r-markdown.html#cb677-1" tabindex="-1"></a><span class="fu">tail</span>(bts_data)</span></code></pre></div>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="r-markdown.html#cb703-1" tabindex="-1"></a><span class="fu">tail</span>(bts_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["isrc"],"name":[1],"type":["chr"],"align":["left"]},{"label":["artist_id"],"name":[2],"type":["int"],"align":["right"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["weeks_in_charts"],"name":[4],"type":["int"],"align":["right"]},{"label":["n_regions"],"name":[5],"type":["int"],"align":["right"]},{"label":["danceability"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["song_length"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["song_age"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["explicit"],"name":[15],"type":["int"],"align":["right"]},{"label":["n_playlists"],"name":[16],"type":["int"],"align":["right"]},{"label":["sp_popularity"],"name":[17],"type":["int"],"align":["right"]},{"label":["youtube_views"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["tiktok_counts"],"name":[19],"type":["int"],"align":["right"]},{"label":["ins_followers_artist"],"name":[20],"type":["int"],"align":["right"]},{"label":["monthly_listeners_artist"],"name":[21],"type":["int"],"align":["right"]},{"label":["playlist_total_reach_artist"],"name":[22],"type":["int"],"align":["right"]},{"label":["sp_fans_artist"],"name":[23],"type":["int"],"align":["right"]},{"label":["shazam_counts"],"name":[24],"type":["int"],"align":["right"]},{"label":["artistName"],"name":[25],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[26],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[27],"type":["chr"],"align":["left"]},{"label":["genre"],"name":[28],"type":["chr"],"align":["left"]},{"label":["label"],"name":[29],"type":["chr"],"align":["left"]},{"label":["top10"],"name":[30],"type":["int"],"align":["right"]},{"label":["expert_rating"],"name":[31],"type":["chr"],"align":["left"]}],"data":[{"1":"JPPO01701387","2":"206557","3":"9278","4":"2","5":"2","6":"54.8","7":"83.7","8":"3.64","9":"0.00","10":"13.0","11":"32.7","12":"107.004","13":"4.569333","14":"201.5714","15":"0","16":"245","17":"37","18":"603945","19":"575","20":"38700892","21":"26147576","22":"152858657","23":"2166028","24":"0","25":"BTS","26":"Spring Day - Japanese ver.","27":"2017-05-09","28":"HipHop/Rap","29":"Universal Music","30":"0","31":"fair"},{"1":"KRA381601893","2":"206557","3":"9218","4":"1","5":"2","6":"56.4","7":"82.7","8":"4.26","9":"0.01","10":"14.7","11":"31.3","12":"131.052","13":"3.829133","14":"231.8571","15":"1","16":"1788","17":"64","18":"5313984","19":"4013","20":"38700892","21":"26147576","22":"152858657","23":"2166028","24":"74165","25":"BTS","26":"Begin","27":"2016-10-09","28":"other","29":"Independent","30":"0","31":"poor"},{"1":"KRA381601904","2":"206557","3":"5035","4":"1","5":"1","6":"44.2","7":"92.1","8":"20.20","9":"0.00","10":"10.0","11":"61.2","12":"169.892","13":"4.542717","14":"231.8571","15":"1","16":"1578","17":"62","18":"0","19":"0","20":"38700892","21":"26147576","22":"152858657","23":"2166028","24":"90121","25":"BTS","26":"2! 3!","27":"2016-10-09","28":"other","29":"Independent","30":"0","31":"excellent"},{"1":"JPPO01701386","2":"206557","3":"4839","4":"3","5":"1","6":"59.4","7":"95.1","8":"14.50","9":"0.00","10":"96.5","11":"65.3","12":"110.041","13":"3.868883","14":"201.5714","15":"0","16":"247","17":"47","18":"0","19":"545","20":"38700892","21":"26147576","22":"152858657","23":"2166028","24":"0","25":"BTS","26":"Not Today - Japanese ver.","27":"2017-05-09","28":"HipHop/Rap","29":"Universal Music","30":"0","31":"excellent"},{"1":"JPPO01701387","2":"206557","3":"3085","4":"2","5":"1","6":"54.8","7":"82.9","8":"3.71","9":"0.00","10":"13.6","11":"33.1","12":"106.996","13":"4.569333","14":"201.5714","15":"0","16":"245","17":"37","18":"603945","19":"575","20":"38700892","21":"26147576","22":"152858657","23":"2166028","24":"0","25":"BTS","26":"Spring Day - Japanese ver.","27":"2017-05-09","28":"HipHop/Rap","29":"Universal Music","30":"0","31":"excellent"},{"1":"JPPO01701386","2":"206557","3":"2178","4":"1","5":"1","6":"59.1","7":"95.5","8":"14.30","9":"0.00","10":"96.3","11":"64.1","12":"110.063","13":"3.868883","14":"201.5714","15":"0","16":"247","17":"47","18":"0","19":"545","20":"38700892","21":"26147576","22":"152858657","23":"2166028","24":"0","25":"BTS","26":"Not Today - Japanese ver.","27":"2017-05-09","28":"HipHop/Rap","29":"Universal Music","30":"0","31":"excellent"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -903,10 +977,10 @@ Code
 <div id="task-2" class="section level3 hasAnchor" number="8.2.3">
 <h3><span class="header-section-number">8.2.3</span> Task 2<a href="r-markdown.html#task-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a new <code>data.frame</code> containing the 100 most streamed songs.</p>
-<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="r-markdown.html#cb678-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
-<span id="cb678-2"><a href="r-markdown.html#cb678-2" tabindex="-1"></a>top100 <span class="ot">&lt;-</span> <span class="fu">slice_max</span>(music_data, <span class="at">order_by =</span> streams,</span>
-<span id="cb678-3"><a href="r-markdown.html#cb678-3" tabindex="-1"></a>    <span class="at">n =</span> <span class="dv">100</span>)</span>
-<span id="cb678-4"><a href="r-markdown.html#cb678-4" tabindex="-1"></a><span class="fu">range</span>(top100<span class="sc">$</span>streams)</span></code></pre></div>
+<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="r-markdown.html#cb704-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
+<span id="cb704-2"><a href="r-markdown.html#cb704-2" tabindex="-1"></a>top100 <span class="ot">&lt;-</span> <span class="fu">slice_max</span>(music_data, <span class="at">order_by =</span> streams,</span>
+<span id="cb704-3"><a href="r-markdown.html#cb704-3" tabindex="-1"></a>    <span class="at">n =</span> <span class="dv">100</span>)</span>
+<span id="cb704-4"><a href="r-markdown.html#cb704-4" tabindex="-1"></a><span class="fu">range</span>(top100<span class="sc">$</span>streams)</span></code></pre></div>
 <pre><code>## [1]  490037377 2165692479</code></pre>
 </div>
 <div id="task-3" class="section level3 hasAnchor" number="8.2.4">
@@ -921,19 +995,19 @@ Code
 <ol start="2" style="list-style-type: decimal">
 <li>Create a bar plot in which the heights of the bars correspond to the total number of streams within a genre (Bonus: order the bars by their height)</li>
 </ol>
-<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="r-markdown.html#cb680-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
-<span id="cb680-2"><a href="r-markdown.html#cb680-2" tabindex="-1"></a>genre_data <span class="ot">&lt;-</span> music_data <span class="sc">|&gt;</span></span>
-<span id="cb680-3"><a href="r-markdown.html#cb680-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> genre, <span class="at">total_streams =</span> <span class="fu">sum</span>(streams)) <span class="sc">|&gt;</span></span>
-<span id="cb680-4"><a href="r-markdown.html#cb680-4" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total_streams)) <span class="sc">|&gt;</span></span>
-<span id="cb680-5"><a href="r-markdown.html#cb680-5" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">genre =</span> <span class="fu">fct_reorder</span>(<span class="fu">as.factor</span>(genre), total_streams))</span>
-<span id="cb680-6"><a href="r-markdown.html#cb680-6" tabindex="-1"></a><span class="fu">head</span>(genre_data)</span></code></pre></div>
+<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="r-markdown.html#cb706-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
+<span id="cb706-2"><a href="r-markdown.html#cb706-2" tabindex="-1"></a>genre_data <span class="ot">&lt;-</span> music_data <span class="sc">|&gt;</span></span>
+<span id="cb706-3"><a href="r-markdown.html#cb706-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> genre, <span class="at">total_streams =</span> <span class="fu">sum</span>(streams)) <span class="sc">|&gt;</span></span>
+<span id="cb706-4"><a href="r-markdown.html#cb706-4" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total_streams)) <span class="sc">|&gt;</span></span>
+<span id="cb706-5"><a href="r-markdown.html#cb706-5" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">genre =</span> <span class="fu">fct_reorder</span>(<span class="fu">as.factor</span>(genre), total_streams))</span>
+<span id="cb706-6"><a href="r-markdown.html#cb706-6" tabindex="-1"></a><span class="fu">head</span>(genre_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["genre"],"name":[1],"type":["fct"],"align":["left"]},{"label":["total_streams"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"Pop","2":"173713597202"},{"1":"HipHop/Rap","2":"143116357087"},{"1":"other","2":"65952433233"},{"1":"Electro/Dance","2":"33815774273"},{"1":"Rock","2":"29085255798"},{"1":"R&B","2":"28843269808"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="r-markdown.html#cb681-1" tabindex="-1"></a><span class="fu">ggplot</span>(genre_data, <span class="fu">aes</span>(<span class="at">y =</span> genre, <span class="at">x =</span> total_streams)) <span class="sc">+</span></span>
-<span id="cb681-2"><a href="r-markdown.html#cb681-2" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="r-markdown.html#cb707-1" tabindex="-1"></a><span class="fu">ggplot</span>(genre_data, <span class="fu">aes</span>(<span class="at">y =</span> genre, <span class="at">x =</span> total_streams)) <span class="sc">+</span></span>
+<span id="cb707-2"><a href="r-markdown.html#cb707-2" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/question_3_a1-1.png" width="672" /></p>
 </div>
 <div id="task-4" class="section level3 hasAnchor" number="8.2.5">
@@ -942,16 +1016,16 @@ Code
 <li>Rank the music labels by their success (total number of streams of all their songs)</li>
 <li>Show the total number of streams as well as the average and the median of all songs by label. (Bonus: Also add the artist and track names and the number of streams of each label’s top song to the result)</li>
 </ol>
-<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="r-markdown.html#cb682-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
-<span id="cb682-2"><a href="r-markdown.html#cb682-2" tabindex="-1"></a>label_data <span class="ot">&lt;-</span> music_data <span class="sc">|&gt;</span></span>
-<span id="cb682-3"><a href="r-markdown.html#cb682-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> label, <span class="at">total_streams =</span> <span class="fu">sum</span>(streams),</span>
-<span id="cb682-4"><a href="r-markdown.html#cb682-4" tabindex="-1"></a>        <span class="at">avg_streams =</span> <span class="fu">mean</span>(streams), <span class="at">med_streams =</span> <span class="fu">median</span>(streams),</span>
-<span id="cb682-5"><a href="r-markdown.html#cb682-5" tabindex="-1"></a>        <span class="at">top_song_artist =</span> artistName[<span class="fu">which.max</span>(streams)],</span>
-<span id="cb682-6"><a href="r-markdown.html#cb682-6" tabindex="-1"></a>        <span class="at">top_song_title =</span> trackName[<span class="fu">which.max</span>(streams)],</span>
-<span id="cb682-7"><a href="r-markdown.html#cb682-7" tabindex="-1"></a>        <span class="at">top_song_streams =</span> <span class="fu">max</span>(streams)) <span class="sc">|&gt;</span></span>
-<span id="cb682-8"><a href="r-markdown.html#cb682-8" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">label_rank =</span> <span class="fu">dense_rank</span>(<span class="sc">-</span>total_streams)) <span class="sc">|&gt;</span></span>
-<span id="cb682-9"><a href="r-markdown.html#cb682-9" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total_streams))</span>
-<span id="cb682-10"><a href="r-markdown.html#cb682-10" tabindex="-1"></a>label_data</span></code></pre></div>
+<div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb708-1"><a href="r-markdown.html#cb708-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
+<span id="cb708-2"><a href="r-markdown.html#cb708-2" tabindex="-1"></a>label_data <span class="ot">&lt;-</span> music_data <span class="sc">|&gt;</span></span>
+<span id="cb708-3"><a href="r-markdown.html#cb708-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> label, <span class="at">total_streams =</span> <span class="fu">sum</span>(streams),</span>
+<span id="cb708-4"><a href="r-markdown.html#cb708-4" tabindex="-1"></a>        <span class="at">avg_streams =</span> <span class="fu">mean</span>(streams), <span class="at">med_streams =</span> <span class="fu">median</span>(streams),</span>
+<span id="cb708-5"><a href="r-markdown.html#cb708-5" tabindex="-1"></a>        <span class="at">top_song_artist =</span> artistName[<span class="fu">which.max</span>(streams)],</span>
+<span id="cb708-6"><a href="r-markdown.html#cb708-6" tabindex="-1"></a>        <span class="at">top_song_title =</span> trackName[<span class="fu">which.max</span>(streams)],</span>
+<span id="cb708-7"><a href="r-markdown.html#cb708-7" tabindex="-1"></a>        <span class="at">top_song_streams =</span> <span class="fu">max</span>(streams)) <span class="sc">|&gt;</span></span>
+<span id="cb708-8"><a href="r-markdown.html#cb708-8" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">label_rank =</span> <span class="fu">dense_rank</span>(<span class="sc">-</span>total_streams)) <span class="sc">|&gt;</span></span>
+<span id="cb708-9"><a href="r-markdown.html#cb708-9" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total_streams))</span>
+<span id="cb708-10"><a href="r-markdown.html#cb708-10" tabindex="-1"></a>label_data</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["label"],"name":[1],"type":["chr"],"align":["left"]},{"label":["total_streams"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["avg_streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["med_streams"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["top_song_artist"],"name":[5],"type":["chr"],"align":["left"]},{"label":["top_song_title"],"name":[6],"type":["chr"],"align":["left"]},{"label":["top_song_streams"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["label_rank"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"Universal Music","2":"197499391883","3":"9129964","4":"434943.0","5":"Billie Eilish","6":"bad guy","7":"1459149566","8":"1"},{"1":"Sony Music","2":"108111852495","3":"8725735","4":"355898.5","5":"Travis Scott","6":"SICKO MODE","7":"1032407145","8":"2"},{"1":"Independent","2":"94289773362","3":"4177659","4":"238884.0","5":"XXXTENTACION","6":"Jocelyn Flores","7":"936906948","8":"3"},{"1":"Warner Music","2":"88689942555","3":"8691684","4":"347152.5","5":"Ed Sheeran","6":"Shape of You","7":"2165692479","8":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -967,57 +1041,57 @@ Code
 <li>Select appropriate summary statistics for each of the variables and highlight the differences between genres using the summary statistics.</li>
 <li>Create an appropriate plot showing the differences of “energy” across genres.</li>
 </ul>
-<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="r-markdown.html#cb683-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
-<span id="cb683-2"><a href="r-markdown.html#cb683-2" tabindex="-1"></a>music_data <span class="sc">|&gt;</span></span>
-<span id="cb683-3"><a href="r-markdown.html#cb683-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> genre, <span class="fu">across</span>(danceability<span class="sc">:</span>explicit,</span>
-<span id="cb683-4"><a href="r-markdown.html#cb683-4" tabindex="-1"></a>        <span class="fu">list</span>(<span class="at">avg =</span> mean, <span class="at">std.dev =</span> sd, <span class="at">median =</span> median,</span>
-<span id="cb683-5"><a href="r-markdown.html#cb683-5" tabindex="-1"></a>            <span class="at">pct_10 =</span> \(x) <span class="fu">quantile</span>(x, <span class="fl">0.1</span>),</span>
-<span id="cb683-6"><a href="r-markdown.html#cb683-6" tabindex="-1"></a>            <span class="at">pct_90 =</span> \(x) <span class="fu">quantile</span>(x, <span class="fl">0.9</span>))))</span></code></pre></div>
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="r-markdown.html#cb709-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
+<span id="cb709-2"><a href="r-markdown.html#cb709-2" tabindex="-1"></a>music_data <span class="sc">|&gt;</span></span>
+<span id="cb709-3"><a href="r-markdown.html#cb709-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> genre, <span class="fu">across</span>(danceability<span class="sc">:</span>explicit,</span>
+<span id="cb709-4"><a href="r-markdown.html#cb709-4" tabindex="-1"></a>        <span class="fu">list</span>(<span class="at">avg =</span> mean, <span class="at">std.dev =</span> sd, <span class="at">median =</span> median,</span>
+<span id="cb709-5"><a href="r-markdown.html#cb709-5" tabindex="-1"></a>            <span class="at">pct_10 =</span> \(x) <span class="fu">quantile</span>(x, <span class="fl">0.1</span>),</span>
+<span id="cb709-6"><a href="r-markdown.html#cb709-6" tabindex="-1"></a>            <span class="at">pct_90 =</span> \(x) <span class="fu">quantile</span>(x, <span class="fl">0.9</span>))))</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["genre"],"name":[1],"type":["chr"],"align":["left"]},{"label":["danceability_avg"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["danceability_std.dev"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["danceability_median"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["danceability_pct_10"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["danceability_pct_90"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["energy_avg"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["energy_std.dev"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["energy_median"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["energy_pct_10"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["energy_pct_90"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["speechiness_avg"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["speechiness_std.dev"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["speechiness_median"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["speechiness_pct_10"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["speechiness_pct_90"],"name":[16],"type":["dbl"],"align":["right"]},{"label":["instrumentalness_avg"],"name":[17],"type":["dbl"],"align":["right"]},{"label":["instrumentalness_std.dev"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["instrumentalness_median"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["instrumentalness_pct_10"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["instrumentalness_pct_90"],"name":[21],"type":["dbl"],"align":["right"]},{"label":["liveness_avg"],"name":[22],"type":["dbl"],"align":["right"]},{"label":["liveness_std.dev"],"name":[23],"type":["dbl"],"align":["right"]},{"label":["liveness_median"],"name":[24],"type":["dbl"],"align":["right"]},{"label":["liveness_pct_10"],"name":[25],"type":["dbl"],"align":["right"]},{"label":["liveness_pct_90"],"name":[26],"type":["dbl"],"align":["right"]},{"label":["valence_avg"],"name":[27],"type":["dbl"],"align":["right"]},{"label":["valence_std.dev"],"name":[28],"type":["dbl"],"align":["right"]},{"label":["valence_median"],"name":[29],"type":["dbl"],"align":["right"]},{"label":["valence_pct_10"],"name":[30],"type":["dbl"],"align":["right"]},{"label":["valence_pct_90"],"name":[31],"type":["dbl"],"align":["right"]},{"label":["tempo_avg"],"name":[32],"type":["dbl"],"align":["right"]},{"label":["tempo_std.dev"],"name":[33],"type":["dbl"],"align":["right"]},{"label":["tempo_median"],"name":[34],"type":["dbl"],"align":["right"]},{"label":["tempo_pct_10"],"name":[35],"type":["dbl"],"align":["right"]},{"label":["tempo_pct_90"],"name":[36],"type":["dbl"],"align":["right"]},{"label":["song_length_avg"],"name":[37],"type":["dbl"],"align":["right"]},{"label":["song_length_std.dev"],"name":[38],"type":["dbl"],"align":["right"]},{"label":["song_length_median"],"name":[39],"type":["dbl"],"align":["right"]},{"label":["song_length_pct_10"],"name":[40],"type":["dbl"],"align":["right"]},{"label":["song_length_pct_90"],"name":[41],"type":["dbl"],"align":["right"]},{"label":["song_age_avg"],"name":[42],"type":["dbl"],"align":["right"]},{"label":["song_age_std.dev"],"name":[43],"type":["dbl"],"align":["right"]},{"label":["song_age_median"],"name":[44],"type":["dbl"],"align":["right"]},{"label":["song_age_pct_10"],"name":[45],"type":["dbl"],"align":["right"]},{"label":["song_age_pct_90"],"name":[46],"type":["dbl"],"align":["right"]},{"label":["explicit_avg"],"name":[47],"type":["dbl"],"align":["right"]},{"label":["explicit_std.dev"],"name":[48],"type":["dbl"],"align":["right"]},{"label":["explicit_median"],"name":[49],"type":["dbl"],"align":["right"]},{"label":["explicit_pct_10"],"name":[50],"type":["dbl"],"align":["right"]},{"label":["explicit_pct_90"],"name":[51],"type":["dbl"],"align":["right"]}],"data":[{"1":"other","2":"64.52704","3":"15.390890","4":"67.0","5":"42.90","6":"82.40","7":"63.90804","8":"20.45958","9":"67.70","10":"33.10","11":"87.60","12":"9.304199","13":"10.379459","14":"5.585","15":"3.100","16":"20.100","17":"0.7217099","18":"6.321211","19":"0.000000","20":"0","21":"0.050000","22":"21.91372","23":"20.269202","24":"13.30","25":"7.287","26":"45.10","27":"60.15862","28":"22.73370","29":"62.15","30":"27.50","31":"89.83","32":"123.6489","33":"31.97948","34":"120.0090","35":"87.5033","36":"172.0260","37":"3.428663","38":"0.9649817","39":"3.347550","40":"2.500895","41":"4.458583","42":"395.4522","43":"651.77910","44":"142.42857","45":"28.28571","46":"1237.7143","47":"0.07785004","48":"0.2679611","49":"0","50":"0","51":"0"},{"1":"Pop","2":"63.73658","3":"14.455431","4":"65.1","5":"44.10","6":"81.50","7":"62.91020","8":"18.62437","9":"65.00","10":"36.90","11":"86.00","12":"9.848424","13":"10.197396","14":"5.370","15":"3.020","16":"25.000","17":"1.1608197","18":"7.761208","19":"0.000000","20":"0","21":"0.160000","22":"17.26369","23":"13.163811","24":"12.20","25":"7.360","26":"33.90","27":"50.32584","28":"22.57102","29":"49.20","30":"20.60","31":"82.10","32":"120.9394","33":"28.44137","34":"119.9860","35":"86.0718","36":"160.1132","37":"3.524695","38":"0.8421095","39":"3.430200","40":"2.659957","41":"4.514137","42":"238.3576","43":"374.53971","44":"143.28571","45":"28.28571","46":"533.1429","47":"0.15527620","48":"0.3621738","49":"0","50":"0","51":"1"},{"1":"HipHop/Rap","2":"73.04785","3":"12.304102","4":"74.8","5":"55.50","6":"87.70","7":"65.09905","8":"13.27987","9":"65.70","10":"48.10","11":"82.10","12":"20.920469","13":"13.551478","14":"19.000","15":"5.310","16":"39.100","17":"0.6114178","18":"5.031168","19":"0.000000","20":"0","21":"0.060000","22":"16.89957","23":"12.485381","24":"12.10","25":"7.840","26":"33.30","27":"49.03505","28":"20.72870","29":"49.00","30":"21.10","31":"77.20","32":"121.6765","33":"28.21902","34":"121.9980","35":"85.6640","36":"159.8800","37":"3.215201","38":"0.8119683","39":"3.144667","40":"2.417933","41":"4.065967","42":"109.2966","43":"96.82665","44":"96.28571","45":"21.57143","46":"195.2857","47":"0.05153566","48":"0.2210928","49":"0","50":"0","51":"0"},{"1":"Rock","2":"54.75486","3":"13.975973","4":"55.0","5":"36.43","6":"72.30","7":"67.76872","8":"21.36872","9":"70.85","10":"36.93","11":"93.50","12":"6.186818","13":"5.224305","14":"4.320","15":"2.900","16":"11.400","17":"5.6923038","18":"17.465641","19":"0.000948","20":"0","21":"13.800000","22":"18.64689","23":"14.519118","24":"12.50","25":"7.490","26":"36.30","27":"45.64841","28":"22.53212","29":"44.00","30":"16.33","31":"77.00","32":"122.2531","33":"28.70089","34":"120.0240","35":"86.0453","36":"164.0598","37":"3.846571","38":"0.9930482","39":"3.723783","40":"2.854098","41":"4.954112","42":"356.1687","43":"531.81309","44":"160.28571","45":"36.88571","46":"1085.4286","47":"0.17180826","48":"0.3772585","49":"0","50":"0","51":"1"},{"1":"R&B","2":"67.96766","3":"13.432997","4":"70.1","5":"48.90","6":"83.10","7":"61.25491","8":"15.79594","9":"62.30","10":"40.50","11":"81.20","12":"12.337241","13":"10.098873","14":"8.380","15":"3.670","16":"27.200","17":"0.9564108","18":"6.863960","19":"0.000000","20":"0","21":"0.210000","22":"16.03997","23":"11.622330","24":"11.60","25":"7.400","26":"32.00","27":"52.83072","28":"23.01094","29":"54.10","30":"20.70","31":"83.40","32":"120.1679","33":"32.02157","34":"111.0040","35":"84.9870","36":"172.0370","37":"3.463912","38":"0.7241622","39":"3.426667","40":"2.640000","41":"4.334617","42":"229.7397","43":"460.38072","44":"109.71429","45":"31.28571","46":"318.1429","47":"0.07761829","48":"0.2676411","49":"0","50":"0","51":"0"},{"1":"Electro/Dance","2":"66.55213","3":"11.872900","4":"67.4","5":"50.90","6":"80.70","7":"74.50546","8":"13.98508","9":"76.20","10":"56.00","11":"90.78","12":"7.818187","13":"6.331865","14":"5.380","15":"3.350","16":"15.780","17":"5.0453373","18":"16.745219","19":"0.000379","20":"0","21":"9.774000","22":"18.57029","23":"14.118595","24":"13.00","25":"7.122","26":"35.80","27":"47.49889","28":"21.48897","29":"47.80","30":"18.90","31":"77.00","32":"120.7373","33":"19.41664","34":"121.9960","35":"97.9774","36":"144.0156","37":"3.361686","38":"0.7369606","39":"3.247333","40":"2.669757","41":"4.088967","42":"187.7736","43":"194.72333","44":"157.28571","45":"42.62857","46":"285.5714","47":"0.33999260","48":"0.4737939","49":"0","50":"0","51":"1"},{"1":"German Folk","2":"63.03265","3":"15.356337","4":"65.2","5":"41.44","6":"81.50","7":"61.72835","8":"22.55591","9":"66.60","10":"28.00","11":"88.54","12":"9.797514","13":"10.198743","14":"4.910","15":"2.958","16":"27.420","17":"1.7509195","18":"10.019071","19":"0.000000","20":"0","21":"0.782000","22":"18.64599","23":"15.381588","24":"12.30","25":"7.580","26":"35.42","27":"56.06759","28":"24.07133","29":"58.30","30":"22.00","31":"87.70","32":"119.3801","33":"28.53437","34":"118.0580","35":"86.1198","36":"159.8366","37":"3.646470","38":"0.9724464","39":"3.628000","40":"2.616707","41":"4.905423","42":"436.3941","43":"552.94134","44":"212.28571","45":"123.28571","46":"1276.3143","47":"0.29870130","48":"0.4581137","49":"0","50":"0","51":"1"},{"1":"Reggae","2":"75.06198","3":"9.332347","4":"76.7","5":"62.80","6":"86.40","7":"67.60661","8":"14.90742","9":"69.60","10":"48.70","11":"88.20","12":"11.956198","13":"8.686172","14":"7.850","15":"4.150","16":"24.400","17":"1.8236761","18":"9.522788","19":"0.000000","20":"0","21":"0.930000","22":"18.02198","23":"14.894363","24":"12.70","25":"6.550","26":"36.80","27":"69.73140","28":"18.37510","29":"73.40","30":"44.90","31":"90.70","32":"111.8039","33":"31.02950","34":"100.0450","35":"81.9860","36":"165.8500","37":"3.498592","38":"0.5732457","39":"3.435617","40":"2.911617","41":"4.241333","42":"343.6765","43":"530.67362","44":"152.28571","45":"16.28571","46":"794.0000","47":"0.09090909","48":"0.2886751","49":"0","50":"0","51":"0"},{"1":"Country","2":"59.67282","3":"11.984577","4":"59.7","5":"44.70","6":"74.47","7":"69.70504","8":"18.70773","9":"75.00","10":"42.13","11":"90.02","12":"5.159821","13":"4.095142","14":"3.775","15":"2.800","16":"8.967","17":"0.2375129","18":"4.044887","19":"0.000000","20":"0","21":"0.000737","22":"23.70347","23":"21.428114","24":"13.95","25":"8.490","26":"53.02","27":"58.90298","28":"21.07777","29":"61.85","30":"29.33","31":"87.18","32":"124.5243","33":"31.19017","34":"125.0975","35":"80.6458","36":"166.9938","37":"3.347030","38":"0.5425821","39":"3.267225","40":"2.726887","41":"3.969117","42":"244.2112","43":"437.55352","44":"109.28571","45":"15.88571","46":"641.9286","47":"0.01984127","48":"0.1395932","49":"0","50":"0","51":"0"},{"1":"Soundtrack","2":"52.81687","3":"16.248094","4":"54.1","5":"28.95","6":"73.30","7":"52.04574","8":"21.95865","9":"50.20","10":"22.50","11":"82.20","12":"6.821503","13":"7.511140","14":"3.990","15":"2.930","16":"15.500","17":"5.0177189","18":"19.372151","19":"0.000000","20":"0","21":"0.900000","22":"17.48736","23":"14.798672","24":"11.85","25":"7.895","26":"32.85","27":"37.98939","28":"22.43526","29":"32.30","30":"13.35","31":"71.00","32":"119.5009","33":"30.79834","34":"118.0340","35":"78.4770","36":"159.2905","37":"3.545621","38":"0.9855004","39":"3.503333","40":"2.387975","41":"4.631550","42":"230.1586","43":"318.20296","44":"147.28571","45":"61.50000","46":"405.6429","47":"0.13190184","48":"0.3389042","49":"0","50":"0","51":"1"},{"1":"Classics/Jazz","2":"45.99988","3":"18.339914","4":"46.6","5":"21.20","6":"69.22","7":"30.85225","8":"19.50915","9":"28.10","10":"8.19","11":"60.78","12":"6.110000","13":"6.549996","14":"3.920","15":"3.029","16":"11.110","17":"11.3441542","18":"25.648211","19":"0.020000","20":"0","21":"38.080000","22":"13.43700","23":"7.628625","24":"10.55","25":"7.515","26":"24.20","27":"38.23663","28":"24.30260","29":"30.95","30":"11.63","31":"74.70","32":"113.2287","33":"33.74192","34":"108.4460","35":"73.1532","36":"147.4277","37":"3.690025","38":"1.2866242","39":"3.457267","40":"2.188422","41":"5.254717","42":"819.6607","43":"780.20855","44":"590.92857","45":"153.38571","46":"1746.7714","47":"0.17500000","48":"0.3823644","49":"0","50":"0","51":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="r-markdown.html#cb684-1" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(<span class="fu">factor</span>(genre),</span>
-<span id="cb684-2"><a href="r-markdown.html#cb684-2" tabindex="-1"></a>    energy, median), <span class="at">y =</span> energy)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb684-3"><a href="r-markdown.html#cb684-3" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> <span class="fu">scale_x_discrete</span>(<span class="at">guide =</span> <span class="fu">guide_axis</span>(<span class="at">n.dodge =</span> <span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="r-markdown.html#cb710-1" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(<span class="fu">factor</span>(genre),</span>
+<span id="cb710-2"><a href="r-markdown.html#cb710-2" tabindex="-1"></a>    energy, median), <span class="at">y =</span> energy)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb710-3"><a href="r-markdown.html#cb710-3" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> <span class="fu">scale_x_discrete</span>(<span class="at">guide =</span> <span class="fu">guide_axis</span>(<span class="at">n.dodge =</span> <span class="dv">2</span>))</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/question_5_a1-1.png" width="672" /></p>
 </div>
 <div id="task-6" class="section level3 hasAnchor" number="8.2.7">
 <h3><span class="header-section-number">8.2.7</span> Task 6<a href="r-markdown.html#task-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Visualize the number of songs by label.</p>
-<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="r-markdown.html#cb685-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
-<span id="cb685-2"><a href="r-markdown.html#cb685-2" tabindex="-1"></a>music_data <span class="sc">|&gt;</span></span>
-<span id="cb685-3"><a href="r-markdown.html#cb685-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> label, <span class="at">n_songs =</span> <span class="fu">n_distinct</span>(isrc)) <span class="sc">|&gt;</span></span>
-<span id="cb685-4"><a href="r-markdown.html#cb685-4" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">fct_reorder</span>(<span class="fu">as.factor</span>(label), n_songs)) <span class="sc">|&gt;</span></span>
-<span id="cb685-5"><a href="r-markdown.html#cb685-5" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> label, <span class="at">x =</span> n_songs)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="r-markdown.html#cb711-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
+<span id="cb711-2"><a href="r-markdown.html#cb711-2" tabindex="-1"></a>music_data <span class="sc">|&gt;</span></span>
+<span id="cb711-3"><a href="r-markdown.html#cb711-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> label, <span class="at">n_songs =</span> <span class="fu">n_distinct</span>(isrc)) <span class="sc">|&gt;</span></span>
+<span id="cb711-4"><a href="r-markdown.html#cb711-4" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">fct_reorder</span>(<span class="fu">as.factor</span>(label), n_songs)) <span class="sc">|&gt;</span></span>
+<span id="cb711-5"><a href="r-markdown.html#cb711-5" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> label, <span class="at">x =</span> n_songs)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/question_6_a1-1.png" width="672" /></p>
 </div>
 <div id="task-7" class="section level3 hasAnchor" number="8.2.8">
 <h3><span class="header-section-number">8.2.8</span> Task 7<a href="r-markdown.html#task-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Visualize the average monthly artist listeners (<code>monthly_listeners_artist</code>) by genre.</p>
-<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="r-markdown.html#cb686-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
-<span id="cb686-2"><a href="r-markdown.html#cb686-2" tabindex="-1"></a>music_data <span class="sc">|&gt;</span></span>
-<span id="cb686-3"><a href="r-markdown.html#cb686-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> genre, <span class="at">avg_m_listeners =</span> <span class="fu">mean</span>(monthly_listeners_artist)) <span class="sc">|&gt;</span></span>
-<span id="cb686-4"><a href="r-markdown.html#cb686-4" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">genre =</span> <span class="fu">fct_reorder</span>(<span class="fu">factor</span>(genre), avg_m_listeners)) <span class="sc">|&gt;</span></span>
-<span id="cb686-5"><a href="r-markdown.html#cb686-5" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg_m_listeners, <span class="at">y =</span> genre)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
-<span id="cb686-6"><a href="r-markdown.html#cb686-6" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Average monthly artist listeners&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="r-markdown.html#cb712-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
+<span id="cb712-2"><a href="r-markdown.html#cb712-2" tabindex="-1"></a>music_data <span class="sc">|&gt;</span></span>
+<span id="cb712-3"><a href="r-markdown.html#cb712-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> genre, <span class="at">avg_m_listeners =</span> <span class="fu">mean</span>(monthly_listeners_artist)) <span class="sc">|&gt;</span></span>
+<span id="cb712-4"><a href="r-markdown.html#cb712-4" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">genre =</span> <span class="fu">fct_reorder</span>(<span class="fu">factor</span>(genre), avg_m_listeners)) <span class="sc">|&gt;</span></span>
+<span id="cb712-5"><a href="r-markdown.html#cb712-5" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg_m_listeners, <span class="at">y =</span> genre)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb712-6"><a href="r-markdown.html#cb712-6" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Average monthly artist listeners&quot;</span>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/question_7_a1-1.png" width="672" /></p>
 </div>
 <div id="task-8" class="section level3 hasAnchor" number="8.2.9">
 <h3><span class="header-section-number">8.2.9</span> Task 8<a href="r-markdown.html#task-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a histogram of the variable “valence”.</p>
-<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="r-markdown.html#cb687-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
-<span id="cb687-2"><a href="r-markdown.html#cb687-2" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> valence)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="r-markdown.html#cb713-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
+<span id="cb713-2"><a href="r-markdown.html#cb713-2" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> valence)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="14-rmdIntro_files/figure-html/question_8_a1-1.png" width="672" /></p>
 </div>
 <div id="task-9" class="section level3 hasAnchor" number="8.2.10">
 <h3><span class="header-section-number">8.2.10</span> Task 9<a href="r-markdown.html#task-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a scatter plot showing <code>youtube_views</code> and <code>shazam_counts</code> (Bonus: add a linear regression line). Interpret the plot briefly.</p>
-<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="r-markdown.html#cb689-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
-<span id="cb689-2"><a href="r-markdown.html#cb689-2" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> youtube_views, <span class="at">y =</span> shazam_counts)) <span class="sc">+</span></span>
-<span id="cb689-3"><a href="r-markdown.html#cb689-3" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="r-markdown.html#cb715-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
+<span id="cb715-2"><a href="r-markdown.html#cb715-2" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> youtube_views, <span class="at">y =</span> shazam_counts)) <span class="sc">+</span></span>
+<span id="cb715-3"><a href="r-markdown.html#cb715-3" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="14-rmdIntro_files/figure-html/question_9_a1-1.png" width="672" /></p>
 <p>On average Youtube views and Shazam counts show a positive coefficient in the linear regression. However, the relationship does not appear to be linear.</p>
@@ -1203,7 +1277,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 80  13.44  7.63  10.55  4.61  39.50  34.89 0.85
 ## valence             6 80  38.24 24.30  30.95  3.60  90.00  86.40 2.72
 ## tempo               7 80 113.23 33.74 108.45 56.72 232.69 175.97 3.77
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: Country
 ##                  vars   n   mean    sd median   min    max  range   se
 ## danceability        1 504  59.67 11.98  59.70 19.20  92.20  73.00 0.53
@@ -1213,7 +1287,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 504  23.70 21.43  13.95  3.35  98.50  95.15 0.95
 ## valence             6 504  58.90 21.08  61.85  7.40  96.70  89.30 0.94
 ## tempo               7 504 124.52 31.19 125.10 48.72 203.93 155.21 1.39
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: Electro/Dance
 ##                  vars    n   mean    sd median   min   max  range   se
 ## danceability        1 2703  66.55 11.87  67.40 22.40  97.3  74.90 0.23
@@ -1223,7 +1297,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 2703  18.57 14.12  13.00  2.21  96.5  94.29 0.27
 ## valence             6 2703  47.50 21.49  47.80  3.15  97.8  94.65 0.41
 ## tempo               7 2703 120.74 19.42 122.00 73.99 215.9 141.91 0.37
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: German Folk
 ##                  vars   n   mean    sd median   min    max  range   se
 ## danceability        1 539  63.03 15.36  65.20 20.60  96.40  75.80 0.66
@@ -1233,7 +1307,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 539  18.65 15.38  12.30  1.91  98.80  96.89 0.66
 ## valence             6 539  56.07 24.07  58.30  6.92  98.00  91.08 1.04
 ## tempo               7 539 119.38 28.53 118.06 58.69 202.12 143.43 1.23
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: HipHop/Rap
 ##                  vars     n   mean    sd median   min    max  range   se
 ## danceability        1 21131  73.05 12.30   74.8  8.39  98.00  89.61 0.08
@@ -1243,7 +1317,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 21131  16.90 12.49   12.1  1.19  97.60  96.41 0.09
 ## valence             6 21131  49.04 20.73   49.0  3.33  97.90  94.57 0.14
 ## tempo               7 21131 121.68 28.22  122.0 38.80 230.27 191.47 0.19
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: other
 ##                  vars    n   mean    sd median   min    max  range   se
 ## danceability        1 5228  64.53 15.39  67.00  7.83  96.70  88.87 0.21
@@ -1253,7 +1327,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 5228  21.91 20.27  13.30  1.51  99.10  97.59 0.28
 ## valence             6 5228  60.16 22.73  62.15  3.84  99.00  95.16 0.31
 ## tempo               7 5228 123.65 31.98 120.01 46.72 210.16 163.44 0.44
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: Pop
 ##                  vars     n   mean    sd median min   max range   se
 ## danceability        1 30069  63.74 14.46  65.10   0  98.3  98.3 0.08
@@ -1263,7 +1337,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 30069  17.26 13.16  12.20   0  98.9  98.9 0.08
 ## valence             6 30069  50.33 22.57  49.20   0  98.7  98.7 0.13
 ## tempo               7 30069 120.94 28.44 119.99   0 217.4 217.4 0.16
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: R&B
 ##                  vars    n   mean    sd median   min    max  range   se
 ## danceability        1 1881  67.97 13.43  70.10  8.66  97.00  88.34 0.31
@@ -1273,7 +1347,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 1881  16.04 11.62  11.60  2.07  89.10  87.03 0.27
 ## valence             6 1881  52.83 23.01  54.10  3.21  98.20  94.99 0.53
 ## tempo               7 1881 120.17 32.02 111.00 58.39 215.93 157.54 0.74
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: Reggae
 ##                  vars   n   mean    sd median   min    max  range   se
 ## danceability        1 121  75.06  9.33  76.70 40.40  94.40  54.00 0.85
@@ -1283,7 +1357,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 121  18.02 14.89  12.70  1.38  78.40  77.02 1.35
 ## valence             6 121  69.73 18.38  73.40 13.80  96.60  82.80 1.67
 ## tempo               7 121 111.80 31.03 100.04 66.86 214.02 147.17 2.82
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: Rock
 ##                  vars    n   mean    sd median   min    max  range   se
 ## danceability        1 4214  54.75 13.98  55.00  6.28  98.00  91.72 0.22
@@ -1293,7 +1367,7 @@ describeBy(select(music_data, danceability, energy,
 ## liveness            5 4214  18.65 14.52  12.50  2.08  98.80  96.72 0.22
 ## valence             6 4214  45.65 22.53  44.00  2.62  97.30  94.68 0.35
 ## tempo               7 4214 122.25 28.70 120.02 46.22 209.79 163.57 0.44
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: Soundtrack
 ##                  vars   n   mean    sd median   min    max  range   se
 ## danceability        1 326  52.82 16.25  54.10 15.00  91.50  76.50 0.90
@@ -1519,12 +1593,16 @@ describeBy(customer_data_a$revenue, customer_data_a$exp_group)  #describe contro
 ## 
 ##  Descriptive statistics by group 
 ## group: control
-##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 685 1288.58 675.54   1245 1269.56 751.68   1 3726  3725 0.31    -0.35 25.81
-## ------------------------------------------------------------------------------------------------------------------------------- 
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 685 1288.58 675.54   1245 1269.56 751.68   1 3726  3725 0.31    -0.35
+##       se
+## X1 25.81
+## ------------------------------------------------------------ 
 ## group: treatment
-##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 744 1506.27 751.71 1507.5 1480.48 774.66   3 4179  4176 0.34    -0.17 27.56
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 744 1506.27 751.71 1507.5 1480.48 774.66   3 4179  4176 0.34    -0.17
+##       se
+## X1 27.56
 ```
 It can already be seen that the mean revenue is higher in the treatment group. 
 
@@ -1623,12 +1701,16 @@ describeBy(customer_data_a$time_on_site, customer_data_a$exp_group)  #describe c
 ## 
 ##  Descriptive statistics by group 
 ## group: control
-##    vars   n   mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 685 626.28 285.76    607  621.75 309.86   1 1504  1503 0.17    -0.44 10.92
-## ------------------------------------------------------------------------------------------------------------------------------- 
+##    vars   n   mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 685 626.28 285.76    607  621.75 309.86   1 1504  1503 0.17    -0.44
+##       se
+## X1 10.92
+## ------------------------------------------------------------ 
 ## group: treatment
-##    vars   n   mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 744 640.45 287.01    629  634.19 292.07  23 1622  1599 0.23    -0.23 10.52
+##    vars   n   mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 744 640.45 287.01    629  634.19 292.07  23 1622  1599 0.23    -0.23
+##       se
+## X1 10.52
 ```
 
 
@@ -1899,16 +1981,22 @@ describeBy(customer_data_c$revenue, customer_data_c$retargeting)
 ## 
 ##  Descriptive statistics by group 
 ## group: no retargeting
-##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 737 2166.14 791.85   2168 2158.39 796.16 190 4462  4272 0.08    -0.32 29.17
-## ------------------------------------------------------------------------------------------------------------------------------- 
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 737 2166.14 791.85   2168 2158.39 796.16 190 4462  4272 0.08    -0.32
+##       se
+## X1 29.17
+## ------------------------------------------------------------ 
 ## group: generic retargeting
-##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 777 2299.26 786.85   2289 2291.99 770.95  89 5541  5452 0.15     0.22 28.23
-## ------------------------------------------------------------------------------------------------------------------------------- 
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 777 2299.26 786.85   2289 2291.99 770.95  89 5541  5452 0.15     0.22
+##       se
+## X1 28.23
+## ------------------------------------------------------------ 
 ## group: dynamic retargeting
-##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis    se
-## X1    1 690 2609.56 826.81   2594 2605.37 836.19 513 5036  4523 0.05    -0.24 31.48
+##    vars   n    mean     sd median trimmed    mad min  max range skew kurtosis
+## X1    1 690 2609.56 826.81   2594 2605.37 836.19 513 5036  4523 0.05    -0.24
+##       se
+## X1 31.48
 ```
 
 ``` r
@@ -1967,7 +2055,7 @@ by(customer_data_c$revenue, customer_data_c$retargeting,
 ## data:  dd[x, ]
 ## W = 0.99692, p-value = 0.1719
 ## 
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## customer_data_c$retargeting: generic retargeting
 ## 
 ##  Shapiro-Wilk normality test
@@ -1975,7 +2063,7 @@ by(customer_data_c$revenue, customer_data_c$retargeting,
 ## data:  dd[x, ]
 ## W = 0.99705, p-value = 0.1682
 ## 
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## customer_data_c$retargeting: dynamic retargeting
 ## 
 ##  Shapiro-Wilk normality test
@@ -2064,7 +2152,8 @@ oneway.test(revenue ~ retargeting, data = customer_data_c)
 ##  One-way analysis of means (not assuming equal variances)
 ## 
 ## data:  revenue and retargeting
-## F = 55.412, num df = 2.0, denom df = 1454.6, p-value < 0.00000000000000022
+## F = 55.412, num df = 2.0, denom df = 1454.6, p-value <
+## 0.00000000000000022
 ```
 
 In both tests, the **p-value is way smaller than 0.05**, which we chose as our significance level, meaning that we **reject the null hypothesis of the means being equal** in the three advertising groups. 
@@ -2184,10 +2273,14 @@ summary(tukeys)
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
 ## Linear Hypotheses:
-##                                                Estimate Std. Error t value Pr(>|t|)    
-## generic retargeting - no retargeting == 0        133.12      41.20   3.231  0.00366 ** 
-## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447  < 0.001 ***
-## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404  < 0.001 ***
+##                                                Estimate Std. Error t value
+## generic retargeting - no retargeting == 0        133.12      41.20   3.231
+## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
+## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
+##                                                Pr(>|t|)    
+## generic retargeting - no retargeting == 0       0.00361 ** 
+## dynamic retargeting - no retargeting == 0      < 0.0001 ***
+## dynamic retargeting - generic retargeting == 0 < 0.0001 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -2209,15 +2302,15 @@ confint(tukeys)
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
-## Quantile = 2.3453
+## Quantile = 2.3451
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.4998 229.7406
-## dynamic retargeting - no retargeting == 0      443.4211 343.8797 542.9626
-## dynamic retargeting - generic retargeting == 0 310.3009 212.0062 408.5956
+## generic retargeting - no retargeting == 0      133.1202  36.5076 229.7328
+## dynamic retargeting - no retargeting == 0      443.4211 343.8877 542.9545
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0141 408.5876
 ```
 
 ``` r
@@ -2251,11 +2344,11 @@ describeBy(customer_data_c$nps, customer_data_c$retargeting)
 ## group: no retargeting
 ##    vars   n mean   sd median trimmed  mad min max range  skew kurtosis  se
 ## X1    1 737 6.52 2.72      7    6.64 4.45   2  10     8 -0.17    -1.29 0.1
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: generic retargeting
 ##    vars   n mean   sd median trimmed  mad min max range  skew kurtosis   se
 ## X1    1 777 7.19 2.59      7    7.24 2.97   3  11     8 -0.12    -1.28 0.09
-## ------------------------------------------------------------------------------------------------------------------------------- 
+## ------------------------------------------------------------ 
 ## group: dynamic retargeting
 ##    vars   n mean   sd median trimmed  mad min max range  skew kurtosis  se
 ## X1    1 690 8.16 2.58      8     8.2 2.97   4  12     8 -0.15    -1.23 0.1
@@ -2286,7 +2379,8 @@ kruskal.test(nps ~ retargeting, data = customer_data_c)
 ##  Kruskal-Wallis rank sum test
 ## 
 ## data:  nps by retargeting
-## Kruskal-Wallis chi-squared = 120.93, df = 2, p-value < 0.00000000000000022
+## Kruskal-Wallis chi-squared = 120.93, df = 2, p-value <
+## 0.00000000000000022
 ```
 
 
@@ -2507,12 +2601,18 @@ psych::describe(sales_data)
 ```
 
 ```
-##                vars   n   mean    sd median trimmed    mad min   max range skew kurtosis   se
-## tv_adspend        1 236 148.65 89.77 141.85  147.45 117.27 1.1 299.6 298.5 0.12    -1.26 5.84
-## online_adspend    2 236  25.61 14.33  24.35   24.70  14.53 1.6  74.9  73.3 0.61     0.08 0.93
-## radio_adspend     3 236  27.70 12.57  27.00   27.36  13.34 2.0  63.0  61.0 0.22    -0.53 0.82
-## sales             4 236  14.83  5.40  14.15   14.72   5.93 1.4  29.0  27.6 0.16    -0.57 0.35
-## market_id         5 236 118.50 68.27 118.50  118.50  87.47 1.0 236.0 235.0 0.00    -1.22 4.44
+##                vars   n   mean    sd median trimmed    mad min   max range skew
+## tv_adspend        1 236 148.65 89.77 141.85  147.45 117.27 1.1 299.6 298.5 0.12
+## online_adspend    2 236  25.61 14.33  24.35   24.70  14.53 1.6  74.9  73.3 0.61
+## radio_adspend     3 236  27.70 12.57  27.00   27.36  13.34 2.0  63.0  61.0 0.22
+## sales             4 236  14.83  5.40  14.15   14.72   5.93 1.4  29.0  27.6 0.16
+## market_id         5 236 118.50 68.27 118.50  118.50  87.47 1.0 236.0 235.0 0.00
+##                kurtosis   se
+## tv_adspend        -1.26 5.84
+## online_adspend     0.08 0.93
+## radio_adspend     -0.53 0.82
+## sales             -0.57 0.35
+## market_id         -1.22 4.44
 ```
 
 Inspecting the correlation matrix reveals that the sales variable is positively correlated with TV advertising and online advertising expenditures. The correlations among the independent variables appear to be low to moderate. 
@@ -2994,8 +3094,10 @@ exp(coef(mult_logit_model))
 ```
 
 ```
-##          (Intercept)      weeks_in_charts             song_age      labelSony Music labelUniversal Music    labelWarner Music 
-##           0.02270102           1.01262635           0.99877873           1.81021850           2.38482742           1.69572138
+##          (Intercept)      weeks_in_charts             song_age 
+##           0.02270102           1.01262635           0.99877873 
+##      labelSony Music labelUniversal Music    labelWarner Music 
+##           1.81021850           2.38482742           1.69572138
 ```
 
 The results tell us, for example, that when a song is one week older, it is slightly less likely to get to the top-10 chart. If we are concerned about the labels to which the songs belong, we can see that in comparison to rather unknown (independent) labels, songs from Universal are 2.38 times more likely to appear in the top-10 chart.
@@ -3176,10 +3278,14 @@ exp(coef(final_model))
 ```
 
 ```
-##          (Intercept)      weeks_in_charts             song_age      labelSony Music labelUniversal Music    labelWarner Music         danceability             liveness 
-##           0.01121953           1.01267388           0.99802434           1.55574581           1.86645257           1.45762271           1.01745850           1.00864988 
-##                tempo          song_length          n_playlists 
-##           1.00364363           0.72927145           1.00026014
+##          (Intercept)      weeks_in_charts             song_age 
+##           0.01121953           1.01267388           0.99802434 
+##      labelSony Music labelUniversal Music    labelWarner Music 
+##           1.55574581           1.86645257           1.45762271 
+##         danceability             liveness                tempo 
+##           1.01745850           1.00864988           1.00364363 
+##          song_length          n_playlists 
+##           0.72927145           1.00026014
 ```
 
 ``` r
@@ -3212,7 +3318,7 @@ step(mult_logit_model, #our base model
 ## + explicit          1    27376 27390   146.8 < 0.00000000000000022 ***
 ## + valence           1    27445 27459    77.7 < 0.00000000000000022 ***
 ## + liveness          1    27480 27494    42.9      0.00000000005728 ***
-## + tempo             1    27504 27518    19.4      0.00001085601585 ***
+## + tempo             1    27504 27518    19.4      0.00001085601584 ***
 ## + speechiness       1    27510 27524    12.9             0.0003209 ***
 ## + instrumentalness  1    27516 27530     7.2             0.0071563 ** 
 ## + energy            1    27519 27533     3.8             0.0523575 .  
@@ -3463,14 +3569,24 @@ step(mult_logit_model, #our base model
 ##     data = music_data)
 ## 
 ## Coefficients:
-##          (Intercept)       weeks_in_charts              song_age       labelSony Music  labelUniversal Music     labelWarner Music           n_playlists  
-##            -8.250268              0.012811             -0.001929              0.310207              0.500078              0.259754              0.000269  
-##         genreCountry    genreElectro/Dance      genreGerman Folk       genreHipHop/Rap            genreother              genrePop              genreR&B  
-##             6.052952              4.617654              3.393965              4.565679              5.429574              4.007876              5.019629  
-##          genreReggae             genreRock       genreSoundtrack           song_length      explicitexplicit          danceability                 tempo  
-##             4.456428              4.142870              4.896580             -0.289024             -0.707333              0.013872              0.002971  
-##             liveness                energy           speechiness               valence  
-##             0.005182             -0.005303             -0.003541              0.001534  
+##          (Intercept)       weeks_in_charts              song_age  
+##            -8.250268              0.012811             -0.001929  
+##      labelSony Music  labelUniversal Music     labelWarner Music  
+##             0.310207              0.500078              0.259754  
+##          n_playlists          genreCountry    genreElectro/Dance  
+##             0.000269              6.052952              4.617654  
+##     genreGerman Folk       genreHipHop/Rap            genreother  
+##             3.393965              4.565679              5.429574  
+##             genrePop              genreR&B           genreReggae  
+##             4.007876              5.019629              4.456428  
+##            genreRock       genreSoundtrack           song_length  
+##             4.142870              4.896580             -0.289024  
+##     explicitexplicit          danceability                 tempo  
+##            -0.707333              0.013872              0.002971  
+##             liveness                energy           speechiness  
+##             0.005182             -0.005303             -0.003541  
+##              valence  
+##             0.001534  
 ## 
 ## Degrees of Freedom: 66795 Total (i.e. Null);  66771 Residual
 ## Null Deviance:       43430 
