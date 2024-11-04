@@ -127,8 +127,8 @@ The contents on this website are divided into weekly readings. To be able to fol
    <td style="text-align:left;"> Monday </td>
    <td style="text-align:left;"> 01:00PM - 05:00PM </td>
    <td style="text-align:left;"> D5.1.001 </td>
-   <td style="text-align:left;"> Mediation, Causality &amp; DAGs </td>
-   <td style="text-align:left;"> WIP </td>
+   <td style="text-align:left;"> Regression III </td>
+   <td style="text-align:left;"> 7.7 </td>
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">
@@ -202,8 +202,8 @@ The contents on this website are divided into weekly readings. To be able to fol
    <td style="text-align:left;"> Wednesday </td>
    <td style="text-align:left;"> 12:30PM - 04:30PM </td>
    <td style="text-align:left;"> D4.0.022 </td>
-   <td style="text-align:left;"> Mediation, Causality &amp; DAGs </td>
-   <td style="text-align:left;"> WIP </td>
+   <td style="text-align:left;"> Regression III </td>
+   <td style="text-align:left;"> 7.7 </td>
   </tr>
 </tbody>
 <tfoot><tr><td style="padding: 0; " colspan="100%">

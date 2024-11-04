@@ -350,13 +350,3 @@ data-visualizationoutput-issues
 issues-with-functions-and-function-arguments
 issues-with-r-markdown
 new-questions
-faq-1
-common-error-messages-1
-installation-of-r-packages-1
-issues-with-statistics-and-data-1
-errors-related-to-specific-methods-1
-general-settings-and-options-1
-data-visualizationoutput-issues-1
-issues-with-functions-and-function-arguments-1
-issues-with-r-markdown-1
-new-questions-1

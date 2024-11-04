@@ -124,7 +124,7 @@ mytable = data.frame(
                "Hypothesis testing II",
                "Regression I",
                "Regression II",
-               "Mediation, Causality & DAGs"
+               "Regression III"
                ),
     Chapters = c("1",
                  "2, 3, 4", 
@@ -132,7 +132,7 @@ mytable = data.frame(
                  "6.4, 6.5, 6.6",
                  "7.1, 7.2, 7.3",
                  "7.4, 7.5, 7.6",
-                 "WIP"
+                 "7.7"
                  ))
 
 #pander::pander(mytable, keep.line.breaks = TRUE, style = 'grid', justify = 'left')
@@ -189,7 +189,7 @@ mytable = data.frame(
                "Hypothesis testing II",
                "Regression I",
                "Regression II",
-               "Mediation, Causality & DAGs"
+               "Regression III"
                ),
     Chapters = c("1",
                  "2, 3, 4", 
@@ -197,7 +197,7 @@ mytable = data.frame(
                  "6.4, 6.5, 6.6",
                  "7.1, 7.2, 7.3",
                  "7.4, 7.5, 7.6",
-                 "WIP"
+                 "7.7"
                  ))
 
 #pander::pander(mytable, keep.line.breaks = TRUE, style = 'grid', justify = 'left')
