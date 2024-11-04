@@ -1,5 +1,4 @@
 ---
-title: "Logistic Regression"
 output:
   html_document:
     toc: yes
