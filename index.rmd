@@ -230,7 +230,7 @@ mytable_sub_1 = data.frame(
     Assignment = c("Assignment 1: R Basics", 
              "Assignment 2: Hypothesis testing",
              "Assignment 3: Regression",
-             "Assignment 4: Mediation, Causality & DAGs"
+             "Assignment 4: Causal Modeling & Mediation Analysis (Regression III)"
              ),
     Assigned = c(
       "Oct. 7",
@@ -273,7 +273,7 @@ mytable_sub_1 = data.frame(
     Assignment = c("Assignment 1: R Basics", 
              "Assignment 2: Hypothesis testing",
              "Assignment 3: Regression",
-             "Assignment 4: Mediation, Causality & DAGs"
+             "Assignment 4: Causal Modeling & Mediation Analysis (Regression III)"
              ),
     Assigned = c(
       "Oct. 09",

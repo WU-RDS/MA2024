@@ -253,7 +253,7 @@ Your main point of contact for the individual assignments will be Elizaveta Patr
    <td style="text-align:left;"> Nov. 10, 11:59PM </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Assignment 4: Mediation, Causality &amp; DAGs </td>
+   <td style="text-align:left;"> Assignment 4: Causal Modeling &amp; Mediation Analysis (Regression III) </td>
    <td style="text-align:left;"> Nov. 11 </td>
    <td style="text-align:left;"> Nov. 22, 03:00PM-05:00PM (online)* </td>
    <td style="text-align:left;"> Nov. 24, 11:59PM </td>
@@ -295,7 +295,7 @@ Your main point of contact for the individual assignments will be Elizaveta Patr
    <td style="text-align:left;"> Nov. 12, 11:59PM </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Assignment 4: Mediation, Causality &amp; DAGs </td>
+   <td style="text-align:left;"> Assignment 4: Causal Modeling &amp; Mediation Analysis (Regression III) </td>
    <td style="text-align:left;"> Nov. 13 </td>
    <td style="text-align:left;"> Nov. 22, 05:00PM-07:00PM (online)* </td>
    <td style="text-align:left;"> Nov. 26, 11:59PM </td>
