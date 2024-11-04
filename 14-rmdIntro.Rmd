@@ -421,6 +421,632 @@ ggplot(music_data, aes(x = youtube_views, y = shazam_counts)) +
 
 On average Youtube views and Shazam counts show a positive coefficient in the linear regression. However, the relationship does not appear to be linear.
 
+## Assignment 2
+
+
+This assignment consists of four parts. When answering the questions, please remember to address the following points, where appropriate:
+
+* Formulate the corresponding hypotheses and choose an appropriate statistical test
+* Provide the reason for your choice and discuss if the assumptions of the test are met 
+* Convert the variables to the appropriate type (e.g., factor variables)
+* Create appropriate graphs to explore the data (e.g., plot of means incl. confidence intervals, histogram, boxplot)
+* Provide appropriate descriptive statistics for the variables (e.g., mean, median, standard deviation, etc.)
+* Report and interpret the test results accurately (including confidence intervals)  
+* Finally, don't forget to report your research conclusion
+
+When you are done with your analysis, click on "Knit to HTML" button above the code editor. This will create a HTML document of your results in the folder where the "assignment2.Rmd" file is stored. Open this file in your Internet browser to see if the output is correct. If the output is correct, submit the HTML file via Learn\@WU. The file name should be "assignment2_studendID_lastname.html".
+
+### Assignment 2a
+
+As a mobile app product manager, you are looking for ways to improve user engagement and in-app purchases. Your team has launched an A/B test to analyze the effect of a new user interface (UI) feature. You have data that contains information about user behavior within your app.
+
+The data file contains the following variables:
+
+* **userID:** Unique user ID.
+* **exp_group:** Experimental group (indicator variable w/ 2 levels: 0 = control, 1 = treatment).
+* **in_app_purchases:** Total amount spent by a user in the app in the past month (in USD).
+* **time_in_app:** Average time a user spends in your app per session (in minutes).
+
+Use R and appropriate methods to answer the following questions:
+
+1. The finance department asks you to provide an estimate of the average amount spent by users through in-app purchases. Compute the 95% confidence interval for the mean amount spent and provide an interpretation of the interval.
+2. You run an A/B test to analyze the effect of a new UI feature on in-app purchases and time spent in the app. The information regarding which group a user has been assigned to is stored in the variable "exp_group". Is there a significant difference regarding in-app purchases and time spent between users from the control and treatment groups? Please include the effect size (Cohen's d) and confidence intervals in your report.
+3. Assume that you plan to run an experiment to test two different notification strategies. You randomly assign app users to the control and experimental conditions. How many users would you need to include in each group if you assume the effect size to be 0.1 for a significance level of 0.05 and power of 0.8?
+
+### Data analysis
+
+### Load data
+
+```{r load_data_1}
+app_user_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_data_q1.csv", 
+                          sep = ",", 
+                          header = TRUE) #read in data
+head(app_user_data)
+str(app_user_data)
+```
+
+
+### Question 1
+
+First, we take a look at the statistics for the amount spent for in app purchases our customers make and at the graph with the distribution of purchases made in app per customer.
+
+To compute the confidence interval for the average customer, we will need the mean, the standard error and the critical value for a t-distribution (because we don't know exactly the variance in the population).
+
+```{r, echo = FALSE}
+options(conflicts.policy = list(warn = FALSE))
+```
+
+```{r libs, warnings = FALSE, messages=FALSE}
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(psych))
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(ggstatsplot))
+```
+
+```{r question_1_1}
+#First let's have a look at the purchases in the app in the data
+psych::describe(app_user_data$in_app_purchases)
+
+ggplot(app_user_data, aes(in_app_purchases)) + 
+  geom_histogram(col = "white", fill = "lavenderblush3", bins = 50) + 
+  geom_vline(data = app_user_data %>% dplyr::summarise(mean = mean(in_app_purchases)),aes(xintercept = mean), 
+             linewidth = 0.7, color = "gray19") +
+  labs(x = "Purchases", y = "Frequency") + 
+  ggtitle("Distribution of purchases per customer") +
+  theme_minimal()
+
+# Compute mean, standard error, and confidence interval for in-app purchases
+mean_purchases <- mean(app_user_data$in_app_purchases)
+sd_purchases <- sd(app_user_data$in_app_purchases)
+n <- nrow(app_user_data)
+se_purchases <- sd_purchases / sqrt(n)
+df <- n - 1
+t_crit <- qt(0.975, df)
+
+# Confidence Interval
+ci_lower <- mean_purchases - t_crit * se_purchases
+ci_upper <- mean_purchases + t_crit * se_purchases
+
+print(ci_lower)
+print(ci_upper)
+
+# Alternatively: get confidence interval from t.test
+t.test(app_user_data$in_app_purchases)$conf.int
+```
+
+
+The confidence interval for in app purchases is CI =  [10.87;11.36]
+Interpretation: If we take 100 samples and calculate the mean and confidence interval for each of them, then the true population mean would be included in 95% of these intervals. In the sample we have, this interval spans from 10.87 to 11.36.
+
+
+### Question 2
+
+
+We need to analyze if a new UI feature has an effect on in app purchases. We need to formulate the null hypothesis as the first step. In our case the null hypothesis is that the new UI feature has no effect on the mean in-app purchases, that there is no difference in the mean in-app purchases between two populations. The alternative hypothesis states that the new UI feature has an effect on the mean in-app purchases, meaning that there is a difference in the mean in-app purchases between the two populations.
+
+We first transform the variable exp_group into a factor and inspect the data with descriptive statistics. It can be already seen that the mean of in app-purchases is higher in the treatment group. Next we visualize the data, for this we can use a boxplot. 
+
+To test whether or not this difference is significant, we need to use an independent-means t-test, since we have different customers in each group, meaning that we have collected the data using a between-subjects design (the customers in one condition are independent of the customers in the other condition). The requirements are met:
+1) the DV (in-app purchases) is measured on a ratio scale; 2) there are more than 30 observations in each group, so the data is normally distributed according to Central Limit Theorem; 3) the feature was assigned randomly, so the groups are independent; 4) Welch's t-test corrects for unequal variance.
+
+We also then calculate the effect size (Cohen's d). Then we can also visualize the results of the test.
+
+
+
+```{r question_2_1}
+# Load necessary libraries
+library(ggplot2)
+library(data.table)
+library(lsr)
+library(pwr)
+library(psych)
+
+#making IV a factor
+app_user_data$exp_group <- as.factor(app_user_data$exp_group)
+
+#looking at descriptive statistics
+describeBy(app_user_data$in_app_purchases, app_user_data$exp_group) #description of control and treatment groups
+
+# Boxplot for In-App Purchases by Experimental Group
+ggplot(app_user_data, aes(x = factor(exp_group), y = in_app_purchases, fill = factor(exp_group))) +
+  geom_boxplot() +
+  labs(title = "Boxplot of In-App Purchases by Experimental Group",
+       x = "Group (0 = Control, 1 = Treatment)",
+       y = "In-App Purchases (USD)") +
+  scale_fill_manual(values = c("lightblue", "lightgreen")) +
+  theme_minimal()
+
+
+# t-test for differences in in-app purchases
+t_test_purchases <- t.test(in_app_purchases ~ exp_group, data = app_user_data)
+print(t_test_purchases)
+
+
+# Compute Cohen's d for in app purchases
+cohen_d_purchases <- cohensD(in_app_purchases ~ exp_group, data = app_user_data)
+print(cohen_d_purchases)
+
+
+#Visualization of test results
+ggbetweenstats(
+  data = app_user_data,
+  plot.type = "box",
+  x = exp_group, #2 groups
+  y = in_app_purchases ,
+  type = "p", #default
+  effsize.type = "d", #display effect size (Cohen's d in output)
+  messages = FALSE,
+  bf.message = FALSE,
+  mean.ci = TRUE,
+  title = "Average revenue per customer by group"
+) 
+
+
+```
+
+Interpretations: As we can see from the descriptive statistics and the plot for control and treatment groups, the in-app purchases are higher in the group that was exposed to the new UI feature. The t-test showed significant result because the p-value is smaller than 0,05, meaning that we can reject the null hypothesis that there is no difference in the mean of the in-app purchases. The p-value states that the probability of finding a difference of the observed magnitude or higher, if the null hypothesis was in fact true (if there was in fact no difference between the populations). For us it means that the new UI feature in fact has an effect on the average in-app purchases. Also: Since 0 (the hypothetical difference in means from H0) is not included in the interval, it confirms that we can reject the null hypothesis. The Cohen's d effect size value of 0.4234 suggests that the effect of the new UI feature is small to medium.
+
+The plot shows us that in app purchases are higher in the treatment group (Mean = 12.15) compared to the control group (Mean = 10.08). This means that, on average, the in app purchases were 2.07 higher in the treatment group, compared to the control group. An independent-means t-test showed that this difference is significant: t(1597) = 8.47, p < .05 (95% CI = [1.59, 2.55]); effect size is small to medium = 0.42.
+
+
+
+Now we can look at the influence of the new UI feature on the time spent in app.
+
+First, we need to formulate the null hypothesis. In this case the null hypothesis is that the new UI feature has no effect on the mean time spent in app, that there is no difference in the mean time spent in app between two populations. The alternative hypothesis states that the new UI feature has an effect on the mean time spent in app, meaning that there is a difference in the mean time in app between the two populations. 
+
+First, we inspect the data with descriptive statistics. It can be already seen that the mean of in app purchases is slightly higher in the treatment group. Next we visualize the data, for this we can use a boxplot. 
+
+We can use the independent means t-test because again the necessary assumptions are met: 1) The dependent variable (time in app) is measured on an ratio scale; 2) We have more than 30 observations per group; 3) The groups are independent.
+
+We also then calculate the effect size (Cohen's d). Then we can also visualize the results of the test.
+
+
+```{r}
+
+describeBy(app_user_data$time_in_app, app_user_data$exp_group)
+
+# Boxplot for Time Spent in the App
+ggplot(app_user_data, aes(x = factor(exp_group), y = time_in_app, fill = factor(exp_group))) +
+  geom_boxplot() +
+  labs(title = "Boxplot of Time Spent in App by Experimental Group",
+       x = "Group (0 = Control, 1 = Treatment)",
+       y = "Time Spent in App (minutes)") +
+  scale_fill_manual(values = c("lightblue", "lightgreen")) +
+  theme_minimal()
+
+# t-test for differences in time spent in app
+t_test_time_in_app <- t.test(time_in_app ~ exp_group, data = app_user_data)
+print(t_test_time_in_app)
+
+# Compute Cohen's d for in app purchases
+cohen_d_time_in_app <- cohensD(time_in_app ~ exp_group, data = app_user_data)
+print(cohen_d_time_in_app)
+
+#Visualization of test results
+ggbetweenstats(
+  data = app_user_data,
+  plot.type = "box",
+  x = exp_group, #2 groups
+  y = time_in_app ,
+  type = "p", #default
+  effsize.type = "d", #display effect size (Cohen's d in output)
+  messages = FALSE,
+  bf.message = FALSE,
+  mean.ci = TRUE,
+  title = "Average revenue per customer by group"
+) 
+
+
+```
+
+Interpretations: From the descriptive statistics and the boxplot, we can already see that the mean time spent in app is higher in the treatment group. However, we need to conduct the test to see if this result is significant. The t-test showed significant result because the p-value is smaller than 0,05, meaning that we can reject the null hypothesis that there is no difference in the mean of time spent in app. The p-value states that the probability of finding a difference of the observed magnitude or higher, if the null hypothesis was in fact true (if there was in fact no difference between the populations). For us it means that the new UI feature in fact has an effect on the average time spent in app. Also: Since 0 (the hypothetical difference in means from H0) is not included in the interval, it confirms that we can reject the null hypothesis. The Cohen's d effect size value of 0.387 suggests that the effect of the new UI feature is small to medium.
+
+The plot shows us that time spent in app is higher in the treatment group (Mean = 21.92) compared to the control group (Mean = 19.99). This means that, on average, the time spent in app was 1.93 higher in the treatment group, compared to the control group. An independent-means t-test showed that this difference is significant: t(1598) = 7.74, p < .05 (95% CI = [1.45, 2.43]); effect size is small to medium = 0.387.
+
+
+### Question 3
+
+To define the number of users that should be placed in two different conditions, pwr.t.test() function should be used. If the goal of the experiment is to simply detect significant difference between the groups, the sample size definition should be based on two-sided test.
+
+Given the effect size = 0.1, significance level = 0.05, and power = 0.8, sample size for each group will be:
+
+
+```{r a2_question_3_1}
+# provide your code here (you can use multiple code chunks per question if you like)
+
+# Power analysis for sample size calculation
+sample_size <- pwr.t.test(d = 0.1, sig.level = 0.05, power = 0.8, type = "two.sample")
+print(sample_size)
+
+```
+
+To achieve our desired effect size of 0.1, a significance level of 0.5 and a power of 0.8 we would need to include at least 1571 customers per group in the experiment.
+
+### Assignment 2b
+
+After conducting the experiment described above, you would like to find out whether push notifications can further improve user engagement with your mobile app. You expose a set of users, who were already exposed to the new UI feature, to push notifications and record the time they spend in the app before and after implementing the notifications.
+
+You obtain a new data set with the following variables:
+
+* **userID:** Unique user ID.
+* **time_in_app_1:** Average time (in minutes) a user spends in your app per session before receiving push notifications.
+* **time_in_app_2:** Average time (in minutes) a user spends in your app per session after receiving push notifications.
+
+Use R and appropriate methods to answer the following question:
+
+4. Did the push notifications lead to a significant increase in the time that users spend in the app compared to before the notifications were implemented ? Conduct an appropriate statistical test to determine if the difference is statistically significant. Please include the effect size (Cohen's d) and the confidence intervals in your report.
+
+### Data analysis
+
+### Load data
+
+```{r a2_load_data_2}
+app_user_data_time <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_data_q2.csv", 
+                          sep = ",", 
+                          header = TRUE) #read in data
+head(app_user_data_time)
+str(app_user_data_time)
+```
+### Question 4
+
+We want to examine if push notifications have an effect on average time a user spends in the app. The null hypothesis here is that there is no difference in the mean time spent in the app for the same customers between the presence and absence of push notifications. Because the observations come from the same population of customers (a within-subject design), we refer to the difference in the means for the same population when stating our hypotheses. The alternative hypothesis states that there is a difference between the time in app for the same customers.
+
+We start our analysis with looking at the descriptive statistics and at the plot. Then we conduct a dependent means t-test to see if the difference is significant.
+
+
+```{r a2_question_4_1}
+# provide your code here (you can use multiple code chunks per question if you like)
+
+suppressPackageStartupMessages(library(Rmisc))
+library(tidyr)
+
+#Descriptive statistics
+psych::describe(app_user_data_time[!is.na(app_user_data_time$time_in_app_2), c("time_in_app_1","time_in_app_2")])
+
+#Boxplot
+
+time_data <- app_user_data_time |>
+  drop_na(time_in_app_2) |>
+  select(time_in_app_1, time_in_app_2) |>
+  pivot_longer(
+    cols = c(time_in_app_1, time_in_app_2), 
+    names_to = "push_notifications", values_to = "time_in_app")
+
+ggplot(time_data, aes(x = push_notifications, y = time_in_app)) + geom_boxplot() +
+    geom_jitter(alpha = 0.2, color = "lavenderblush4") + 
+    labs(x = "", y = "Time spent in app", title = "Boxplot of time in app by group") + 
+    theme_minimal()
+
+
+# Paired t-test for time spent in app before and after push notifications
+t_test_result <- t.test(app_user_data_time$time_in_app_2, app_user_data_time$time_in_app_1, paired = TRUE)
+print(t_test_result)
+
+# Compute Cohen's d for paired samples
+cohen_d_result <- cohensD(app_user_data_time$time_in_app_2, app_user_data_time$time_in_app_1, method = "paired")
+print(cohen_d_result)
+
+#Visualization of the test
+ggwithinstats(
+  data = time_data,
+  x = push_notifications,
+  y = time_in_app,
+  path.point = FALSE,
+  path.mean = TRUE,
+  title = "Time on site with or without push notifications",
+  messages = FALSE,
+  bf.message = FALSE,
+  mean.ci = TRUE,
+  effsize.type = "d" # display effect size (Cohen's d in output)
+)
+
+
+```
+
+Interpretation: It appears that there is a difference in the means from the descriptive statistics and the plots. To test whether it is significant, we need to run a t-test. This time we need a different version of the t-test because the same customers are observed for the app with and without push notifications (the same customers are shown both versions of the app). This means that we need a dependent means t-test, or paired samples t-test. The other assumptions are identical to the independent-means t-test. 
+
+The p-value is lower than the significance level of 5% (p < .05), which means that we can reject the null hypothesis that there is no difference in the mean time in app between absence and presence of push notifications. The confidence interval confirms the conclusion to reject the null hypothesis since 0 is not contained in the range of plausible values.
+
+The Cohen's d effect size of 0.2857 shows us that the effect is rather small.
+
+The results of the experiment show that, on average, the same users used the app on average 2.03 minutes longer when it included the push notifications (Mean = 27.24) compared to the app without the push notifications (Mean = 25.21). This difference was significant: t(416) = 5.83, p < .05 (95% CI = [1.35, 2.72]); effect size is small = 0.29.
+
+This means that it makes sense to include push notifications to the app as standard practice.
+
+
+
+
+### Assignment 2c
+
+As a marketing analyst for an online retailer, you're tasked with evaluating how different levels of GDPR-compliant behavioral targeting affect purchase behavior. Given the restrictions imposed by GDPR on using personal data, the retailer conducts an experiment with three levels of targeting:
+
+1. No targeting: Users receive no targeted ads (default ad experience).
+2. Segment-based targeting: Ads are tailored using aggregate-level data (e.g., based on product categories users browse, not their personal data).
+3. Individual personalized behavioral targeting: Ads are personalized based on the specific behavior of individual users (using compliant first-party data).
+
+You obtain a data set with the following variables:
+
+* **customerID:** Unique customer ID.
+* **revenue:** Total revenue generated by the customer during the experiment (in USD).
+* **satisfaction:** Customer satisfaction score from a post-purchase survey (measured in 11 categories from 0 [very dissatisfied] to 10 [very satisfied]).
+* **targeting:** Type of targeting the customer was exposed to (1 = no targeting, 2 = segment-based targeting, 3 = personalized behavioral targeting).
+
+Use R and appropriate methods to answer the following question:
+
+5. Are there significant differences in revenue between the three targeting strategies? 
+6. Did the targeting strategy significantly influence customer satisfaction? 
+
+### Data analysis
+
+### Load data
+
+```{r a2_load_data_3}
+targeting_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_targeting_data.csv", 
+                          sep = ",", 
+                          header = TRUE) #read in data
+head(targeting_data)
+str(targeting_data)
+```
+
+### Question 5
+
+To answer the question of whether the type of targeting has an effect on revenue, we need to formulate the null hypothesis first. In this case, the null hypothesis is that the average level of sales is equal for all three targeting types. The alternative hypothesis states that mean revenue is not equal among three targeting types. 
+
+The appropriate test for such a hypothesis is one-way ANOVA since we have a metric-scaled dependent variable and a categorical independent variable with more than two levels. First, we need to recode the independent variable into factor. Next we take a look at descriptive statistics for the data and create appropriate plots. 
+
+Before we move to the formal test, we need to see if a series of assumptions are met, namely: 1) Independence of observations; 2) Distributional assumptions; 3) Homogeneity of variances.
+
+Due to the fact that there are more than 30 observations in each group we can rely on the Central Limit Theorem to satisfy the distributional assumptions. We can still test this assumption using Shapiro-Wilk normality test and Q-Q plots. Homogeneity of variances can be checked with Levene’s test.
+
+After checking that the assumptions are met, we can proceed with ANOVA and show also the plot for the test. Next we will briefly inspect the residuals of the ANOVA to see if the assumptions of the test really are justified.
+
+The ANOVA result only tells us that the means of the three groups are not equal, but it does not tell us anything about which pairs of means are unequal. To find this out we need to conduct a post-hoc test.
+
+
+```{r a2_question_5_1}
+# provide your code here (you can use multiple code chunks per question if you like)
+
+
+targeting_data$targeting <- factor(targeting_data$targeting, 
+                                   levels = c("Personalized Targeting", 
+                                              "Segment-Based Targeting", 
+                                              "No Targeting"))
+
+#Descriptive statistics
+describeBy(targeting_data$revenue, targeting_data$targeting)
+
+
+#Visual inspection of data
+
+ggplot(targeting_data,aes(x = targeting, y = revenue)) + 
+  geom_boxplot() +
+  geom_jitter(colour="red", alpha = 0.1) +
+  theme_bw() +
+  labs(x = "Targeting", y = "Revenue")+
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5,color = "#666666")) 
+
+#Distributional assumptions - checking for normal distributions
+
+#test for normal distribution of variables - Shapiro-Wilk test
+by(targeting_data$revenue, targeting_data$targeting, shapiro.test)
+
+qqnorm(targeting_data[targeting_data$targeting == "Personalized Targeting", ]$revenue) 
+qqline(targeting_data[targeting_data$targeting == "Personalized Targeting", ]$revenue)
+
+qqnorm(targeting_data[targeting_data$targeting == "Segment-Based Targeting", ]$revenue) 
+qqline(targeting_data[targeting_data$targeting == "Segment-Based Targeting", ]$revenue)
+
+qqnorm(targeting_data[targeting_data$targeting == "No Targeting", ]$revenue) 
+qqline(targeting_data[targeting_data$targeting == "No Targeting", ]$revenue)
+
+#Homogeneity of variance
+
+library(car)
+leveneTest(revenue ~ targeting, data = targeting_data, center = mean)
+
+
+# Perform ANOVA for revenue across targeting strategies
+anova_result <- aov(revenue ~ targeting, data = targeting_data)
+summary(anova_result)
+
+#Visualize the test
+library(ggstatsplot)
+ggbetweenstats(
+  data = targeting_data,
+  x = targeting,
+  y = revenue,
+  plot.type = "box",
+  pairwise.comparisons = TRUE,
+  pairwise.annotation = "p.value",
+  p.adjust.method = "bonferroni",
+  effsize.type = "eta", #if var.equal = FALSE, returns partial eta^2 
+  var.equal = TRUE,
+  mean.plotting = TRUE, 
+  mean.ci = TRUE, 
+  mean.label.size = 2.5,
+  type = "parametric", 
+  k = 3, 
+  outlier.label.color = "darkgreen", 
+  title = "Comparison of revenues between groups",
+  xlab = "Experimental group", 
+  ylab = "Revenue", 
+  messages = FALSE,
+  bf.message = FALSE,
+)
+
+#Inspect the residuals
+plot(anova_result,1)
+plot(anova_result,2)
+
+shapiro.test(resid(anova_result))
+
+#Effect size
+
+summary(anova_result)[[1]]$"Sum Sq"[1]/(summary(anova_result)[[1]]$"Sum Sq"[1] +
+    summary(anova_result)[[1]]$"Sum Sq"[2])
+
+
+# Tukey's post-hoc test for pairwise comparisons
+tukey_result <- TukeyHSD(anova_result)
+print(tukey_result)
+
+plot(tukey_result)
+
+
+# Boxplot for Revenue by Targeting Strategy
+ggplot(targeting_data, aes(x = targeting, y = revenue, fill = targeting)) +
+  geom_boxplot() +
+  labs(title = "Boxplot of Revenue by Targeting Strategy",
+       x = "Targeting Strategy",
+       y = "Revenue (USD)") +
+  scale_fill_manual(values = c("lightblue", "lightgreen", "lightcoral")) +
+  theme_minimal()
+
+
+
+
+
+
+```
+
+Both the summary statistics and the plot show that the means are not equal among the three groups. Especially the difference between personalized targeting and no targeting seem to be quite high. 
+
+First we check if the assumptions of ANOVA are met. The insignificant result of Shapiro-Wilk test shows that we cannot reject the null hypothesis that the residuals are normally distributed. The same we can see from the Q-Q plots.
+
+The null hypothesis of Levene's test is that the variances are equal, with the alternative hypothesis being that the variances are not all equal. The insignificant result of this test demonstrates that variances are equal, so this assumption is also met. 
+
+The ANOVA showed a p-value lower that 0.05, which means we can reject the null hypothesis that the mean revenue is the same for all three groups with different types of targeting. 
+
+The Q-Q plots show us that the residuals are equally distributed, which is confirmed also by the insignificant result of the Shapiro-Wilk test. The null hypothesis for this test is that the distribution of residuals is normal. 
+
+According to the test, the effect of different types of targeting on revenues was detected: F = 41.9, p < 0.05, with the effect size which is rather small η2 = 0.22. 
+
+The Tukey's HSD test compares pairwise all three groups and we can see from the result that we can reject null hypothesis in all three case, which means that the revenue means are all significantly different from each other. It is clearly visible that none of the CIs cross the 0 bound, which further indicates that all differences in means are statistically significantly different from 0.
+
+From a reporting standpoint we can say that revenue is higher when using personalized targeting. This means that personalized targeting helps us to increase sales and should thus be the preferred choice.
+
+### Question 6
+
+For this question we want to examine whether the customer satisfaction is significantly different for the groups with three different types of targeting. Because we are dealing with data on an ordinal scale, we cannot use ANOVA for this analysis. The non-parametric counterpart is the Kruskal-Wallis test, which tests for differences in medians between more than two groups. Hence, the null hypothesis is that the medians are equal in each group, and the alternative hypothesis is that there is a difference in medians.
+
+First, we inspect the descriptive statistics and the plot. The only assumption for Kruskal-Wallis test is that the DV has to be at least ordinal scaled, and this assumption is met. 
+
+
+```{r question_6_1}
+# provide your code here (you can use multiple code chunks per question if you like)
+
+#Descriptive statistics by for customer satisfaction by group
+describeBy(targeting_data$satisfaction, targeting_data$targeting)
+
+# Boxplot for Satisfaction by Targeting Strategy
+ggplot(targeting_data, aes(x = targeting, y = satisfaction, fill = targeting)) +
+  geom_boxplot() +
+  labs(title = "Boxplot of Customer Satisfaction by Targeting Strategy",
+       x = "Targeting Strategy",
+       y = "Satisfaction Score") +
+  scale_fill_manual(values = c("lightblue", "lightgreen", "lightcoral")) +
+  theme_minimal()
+
+# Kruskal-Wallis test for satisfaction across targeting strategies
+kruskal_result <- kruskal.test(satisfaction ~ targeting, data = targeting_data)
+print(kruskal_result)
+
+ggbetweenstats(
+  data = targeting_data,
+  plot.type = "box",
+  x = targeting, #3 groups
+  y = satisfaction,
+  type = "nonparametric",
+  pairwise.comparisons = TRUE,
+  pairwise.annotation = "p.value",
+  p.adjust.method = "bonferroni",
+  messages = FALSE,
+  title = "Median satisfaction for different targeting groups"
+)
+
+
+```
+
+We can see from the descriptive statistics and from the boxplot that the median customer satisfaction for customers with personalized targeting is slightly higher (=6) than for other two targeting types (=5). 
+
+The p-value of Kruskal-Wallis test is higher than 0.05, which indicates that we cannot reject the null hypothesis. This means that medians of customer satisfaction are not different among the targeting groups. 
+
+
+### Assignment 2d
+
+As a digital marketing manager, you want to evaluate the effectiveness of a new email subscription pop-up feature designed to increase newsletter signups. You run an A/B test where some visitors to your website see the new subscription pop-up, while others experience the regular sign-up option without a pop-up. Your goal is to compare the conversion rate (whether visitors signed up for the newsletter) between the control group (no pop-up) and the treatment group (pop-up).
+
+You obtain a new data set with the following variables:
+
+* **customerID:** Unique customer ID.
+* **conversion:** Indicator variable for whether a visitor signed up for the newsletter (0 = no, 1 = yes).
+* **exp_group:** Experimental group (0 = control, no pop-up; 1 = treatment, pop-up).
+
+7. Did the new email subscription pop-up have a significant effect on the conversion rate? 
+
+### Data analysis
+
+### Load data
+
+```{r load_data_4}
+conversion_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/conversion_data.csv", 
+                          sep = ",", 
+                          header = TRUE) #read in data
+head(conversion_data)
+str(conversion_data)
+```
+### Question 7
+
+To find out if a new email subscription pop-up feature has an effect on the conversion rate, we can use a test for proportions. To test for the equality of proportions (and therefore no difference between them) we can use a Chi-squared test.
+
+Our null hypothesis in this case states that the proportions of conversion are the same for groups with and without the subscription pop-up feature. Our alternative hypothesis states that these proportions are unequal. First, we have to recode the relevant variables into factors. Then we create a contingency table and a plot to take a look at the proportions of conversion rates in the control and treatment groups. We can then conduct the formal Chi-squared test to see if the difference in conversion rates is significant.
+
+```{r question_7_1}
+# provide your code here (you can use multiple code chunks per question if you like)
+
+#Recoding variables into factors
+conversion_data$exp_group <- factor(conversion_data$exp_group, 
+                                   levels = c("Control", 
+                                              "Treatment"))
+
+conversion_data$conversion <- factor(conversion_data$conversion, levels = c(0,1), labels = c("no", "yes"))
+
+# Create a contingency table for conversions
+conversion_table <- table(conversion_data$exp_group, conversion_data$conversion)
+print(conversion_table)
+prop.table(conversion_table, 1)
+
+#Visualization
+rel_freq_table <- as.data.frame(prop.table(table(conversion_data$exp_group, conversion_data$conversion), 1))
+names(rel_freq_table) <- c("exp_group", "conversion","freq") # changing names of the columns
+rel_freq_table
+ggplot(rel_freq_table, aes(x = exp_group, y = freq, fill = conversion)) + #plot data
+  geom_col(width = .7) + #position
+  geom_text(aes(label = paste0(round(freq*100,0),"%")), position = position_stack(vjust = 0.5), size = 4) + #add percentages
+  ylab("Proportion of conversions") + xlab("Exp group") + # specify axis labels
+  theme_bw()
+
+
+# Proportion test to compare conversion rates between groups
+prop_test_result <- prop.test(conversion_table)
+print(prop_test_result)
+
+table <- table(conversion_data$conversion,conversion_data$exp_group)
+chisq.test(table, correct = TRUE)
+
+#effect size
+test_stat <- chisq.test(conversion_table, correct = FALSE)$statistic
+n <- nrow(conversion_data)
+phi1 <- sqrt(test_stat/n)
+phi1
+
+
+```
+
+We can see in the contingency table and in the plot that the conversion rate in the treatment group of 29% is higher than the conversion rate of 19% in the control group. To see if this difference is significant, we have to conduct the formal chi-squared test. It can be clearly seen from the test that p-value is lower than 0.05, so the result of the treatment on the conversion rate is statistically significant. We also calculated the effect size Phi: it is pretty small 0.128.
+
+From the managerial perspective, it makes sense to include the new email subscription pop-up feature since it significantly increases the coversion rate, although the effect size is rather small.
 
 
 <!--
