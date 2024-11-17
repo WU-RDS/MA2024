@@ -43,12 +43,12 @@ A **treatment** is a particular combination of factor levels, or categories. So-
 Let's use an example to see how ANOVA works. Similar to the previous example, imagine that the music streaming service experiments with a recommender system and manipulates the intensity of personalized recommendations using three levels: 'low', 'medium', and 'high'. The service randomly assigns 100 users to each condition and records the listening times in hours in the following week. As always, we load and inspect the data first:
 
 
-```r
-hours_abc <- read.table("https://raw.githubusercontent.com/IMSMWU/MRDA2018/master/data/hours_abc.dat",
-    sep = "\t", header = TRUE)  #read in data
-hours_abc$group <- factor(hours_abc$group, levels = c("A",
-    "B", "C"), labels = c("low", "medium", "high"))  #convert grouping variable to factor
-str(hours_abc)  #inspect data
+``` r
+hours_abc <- read.table("https://raw.githubusercontent.com/IMSMWU/MRDA2018/master/data/hours_abc.dat", 
+                                 sep = "\t", 
+                                 header = TRUE) #read in data
+hours_abc$group <- factor(hours_abc$group, levels = c("A","B","C"), labels = c("low", "medium","high")) #convert grouping variable to factor
+str(hours_abc) #inspect data
 ```
 
 ```
@@ -75,9 +75,9 @@ $$H_1: \exists {i,j}: {\mu_i \ne \mu_j} $$
 To get a first impression if there are any differences in listening times across the experimental groups, we use the ```describeBy(...)``` function from the ```psych``` package:
 
 
-```r
+``` r
 library(psych)
-describeBy(hours_abc$hours, hours_abc$group)  #inspect data
+describeBy(hours_abc$hours, hours_abc$group) #inspect data
 ```
 
 ```
@@ -99,7 +99,7 @@ describeBy(hours_abc$hours, hours_abc$group)  #inspect data
 In addition, you should visualize the data using appropriate plots. Appropriate plots in this case would be a plot of means, including the 95% confidence interval around the mean, or a boxplot. 
 
 
-```r
+``` r
 #Plot of mean
 library(Rmisc)
 library(ggplot2)
@@ -119,7 +119,7 @@ ggplot(mean_data,aes(x = group, y = hours)) +
 </div>
 
 
-```r
+``` r
 ggplot(hours_abc,aes(x = group, y = hours)) + 
   geom_boxplot() +
   geom_jitter(colour="red", alpha = 0.1) +
@@ -165,7 +165,7 @@ $$SS_T= SS_M+SS_R$$
 To get a better feeling how this relates to our data set, we can look at the data in a slightly different way. Specifically, we can use the ```dcast(...)``` function from the ```reshape2``` package to convert the data to wide format: 
 
 
-```r
+``` r
 library(reshape2)
 dcast(hours_abc, index ~ group, value.var = "hours")
 ```
@@ -179,16 +179,16 @@ dcast(hours_abc, index ~ group, value.var = "hours")
 In this example, X<sub>1</sub> from the generalized data matrix above would refer to the factor level "low", X<sub>2</sub> to the level "medium", and X<sub>3</sub> to the level "high". Y<sub>11</sub> refers to the first data point in the first row (i.e., "13"), Y<sub>12</sub> to the second data point in the first row (i.e., "21"), etc.. The grand mean ($\overline{Y}$) and the category means ($\overline{Y}_c$) can be easily computed: 
 
 
-```r
-mean(hours_abc$hours)  #grand mean
+``` r
+mean(hours_abc$hours) #grand mean
 ```
 
 ```
 ## [1] 24.67667
 ```
 
-```r
-by(hours_abc$hours, hours_abc$group, mean)  #category mean
+``` r
+by(hours_abc$hours, hours_abc$group, mean) #category mean
 ```
 
 ```
@@ -239,7 +239,7 @@ You could also compute this in R using:
 
 
 
-```r
+``` r
 SST <- sum((hours_abc$hours - mean(hours_abc$hours))^2)
 SST
 ```
@@ -288,9 +288,8 @@ $$
 You could also compute this manually in R using:
 
 
-```r
-SSM <- sum(100 * (by(hours_abc$hours, hours_abc$group,
-    mean) - mean(hours_abc$hours))^2)
+``` r
+SSM <- sum(100*(by(hours_abc$hours, hours_abc$group, mean) - mean(hours_abc$hours))^2)
 SSM
 ```
 
@@ -333,9 +332,8 @@ $$
 You could also compute this in R using:
 
 
-```r
-SSR <- sum((hours_abc$hours - rep(by(hours_abc$hours,
-    hours_abc$group, mean), each = 100))^2)
+``` r
+SSR <- sum((hours_abc$hours - rep(by(hours_abc$hours, hours_abc$group, mean), each = 100))^2)
 SSR
 ```
 
@@ -363,7 +361,7 @@ $$
 To compute this in R:
 
 
-```r
+``` r
 eta <- SSM/SST
 eta
 ```
@@ -410,7 +408,7 @@ $$
 You can easily compute this in R:
 
 
-```r
+``` r
 f_ratio <- (SSM/2)/(SSR/297)
 f_ratio
 ```
@@ -433,17 +431,17 @@ To decide which one it is, we proceed as with the t-test. That is, we calculate 
 For 2 and 297 degrees of freedom, the critical value of F is 3.026 for &alpha;=0.05. As usual, you can either look up these values in a table or use the appropriate function in R:
 
 
-```r
-f_crit <- qf(0.95, df1 = 2, df2 = 297)  #critical value
-f_crit
+``` r
+f_crit <- qf(.95, df1 = 2, df2 = 297) #critical value
+f_crit 
 ```
 
 ```
 ## [1] 3.026153
 ```
 
-```r
-f_ratio > f_crit  #test if calculated test statistic is larger than critical value
+``` r
+f_ratio > f_crit #test if calculated test statistic is larger than critical value
 ```
 
 ```
@@ -489,11 +487,10 @@ The observations in the groups should be independent. Because we randomly assign
 ANOVA is relatively immune to violations to the normality assumption when sample sizes are large due to the Central Limit Theorem. However, if your sample is small (i.e., n < 30 per group) you may nevertheless want to check the normality of your data, e.g., by using the Shapiro-Wilk test or QQ-Plot. In our example, we have 100 observations in each group which is plenty but let's create another example with only 10 observations in each group. In the latter case we cannot rely on the Central Limit Theorem and we should test the normality of our data. This can be done using the Shapiro-Wilk Test, which has the Null Hypothesis that the data is normally distributed. Hence, an insignificant test results means that the data can be assumed to be approximately normally distributed:
 
 
-```r
+``` r
 set.seed(321)
-hours_fewobs <- data.frame(hours = c(rnorm(10, 20,
-    5), rnorm(10, 40, 5), rnorm(10, 60, 5)), group = c(rep("low",
-    10), rep("medium", 10), rep("high", 10)))
+hours_fewobs <- data.frame(hours = c(rnorm(10, 20, 5), rnorm(10, 40, 5), rnorm(10, 60, 5)),
+                          group =  c(rep('low', 10), rep('medium', 10), rep('high', 10)))
 by(hours_fewobs$hours, hours_fewobs$group, shapiro.test)
 ```
 
@@ -529,9 +526,9 @@ We could also test the distributional assumptions visually using a Q-Q plot (i.e
 To create the Q-Q plot for the normal distribution, you may use the ```qqnorm()``` function, which takes the data to be tested as an argument. Using the ```qqline()``` function subsequently on the data creates the line on which the data points should fall based on the theoretical quantiles. If the individual data points deviate a lot from this line, it means that the data is not likely to follow a normal distribution. 
 
 
-```r
-qqnorm(hours_fewobs[hours_fewobs$group == "low", ]$hours)
-qqline(hours_fewobs[hours_fewobs$group == "low", ]$hours)
+``` r
+qqnorm(hours_fewobs[hours_fewobs$group=="low",]$hours) 
+qqline(hours_fewobs[hours_fewobs$group=="low",]$hours)
 ```
 
 <div class="figure" style="text-align: center">
@@ -539,11 +536,9 @@ qqline(hours_fewobs[hours_fewobs$group == "low", ]$hours)
 <p class="caption">(\#fig:unnamed-chunk-23-1)Q-Q plot 1</p>
 </div>
 
-```r
-qqnorm(hours_fewobs[hours_fewobs$group == "medium",
-    ]$hours)
-qqline(hours_fewobs[hours_fewobs$group == "medium",
-    ]$hours)
+``` r
+qqnorm(hours_fewobs[hours_fewobs$group=="medium",]$hours) 
+qqline(hours_fewobs[hours_fewobs$group=="medium",]$hours)
 ```
 
 <div class="figure" style="text-align: center">
@@ -551,9 +546,9 @@ qqline(hours_fewobs[hours_fewobs$group == "medium",
 <p class="caption">(\#fig:unnamed-chunk-23-2)Q-Q plot 2</p>
 </div>
 
-```r
-qqnorm(hours_fewobs[hours_fewobs$group == "high", ]$hours)
-qqline(hours_fewobs[hours_fewobs$group == "high", ]$hours)
+``` r
+qqnorm(hours_fewobs[hours_fewobs$group=="high",]$hours) 
+qqline(hours_fewobs[hours_fewobs$group=="high",]$hours)
 ```
 
 <div class="figure" style="text-align: center">
@@ -570,7 +565,7 @@ Let's return to our original data set with 100 observations in each group for th
 You can test the homogeneity of variances in R using Levene's test:
 
 
-```r
+``` r
 library(car)
 leveneTest(hours ~ group, data = hours_abc, center = mean)
 ```
@@ -587,7 +582,7 @@ leveneTest(hours ~ group, data = hours_abc, center = mean)
 The null hypothesis of the test is that the group variances are equal. Thus, if the test result is significant it means that the variances are not equal. If we cannot reject the null hypothesis (i.e., the group variances are not significantly different), we can proceed with the ANOVA as follows: 
 
 
-```r
+``` r
 aov <- aov(hours ~ group, data = hours_abc)
 summary(aov)
 ```
@@ -605,9 +600,8 @@ You can see that the p-value is smaller than 0.05. This means that, if there rea
 To compute &eta;<sup>2</sup> from the output, we can extract the relevant sum of squares as follows
 
 
-```r
-summary(aov)[[1]]$"Sum Sq"[1]/(summary(aov)[[1]]$"Sum Sq"[1] +
-    summary(aov)[[1]]$"Sum Sq"[2])
+``` r
+summary(aov)[[1]]$'Sum Sq'[1]/(summary(aov)[[1]]$'Sum Sq'[1] + summary(aov)[[1]]$'Sum Sq'[2])
 ```
 
 ```
@@ -621,8 +615,8 @@ The ```aov()``` function also automatically generates some plots that you can us
 We will use the first plot to inspect if the residual variances are equal across the experimental groups:
 
 
-```r
-plot(aov, 1)
+``` r
+plot(aov,1)
 ```
 
 <img src="08-Anova_files/figure-html/unnamed-chunk-27-1.png" width="672" />
@@ -632,8 +626,8 @@ Generally, the residual variance (i.e., the range of values on the y-axis) shoul
 The second plot can be used to test the assumption that the residuals are approximately normally distributed. We use a Q-Q plot to test this assumption:
 
 
-```r
-plot(aov, 2)
+``` r
+plot(aov,2)
 ```
 
 <img src="08-Anova_files/figure-html/unnamed-chunk-28-1.png" width="672" />
@@ -641,7 +635,7 @@ plot(aov, 2)
 The plot suggests that, the residuals are approximately normally distributed. We could also test this by extracting the residuals from the anova output using the ```resid()``` function and using the Shapiro-Wilk test: 
 
 
-```r
+``` r
 shapiro.test(resid(aov))
 ```
 
@@ -658,8 +652,8 @@ Confirming the impression from the Q-Q plot, we cannot reject the Null that the 
 Note that if Levene's test would have been significant (i.e., variances are not equal), we would have needed to either resort to non-parametric tests (see below), or compute the Welch's F-ratio instead, which is correcting for unequal variances between the groups:
 
 
-```r
-# oneway.test(hours ~ group, hours_abc)
+``` r
+#oneway.test(hours ~ group, hours_abc)
 ```
 
 You can see that the results are fairly similar, since the variances turned out to be fairly equal across groups.
@@ -705,9 +699,8 @@ $$p_{CR}= \frac{0.05}{3}=0.017$$
 Thus, the “corrected” critical p-value is now 0.017 instead of 0.05 (i.e., the critical t value is higher). This means that the test is more conservative to account for the family-wise error. Remember that, to reject the null hypothesis at a 5%  significance level, we usually check if the p-value in our analysis is smaller than 0.05. The corrected p-value above requires us to obtain a p-value smaller than 0.017 in order to reject the null hypothesis at the 5% significance level, which means that the critical value of the test statistic is higher. You can implement the Bonferroni procedure in R using:
 
 
-```r
-bonferroni <- pairwise.t.test(hours_abc$hours, hours_abc$group,
-    data = hours_abc, p.adjust.method = "bonferroni")
+``` r
+bonferroni <- pairwise.t.test(hours_abc$hours, hours_abc$group, data = hours_abc, p.adjust.method = "bonferroni")
 bonferroni
 ```
 
@@ -729,10 +722,9 @@ In the output, you will get the corrected p-values for the individual tests. Thi
 Note the difference between the results from the post-hoc test compared to individual t-tests. For example, when we test the "medium" vs. "high" groups, the result from a t-test would be: 
 
 
-```r
+``` r
 data_subset <- subset(hours_abc, group != "low")
-ttest <- t.test(hours ~ group, data = data_subset,
-    var.equal = TRUE)
+ttest <- t.test(hours ~ group, data = data_subset, var.equal= TRUE)
 ttest
 ```
 
@@ -777,7 +769,7 @@ $$|\bar{Y}_i-\bar{Y}_j | > HSD$$
 The value from the studentized range table can be obtained using the ```qtukey()``` function.
 
 
-```r
+``` r
 q <- qtukey(0.95, nm = 3, df = 297)
 q
 ```
@@ -793,8 +785,8 @@ $$HSD= 3.33\sqrt{\frac{33.99}{100}}=1.94$$
 Or, in R:
 
 
-```r
-hsd <- q * sqrt(summary(aov)[[1]]$"Mean Sq"[2]/100)
+``` r
+hsd <- q * sqrt(summary(aov)[[1]]$'Mean Sq'[2]/100)
 hsd
 ```
 
@@ -805,7 +797,7 @@ hsd
 Since all mean differences between groups are larger than 1.906, we can reject the null hypothesis for all individual tests, confirming the results from the Bonferroni test. To compute Tukey's HSD, we can use the appropriate function from the ```multcomp``` package.
 
 
-```r
+``` r
 library(multcomp)
 aov$model$group <- as.factor(aov$model$group)
 tukeys <- glht(aov, linfct = mcp(group = "Tukey"))
@@ -831,7 +823,7 @@ summary(tukeys)
 ## (Adjusted p values reported -- single-step method)
 ```
 
-```r
+``` r
 confint(tukeys)
 ```
 
@@ -858,7 +850,7 @@ confint(tukeys)
 We may also plot the result for the mean differences incl. their confidence intervals: 
 
 
-```r
+``` r
 plot(tukeys)
 ```
 
@@ -870,8 +862,8 @@ plot(tukeys)
 You can see that the CIs do not cross zero, which means that the true difference between group means is unlikely zero. It is sufficient to report the results in the way described above. However, you could also manually compute the differences between the groups and their confidence interval as follows: 
 
 
-```r
-mean1 <- mean(hours_abc[hours_abc$group == "low", "hours"])  #mean group 'low'
+``` r
+mean1 <- mean(hours_abc[hours_abc$group=="low","hours"]) #mean group "low"
 mean1
 ```
 
@@ -879,9 +871,8 @@ mean1
 ## [1] 14.34
 ```
 
-```r
-mean2 <- mean(hours_abc[hours_abc$group == "medium",
-    "hours"])  #mean group 'medium'
+``` r
+mean2 <- mean(hours_abc[hours_abc$group=="medium","hours"]) #mean group "medium"
 mean2
 ```
 
@@ -889,9 +880,8 @@ mean2
 ## [1] 24.7
 ```
 
-```r
-mean3 <- mean(hours_abc[hours_abc$group == "high",
-    "hours"])  #mean group 'high'
+``` r
+mean3 <- mean(hours_abc[hours_abc$group=="high","hours"]) #mean group "high"
 mean3
 ```
 
@@ -899,9 +889,9 @@ mean3
 ## [1] 34.99
 ```
 
-```r
-# CI high vs. medium
-mean_diff_high_med <- mean2 - mean1
+``` r
+#CI high vs. medium
+mean_diff_high_med <- mean2-mean1
 mean_diff_high_med
 ```
 
@@ -909,9 +899,9 @@ mean_diff_high_med
 ## [1] 10.36
 ```
 
-```r
-ci_med_high_lower <- mean_diff_high_med - hsd
-ci_med_high_upper <- mean_diff_high_med + hsd
+``` r
+ci_med_high_lower <- mean_diff_high_med-hsd
+ci_med_high_upper <- mean_diff_high_med+hsd
 ci_med_high_lower
 ```
 
@@ -919,7 +909,7 @@ ci_med_high_lower
 ## [1] 8.472566
 ```
 
-```r
+``` r
 ci_med_high_upper
 ```
 
@@ -927,9 +917,9 @@ ci_med_high_upper
 ## [1] 12.24743
 ```
 
-```r
-# CI high vs.low
-mean_diff_high_low <- mean3 - mean1
+``` r
+#CI high vs.low
+mean_diff_high_low <- mean3-mean1
 mean_diff_high_low
 ```
 
@@ -937,9 +927,9 @@ mean_diff_high_low
 ## [1] 20.65
 ```
 
-```r
-ci_low_high_lower <- mean_diff_high_low - hsd
-ci_low_high_upper <- mean_diff_high_low + hsd
+``` r
+ci_low_high_lower <- mean_diff_high_low-hsd
+ci_low_high_upper <- mean_diff_high_low+hsd
 ci_low_high_lower
 ```
 
@@ -947,7 +937,7 @@ ci_low_high_lower
 ## [1] 18.76257
 ```
 
-```r
+``` r
 ci_low_high_upper
 ```
 
@@ -955,9 +945,9 @@ ci_low_high_upper
 ## [1] 22.53743
 ```
 
-```r
-# CI medium vs.low
-mean_diff_med_low <- mean3 - mean2
+``` r
+#CI medium vs.low
+mean_diff_med_low <- mean3-mean2
 mean_diff_med_low
 ```
 
@@ -965,9 +955,9 @@ mean_diff_med_low
 ## [1] 10.29
 ```
 
-```r
-ci_low_med_lower <- mean_diff_med_low - hsd
-ci_low_med_upper <- mean_diff_med_low + hsd
+``` r
+ci_low_med_lower <- mean_diff_med_low-hsd
+ci_low_med_upper <- mean_diff_med_low+hsd
 ci_low_med_lower
 ```
 
@@ -975,7 +965,7 @@ ci_low_med_lower
 ## [1] 8.402566
 ```
 
-```r
+``` r
 ci_low_med_upper
 ```
 
@@ -989,7 +979,7 @@ The post-hoc tests based on Bonferroni and Tukey’s HSD revealed that users lis
 As with the t-test, you could also use the functions contained in the `ggstatsplot` package to combine a visual depiction of the data with the results of statistical tests. In the case of an ANOVA, the output would also include the pairwise comparisons. 
 
 
-```r
+``` r
 library(ggstatsplot)
 ggbetweenstats(
   data = hours_abc,

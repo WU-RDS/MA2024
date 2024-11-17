@@ -32,11 +32,10 @@ Before we start with regression analysis, we will review the basic concept of co
 The correlation coefficient summarizes the strength of the linear relationship between two metric (interval or ratio scaled) variables. Let's consider a simple example. Say you conduct a survey to investigate the relationship between the attitude towards a city and the duration of residency. The "Attitude" variable can take values between 1 (very unfavorable) and 12 (very favorable), and the "duration of residency" is measured in years. Let's further assume for this example that the attitude measurement represents an interval scale (although it is usually not realistic to assume that the scale points on an itemized rating scale have the same distance). To keep it simple, let's further assume that you only asked 12 people. We can create a short data set like this:    
 
 
-```r
+``` r
 library(psych)
-attitude <- c(6, 9, 8, 3, 10, 4, 5, 2, 11, 9, 10, 2)
-duration <- c(10, 12, 12, 4, 12, 6, 8, 2, 18, 9, 17,
-    2)
+attitude <- c(6,9,8,3,10,4,5,2,11,9,10,2)
+duration <- c(10,12,12,4,12,6,8,2,18,9,17,2)
 att_data <- data.frame(attitude, duration)
 att_data <- att_data[order(-attitude), ]
 att_data$respodentID <- c(1:12)
@@ -50,8 +49,8 @@ str(att_data)
 ##  $ respodentID: int  1 2 3 4 5 6 7 8 9 10 ...
 ```
 
-```r
-psych::describe(att_data[, c("attitude", "duration")])
+``` r
+psych::describe(att_data[, c("attitude","duration")])
 ```
 
 ```
@@ -63,7 +62,7 @@ psych::describe(att_data[, c("attitude", "duration")])
 ## duration 1.52
 ```
 
-```r
+``` r
 att_data
 ```
 
@@ -143,13 +142,13 @@ Cov(x, y) =\frac{\sum_{i=1}^{N}(X_i-\overline{X})*(Y_i-\overline{Y})}{N-1}
 You can easily compute the covariance manually as follows
 
 
-```r
+``` r
 x <- att_data$duration
 x_bar <- mean(att_data$duration)
 y <- att_data$attitude
 y_bar <- mean(att_data$attitude)
 N <- nrow(att_data)
-cov <- (sum((x - x_bar) * (y - y_bar)))/(N - 1)
+cov <- (sum((x - x_bar)*(y - y_bar))) / (N - 1)
 cov
 ```
 
@@ -160,8 +159,8 @@ cov
 Or you simply use the built-in ```cov()``` function:
 
 
-```r
-cov(att_data$duration, att_data$attitude)  # apply the cov function 
+``` r
+cov(att_data$duration, att_data$attitude)          # apply the cov function 
 ```
 
 ```
@@ -182,10 +181,10 @@ r=\frac{Cov_{xy}}{s_x*s_y}
 This is known as the product moment correlation (r) and it is straight-forward to compute:
 
 
-```r
+``` r
 x_sd <- sd(att_data$duration)
 y_sd <- sd(att_data$attitude)
-r <- cov/(x_sd * y_sd)
+r <- cov/(x_sd*y_sd)
 r
 ```
 
@@ -196,9 +195,8 @@ r
 Or you could just use the ```cor()``` function:
 
 
-```r
-cor(att_data[, c("attitude", "duration")], method = "pearson",
-    use = "complete")
+``` r
+cor(att_data[, c("attitude", "duration")], method = "pearson", use = "complete")
 ```
 
 ```
@@ -234,8 +232,8 @@ t=\frac{r*\sqrt{N-2}}{\sqrt{1-r^2}}
 It has a t distribution with n - 2 degrees of freedom. Then, we follow the usual procedure of calculating the test statistic and comparing the test statistic to the critical value of the underlying probability distribution. If the calculated test statistic is larger than the critical value, the null hypothesis of no relationship between X and Y is rejected. 
 
 
-```r
-t_calc <- r * sqrt(N - 2)/sqrt(1 - r^2)  #calculated test statistic
+``` r
+t_calc <- r*sqrt(N - 2)/sqrt(1 - r^2) #calculated test statistic
 t_calc
 ```
 
@@ -243,9 +241,9 @@ t_calc
 ## [1] 8.4144314
 ```
 
-```r
-df <- (N - 2)  #degrees of freedom
-t_crit <- qt(0.975, df)  #critical value
+``` r
+df <- (N - 2) #degrees of freedom
+t_crit <- qt(0.975, df) #critical value
 t_crit
 ```
 
@@ -253,8 +251,8 @@ t_crit
 ## [1] 2.2281389
 ```
 
-```r
-pt(q = t_calc, df = df, lower.tail = F) * 2  #p-value 
+``` r
+pt(q = t_calc, df = df, lower.tail = F) * 2 #p-value 
 ```
 
 ```
@@ -264,9 +262,8 @@ pt(q = t_calc, df = df, lower.tail = F) * 2  #p-value
 Or you can simply use the ```cor.test()``` function, which also produces the 95% confidence interval:
 
 
-```r
-cor.test(att_data$attitude, att_data$duration, alternative = "two.sided",
-    method = "pearson", conf.level = 0.95)
+``` r
+cor.test(att_data$attitude, att_data$duration, alternative = "two.sided", method = "pearson", conf.level = 0.95)
 ```
 
 ```
@@ -289,9 +286,8 @@ To determine the linear relationship between variables, the data only needs to b
 * Kendall's tau: use when N is small or the number of tied ranks is large.
 
 
-```r
-cor.test(att_data$attitude, att_data$duration, alternative = "two.sided",
-    method = "spearman", conf.level = 0.95)
+``` r
+cor.test(att_data$attitude, att_data$duration, alternative = "two.sided", method = "spearman", conf.level = 0.95)
 ```
 
 ```
@@ -306,9 +302,8 @@ cor.test(att_data$attitude, att_data$duration, alternative = "two.sided",
 ## 0.95036059
 ```
 
-```r
-cor.test(att_data$attitude, att_data$duration, alternative = "two.sided",
-    method = "kendall", conf.level = 0.95)
+``` r
+cor.test(att_data$attitude, att_data$duration, alternative = "two.sided", method = "kendall", conf.level = 0.95)
 ```
 
 ```
@@ -362,13 +357,12 @@ In simple linear regression, we assess the relationship between one dependent (r
 Suppose you are a marketing research analyst at a music label and your task is to suggest, on the basis of historical data, a marketing plan for the next year that will maximize product sales. The data set that is available to you includes information on the sales of music downloads (units), advertising expenditures (in thousands of Euros), the number of radio plays an artist received per week (airplay), the number of previous releases of an artist (starpower), repertoire origin (country; 0 = local, 1 = international), and genre (1 = rock, 2 = pop, 3 = electronic). Let's load and inspect the data first: 
 
 
-```r
-regression <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/music_sales_regression.dat",
-    sep = "\t", header = TRUE)  #read in data
-regression$country <- factor(regression$country, levels = c(0:1),
-    labels = c("local", "international"))  #convert grouping variable to factor
-regression$genre <- factor(regression$genre, levels = c(1:3),
-    labels = c("rock", "pop", "electronic"))  #convert grouping variable to factor
+``` r
+regression <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/music_sales_regression.dat", 
+                          sep = "\t", 
+                          header = TRUE) #read in data
+regression$country <- factor(regression$country, levels = c(0:1), labels = c("local", "international")) #convert grouping variable to factor
+regression$genre <- factor(regression$genre, levels = c(1:3), labels = c("rock", "pop","electronic")) #convert grouping variable to factor
 head(regression)
 ```
 
@@ -379,8 +373,8 @@ head(regression)
 </div>
 
 
-```r
-psych::describe(regression)  #descriptive statistics using psych
+``` r
+psych::describe(regression) #descriptive statistics using psych
 ```
 
 ```
@@ -476,7 +470,7 @@ This is also referred to as the <b>residual sum of squares (RSS)</b>, which you 
 The exact mathematical derivation of this formula is beyond the scope of this script, but the intuition is to calculate the first derivative of the squared residuals with respect to &beta;<sub>1</sub> and set it to zero, thereby finding the &beta;<sub>1</sub> that minimizes the term. Using the above formula, you can easily compute &beta;<sub>1</sub> using the following code:
 
 
-```r
+``` r
 cov_y_x <- cov(regression$adspend, regression$sales)
 cov_y_x
 ```
@@ -485,7 +479,7 @@ cov_y_x
 ## [1] 22672.016
 ```
 
-```r
+``` r
 var_x <- var(regression$adspend)
 var_x
 ```
@@ -494,7 +488,7 @@ var_x
 ## [1] 235860.98
 ```
 
-```r
+``` r
 beta_1 <- cov_y_x/var_x
 beta_1
 ```
@@ -517,8 +511,8 @@ Using the estimated coefficient for &beta;<sub>1</sub>, it is easy to compute &b
 The R code for this is:
 
 
-```r
-beta_0 <- mean(regression$sales) - beta_1 * mean(regression$adspend)
+``` r
+beta_0 <- mean(regression$sales) - beta_1*mean(regression$adspend)
 beta_0
 ```
 
@@ -533,11 +527,12 @@ If we spend no money on advertising, we would expect to sell 134.14 (134) units.
 You may also verify this based on a scatterplot of the data. The following plot shows the scatterplot including the regression line, which is estimated using OLS.  
 
 
-```r
-ggplot(regression, mapping = aes(adspend, sales)) +
-    geom_point(shape = 1) + geom_smooth(method = "lm",
-    fill = "blue", alpha = 0.1) + labs(x = "Advertising expenditures (EUR)",
-    y = "Number of sales") + theme_bw()
+``` r
+ggplot(regression, mapping = aes(adspend, sales)) + 
+  geom_point(shape = 1) +
+  geom_smooth(method = "lm", fill = "blue", alpha = 0.1) + 
+  labs(x = "Advertising expenditures (EUR)", y = "Number of sales") + 
+  theme_bw()
 ```
 
 <div class="figure" style="text-align: center">
@@ -573,9 +568,9 @@ After calculating the test statistic, we compare its value to the values that we
 To estimate the regression model in R, you can use the ```lm()``` function. Within the function, you first specify the dependent variable ("sales") and independent variable ("adspend") separated by a ```~``` (tilde). As mentioned previously, this is known as _formula notation_ in R. The ```data = regression``` argument specifies that the variables come from the data frame named "regression". Strictly speaking, you use the ```lm()``` function to create an object called "simple_regression," which holds the regression output. You can then view the results using the ```summary()``` function: 
 
 
-```r
-simple_regression <- lm(sales ~ adspend, data = regression)  #estimate linear model
-summary(simple_regression)  #summary of results
+``` r
+simple_regression <- lm(sales ~ adspend, data = regression) #estimate linear model
+summary(simple_regression) #summary of results
 ```
 
 ```
@@ -611,7 +606,7 @@ CI = \hat{\beta_1}\pm(t_{1-\frac{\alpha}{2}}*SE(\beta_1))
 It is easy to compute confidence intervals in R using the ```confint()``` function. You just have to provide the name of you estimated model as an argument:
 
 
-```r
+``` r
 confint(simple_regression)
 ```
 
@@ -704,8 +699,8 @@ You can get a first impression of the fit of the model by inspecting the scatter
 The R<sup>2</sup> statistic is reported in the regression output (see above). However, you could also extract the relevant sum of squares statistics from the regression object using the ```anova()``` function to compute it manually: 
 
 
-```r
-anova(simple_regression)  #anova results
+``` r
+anova(simple_regression) #anova results
 ```
 
 ```
@@ -722,9 +717,8 @@ anova(simple_regression)  #anova results
 Now we can compute R<sup>2</sup> in the same way that we have computed Eta<sup>2</sup> in the last section:
 
 
-```r
-r2 <- anova(simple_regression)$"Sum Sq"[1]/(anova(simple_regression)$"Sum Sq"[1] +
-    anova(simple_regression)$"Sum Sq"[2])  #compute R2
+``` r
+r2 <- anova(simple_regression)$'Sum Sq'[1]/(anova(simple_regression)$'Sum Sq'[1] + anova(simple_regression)$'Sum Sq'[2]) #compute R2
 r2
 ```
 
@@ -771,41 +765,41 @@ which has a F distribution with k (number of predictors) and (n — k — 1) deg
 The result of the F-test is provided in the regression output. However, you might manually compute the F-test using the ANOVA results from the model:  
 
 
-```r
-anova(simple_regression)  #anova results
+``` r
+anova(simple_regression) #anova results
 ```
 
 ```
 ## Analysis of Variance Table
 ## 
 ## Response: sales
-##            Df Sum Sq Mean Sq F value                Pr(>F)    
-## adspend     1 433688  433688  99.587 < 0.00000000000000022 ***
-## Residuals 198 862264    4355                                  
+##            Df Sum Sq Mean Sq F value              Pr(>F)    
+## adspend     1 433688  433688    99.6 <0.0000000000000002 ***
+## Residuals 198 862264    4355                                
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
-```r
-f_calc <- anova(simple_regression)$"Mean Sq"[1]/anova(simple_regression)$"Mean Sq"[2]  #compute F
+``` r
+f_calc <- anova(simple_regression)$'Mean Sq'[1]/anova(simple_regression)$'Mean Sq'[2] #compute F
 f_calc
 ```
 
 ```
-## [1] 99.58687
+## [1] 100
 ```
 
-```r
-f_crit <- qf(0.95, df1 = 1, df2 = 198)  #critical value
+``` r
+f_crit <- qf(.95, df1 = 1, df2 = 198) #critical value
 f_crit
 ```
 
 ```
-## [1] 3.888853
+## [1] 3.9
 ```
 
-```r
-f_calc > f_crit  #test if calculated test statistic is larger than critical value
+``` r
+f_calc > f_crit #test if calculated test statistic is larger than critical value
 ```
 
 ```
@@ -823,7 +817,7 @@ $$\hat{sales}=134.134 + 0.09612*800=211$$
 ... or by extracting the estimated coefficients from the model summary:
 
 
-```r
+``` r
 summary(simple_regression)$coefficients[1,1] + # the intercept
 summary(simple_regression)$coefficients[2,1]*800 # the slope * 800
 ```
@@ -865,8 +859,8 @@ With several predictors, the partitioning of sum of squares is the same as in th
 <div class="figure" style="text-align: center">
 
 ```{=html}
-<div id="htmlwidget-d5079acbc85567375398" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d5079acbc85567375398">{"x":{"visdat":{"485c6f722c1c":["function () ","plotlyVisDat"],"485c66131f26":["function () ","data"]},"cur_data":"485c66131f26","attrs":{"485c6f722c1c":{"x":{},"y":{},"z":{},"colors":["#A9D0F5","#08088A"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface"},"485c66131f26":{"x":[10.256,174.093,1000,75.896,1351.254,202.705,365.985,305.268,263.268,513.694,152.609,35.987,1720.806,102.568,215.368,426.784,507.772,233.291,1035.433,102.642,526.142,624.538,912.349,611.479,215.994,561.963,474.76,231.523,678.596,70.922,1567.548,263.598,1423.568,715.678,251.192,777.237,509.43,964.11,583.627,923.373,344.392,1095.578,100.025,30.425,1080.342,97.972,799.899,1071.752,893.355,283.161,917.017,234.568,456.897,206.973,1294.099,826.859,406.814,564.158,192.607,10.652,45.689,42.568,20.456,635.192,1002.273,1177.047,507.638,265.398,215.689,526.48,26.895,883.877,9.104,103.568,169.583,429.504,223.639,145.585,1323.287,985.968,500.922,226.652,1051.168,68.093,1547.159,393.774,804.282,801.577,450.562,196.65,26.598,179.061,345.687,295.84,2271.86,1134.575,601.434,45.298,759.518,832.869,1326.598,56.894,709.399,56.895,767.134,503.172,700.929,910.851,888.569,800.615,1500,985.685,1380.689,785.694,792.345,957.167,1789.659,656.137,613.697,313.362,336.51,1544.899,68.954,1445.563,785.692,125.628,377.925,217.994,759.862,1163.444,842.957,125.179,236.598,669.811,1188.193,612.234,922.019,50,2000,1054.027,385.045,1507.972,102.568,204.568,1170.918,574.513,689.547,784.22,405.913,179.778,607.258,1542.329,1112.47,856.985,836.331,236.908,568.954,1077.855,579.321,1500,731.364,25.689,391.749,233.999,275.7,56.895,255.117,471.814,566.501,102.568,250.568,68.594,642.786,1500,102.563,756.984,51.229,644.151,537.352,15.313,243.237,256.894,22.464,45.689,724.938,1126.461,1985.119,1837.516,135.986,514.068,237.703,976.641,1452.689,1600,268.598,900.889,982.063,201.356,746.024,1132.877],"y":[43,40,5,34,37,13,23,54,18,2,11,30,32,22,36,37,9,2,12,5,14,20,57,20,19,35,22,16,53,4,29,43,26,28,24,37,32,34,30,15,23,31,21,28,18,38,28,37,26,30,10,21,18,14,38,36,24,32,9,39,24,45,13,17,32,23,0,25,35,26,19,26,53,29,28,17,26,42,35,17,36,45,20,15,28,27,17,32,46,36,47,19,22,55,31,39,21,36,21,44,27,27,16,33,33,21,35,26,14,34,11,28,33,20,33,28,30,34,49,40,20,42,35,35,8,49,19,42,6,36,32,28,25,34,33,21,34,63,31,25,42,37,25,26,39,44,46,36,12,2,29,33,28,10,38,19,19,13,30,38,22,23,22,20,18,37,16,20,32,26,53,28,32,24,37,30,19,47,22,22,10,1,1,39,8,38,35,40,22,21,27,31,19,24,1,38,26,11,34,55],"z":[330,300,250,120,290,60,140,290,160,100,160,150,290,140,230,230,30,80,190,90,120,150,230,70,150,210,180,140,360,10,240,270,290,220,150,230,220,240,260,170,130,270,140,60,210,190,210,240,210,200,140,90,120,100,360,180,240,150,110,90,160,230,40,60,230,230,120,100,150,120,60,280,120,230,230,40,140,360,250,210,260,250,200,150,250,100,260,210,290,210,220,70,110,250,320,300,180,180,200,320,280,140,100,120,230,150,250,190,240,250,230,120,230,110,210,230,320,210,230,250,60,330,150,360,150,180,80,180,130,320,280,200,130,190,270,150,230,310,340,240,180,220,40,190,290,220,340,250,190,120,230,190,210,170,310,90,170,140,300,340,170,100,200,80,100,70,50,70,240,160,290,140,210,300,230,280,160,200,210,110,110,70,100,190,70,360,360,300,120,200,150,220,280,300,140,290,180,140,210,250],"colors":["#A9D0F5","#08088A"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":["darkgray","steelblue","steelblue","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","steelblue","steelblue","steelblue","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","steelblue","darkgray","steelblue","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","steelblue","steelblue","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray"],"size":3,"opacity":0.8,"symbol":75},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"adspend"},"yaxis":{"title":"airplay"},"zaxis":{"title":"sales"}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"z","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(169,208,245,1)"],["0.0416666666666667","rgba(164,199,241,1)"],["0.0833333333333333","rgba(159,191,236,1)"],["0.125","rgba(154,182,232,1)"],["0.166666666666667","rgba(149,174,227,1)"],["0.208333333333333","rgba(144,165,223,1)"],["0.25","rgba(139,157,218,1)"],["0.291666666666667","rgba(134,148,214,1)"],["0.333333333333333","rgba(128,140,209,1)"],["0.375","rgba(123,132,205,1)"],["0.416666666666667","rgba(118,124,200,1)"],["0.458333333333333","rgba(112,115,196,1)"],["0.5","rgba(106,107,191,1)"],["0.541666666666667","rgba(101,99,187,1)"],["0.583333333333333","rgba(95,91,183,1)"],["0.625","rgba(89,84,178,1)"],["0.666666666666667","rgba(83,76,174,1)"],["0.708333333333333","rgba(76,68,169,1)"],["0.75","rgba(70,60,165,1)"],["0.791666666666667","rgba(63,52,160,1)"],["0.833333333333333","rgba(55,44,156,1)"],["0.875","rgba(47,36,151,1)"],["0.916666666666667","rgba(37,28,147,1)"],["0.958333333333333","rgba(26,19,142,1)"],["1","rgba(8,8,138,1)"]],"showscale":true,"x":[9.104,103.3855,197.667,291.9485,386.23,480.5115,574.793,669.0745,763.356,857.6375,951.919,1046.2005,1140.482,1234.7635,1329.045,1423.3265,1517.608,1611.8895,1706.171,1800.4525,1894.734,1989.0155,2083.297,2177.5785,2271.86],"y":[0,2.625,5.25,7.875,10.5,13.125,15.75,18.375,21,23.625,26.25,28.875,31.5,34.125,36.75,39.375,42,44.625,47.25,49.875,52.5,55.125,57.75,60.375,63],"z":[[41.9148312294276,50.1066740811476,58.2985169328676,66.4903597845876,74.6822026363076,82.8740454880275,91.0658883397475,99.2577311914675,107.449574043188,115.641416894908,123.833259746628,132.025102598348,140.216945450067,148.408788301787,156.600631153507,164.792474005227,172.984316856947,181.176159708667,189.368002560387,197.559845412107,205.751688263827,213.943531115547,222.135373967267,230.327216818987,238.519059670707],[51.3354036298894,59.5272464816094,67.7190893333294,75.9109321850494,84.1027750367694,92.2946178884894,100.486460740209,108.678303591929,116.870146443649,125.061989295369,133.253832147089,141.445674998809,149.637517850529,157.829360702249,166.021203553969,174.213046405689,182.404889257409,190.596732109129,198.788574960849,206.980417812569,215.172260664289,223.364103516009,231.555946367729,239.747789219449,247.939632071169],[60.7559760303513,68.9478188820712,77.1396617337912,85.3315045855112,93.5233474372312,101.715190288951,109.907033140671,118.098875992391,126.290718844111,134.482561695831,142.674404547551,150.866247399271,159.058090250991,167.249933102711,175.441775954431,183.633618806151,191.825461657871,200.017304509591,208.209147361311,216.400990213031,224.592833064751,232.784675916471,240.976518768191,249.168361619911,257.360204471631],[70.1765484308131,78.3683912825331,86.5602341342531,94.7520769859731,102.943919837693,111.135762689413,119.327605541133,127.519448392853,135.711291244573,143.903134096293,152.094976948013,160.286819799733,168.478662651453,176.670505503173,184.862348354893,193.054191206613,201.246034058333,209.437876910053,217.629719761773,225.821562613493,234.013405465213,242.205248316933,250.397091168653,258.588934020373,266.780776872093],[79.5971208312749,87.7889636829949,95.9808065347149,104.172649386435,112.364492238155,120.556335089875,128.748177941595,136.940020793315,145.131863645035,153.323706496755,161.515549348475,169.707392200195,177.899235051915,186.091077903635,194.282920755355,202.474763607075,210.666606458795,218.858449310515,227.050292162235,235.242135013955,243.433977865675,251.625820717395,259.817663569115,268.009506420835,276.201349272555],[89.0176932317368,97.2095360834568,105.401378935177,113.593221786897,121.785064638617,129.976907490337,138.168750342057,146.360593193777,154.552436045497,162.744278897217,170.936121748937,179.127964600657,187.319807452377,195.511650304097,203.703493155817,211.895336007537,220.087178859257,228.279021710977,236.470864562697,244.662707414417,252.854550266137,261.046393117857,269.238235969577,277.430078821297,285.621921673017],[98.4382656321986,106.630108483919,114.821951335639,123.013794187359,131.205637039079,139.397479890799,147.589322742519,155.781165594239,163.973008445959,172.164851297679,180.356694149399,188.548537001119,196.740379852839,204.932222704559,213.124065556279,221.315908407998,229.507751259719,237.699594111438,245.891436963158,254.083279814878,262.275122666598,270.466965518318,278.658808370038,286.850651221758,295.042494073478],[107.85883803266,116.05068088438,124.2425237361,132.43436658782,140.62620943954,148.81805229126,157.00989514298,165.2017379947,173.39358084642,181.58542369814,189.77726654986,197.96910940158,206.1609522533,214.35279510502,222.54463795674,230.73648080846,238.92832366018,247.1201665119,255.31200936362,263.50385221534,271.69569506706,279.88753791878,288.0793807705,296.27122362222,304.46306647394],[117.279410433122,125.471253284842,133.663096136562,141.854938988282,150.046781840002,158.238624691722,166.430467543442,174.622310395162,182.814153246882,191.005996098602,199.197838950322,207.389681802042,215.581524653762,223.773367505482,231.965210357202,240.157053208922,248.348896060642,256.540738912362,264.732581764082,272.924424615802,281.116267467522,289.308110319242,297.499953170962,305.691796022682,313.883638874402],[126.699982833584,134.891825685304,143.083668537024,151.275511388744,159.467354240464,167.659197092184,175.851039943904,184.042882795624,192.234725647344,200.426568499064,208.618411350784,216.810254202504,225.002097054224,233.193939905944,241.385782757664,249.577625609384,257.769468461104,265.961311312824,274.153154164544,282.344997016264,290.536839867984,298.728682719704,306.920525571424,315.112368423144,323.304211274864],[136.120555234046,144.312398085766,152.504240937486,160.696083789206,168.887926640926,177.079769492646,185.271612344366,193.463455196086,201.655298047806,209.847140899526,218.038983751246,226.230826602966,234.422669454686,242.614512306406,250.806355158126,258.998198009846,267.190040861566,275.381883713286,283.573726565006,291.765569416726,299.957412268446,308.149255120166,316.341097971886,324.532940823606,332.724783675326],[145.541127634508,153.732970486228,161.924813337948,170.116656189668,178.308499041388,186.500341893108,194.692184744828,202.884027596548,211.075870448268,219.267713299988,227.459556151708,235.651399003428,243.843241855148,252.035084706868,260.226927558588,268.418770410308,276.610613262028,284.802456113748,292.994298965468,301.186141817188,309.377984668908,317.569827520628,325.761670372348,333.953513224068,342.145356075788],[154.96170003497,163.15354288669,171.34538573841,179.53722859013,187.72907144185,195.92091429357,204.11275714529,212.30459999701,220.49644284873,228.68828570045,236.88012855217,245.07197140389,253.26381425561,261.45565710733,269.64749995905,277.839342810769,286.03118566249,294.223028514209,302.41487136593,310.606714217649,318.798557069369,326.990399921089,335.182242772809,343.374085624529,351.565928476249],[164.382272435431,172.574115287151,180.765958138871,188.957800990591,197.149643842311,205.341486694031,213.533329545751,221.725172397471,229.917015249191,238.108858100911,246.300700952631,254.492543804351,262.684386656071,270.876229507791,279.068072359511,287.259915211231,295.451758062951,303.643600914671,311.835443766391,320.027286618111,328.219129469831,336.410972321551,344.602815173271,352.794658024991,360.986500876711],[173.802844835893,181.994687687613,190.186530539333,198.378373391053,206.570216242773,214.762059094493,222.953901946213,231.145744797933,239.337587649653,247.529430501373,255.721273353093,263.913116204813,272.104959056533,280.296801908253,288.488644759973,296.680487611693,304.872330463413,313.064173315133,321.256016166853,329.447859018573,337.639701870293,345.831544722013,354.023387573733,362.215230425453,370.407073277173],[183.223417236355,191.415260088075,199.607102939795,207.798945791515,215.990788643235,224.182631494955,232.374474346675,240.566317198395,248.758160050115,256.950002901835,265.141845753555,273.333688605275,281.525531456995,289.717374308715,297.909217160435,306.101060012155,314.292902863875,322.484745715595,330.676588567315,338.868431419035,347.060274270755,355.252117122475,363.443959974195,371.635802825915,379.827645677635],[192.643989636817,200.835832488537,209.027675340257,217.219518191977,225.411361043697,233.603203895417,241.795046747137,249.986889598857,258.178732450577,266.370575302297,274.562418154017,282.754261005737,290.946103857457,299.137946709177,307.329789560897,315.521632412617,323.713475264337,331.905318116057,340.097160967777,348.289003819497,356.480846671217,364.672689522937,372.864532374657,381.056375226377,389.248218078097],[202.064562037279,210.256404888999,218.448247740719,226.640090592439,234.831933444159,243.023776295879,251.215619147599,259.407461999319,267.599304851039,275.791147702759,283.982990554479,292.174833406199,300.366676257919,308.558519109639,316.750361961359,324.942204813079,333.134047664799,341.325890516519,349.517733368239,357.709576219959,365.901419071679,374.093261923399,382.285104775119,390.476947626839,398.668790478559],[211.485134437741,219.676977289461,227.868820141181,236.060662992901,244.252505844621,252.444348696341,260.636191548061,268.828034399781,277.019877251501,285.211720103221,293.403562954941,301.595405806661,309.787248658381,317.9790915101,326.170934361821,334.36277721354,342.554620065261,350.74646291698,358.938305768701,367.13014862042,375.32199147214,383.51383432386,391.70567717558,399.8975200273,408.08936287902],[220.905706838202,229.097549689922,237.289392541642,245.481235393362,253.673078245082,261.864921096802,270.056763948522,278.248606800242,286.440449651962,294.632292503682,302.824135355402,311.015978207122,319.207821058842,327.399663910562,335.591506762282,343.783349614002,351.975192465722,360.167035317442,368.358878169162,376.550721020882,384.742563872602,392.934406724322,401.126249576042,409.318092427762,417.509935279482],[230.326279238664,238.518122090384,246.709964942104,254.901807793824,263.093650645544,271.285493497264,279.477336348984,287.669179200704,295.861022052424,304.052864904144,312.244707755864,320.436550607584,328.628393459304,336.820236311024,345.012079162744,353.203922014464,361.395764866184,369.587607717904,377.779450569624,385.971293421344,394.163136273064,402.354979124784,410.546821976504,418.738664828224,426.930507679944],[239.746851639126,247.938694490846,256.130537342566,264.322380194286,272.514223046006,280.706065897726,288.897908749446,297.089751601166,305.281594452886,313.473437304606,321.665280156326,329.857123008046,338.048965859766,346.240808711486,354.432651563206,362.624494414926,370.816337266646,379.008180118366,387.200022970086,395.391865821806,403.583708673526,411.775551525246,419.967394376966,428.159237228686,436.351080080406],[249.167424039588,257.359266891308,265.551109743028,273.742952594748,281.934795446468,290.126638298188,298.318481149908,306.510324001628,314.702166853348,322.894009705068,331.085852556788,339.277695408508,347.469538260228,355.661381111948,363.853223963668,372.045066815388,380.236909667108,388.428752518828,396.620595370548,404.812438222268,413.004281073988,421.196123925708,429.387966777428,437.579809629148,445.771652480868],[258.58799644005,266.77983929177,274.97168214349,283.16352499521,291.35536784693,299.54721069865,307.73905355037,315.93089640209,324.12273925381,332.31458210553,340.50642495725,348.69826780897,356.89011066069,365.08195351241,373.27379636413,381.46563921585,389.65748206757,397.84932491929,406.04116777101,414.23301062273,422.42485347445,430.61669632617,438.80853917789,447.00038202961,455.19222488133],[268.008568840512,276.200411692232,284.392254543952,292.584097395672,300.775940247392,308.967783099112,317.159625950832,325.351468802552,333.543311654272,341.735154505992,349.926997357712,358.118840209432,366.310683061152,374.502525912872,382.694368764592,390.886211616311,399.078054468031,407.269897319752,415.461740171472,423.653583023191,431.845425874911,440.037268726632,448.229111578351,456.420954430071,464.612797281791]],"type":"surface","frame":null},{"x":[10.256,174.093,1000,75.896,1351.254,202.705,365.985,305.268,263.268,513.694,152.609,35.987,1720.806,102.568,215.368,426.784,507.772,233.291,1035.433,102.642,526.142,624.538,912.349,611.479,215.994,561.963,474.76,231.523,678.596,70.922,1567.548,263.598,1423.568,715.678,251.192,777.237,509.43,964.11,583.627,923.373,344.392,1095.578,100.025,30.425,1080.342,97.972,799.899,1071.752,893.355,283.161,917.017,234.568,456.897,206.973,1294.099,826.859,406.814,564.158,192.607,10.652,45.689,42.568,20.456,635.192,1002.273,1177.047,507.638,265.398,215.689,526.48,26.895,883.877,9.104,103.568,169.583,429.504,223.639,145.585,1323.287,985.968,500.922,226.652,1051.168,68.093,1547.159,393.774,804.282,801.577,450.562,196.65,26.598,179.061,345.687,295.84,2271.86,1134.575,601.434,45.298,759.518,832.869,1326.598,56.894,709.399,56.895,767.134,503.172,700.929,910.851,888.569,800.615,1500,985.685,1380.689,785.694,792.345,957.167,1789.659,656.137,613.697,313.362,336.51,1544.899,68.954,1445.563,785.692,125.628,377.925,217.994,759.862,1163.444,842.957,125.179,236.598,669.811,1188.193,612.234,922.019,50,2000,1054.027,385.045,1507.972,102.568,204.568,1170.918,574.513,689.547,784.22,405.913,179.778,607.258,1542.329,1112.47,856.985,836.331,236.908,568.954,1077.855,579.321,1500,731.364,25.689,391.749,233.999,275.7,56.895,255.117,471.814,566.501,102.568,250.568,68.594,642.786,1500,102.563,756.984,51.229,644.151,537.352,15.313,243.237,256.894,22.464,45.689,724.938,1126.461,1985.119,1837.516,135.986,514.068,237.703,976.641,1452.689,1600,268.598,900.889,982.063,201.356,746.024,1132.877],"y":[43,40,5,34,37,13,23,54,18,2,11,30,32,22,36,37,9,2,12,5,14,20,57,20,19,35,22,16,53,4,29,43,26,28,24,37,32,34,30,15,23,31,21,28,18,38,28,37,26,30,10,21,18,14,38,36,24,32,9,39,24,45,13,17,32,23,0,25,35,26,19,26,53,29,28,17,26,42,35,17,36,45,20,15,28,27,17,32,46,36,47,19,22,55,31,39,21,36,21,44,27,27,16,33,33,21,35,26,14,34,11,28,33,20,33,28,30,34,49,40,20,42,35,35,8,49,19,42,6,36,32,28,25,34,33,21,34,63,31,25,42,37,25,26,39,44,46,36,12,2,29,33,28,10,38,19,19,13,30,38,22,23,22,20,18,37,16,20,32,26,53,28,32,24,37,30,19,47,22,22,10,1,1,39,8,38,35,40,22,21,27,31,19,24,1,38,26,11,34,55],"z":[330,300,250,120,290,60,140,290,160,100,160,150,290,140,230,230,30,80,190,90,120,150,230,70,150,210,180,140,360,10,240,270,290,220,150,230,220,240,260,170,130,270,140,60,210,190,210,240,210,200,140,90,120,100,360,180,240,150,110,90,160,230,40,60,230,230,120,100,150,120,60,280,120,230,230,40,140,360,250,210,260,250,200,150,250,100,260,210,290,210,220,70,110,250,320,300,180,180,200,320,280,140,100,120,230,150,250,190,240,250,230,120,230,110,210,230,320,210,230,250,60,330,150,360,150,180,80,180,130,320,280,200,130,190,270,150,230,310,340,240,180,220,40,190,290,220,340,250,190,120,230,190,210,170,310,90,170,140,300,340,170,100,200,80,100,70,50,70,240,160,290,140,210,300,230,280,160,200,210,110,110,70,100,190,70,360,360,300,120,200,150,220,280,300,140,290,180,140,210,250],"type":"scatter3d","mode":"markers","marker":{"color":["darkgray","steelblue","steelblue","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","steelblue","steelblue","steelblue","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","steelblue","darkgray","steelblue","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","steelblue","steelblue","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray"],"size":3,"opacity":0.8,"symbol":75,"line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-d5079acbc85567375398" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-d5079acbc85567375398">{"x":{"visdat":{"654e4b052fc1":["function () ","plotlyVisDat"],"654e460b3bc48":["function () ","data"]},"cur_data":"654e460b3bc48","attrs":{"654e4b052fc1":{"x":{},"y":{},"z":{},"colors":["#A9D0F5","#08088A"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"surface"},"654e460b3bc48":{"x":[10.256,174.09299999999999,1000,75.896000000000001,1351.2539999999999,202.70500000000001,365.98500000000001,305.26799999999997,263.26799999999997,513.69399999999996,152.60900000000001,35.987000000000002,1720.806,102.568,215.36799999999999,426.78399999999999,507.77199999999999,233.291,1035.433,102.642,526.14200000000005,624.53800000000001,912.34900000000005,611.47900000000004,215.994,561.96299999999997,474.75999999999999,231.523,678.596,70.921999999999997,1567.548,263.59800000000001,1423.568,715.678,251.19200000000001,777.23699999999997,509.43000000000001,964.11000000000001,583.62699999999995,923.37300000000005,344.392,1095.578,100.02500000000001,30.425000000000001,1080.3420000000001,97.971999999999994,799.899,1071.752,893.35500000000002,283.161,917.01700000000005,234.56800000000001,456.89699999999999,206.97300000000001,1294.0989999999999,826.85900000000004,406.81400000000002,564.15800000000002,192.607,10.651999999999999,45.689,42.567999999999998,20.456,635.19200000000001,1002.273,1177.047,507.63799999999998,265.39800000000002,215.68899999999999,526.48000000000002,26.895,883.87699999999995,9.1039999999999992,103.568,169.583,429.50400000000002,223.63900000000001,145.58500000000001,1323.287,985.96799999999996,500.92200000000003,226.65199999999999,1051.1679999999999,68.093000000000004,1547.1590000000001,393.774,804.28200000000004,801.577,450.56200000000001,196.65000000000001,26.597999999999999,179.06100000000001,345.68700000000001,295.83999999999997,2271.8600000000001,1134.575,601.43399999999997,45.298000000000002,759.51800000000003,832.86900000000003,1326.598,56.893999999999998,709.399,56.895000000000003,767.13400000000001,503.17200000000003,700.92899999999997,910.851,888.56899999999996,800.61500000000001,1500,985.68499999999995,1380.6890000000001,785.69399999999996,792.34500000000003,957.16700000000003,1789.6590000000001,656.13699999999994,613.697,313.36200000000002,336.50999999999999,1544.8989999999999,68.953999999999994,1445.5630000000001,785.69200000000001,125.628,377.92500000000001,217.994,759.86199999999997,1163.444,842.95699999999999,125.179,236.59800000000001,669.81100000000004,1188.193,612.23400000000004,922.01900000000001,50,2000,1054.027,385.04500000000002,1507.972,102.568,204.56800000000001,1170.9179999999999,574.51300000000003,689.54700000000003,784.22000000000003,405.91300000000001,179.77799999999999,607.25800000000004,1542.329,1112.47,856.98500000000001,836.33100000000002,236.90799999999999,568.95399999999995,1077.855,579.32100000000003,1500,731.36400000000003,25.689,391.74900000000002,233.999,275.69999999999999,56.895000000000003,255.11699999999999,471.81400000000002,566.50099999999998,102.568,250.56800000000001,68.593999999999994,642.78599999999994,1500,102.563,756.98400000000004,51.228999999999999,644.15099999999995,537.35199999999998,15.313000000000001,243.23699999999999,256.89400000000001,22.463999999999999,45.689,724.93799999999999,1126.461,1985.1189999999999,1837.5160000000001,135.98599999999999,514.06799999999998,237.703,976.64099999999996,1452.6890000000001,1600,268.59800000000001,900.88900000000001,982.06299999999999,201.35599999999999,746.024,1132.877],"y":[43,40,5,34,37,13,23,54,18,2,11,30,32,22,36,37,9,2,12,5,14,20,57,20,19,35,22,16,53,4,29,43,26,28,24,37,32,34,30,15,23,31,21,28,18,38,28,37,26,30,10,21,18,14,38,36,24,32,9,39,24,45,13,17,32,23,0,25,35,26,19,26,53,29,28,17,26,42,35,17,36,45,20,15,28,27,17,32,46,36,47,19,22,55,31,39,21,36,21,44,27,27,16,33,33,21,35,26,14,34,11,28,33,20,33,28,30,34,49,40,20,42,35,35,8,49,19,42,6,36,32,28,25,34,33,21,34,63,31,25,42,37,25,26,39,44,46,36,12,2,29,33,28,10,38,19,19,13,30,38,22,23,22,20,18,37,16,20,32,26,53,28,32,24,37,30,19,47,22,22,10,1,1,39,8,38,35,40,22,21,27,31,19,24,1,38,26,11,34,55],"z":[330,300,250,120,290,60,140,290,160,100,160,150,290,140,230,230,30,80,190,90,120,150,230,70,150,210,180,140,360,10,240,270,290,220,150,230,220,240,260,170,130,270,140,60,210,190,210,240,210,200,140,90,120,100,360,180,240,150,110,90,160,230,40,60,230,230,120,100,150,120,60,280,120,230,230,40,140,360,250,210,260,250,200,150,250,100,260,210,290,210,220,70,110,250,320,300,180,180,200,320,280,140,100,120,230,150,250,190,240,250,230,120,230,110,210,230,320,210,230,250,60,330,150,360,150,180,80,180,130,320,280,200,130,190,270,150,230,310,340,240,180,220,40,190,290,220,340,250,190,120,230,190,210,170,310,90,170,140,300,340,170,100,200,80,100,70,50,70,240,160,290,140,210,300,230,280,160,200,210,110,110,70,100,190,70,360,360,300,120,200,150,220,280,300,140,290,180,140,210,250],"colors":["#A9D0F5","#08088A"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d","mode":"markers","marker":{"color":["darkgray","steelblue","steelblue","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","steelblue","steelblue","steelblue","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","steelblue","darkgray","steelblue","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","steelblue","steelblue","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray"],"size":3,"opacity":0.80000000000000004,"symbol":75},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"scene":{"xaxis":{"title":"adspend"},"yaxis":{"title":"airplay"},"zaxis":{"title":"sales"}},"hovermode":"closest","showlegend":false,"legend":{"yanchor":"top","y":0.5}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"colorbar":{"title":"z","ticklen":2,"len":0.5,"lenmode":"fraction","y":1,"yanchor":"top"},"colorscale":[["0","rgba(169,208,245,1)"],["0.0416666666666667","rgba(164,199,241,1)"],["0.0833333333333333","rgba(159,191,236,1)"],["0.125","rgba(154,182,232,1)"],["0.166666666666667","rgba(149,174,227,1)"],["0.208333333333333","rgba(144,165,223,1)"],["0.25","rgba(139,157,218,1)"],["0.291666666666667","rgba(134,148,214,1)"],["0.333333333333333","rgba(128,140,209,1)"],["0.375","rgba(123,132,205,1)"],["0.416666666666667","rgba(118,124,200,1)"],["0.458333333333333","rgba(112,115,196,1)"],["0.5","rgba(106,107,191,1)"],["0.541666666666667","rgba(101,99,187,1)"],["0.583333333333333","rgba(95,91,183,1)"],["0.625","rgba(89,84,178,1)"],["0.666666666666667","rgba(83,76,174,1)"],["0.708333333333333","rgba(76,68,169,1)"],["0.75","rgba(70,60,165,1)"],["0.791666666666667","rgba(63,52,160,1)"],["0.833333333333333","rgba(55,44,156,1)"],["0.875","rgba(47,36,151,1)"],["0.916666666666667","rgba(37,28,147,1)"],["0.958333333333333","rgba(26,19,142,1)"],["1","rgba(8,8,138,1)"]],"showscale":true,"x":[9.1039999999999992,103.38550000000001,197.66700000000003,291.94850000000002,386.23000000000002,480.51150000000001,574.79300000000012,669.07450000000006,763.35600000000011,857.63750000000016,951.9190000000001,1046.2005000000001,1140.4820000000002,1234.7635000000002,1329.0450000000001,1423.3265000000001,1517.6080000000002,1611.8895000000002,1706.1710000000003,1800.4525000000001,1894.7340000000002,1989.0155000000002,2083.297,2177.5785000000001,2271.8600000000001],"y":[0,2.625,5.25,7.875,10.5,13.125,15.75,18.375,21,23.625,26.25,28.875,31.5,34.125,36.75,39.375,42,44.625,47.25,49.875,52.5,55.125,57.75,60.375,63],"z":[[41.914831229427598,50.106674081147588,58.298516932867585,66.490359784587582,74.682202636307579,82.874045488027562,91.065888339747573,99.257731191467556,107.44957404318755,115.64141689490755,123.83325974662753,132.02510259834753,140.21694545006753,148.40878830178752,156.60063115350749,164.79247400522752,172.98431685694749,181.17615970866748,189.36800256038748,197.55984541210748,205.75168826382748,213.94353111554747,222.13537396726744,230.32721681898744,238.51905967070743],[51.335403629889434,59.527246481609424,67.719089333329421,75.910932185049418,84.102775036769415,92.294617888489398,100.48646074020941,108.67830359192939,116.87014644364939,125.06198929536939,133.25383214708935,141.44567499880935,149.63751785052935,157.82936070224935,166.02120355396931,174.21304640568934,182.40488925740931,190.59673210912931,198.7885749608493,206.9804178125693,215.1722606642893,223.36410351600929,231.55594636772926,239.74778921944926,247.93963207116926],[60.755976030351263,68.94781888207126,77.139661733791257,85.331504585511254,93.523347437231251,101.71519028895123,109.90703314067125,118.09887599239123,126.29071884411123,134.48256169583121,142.67440454755121,150.8662473992712,159.0580902509912,167.2499331027112,175.44177595443117,183.63361880615119,191.82546165787116,200.01730450959116,208.20914736131115,216.40099021303115,224.59283306475115,232.78467591647114,240.97651876819111,249.16836161991111,257.36020447163111],[70.176548430813099,78.368391282533082,86.560234134253079,94.752076985973076,102.94391983769307,111.13576268941307,119.32760554113307,127.51944839285306,135.71129124457306,143.90313409629306,152.09497694801303,160.28681979973302,168.47866265145302,176.67050550317302,184.86234835489299,193.05419120661301,201.24603405833298,209.43787691005298,217.62971976177298,225.82156261349297,234.01340546521297,242.20524831693297,250.39709116865293,258.58893402037296,266.78077687209293],[79.597120831274935,87.788963682994932,95.98080653471493,104.17264938643493,112.36449223815492,120.55633508987489,128.74817794159492,136.94002079331489,145.13186364503488,153.32370649675488,161.51554934847488,169.70739220019487,177.89923505191487,186.09107790363487,194.28292075535484,202.47476360707486,210.66660645879483,218.85844931051483,227.05029216223483,235.24213501395482,243.43397786567482,251.62582071739482,259.81766356911476,268.00950642083478,276.20134927255475],[89.017693231736772,97.209536083456754,105.40137893517675,113.59322178689675,121.78506463861675,129.97690749033674,138.16875034205674,146.36059319377674,154.55243604549673,162.74427889721673,170.9361217489367,179.1279646006567,187.31980745237669,195.51165030409669,203.70349315581666,211.89533600753668,220.08717885925665,228.27902171097665,236.47086456269665,244.66270741441664,252.85455026613664,261.04639311785667,269.23823596957664,277.4300788212966,285.62192167301663],[98.438265632198608,106.63010848391859,114.82195133563859,123.01379418735858,131.20563703907857,139.39747989079856,147.58932274251856,155.78116559423856,163.97300844595856,172.16485129767855,180.35669414939855,188.54853700111852,196.74037985283854,204.93222270455851,213.12406555627848,221.31590840799851,229.50775125971848,237.6995941114385,245.89143696315847,254.08327981487849,262.27512266659846,270.46696551831849,278.65880837003846,286.85065122175843,295.04249407347845],[107.85883803266043,116.05068088438043,124.24252373610042,132.43436658782042,140.62620943954042,148.81805229126041,157.00989514298041,165.20173799470041,173.39358084642038,181.5854236981404,189.77726654986037,197.96910940158037,206.16095225330037,214.35279510502036,222.54463795674033,230.73648080846036,238.92832366018033,247.12016651190032,255.31200936362032,263.50385221534032,271.69569506706034,279.88753791878031,288.07938077050028,296.2712236222203,304.46306647394027],[117.27941043312228,125.47125328484226,133.66309613656227,141.85493898828224,150.04678184000227,158.23862469172224,166.43046754344226,174.62231039516223,182.81415324688223,191.00599609860222,199.19783895032219,207.38968180204222,215.58152465376219,223.77336750548221,231.96521035720218,240.15705320892221,248.34889606064218,256.54073891236214,264.73258176408217,272.92442461580214,281.11626746752216,289.30811031924213,297.4999531709621,305.69179602268213,313.8836388744021],[126.6999828335841,134.8918256853041,143.0836685370241,151.27551138874409,159.46735424046409,167.65919709218406,175.85103994390408,184.04288279562405,192.23472564734408,200.42656849906405,208.61841135078404,216.81025420250404,225.00209705422404,233.19393990594403,241.385782757664,249.57762560938403,257.769468461104,265.96131131282402,274.15315416454399,282.34499701626396,290.53683986798399,298.72868271970401,306.92052557142392,315.11236842314395,323.30421127486397],[136.12055523404595,144.31239808576595,152.50424093748592,160.69608378920594,168.88792664092591,177.07976949264591,185.27161234436591,193.4634551960859,201.6552980478059,209.8471408995259,218.03898375124589,226.23082660296586,234.42266945468589,242.61451230640586,250.80635515812583,258.99819800984585,267.19004086156582,275.38188371328584,283.57372656500581,291.76556941672584,299.95741226844581,308.14925512016583,316.3410979718858,324.53294082360577,332.7247836753258],[145.54112763450777,153.73297048622777,161.92481333794774,170.11665618966776,178.30849904138773,186.50034189310773,194.69218474482773,202.88402759654772,211.07587044826772,219.26771329998772,227.45955615170772,235.65139900342768,243.84324185514771,252.03508470686768,260.22692755858765,268.41877041030767,276.61061326202764,284.80245611374767,292.99429896546764,301.18614181718766,309.37798466890763,317.56982752062765,325.76167037234762,333.95351322406759,342.14535607578762],[154.9617000349696,163.15354288668959,171.34538573840959,179.53722859012959,187.72907144184958,195.92091429356958,204.11275714528958,212.30459999700957,220.49644284872954,228.68828570044957,236.88012855216954,245.07197140388953,253.26381425560953,261.45565710732956,269.64749995904947,277.83934281076949,286.03118566248952,294.22302851420949,302.41487136592946,310.60671421764948,318.79855706936951,326.99039992108948,335.18224277280945,343.37408562452947,351.56592847624944],[164.38227243543145,172.57411528715141,180.76595813887144,188.95780099059141,197.14964384231143,205.3414866940314,213.53332954575143,221.7251723974714,229.91701524919139,238.10885810091139,246.30070095263136,254.49254380435139,262.68438665607135,270.87622950779138,279.06807235951135,287.25991521123137,295.45175806295134,303.64360091467131,311.83544376639134,320.0272866181113,328.21912946983133,336.4109723215513,344.60281517327127,352.79465802499129,360.98650087671126],[173.80284483589327,181.99468768761326,190.18653053933326,198.37837339105326,206.57021624277326,214.76205909449322,222.95390194621325,231.14574479793322,239.33758764965324,247.52943050137321,255.72127335309321,263.91311620481321,272.10495905653318,280.2968019082532,288.48864475997317,296.6804876116932,304.87233046341316,313.06417331513319,321.25601616685316,329.44785901857313,337.63970187029315,345.83154472201318,354.02338757373309,362.21523042545311,370.40707327717314],[183.22341723635509,191.41526008807509,199.60710293979508,207.79894579151508,215.99078864323508,224.18263149495505,232.37447434667507,240.56631719839504,248.75816005011507,256.95000290183503,265.141845753555,273.33368860527503,281.52553145699505,289.71737430871502,297.90921716043499,306.10106001215502,314.29290286387499,322.48474571559495,330.67658856731498,338.86843141903501,347.06027427075497,355.25211712247494,363.44395997419497,371.63580282591494,379.82764567763491],[192.64398963681694,200.83583248853694,209.02767534025693,217.21951819197693,225.41136104369693,233.60320389541693,241.79504674713692,249.98688959885692,258.17873245057689,266.37057530229691,274.56241815401688,282.75426100573691,290.94610385745688,299.13794670917684,307.32978956089687,315.5216324126169,323.71347526433681,331.90531811605683,340.09716096777686,348.28900381949683,356.4808466712168,364.67268952293682,372.86453237465679,381.05637522637676,389.24821807809678],[202.06456203727876,210.25640488899876,218.44824774071876,226.64009059243875,234.83193344415875,243.02377629587875,251.21561914759874,259.40746199931874,267.59930485103871,275.79114770275874,283.9829905544787,292.17483340619867,300.3666762579187,308.55851910963872,316.75036196135864,324.94220481307866,333.13404766479869,341.32589051651865,349.51773336823862,357.70957621995865,365.90141907167867,374.09326192339864,382.28510477511861,390.47694762683864,398.66879047855861],[211.48513443774061,219.67697728946061,227.86882014118061,236.0606629929006,244.2525058446206,252.44434869634057,260.63619154806059,268.82803439978056,277.01987725150059,285.21172010322056,293.40356295494053,301.59540580666055,309.78724865838058,317.97909151010055,326.17093436182051,334.36277721354054,342.55462006526051,350.74646291698048,358.9383057687005,367.13014862042053,375.3219914721405,383.51383432386046,391.70567717558049,399.89752002730046,408.08936287902043],[220.90570683820243,229.09754968992243,237.28939254164243,245.48123539336243,253.67307824508242,261.86492109680239,270.05676394852242,278.24860680024238,286.44044965196241,294.63229250368238,302.8241353554024,311.01597820712237,319.20782105884234,327.39966391056237,335.59150676228234,343.78334961400236,351.97519246572233,360.16703531744236,368.35887816916232,376.55072102088229,384.74256387260232,392.93440672432234,401.12624957604226,409.31809242776228,417.50993527948231],[230.32627923866428,238.51812209038428,246.70996494210428,254.90180779382428,263.09365064554424,271.28549349726427,279.4773363489843,287.66917920070426,295.86102205242423,304.05286490414426,312.24470775586423,320.43655060758419,328.62839345930422,336.82023631102425,345.01207916274416,353.20392201446418,361.39576486618421,369.58760771790418,377.77945056962415,385.97129342134417,394.1631362730642,402.35497912478417,410.54682197650413,418.73866482822416,426.93050767994413],[239.74685163912611,247.9386944908461,256.13053734256607,264.3223801942861,272.51422304600612,280.70606589772609,288.89790874944606,297.08975160116609,305.28159445288605,313.47343730460608,321.66528015632605,329.85712300804607,338.04896585976604,346.24080871148601,354.43265156320604,362.62449441492606,370.81633726664597,379.008180118366,387.20002297008602,395.39186582180599,403.58370867352596,411.77555152524599,419.96739437696596,428.15923722868592,436.35108008040595],[249.16742403958793,257.35926689130793,265.55110974302795,273.74295259474792,281.93479544646789,290.12663829818791,298.31848114990794,306.51032400162791,314.70216685334788,322.8940097050679,331.08585255678787,339.27769540850784,347.46953826022786,355.66138111194789,363.8532239636678,372.04506681538783,380.23690966710785,388.42875251882782,396.62059537054779,404.81243822226782,413.00428107398784,421.19612392570781,429.38796677742778,437.5798096291478,445.77165248086777],[258.58799644004978,266.7798392917698,274.97168214348977,283.16352499520974,291.35536784692977,299.54721069864974,307.73905355036976,315.93089640208973,324.12273925380975,332.31458210552972,340.50642495724969,348.69826780896972,356.89011066068974,365.08195351240971,373.27379636412968,381.46563921584971,389.65748206756967,397.84932491928964,406.04116777100967,414.23301062272969,422.42485347444966,430.61669632616963,438.80853917788966,447.00038202960963,455.19222488132959],[268.0085688405116,276.20041169223157,284.39225454395159,292.58409739567162,300.77594024739159,308.96778309911156,317.15962595083158,325.35146880255155,333.54331165427158,341.73515450599155,349.92699735771157,358.11884020943154,366.31068306115151,374.50252591287153,382.6943687645915,390.88621161631153,399.0780544680315,407.26989731975152,415.46174017147149,423.65358302319146,431.84542587491148,440.03726872663151,448.22911157835142,456.42095443007145,464.61279728179147]],"type":"surface","frame":null},{"x":[10.256,174.09299999999999,1000,75.896000000000001,1351.2539999999999,202.70500000000001,365.98500000000001,305.26799999999997,263.26799999999997,513.69399999999996,152.60900000000001,35.987000000000002,1720.806,102.568,215.36799999999999,426.78399999999999,507.77199999999999,233.291,1035.433,102.642,526.14200000000005,624.53800000000001,912.34900000000005,611.47900000000004,215.994,561.96299999999997,474.75999999999999,231.523,678.596,70.921999999999997,1567.548,263.59800000000001,1423.568,715.678,251.19200000000001,777.23699999999997,509.43000000000001,964.11000000000001,583.62699999999995,923.37300000000005,344.392,1095.578,100.02500000000001,30.425000000000001,1080.3420000000001,97.971999999999994,799.899,1071.752,893.35500000000002,283.161,917.01700000000005,234.56800000000001,456.89699999999999,206.97300000000001,1294.0989999999999,826.85900000000004,406.81400000000002,564.15800000000002,192.607,10.651999999999999,45.689,42.567999999999998,20.456,635.19200000000001,1002.273,1177.047,507.63799999999998,265.39800000000002,215.68899999999999,526.48000000000002,26.895,883.87699999999995,9.1039999999999992,103.568,169.583,429.50400000000002,223.63900000000001,145.58500000000001,1323.287,985.96799999999996,500.92200000000003,226.65199999999999,1051.1679999999999,68.093000000000004,1547.1590000000001,393.774,804.28200000000004,801.577,450.56200000000001,196.65000000000001,26.597999999999999,179.06100000000001,345.68700000000001,295.83999999999997,2271.8600000000001,1134.575,601.43399999999997,45.298000000000002,759.51800000000003,832.86900000000003,1326.598,56.893999999999998,709.399,56.895000000000003,767.13400000000001,503.17200000000003,700.92899999999997,910.851,888.56899999999996,800.61500000000001,1500,985.68499999999995,1380.6890000000001,785.69399999999996,792.34500000000003,957.16700000000003,1789.6590000000001,656.13699999999994,613.697,313.36200000000002,336.50999999999999,1544.8989999999999,68.953999999999994,1445.5630000000001,785.69200000000001,125.628,377.92500000000001,217.994,759.86199999999997,1163.444,842.95699999999999,125.179,236.59800000000001,669.81100000000004,1188.193,612.23400000000004,922.01900000000001,50,2000,1054.027,385.04500000000002,1507.972,102.568,204.56800000000001,1170.9179999999999,574.51300000000003,689.54700000000003,784.22000000000003,405.91300000000001,179.77799999999999,607.25800000000004,1542.329,1112.47,856.98500000000001,836.33100000000002,236.90799999999999,568.95399999999995,1077.855,579.32100000000003,1500,731.36400000000003,25.689,391.74900000000002,233.999,275.69999999999999,56.895000000000003,255.11699999999999,471.81400000000002,566.50099999999998,102.568,250.56800000000001,68.593999999999994,642.78599999999994,1500,102.563,756.98400000000004,51.228999999999999,644.15099999999995,537.35199999999998,15.313000000000001,243.23699999999999,256.89400000000001,22.463999999999999,45.689,724.93799999999999,1126.461,1985.1189999999999,1837.5160000000001,135.98599999999999,514.06799999999998,237.703,976.64099999999996,1452.6890000000001,1600,268.59800000000001,900.88900000000001,982.06299999999999,201.35599999999999,746.024,1132.877],"y":[43,40,5,34,37,13,23,54,18,2,11,30,32,22,36,37,9,2,12,5,14,20,57,20,19,35,22,16,53,4,29,43,26,28,24,37,32,34,30,15,23,31,21,28,18,38,28,37,26,30,10,21,18,14,38,36,24,32,9,39,24,45,13,17,32,23,0,25,35,26,19,26,53,29,28,17,26,42,35,17,36,45,20,15,28,27,17,32,46,36,47,19,22,55,31,39,21,36,21,44,27,27,16,33,33,21,35,26,14,34,11,28,33,20,33,28,30,34,49,40,20,42,35,35,8,49,19,42,6,36,32,28,25,34,33,21,34,63,31,25,42,37,25,26,39,44,46,36,12,2,29,33,28,10,38,19,19,13,30,38,22,23,22,20,18,37,16,20,32,26,53,28,32,24,37,30,19,47,22,22,10,1,1,39,8,38,35,40,22,21,27,31,19,24,1,38,26,11,34,55],"z":[330,300,250,120,290,60,140,290,160,100,160,150,290,140,230,230,30,80,190,90,120,150,230,70,150,210,180,140,360,10,240,270,290,220,150,230,220,240,260,170,130,270,140,60,210,190,210,240,210,200,140,90,120,100,360,180,240,150,110,90,160,230,40,60,230,230,120,100,150,120,60,280,120,230,230,40,140,360,250,210,260,250,200,150,250,100,260,210,290,210,220,70,110,250,320,300,180,180,200,320,280,140,100,120,230,150,250,190,240,250,230,120,230,110,210,230,320,210,230,250,60,330,150,360,150,180,80,180,130,320,280,200,130,190,270,150,230,310,340,240,180,220,40,190,290,220,340,250,190,120,230,190,210,170,310,90,170,140,300,340,170,100,200,80,100,70,50,70,240,160,290,140,210,300,230,280,160,200,210,110,110,70,100,190,70,360,360,300,120,200,150,220,280,300,140,290,180,140,210,250],"type":"scatter3d","mode":"markers","marker":{"color":["darkgray","steelblue","steelblue","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","steelblue","steelblue","steelblue","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","steelblue","darkgray","steelblue","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","steelblue","steelblue","steelblue","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","darkgray","darkgray","darkgray","steelblue","steelblue","darkgray","darkgray","darkgray","steelblue","darkgray","darkgray","darkgray","darkgray","steelblue","darkgray"],"size":3,"opacity":0.80000000000000004,"symbol":75,"line":{"color":"rgba(255,127,14,1)"}},"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 ```
 
 <p class="caption">(\#fig:unnamed-chunk-31)Regression plane</p>
@@ -890,10 +884,9 @@ Sales=\beta_0+\beta_1*adspend+\beta_2*airplay+\beta_3*starpower+\epsilon
 could be estimated as follows: 
 
 
-```r
-multiple_regression <- lm(sales ~ adspend + airplay +
-    starpower, data = regression)  #estimate linear model
-summary(multiple_regression)  #summary of results
+``` r
+multiple_regression <- lm(sales ~ adspend + airplay + starpower, data = regression) #estimate linear model
+summary(multiple_regression) #summary of results
 ```
 
 ```
@@ -921,16 +914,16 @@ summary(multiple_regression)  #summary of results
 
 The interpretation of the coefficients is as follows: 
 
-* adspend (&beta;<sub>1</sub>): when advertising expenditures increase by 1 Euro, sales will increase by 0.085 units
-* airplay (&beta;<sub>2</sub>): when radio airplay increases by 1 play per week, sales will increase by 3.367 units
-* starpower (&beta;<sub>3</sub>): when the number of previous albums increases by 1, sales will increase by 11.086 units
+* adspend (&beta;<sub>1</sub>): when advertising expenditures increase by 1 Euro, sales will increase by 0.09 units
+* airplay (&beta;<sub>2</sub>): when radio airplay increases by 1 play per week, sales will increase by 3.37 units
+* starpower (&beta;<sub>3</sub>): when the number of previous albums increases by 1, sales will increase by 11.09 units
 
 The associated t-values and p-values are also given in the output. You can see that the p-values are smaller than 0.05 for all three coefficients. Hence, all effects are "significant". This means that if the null hypothesis was true (i.e., there was no effect between the variables and sales), the probability of observing associations of the estimated magnitudes (or larger) is very small (e.g., smaller than 0.05).     
 
 Again, to get a better feeling for the range of values that the coefficients could take, it is helpful to compute <b>confidence intervals</b>. 
 
 
-```r
+``` r
 confint(multiple_regression)
 ```
 
@@ -942,12 +935,13 @@ confint(multiple_regression)
 ## starpower     6.279 15.894
 ```
 
-What does this tell you? Recall that a 95% confidence interval is defined as a range of values such that with a 95% probability, the range will contain the true unknown value of the parameter. For example, for &beta;<sub>3</sub>, the confidence interval is [6.2785522,15.8941182]. Thus, although we have computed a point estimate of 11.086 for the effect of starpower on sales based on our sample, the effect might actually just as well take any other value within this range, considering the sample size and the variability in our data. You could also visualize the output from your regression model including the confidence intervals using the `ggstatsplot` package as follows: 
+What does this tell you? Recall that a 95% confidence interval is defined as a range of values such that with a 95% probability, the range will contain the true unknown value of the parameter. For example, for &beta;<sub>3</sub>, the confidence interval is [6.28,15.89]. Thus, although we have computed a point estimate of 11.09 for the effect of starpower on sales based on our sample, the effect might actually just as well take any other value within this range, considering the sample size and the variability in our data. You could also visualize the output from your regression model including the confidence intervals using the `ggstatsplot` package as follows: 
 
 
-```r
+``` r
 library(ggstatsplot)
-ggcoefstats(x = multiple_regression, title = "Sales predicted by adspend, airplay, & starpower")
+ggcoefstats(x = multiple_regression,
+            title = "Sales predicted by adspend, airplay, & starpower")
 ```
 
 <div class="figure" style="text-align: center">
@@ -955,17 +949,17 @@ ggcoefstats(x = multiple_regression, title = "Sales predicted by adspend, airpla
 <p class="caption">(\#fig:unnamed-chunk-34)Confidence intervals for regression model</p>
 </div>
 
-The output also tells us that 66.4667687% of the variation can be explained by our model. You may also visually inspect the fit of the model by plotting the predicted values against the observed values. We can extract the predicted values using the ```predict()``` function. So let's create a new variable ```yhat```, which contains those predicted values.  
+The output also tells us that 66.47% of the variation can be explained by our model. You may also visually inspect the fit of the model by plotting the predicted values against the observed values. We can extract the predicted values using the ```predict()``` function. So let's create a new variable ```yhat```, which contains those predicted values.  
 
 
-```r
+``` r
 regression$yhat <- predict(simple_regression)
 ```
 
 We can now use this variable to plot the predicted values against the observed values. In the following plot, the model fit would be perfect if all points would fall on the diagonal line. The larger the distance between the points and the line, the worse the model fit. In other words, if all points would fall exactly on the diagonal line, the model would perfectly predict the observed values. 
 
 
-```r
+``` r
 ggplot(regression,aes(yhat,sales)) +  
   geom_point(size=2,shape=1) +  #Use hollow circles
   scale_x_continuous(name="predicted values") +
@@ -984,7 +978,7 @@ ggplot(regression,aes(yhat,sales)) +
 In the context of a simple linear regression (i.e., with a single independent variable), a scatter plot of the dependent variable against the independent variable provides a good indication of the nature of the relationship. If there is more than one independent variable, however, things become more complicated. The reason is that although the scatter plot still show the relationship between the two variables, it does not take into account the effect of the other independent variables in the model. Partial regression plot show the effect of adding another variable to a model that already controls for the remaining variables in the model. In other words, it is a scatterplot of the residuals of the outcome variable and each predictor when both variables are regressed separately on the remaining predictors. As an example, consider the effect of advertising expenditures on sales. In this case, the partial plot would show the effect of adding advertising expenditures as an explanatory variable while controlling for the variation that is explained by airplay and starpower in both variables (sales and advertising). Think of it as the purified relationship between advertising and sales that remains after controlling for other factors. The partial plots can easily be created using the ```avPlots()``` function from the ```car``` package:
 
 
-```r
+``` r
 library(car)
 avPlots(multiple_regression)
 ```
@@ -1005,11 +999,11 @@ $$\hat{sales}=−26.61 + 0.084 * 800 + 3.367*30 + 11.08 ∗ 5= 197.74$$
 ... or by extracting the estimated coefficients:
 
 
-```r
-summary(multiple_regression)$coefficients[1, 1] + summary(multiple_regression)$coefficients[2,
-    1] * 800 + summary(multiple_regression)$coefficients[3,
-    1] * 30 + summary(multiple_regression)$coefficients[4,
-    1] * 5
+``` r
+summary(multiple_regression)$coefficients[1,1] + 
+  summary(multiple_regression)$coefficients[2,1]*800 + 
+  summary(multiple_regression)$coefficients[3,1]*30 + 
+  summary(multiple_regression)$coefficients[4,1]*5
 ```
 
 ```
@@ -1030,7 +1024,7 @@ B_{k}=\beta_{k} * \frac{s_{x_k}}{s_y}
 Hence, the standardized coefficient will tell you by how many standard deviations the outcome will change as a result of a one standard deviation change in the predictor variable. Standardized coefficients can be easily computed using the ```lm.beta()``` function from the ```lm.beta``` package.
 
 
-```r
+``` r
 library(lm.beta)
 lm.beta(multiple_regression)
 ```
@@ -1073,7 +1067,7 @@ One quick way to visually detect outliers is by creating a scatterplot (as above
 The studentized residuals can be obtained in R with the function ```rstudent()```. We can use this function to create a new variable that contains the studentized residuals e music sales regression from before yields the following residuals:
 
 
-```r
+``` r
 regression$stud_resid <- rstudent(multiple_regression)
 head(regression)
 ```
@@ -1087,10 +1081,9 @@ head(regression)
 A good way to visually inspect the studentized residuals is to plot them in a scatterplot and roughly check if most of the observations are within the -3, 3 bounds. 
 
 
-```r
-plot(1:nrow(regression), regression$stud_resid, ylim = c(-3.3,
-    3.3))  #create scatterplot 
-abline(h = c(-3, 3), col = "red", lty = 2)  #add reference lines
+``` r
+plot(1:nrow(regression),regression$stud_resid, ylim=c(-3.3,3.3)) #create scatterplot 
+abline(h=c(-3,3),col="red",lty=2) #add reference lines
 ```
 
 <div class="figure" style="text-align: center">
@@ -1101,8 +1094,8 @@ abline(h = c(-3, 3), col = "red", lty = 2)  #add reference lines
 To identify potentially influential observations in our data set, we can apply a filter to our data:
 
 
-```r
-outliers <- subset(regression, abs(stud_resid) > 3)
+``` r
+outliers <- subset(regression,abs(stud_resid)>3)
 outliers
 ```
 
@@ -1119,8 +1112,8 @@ After a detailed inspection of the potential outliers, you might decide to delet
 Related to the issue of outliers is that of influential observations, meaning observations that exert undue influence on the parameters. It is possible to determine whether or not the results are driven by an influential observation by calculating how far the predicted values for your data would move if the model was fitted without this particular observation. This calculated total distance is called **Cook's distance**. To identify influential observations, we can inspect the respective plots created from the model output. A rule of thumb to determine whether an observation should be classified as influential or not is to look for observation with a Cook's distance > 1 (although opinions vary on this). The following plot can be used to see the Cook's distance associated with each data point:
 
 
-```r
-plot(multiple_regression, 4)
+``` r
+plot(multiple_regression,4)
 ```
 
 <div class="figure" style="text-align: center">
@@ -1131,8 +1124,8 @@ plot(multiple_regression, 4)
 It is easy to see that none of the Cook's distance values is close to the critical value of 1. Another useful plot to identify influential observations is plot number 5 from the output: 
 
 
-```r
-plot(multiple_regression, 5)
+``` r
+plot(multiple_regression,5)
 ```
 
 <div class="figure" style="text-align: center">
@@ -1159,7 +1152,7 @@ To summarize, if you detected outliers in your data, you should test if these ob
 An important underlying assumption for OLS is that of linearity, meaning that the relationship between the dependent and the independent variable can be reasonably approximated in linear terms. One quick way to assess whether a linear relationship can be assumed is to inspect the added variable plots that we already came across earlier:  
 
 
-```r
+``` r
 library(car)
 avPlots(multiple_regression)
 ```
@@ -1193,7 +1186,7 @@ The following video summarizes how to identify non-constant error variance in R
 Another important assumption of the linear model is that the error terms have a constant variance (i.e., homoskedasticity). The following plot from the model output shows the residuals (the vertical distance from an observed value to the predicted values) versus the fitted values (the predicted value from the regression model). If all the points fell exactly on the dashed grey line, it would mean that we have a perfect prediction. The residual variance (i.e., the spread of the values on the y-axis) should be similar across the scale of the fitted values on the x-axis. 
 
 
-```r
+``` r
 plot(multiple_regression, 1)
 ```
 
@@ -1205,7 +1198,7 @@ plot(multiple_regression, 1)
 In our case, this appears to be the case. You can identify non-constant variances in the errors (i.e., heteroscedasticity) from the presence of a funnel shape in the above plot. When the assumption of constant error variances is not met, this might be due to a misspecification of your model (e.g., the relationship might not be linear). In these cases, it often helps to transform your data (e.g., using log-transformations). The red line also helps you to identify potential misspecification of your model. It is a smoothed curve that passes through the residuals and if it lies close to the gray dashed line (as in our case) it suggest a correct specification. If the line would deviate from the dashed grey line a lot (e.g., a U-shape or inverse U-shape), it would suggest that the linear model specification is not reasonable and you should try different specifications. You can also test for heterogskedasticity in you regression model by using the Breusch-Pagan test, which has the null hypothesis that the error variances are equal (i.e., homoskedasticity) versus the alternative that the error variances are not equal (i.e., heteroskedasticity). The test can be implemented using the `bptest()` function from the `lmtest` package. 
 
 
-```r
+``` r
 library(lmtest)
 bptest(multiple_regression)
 ```
@@ -1225,7 +1218,7 @@ If OLS is performed despite heteroscedasticity, the estimates of the coefficient
 Assume that the test would have suggested a violation of the assumption of homoskedasticity - how could you proceed in this case? In the presence of heteroskedasticity, you could rely on robust regression methods, which correct the standard errors. You could implement a robust regression model in R using the `coeftest()` function from the `sandwich` package as follows:  
 
 
-```r
+``` r
 library(sandwich)
 coeftest(multiple_regression, vcov = vcovHC(multiple_regression))
 ```
@@ -1260,8 +1253,8 @@ Another assumption of OLS is that the error term is normally distributed. This c
 A quick way to assess whether a given sample is approximately normally distributed is by using Q-Q plots. These plot the theoretical position of the observations (under the assumption that they are normally distributed) against the actual position. The plot below is created by the model output and shows the residuals in a Q-Q plot. As you can see, most of the points roughly follow the theoretical distribution, as given by the straight line. If most of the points are close to the line, the data is approximately normally distributed.
 
 
-```r
-plot(multiple_regression, 2)
+``` r
+plot(multiple_regression,2)
 ```
 
 <div class="figure" style="text-align: center">
@@ -1272,7 +1265,7 @@ plot(multiple_regression, 2)
 Another way to check for normal distribution of the data is to employ statistical tests that test the null hypothesis that the data is normally distributed, such as the Shapiro–Wilk test. We can extract the residuals from our model using the ```resid()``` function and apply the ```shapiro.test()``` function to it:
 
 
-```r
+``` r
 shapiro.test(resid(multiple_regression))
 ```
 
@@ -1291,12 +1284,12 @@ When the assumption of normally distributed errors is not met, this might again 
 Essentially, we can use the `boot()` function contained in the `boot` package to obtain the bootstrapped results. However, we need to pass this function a statistic to apply the bootstrapping on - in our case, this would be the coefficients from our regression model. To make this easier, we can write a function that returns the coefficients from the model for every bootstrap sample that we take. In the following code block, we specify a function called `bs()`, which does exactly this (don't worry if you don't understand all the details - its basically just another function we can use to automate certain steps in the analysis, only that in this case we have written the function ourselves rather than relying on functions contained in existing packages).    
 
 
-```r
+``` r
 # function to obtain regression coefficients
 bs <- function(formula, data, indices) {
-    d <- data[indices, ]  # allows boot to select sample
-    fit <- lm(formula, data = d)
-    return(coef(fit))
+  d <- data[indices,] # allows boot to select sample
+  fit <- lm(formula, data=d)
+  return(coef(fit))
 }
 ```
 
@@ -1310,23 +1303,19 @@ Now that we have specified this function, we can use it within the `boot` functi
 We create an object called `boot_out`, which contains the output from the bootstrapping.
 
 
-```r
-# If the residuals do not follow a normal
-# distribution, transform the data or use
-# bootstrapping
+``` r
+# If the residuals do not follow a normal distribution, transform the data or use bootstrapping
 library(boot)
 # bootstrapping with 2000 replications
-boot_out <- boot(data = regression, statistic = bs,
-    R = 2000, formula = sales ~ adspend + airplay +
-        starpower)
+boot_out <- boot(data=regression, statistic=bs, R=2000, formula = sales ~ adspend + airplay + starpower)
 ```
 
 In a next step, let's extract the 95% confidence intervals for the regression coefficients. The intercept is the first element in the `boot_out` object and we can use the `boot.ci()` function and use argument `index=1` to obtain the bootstrapped confidence interval for the intercept. The `type` argument specifies the type of confidence interval we would like to obtain (in this case, we use bias corrected and accelerated, i.e., bca):  
 
 
-```r
+``` r
 # get 95% confidence intervals
-boot.ci(boot_out, type = "bca", index = 1)  # intercept
+boot.ci(boot_out, type="bca", index=1) # intercept
 ```
 
 ```
@@ -1344,9 +1333,9 @@ boot.ci(boot_out, type = "bca", index = 1)  # intercept
 We can obtain the confidence intervals for the remaining coefficients in the same way: 
 
 
-```r
+``` r
 # get 95% confidence intervals
-boot.ci(boot_out, type = "bca", index = 2)  # adspend
+boot.ci(boot_out, type="bca", index=2) # adspend
 ```
 
 ```
@@ -1362,8 +1351,8 @@ boot.ci(boot_out, type = "bca", index = 2)  # adspend
 ## Calculations and Intervals on Original Scale
 ```
 
-```r
-boot.ci(boot_out, type = "bca", index = 3)  # airplay
+``` r
+boot.ci(boot_out, type="bca", index=3) # airplay
 ```
 
 ```
@@ -1379,8 +1368,8 @@ boot.ci(boot_out, type = "bca", index = 3)  # airplay
 ## Calculations and Intervals on Original Scale
 ```
 
-```r
-boot.ci(boot_out, type = "bca", index = 4)  # starpower
+``` r
+boot.ci(boot_out, type="bca", index=4) # starpower
 ```
 
 ```
@@ -1400,7 +1389,7 @@ As usual, we can judge the significance of a coefficient by inspecting whether t
 We could also compare the bootstrapped confidence intervals to the once we obtained from the model without bootstrapping. 
 
 
-```r
+``` r
 # get 95% confidence intervals for standard model
 confint(multiple_regression)
 ```
@@ -1415,26 +1404,26 @@ confint(multiple_regression)
 As you can see, the bootstrapped confidence interval is very similar to the once obtained without bootstrapping, which is not unexpected since in our example, the tests indicated that our assumptions about the distribution of errors is actually met so that we wouldn't have needed to apply the bootstrapping. You could also inspect the distribution of the obtained regression coefficients from the 2000 bootstrap samples using the `plot()` function and passing it the respective index. Inspecting the plots reveals that for all coefficients (with the exception of the intercept) zero is not contained in the range of plausible values, indicating the the coefficients are significant at the 5% level. 
 
 
-```r
-plot(boot_out, index = 1)  # intercept
+``` r
+plot(boot_out, index=1) # intercept
 ```
 
 <img src="10-Regression_files/figure-html/unnamed-chunk-57-1.png" width="672" />
 
-```r
-plot(boot_out, index = 2)  # adspend
+``` r
+plot(boot_out, index=2) # adspend
 ```
 
 <img src="10-Regression_files/figure-html/unnamed-chunk-57-2.png" width="672" />
 
-```r
-plot(boot_out, index = 3)  # airplay
+``` r
+plot(boot_out, index=3) # airplay
 ```
 
 <img src="10-Regression_files/figure-html/unnamed-chunk-57-3.png" width="672" />
 
-```r
-plot(boot_out, index = 4)  # starpower
+``` r
+plot(boot_out, index=4) # starpower
 ```
 
 <img src="10-Regression_files/figure-html/unnamed-chunk-57-4.png" width="672" />
@@ -1464,10 +1453,9 @@ Linear dependence of regressors, also known as multicollinearity, is when there 
 A quick way to find obvious multicollinearity is to examine the correlation matrix of the data. Any value > 0.8 - 0.9 should be cause for concern. You can, for example, create a correlation matrix using the ```rcorr()``` function from the ```Hmisc``` package.
 
 
-```r
+``` r
 library("Hmisc")
-rcorr(as.matrix(regression[, c("adspend", "airplay",
-    "starpower")]))
+rcorr(as.matrix(regression[,c("adspend","airplay","starpower")]))
 ```
 
 ```
@@ -1489,8 +1477,8 @@ rcorr(as.matrix(regression[, c("adspend", "airplay",
 The bivariate correlations can also be show in a plot:
 
 
-```r
-plot(regression[, c("adspend", "airplay", "starpower")])
+``` r
+plot(regression[,c("adspend","airplay","starpower")])
 ```
 
 <div class="figure" style="text-align: center">
@@ -1510,7 +1498,7 @@ However, this only spots bivariate multicollinearity. Variance inflation factors
 VIF values of over 4 are certainly cause for concern and values over 2 should be further investigated. If the average VIF is over 1 the regression may be biased. The VIF for all variables can easily be calculated in R with the ```vif()``` function contained in the `car` package. 
 
 
-```r
+``` r
 library(car)
 vif(multiple_regression)
 ```
@@ -1541,7 +1529,7 @@ What do we mean by "omitted variables"? If a variable that influences the outcom
 Consider the following data set containing information on the number of streams that a sample of artists receive on a streaming service in one month.
 
 
-```r
+``` r
 head(streaming_data)
 ```
 
@@ -1560,8 +1548,8 @@ The data set contains three variables:
 Say, as a marketing manager we are interested in estimating the effect of the number of playlists on the number of streams. If we estimate a model to explain the number of streams as a function of only the number of playlists, the results would look as follows:
 
 
-```r
-stream_model_1 <- lm(streams ~ playlists, data = streaming_data)
+``` r
+stream_model_1 <- lm(streams ~ playlists , data = streaming_data)
 summary(stream_model_1)
 ```
 
@@ -1588,9 +1576,8 @@ summary(stream_model_1)
 As you can see, the results suggest that being listed on one more playlist leads to 3,032 more streams on average (recall that the dependent variable is given in thousands in this case, so we need multiply the coefficient by 1,000 to obtain the effect). Now let's see what happens when we add the popularity of an artist as an additional predictor:
 
 
-```r
-stream_model_2 <- lm(streams ~ playlists + popularity,
-    data = streaming_data)
+``` r
+stream_model_2 <- lm(streams ~ playlists + popularity, data = streaming_data)
 summary(stream_model_2)
 ```
 
@@ -1635,22 +1622,21 @@ If the goal of your analysis is to predict an outcome, rather than explaining a 
 By inspecting how well the model based on the training data is able to predict the observations in the test data, we can judge the predictive ability of a model on new data. This is also referred to as the out-of-sample predictive accuracy. You can easily test the out-of-sample predictive accuracy of your model by splitting the data set in two parts - the training data and the test data. In the following code, we randomly 2/3 of the observations to estimate the model and retain the remaining 1/3 of observations to test how well we can predict the outcome based on our model. 
 
 
-```r
+``` r
 # randomly split into training and test data:
 set.seed(123)
 n <- nrow(regression)
-train <- sample(1:n, round(n * 2/3))
+train <- sample(1:n,round(n*2/3))
 test <- (1:n)[-train]
 ```
 
 Now we have created two data sets - the training data set and the test data set. Next, let's estimate the model using the training data and inspect the results 
 
 
-```r
+``` r
 # estimate linear model based on training data
-multiple_train <- lm(sales ~ adspend + airplay + starpower,
-    data = regression, subset = train)
-summary(multiple_train)  #summary of results
+multiple_train <- lm(sales ~ adspend + airplay + starpower, data = regression, subset=train) 
+summary(multiple_train) #summary of results
 ```
 
 ```
@@ -1680,11 +1666,10 @@ summary(multiple_train)  #summary of results
 As you can see, the model results are similar to the results from the model from the beginning, which is not surprising since it is based on the same data with the only difference that we discarded 1/3 of the observations for validation purposes. In a next step, we can use the `predict()` function and the argument `newdata` to predict observations in the test data set based on our estimated model. To test the our-of-sample predictive accuracy of the model, we can then compute the squared correlation coefficient between the predicted and observed values, which will give us the out-of-sample model fit (i.e., the R2).  
 
 
-```r
+``` r
 # using coefficients to predict test data
-pred_lm <- predict(multiple_train, newdata = regression[test,
-    ])
-cor(regression[test, "sales"], pred_lm)^2  # R^2 for test data
+pred_lm <- predict(multiple_train,newdata = regression[test,])
+cor(regression[test,"sales"],pred_lm)^2 # R^2 for test data
 ```
 
 ```
@@ -1693,12 +1678,10 @@ cor(regression[test, "sales"], pred_lm)^2  # R^2 for test data
 As you can see, the R2 is about 0.57, suggesting that 57% of the variation in the test data set can be explained by our model. Note that this share is somewhat lower compared to the within-sample fit that you can see in the model above (i.e., R2 = 0.7), which is not unexpected since the test data were not used to estimate the model. The value of 0.57 suggests that the model generalizes to other data sets quite well. We could also visualize the out-of-sample model fit as follows: 
 
 
-```r
-# plot predicted vs. observed values for test
-# data
-plot(regression[test, "sales"], pred_lm, xlab = "y measured",
-    ylab = "y predicted", cex.lab = 1.3)
-abline(c(0, 1))
+``` r
+# plot predicted vs. observed values for test data
+plot(regression[test,"sales"],pred_lm,xlab="y measured",ylab="y predicted",cex.lab=1.3)
+abline(c(0,1))
 ```
 
 <img src="10-Regression_files/figure-html/unnamed-chunk-68-1.png" width="672" />
@@ -1718,23 +1701,22 @@ A *parsimonious* model is a model that accomplishes a desired level of explanati
 Let's use an example to see how we could identify variables that do not add any explanatory power to the model and should thus be excluded from the model. First, we will add a random variable to our existing regression data set. We can use the `rnorm()` function to generate random observations from a normal distribution. 
 
 
-```r
+``` r
 set.seed(123)
 # Add another random variable
-regression$var_test <- rnorm(nrow(regression), 0, 1)
+regression$var_test <- rnorm(nrow(regression),0,1)
 ```
 
 The model selection process should tell us that we should favor a model without this predictor since it does not add any explanatory power. In the following code, we specify our model by gradually adding one predictor after the other and then we will use the `anova()` function to test the differences between the models. 
 
 
-```r
+``` r
 # Model comparison with anova
-lm0 <- lm(sales ~ 1, data = regression)
-lm1 <- lm(sales ~ adspend, data = regression)
-lm2 <- lm(sales ~ adspend + airplay, data = regression)
-lm3 <- lm(sales ~ adspend + airplay + starpower, data = regression)
-lm4 <- lm(sales ~ adspend + airplay + starpower + var_test,
-    data = regression)
+lm0 <- lm(sales ~ 1, data = regression) 
+lm1 <- lm(sales ~ adspend, data = regression) 
+lm2 <- lm(sales ~ adspend + airplay, data = regression) 
+lm3 <- lm(sales ~ adspend + airplay + starpower, data = regression) 
+lm4 <- lm(sales ~ adspend + airplay + starpower + var_test, data = regression) 
 anova(lm0, lm1, lm2, lm3, lm4)
 ```
 
@@ -1748,10 +1730,10 @@ The output shows that the last model, in which we add the random variable as an 
 Alternatively, we could also select the variables to be included in our model using a stepwise procedure with the `step()` function. To do this, we pass the most complete model from above, i.e., 'lm4' to the function and inspect the results:  
 
 
-```r
+``` r
 options(digits = 8)
-# Stepwise variable selection Automatic model
-# selection with step
+# Stepwise variable selection
+# Automatic model selection with step
 model_lmstep <- step(lm4)
 ```
 
@@ -1776,7 +1758,7 @@ model_lmstep <- step(lm4)
 ## - adspend    1    333332 767907 1656.62
 ```
 
-```r
+``` r
 model_lmstep
 ```
 
@@ -1830,10 +1812,9 @@ Sales =\beta_0 &+\beta_1*adspend\\
 where "international" represents the new dummy variable and $\beta_4$ is the coefficient associated with this variable. Estimating the model is straightforward - you just need to include the variable as an additional predictor variable. Note that the variable needs to be specified as a factor variable before including it in your model. If you haven't converted it to a factor variable before, you could also use the wrapper function ```as.factor()``` within the equation. 
 
 
-```r
-multiple_regression_bin <- lm(sales ~ adspend + airplay +
-    starpower + country, data = regression)  #estimate linear model
-summary(multiple_regression_bin)  #summary of results
+``` r
+multiple_regression_bin <- lm(sales ~ adspend + airplay + starpower + country, data = regression) #estimate linear model
+summary(multiple_regression_bin) #summary of results
 ```
 
 ```
@@ -1903,10 +1884,9 @@ The interpretation of the coefficients is as follows: $\beta_5$ is the differenc
 You don't have to create the dummy variables manually as R will do this automatically when you add the variable to your equation: 
 
 
-```r
-multiple_regression <- lm(sales ~ adspend + airplay +
-    starpower + country + genre, data = regression)  #estimate linear model
-summary(multiple_regression)  #summary of results
+``` r
+multiple_regression <- lm(sales ~ adspend + airplay + starpower+ country + genre, data = regression) #estimate linear model
+summary(multiple_regression) #summary of results
 ```
 
 ```
@@ -1941,11 +1921,9 @@ How can we interpret the coefficients? It is estimated based on our model that p
 The level of the baseline category is arbitrary. As you have seen, R simply selects the first level as the baseline. If you would like to use a different baseline category, you can use the ```relevel()``` function and set the reference category using the ```ref``` argument. The following would estimate the same model using the second category as the baseline:
 
 
-```r
-multiple_regression <- lm(sales ~ adspend + airplay +
-    starpower + country + relevel(genre, ref = 2),
-    data = regression)  #estimate linear model
-summary(multiple_regression)  #summary of results
+``` r
+multiple_regression <- lm(sales ~ adspend + airplay + starpower+ country + relevel(genre,ref=2), data = regression) #estimate linear model
+summary(multiple_regression) #summary of results
 ```
 
 ```
@@ -1998,11 +1976,12 @@ The standard linear regression model provides results that are easy to interpret
 Regarding the additive assumption, it might be argued that the effect of some variables are not fully independent of the values of other variables. In our example, one could argue that the effect of advertising depends on the type of artist. For example, for local artist advertising might be more effective. We can investigate if this is the case using a grouped scatterplot:
 
 
-```r
+``` r
 ggplot(regression, aes(adspend, sales, colour = as.factor(country))) +
-    geom_point() + geom_smooth(method = "lm", alpha = 0.1) +
-    labs(x = "Advertising expenditures (EUR)", y = "Number of sales",
-        colour = "country") + theme_bw()
+  geom_point() + 
+  geom_smooth(method="lm", alpha=0.1) + 
+  labs(x = "Advertising expenditures (EUR)", y = "Number of sales", colour="country") + 
+  theme_bw()
 ```
 
 <div class="figure" style="text-align: center">
@@ -2024,10 +2003,9 @@ Sales =\beta_0 &+\beta_1*adspend\\
 You can see that the effect of advertising now depends on the type of artist. Hence, the additive assumption is removed. Note that if you decide to include an interaction effect, you should always include the main effects of the variables that are included in the interaction (even if the associated p-values do not suggest significant effects). It is easy to include an interaction effect in you model by adding an additional variable that has the format ```var1:var2````. In our example, this could be achieved using the following specification:  
 
 
-```r
-multiple_regression <- lm(sales ~ adspend + airplay +
-    starpower + country + adspend:country, data = regression)  #estimate linear model
-summary(multiple_regression)  #summary of results
+``` r
+multiple_regression <- lm(sales ~ adspend + airplay + starpower + country + adspend:country, data = regression) #estimate linear model
+summary(multiple_regression) #summary of results
 ```
 
 ```
@@ -2078,10 +2056,9 @@ Sales =\beta_0 &+\beta_1*adspend\\
 In this case, we can interpret $\beta_4$ as the increase in the effectiveness of advertising for a one unit increase in radio airplay (or vice versa). This can be translated to R using:
 
 
-```r
-multiple_regression <- lm(sales ~ adspend + airplay +
-    starpower + adspend:airplay, data = regression)  #estimate linear model
-summary(multiple_regression)  #summary of results
+``` r
+multiple_regression <- lm(sales ~ adspend + airplay + starpower + adspend:airplay, data = regression) #estimate linear model
+summary(multiple_regression) #summary of results
 ```
 
 ```
@@ -2130,9 +2107,10 @@ In many marketing contexts, these might not be reasonable assumptions. Consider 
 Let's use an example data set, containing the advertising expenditures of a company and the sales (in thousand units).
 
 
-```r
-non_linear_reg <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/non_linear.dat",
-    sep = "\t", header = TRUE)  #read in data
+``` r
+non_linear_reg <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/non_linear.dat", 
+                          sep = "\t", 
+                          header = TRUE) #read in data
 head(non_linear_reg)
 ```
 
@@ -2145,10 +2123,11 @@ head(non_linear_reg)
 Now we inspect if a linear specification is appropriate by looking at the scatterplot:
 
 
-```r
-ggplot(data = non_linear_reg, aes(x = advertising,
-    y = sales)) + geom_point(shape = 1) + geom_smooth(method = "lm",
-    fill = "blue", alpha = 0.1) + theme_bw()
+``` r
+ggplot(data = non_linear_reg, aes(x = advertising, y = sales)) +
+  geom_point(shape=1) + 
+  geom_smooth(method = "lm", fill = "blue", alpha=0.1) + 
+  theme_bw()
 ```
 
 <div class="figure" style="text-align: center">
@@ -2159,7 +2138,7 @@ ggplot(data = non_linear_reg, aes(x = advertising,
 It appears that a linear model might **not** represent the data well. It rather appears that the effect of an additional Euro spend on advertising is decreasing with increasing levels of advertising expenditures. Thus, we have decreasing marginal returns. We could put this to a test and estimate a linear model:
 
 
-```r
+``` r
 linear_reg <- lm(sales ~ advertising, data = non_linear_reg)
 summary(linear_reg)
 ```
@@ -2190,8 +2169,8 @@ Advertising appears to be positively related to sales with an additional Euro th
 To test if the linear specification is appropriate, let's inspect some of the plots that are generated by R. We start by inspecting the residuals plot. 
 
 
-```r
-plot(linear_reg, 1)
+``` r
+plot(linear_reg,1)
 ```
 
 <div class="figure" style="text-align: center">
@@ -2202,8 +2181,8 @@ plot(linear_reg, 1)
 The plot suggests that the assumption of homoscedasticity is violated (i.e., the spread of values on the y-axis is different for different levels of the fitted values). In addition, the red line deviates from the dashed grey line, suggesting that the relationship might not be linear. Finally, the Q-Q plot of the residuals suggests that the residuals are not normally distributed. 
 
 
-```r
-plot(linear_reg, 2)
+``` r
+plot(linear_reg,2)
 ```
 
 <div class="figure" style="text-align: center">
@@ -2235,10 +2214,11 @@ This means that taking logarithms of both sides of the equation makes linear est
 Let's test how the scatterplot would look like if we use the logarithm of our variables using the ```log()``` function instead of the original values.  
 
 
-```r
-ggplot(data = non_linear_reg, aes(x = log(advertising),
-    y = log(sales))) + geom_point(shape = 1) + geom_smooth(method = "lm",
-    fill = "blue", alpha = 0.1) + theme_bw()
+``` r
+ggplot(data = non_linear_reg, aes(x = log(advertising), y = log(sales))) + 
+  geom_point(shape=1) + 
+  geom_smooth(method = "lm", fill = "blue", alpha=0.1) +
+  theme_bw()
 ```
 
 <div class="figure" style="text-align: center">
@@ -2256,7 +2236,7 @@ log(sales) = log(\beta_0) + \beta_1*log(advertising) + log(\epsilon)
 This can be easily implemented in R by transforming the variables using the ```log()``` function:
 
 
-```r
+``` r
 log_reg <- lm(log(sales) ~ log(advertising), data = non_linear_reg)
 summary(log_reg)
 ```
@@ -2285,8 +2265,8 @@ summary(log_reg)
 Note that this specification implies decreasing marginal returns (i.e., the returns of advertising are decreasing with the level of advertising), which appear to be more consistent with the data. The specification is also consistent with proportional changes in advertising being associated with proportional changes in sales (i.e., advertising does not become more effective with increasing levels). This has important implications on the interpretation of the coefficients. In our example, you would interpret the coefficient as follows: **A 1% increase in advertising leads to a 0.3% increase in sales**. Hence, the interpretation is in proportional terms and no longer in units. This means that the coefficients in a log-log model can be directly interpreted as elasticities, which also makes communication easier. We can generally also inspect the R<sup>2</sup> statistic to see that the model fit has increased compared to the linear specification (i.e., R<sup>2</sup> has increased to 0.681 from 0.509). However, please note that the variables are now measured on a different scale, which means that the model fit in theory is not directly comparable. Also, we could use the residuals plot to confirm that the revised specification is more appropriate:
 
 
-```r
-plot(log_reg, 1)
+``` r
+plot(log_reg,1)
 ```
 
 <div class="figure" style="text-align: center">
@@ -2294,8 +2274,8 @@ plot(log_reg, 1)
 <p class="caption">(\#fig:unnamed-chunk-86-1)Residuals plot</p>
 </div>
 
-```r
-plot(log_reg, 2)
+``` r
+plot(log_reg,2)
 ```
 
 <div class="figure" style="text-align: center">
@@ -2306,15 +2286,13 @@ plot(log_reg, 2)
 Finally, we can plot the predicted values against the observed values to see that the results from the log-log model (red) provide a better prediction than the results from the linear model (blue). 
 
 
-```r
+``` r
 non_linear_reg$pred_lin_reg <- predict(linear_reg)
 non_linear_reg$pred_log_reg <- predict(log_reg)
-ggplot(data = non_linear_reg) + geom_point(aes(x = advertising,
-    y = sales), shape = 1) + geom_line(data = non_linear_reg,
-    aes(x = advertising, y = pred_lin_reg), color = "blue",
-    size = 1.05) + geom_line(data = non_linear_reg,
-    aes(x = advertising, y = exp(pred_log_reg)), color = "red",
-    size = 1.05) + theme_bw()
+ggplot(data = non_linear_reg) +
+  geom_point(aes(x = advertising, y = sales),shape=1) + 
+  geom_line(data = non_linear_reg,aes(x=advertising,y=pred_lin_reg),color="blue", size=1.05) + 
+  geom_line(data = non_linear_reg,aes(x=advertising,y=exp(pred_log_reg)),color="red", size=1.05) + theme_bw()
 ```
 
 <div class="figure" style="text-align: center">
@@ -2336,18 +2314,20 @@ When using squared terms we can model diminishing and eventually negative return
 ```lm(...)``` can take squared (or any power) terms as input by adding ```I(X^2)``` as explanatory variable. In the example below we see a clear quadratic relationship with an inflection point at around 70. If we try to model this using the level of the covariates without the quadratic term we do not get a very good fit. 
 
 
-```r
+``` r
 set.seed(1234)
 X <- as.integer(runif(1000, 0, 12000))
 Y <- 80000 + 140 * X - 0.01 * (X^2) + rnorm(1000, 0,
-    35000)
+                                           35000)
 modLinear <- lm(Y/100000 ~ X)
-sales_quad <- data.frame(sales = Y/100000, advertising = X *
-    0.01, Prediction = fitted(modLinear))
-ggplot(sales_quad) + geom_point(aes(x = advertising,
-    y = sales, color = "Data")) + geom_line(aes(x = advertising,
-    y = Prediction, color = "Prediction")) + theme_bw() +
-    ggtitle("Linear Predictor") + theme(legend.title = element_blank())
+sales_quad <- data.frame(sales = Y/100000, advertising = X*0.01,
+                        Prediction = fitted(modLinear))
+ggplot(sales_quad) +
+  geom_point(aes(x = advertising, y = sales, color = "Data")) +
+  geom_line(aes(x = advertising, y = Prediction, color = "Prediction")) +
+  theme_bw() +
+  ggtitle("Linear Predictor") +
+  theme(legend.title = element_blank())
 ```
 
 <img src="10-Regression_files/figure-html/unnamed-chunk-88-1.png" width="672" />
@@ -2356,11 +2336,9 @@ The graph above clearly shows that advertising spending of between 0 and 50 incr
 Notice that the prediction line is straight, that is, the marginal increase of sales due to additional spending on advertising is the same for any amount of spending. This shows the danger of basing business decisions on wrongly specified models. But even in the area in which the sign of the prediction is correct, we are quite far off. Lets take a look at the top 5 sales values and the corresponding predictions:
 
 
-```r
-top5 <- which(sales_quad$sales %in% head(sort(sales_quad$sales,
-    decreasing = TRUE), 5))
-dplyr::arrange(sales_quad[top5, ], desc(sales_quad[top5,
-    1]))
+``` r
+top5 <- which(sales_quad$sales %in% head(sort(sales_quad$sales, decreasing = TRUE), 5))
+dplyr::arrange(sales_quad[top5, ], desc(sales_quad[top5, 1]))
 ```
 
 <div data-pagedtable="false">
@@ -2372,9 +2350,8 @@ dplyr::arrange(sales_quad[top5, ], desc(sales_quad[top5,
 By including a quadratic term we can fit the data very well. This is still a linear model since the outcome variable is still explained by a linear combination of regressors even though one of the regressors is now just a non-linear function of the same variable (i.e. the squared value).
 
 
-```r
-quad_mod <- lm(sales ~ advertising + I(advertising^2),
-    data = sales_quad)
+``` r
+quad_mod <- lm(sales ~ advertising + I(advertising^2), data = sales_quad)
 summary(quad_mod)
 ```
 
@@ -2400,7 +2377,7 @@ summary(quad_mod)
 ## F-statistic: 7285.7 on 2 and 997 DF,  p-value: < 0.000000000000000222
 ```
 
-```r
+``` r
 confint(quad_mod)
 ```
 
@@ -2411,32 +2388,33 @@ confint(quad_mod)
 ## I(advertising^2) -0.0010184526 -0.00098098016
 ```
 
-```r
+``` r
 sales_quad$Prediction <- predict(quad_mod)
-ggplot(data = sales_quad, aes(x = Prediction, y = sales)) +
-    geom_point(shape = 1) + geom_smooth(method = "lm",
-    fill = "blue", alpha = 0.1) + theme_bw()
+ggplot(data = sales_quad, aes(x = Prediction, y = sales)) + 
+  geom_point(shape=1) + 
+  geom_smooth(method = "lm", fill = "blue", alpha=0.1) +
+  theme_bw()
 ```
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
 ```
 
 <img src="10-Regression_files/figure-html/unnamed-chunk-90-1.png" width="672" />
 
-```r
-plot(quad_mod, 1)
+``` r
+plot(quad_mod,1)
 ```
 
 <img src="10-Regression_files/figure-html/unnamed-chunk-90-2.png" width="672" />
 
-```r
-plot(quad_mod, 2)
+``` r
+plot(quad_mod,2)
 ```
 
 <img src="10-Regression_files/figure-html/unnamed-chunk-90-3.png" width="672" />
 
-```r
+``` r
 shapiro.test(resid(quad_mod))
 ```
 
@@ -2448,15 +2426,12 @@ shapiro.test(resid(quad_mod))
 ## W = 0.997653, p-value = 0.16559
 ```
 
-```r
+``` r
 sales_quad$pred_lin_reg <- predict(modLinear)
-ggplot(data = sales_quad) + geom_point(aes(x = advertising,
-    y = sales), shape = 1) + geom_line(data = sales_quad,
-    aes(x = advertising, y = pred_lin_reg), color = "blue",
-    size = 1.05) + geom_line(data = sales_quad, aes(x = advertising,
-    y = Prediction), color = "red", size = 1.05) +
-    theme_bw() + xlab("Advertising (thsd. Euro)") +
-    ylab("Sales (million units)")
+ggplot(data = sales_quad) +
+  geom_point(aes(x = advertising, y = sales),shape=1) + 
+  geom_line(data = sales_quad,aes(x=advertising,y=pred_lin_reg),color="blue", size=1.05) + 
+  geom_line(data = sales_quad,aes(x=advertising,y=Prediction),color="red", size=1.05) + theme_bw() + xlab("Advertising (thsd. Euro)") + ylab("Sales (million units)") 
 ```
 
 <img src="10-Regression_files/figure-html/unnamed-chunk-90-4.png" width="672" />
@@ -2464,11 +2439,9 @@ ggplot(data = sales_quad) + geom_point(aes(x = advertising,
 Now the prediction of the model is very close to the actual data and we could base our production decisions on that model.
 
 
-```r
-top5 <- which(sales_quad$sales %in% head(sort(sales_quad$sales,
-    decreasing = TRUE), 5))
-dplyr::arrange(sales_quad[top5, ], desc(sales_quad[top5,
-    1]))
+``` r
+top5 <- which(sales_quad$sales %in% head(sort(sales_quad$sales, decreasing = TRUE), 5))
+dplyr::arrange(sales_quad[top5, ], desc(sales_quad[top5, 1]))
 ```
 
 <div data-pagedtable="false">
@@ -2494,8 +2467,8 @@ $$
 At the maximum predicted value the slope is close to $0$ (theoretically it is equal to $0$ but this would require decimals and we can only sell whole pieces). Above we only calculated the prediction for the observed data, so let's first predict the profit for all possible values between $1$ and $200$ to get the optimal production level according to our model. 
 
 
-```r
-predictionAll <- predict(quad_mod, newdata = data.frame(advertising = 1:200))
+``` r
+predictionAll<- predict(quad_mod, newdata = data.frame(advertising = 1:200))
 (optimalAdvertising <- as.integer(which.max(predictionAll)))
 ```
 
@@ -2503,10 +2476,9 @@ predictionAll <- predict(quad_mod, newdata = data.frame(advertising = 1:200))
 ## [1] 70
 ```
 
-```r
-# Slope at optimum:
-coef(quad_mod)[["advertising"]] + 2 * coef(quad_mod)[["I(advertising^2)"]] *
-    optimalAdvertising
+``` r
+#Slope at optimum:
+coef(quad_mod)[["advertising"]] + 2 * coef(quad_mod)[["I(advertising^2)"]] * optimalAdvertising
 ```
 
 ```

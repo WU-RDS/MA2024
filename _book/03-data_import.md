@@ -34,9 +34,8 @@ In the previous chapter, we saw how we may use the keyboard to input data in R. 
 Most of the data sets we will be working with in this course will be stored in text files (i.e., .dat, .txt, .csv). All data sets we will be working with are stored in a repository on GitHub (similar to other cloud storage services such as Dropbox). You can directly import these data sets from GitHub without having to copy data sets from one place to another. If you know the location, where the files are stored, you may conveniently load the data directly from GitHub into R using the ```read.csv()``` function. To figure out the structure of the data you can read the first couple of lines of a file using the `readLines` function. The ```header=TRUE``` argument in the `read.csv` function indicates that the first line of data represents the header, i.e., it contains the names of the columns. The ```sep=";"```-argument specifies the delimiter (the character used to separate the columns), which is a ";" in this case. 
 
 
-```r
-readLines("https://short.wu.ac.at/ma22_musicdata",
-    n = 3)
+``` r
+readLines("https://short.wu.ac.at/ma22_musicdata", n = 3)
 ```
 
 ```
@@ -45,9 +44,10 @@ readLines("https://short.wu.ac.at/ma22_musicdata",
 ## [3] "\"USUM71808193\";5239;8934097;51;21;35,3;75,5;73,3;0;39;43,7;191,153;3,228;144,285714285714;0;768;54;13188411;358700;3693566;18367363;143384531;465412;588550;\"Alessia Cara\";\"Growing Pains\";\"2018-06-14\";\"Pop\";\"Universal Music\";0;\"good\""
 ```
 
-```r
-test_data <- read.csv("https://short.wu.ac.at/ma22_musicdata",
-    sep = ";", header = TRUE)
+``` r
+test_data <- read.csv("https://short.wu.ac.at/ma22_musicdata", 
+                        sep = ";", 
+                        header = TRUE)
 head(test_data)
 ```
 
@@ -60,9 +60,8 @@ head(test_data)
 Note that it is also possible to download the data, placing it in the working directory and importing it from there. However, this requires an additional step to download the file manually first. If you chose this option, please **remember to put the data file in the working directory first**. If the import is not working, check your working directory setting using ```getwd()```. Once you placed the file in the working directory, you can import it using the same command as above. Note that the file must be given as a character string (i.e., in quotation marks) and has to end with the file extension (e.g., .csv, .tsv, etc.).
 
 
-```r
-test_data <- read.csv("data/music_data_fin.csv", header = TRUE,
-    sep = ";")
+``` r
+test_data <- read.csv("data/music_data_fin.csv", header=TRUE, sep = ";")
 head(test_data)
 ```
 
@@ -77,15 +76,15 @@ head(test_data)
 Sometimes, you may need to import data files created by other software packages, such as Excel or SPSS. In this section we will use the ```readxl``` and ```haven``` packages to do this. To import a certain file you should first make sure that the file is stored in your current working directory. You can list all file names in your working directory using the ```list.files()``` function. If the file is not there, either copy it to your current working directory, or set your working directory to the folder where the file is located using ```setwd("/path/to/file")```. This tells R the folder you are working in. Remember that you have to use ```/``` instead of ```\``` to specify the path (if you use Windows paths copied from the explorer they will not work). When your file is in your working directory you can simply enter the filename into the respective import command. The import commands offer various options. For more details enter ```?read_excel```, ```?read_spss``` after loading the packages.
 
 
-```r
-# import excel files
-library(readxl)  #load package to import Excel files
+``` r
+#import excel files
+library(readxl) #load package to import Excel files
 excel_sheets("test_data.xlsx")
-survey_data_xlsx <- read_excel("test_data.xlsx", sheet = "mrda_2016_survey")  # 'sheet=x'' specifies which sheet to import
+survey_data_xlsx <- read_excel("test_data.xlsx", sheet = "mrda_2016_survey") # "sheet=x"" specifies which sheet to import
 head(survey_data_xlsx)
 
-library(haven)  #load package to import SPSS files
-# import SPSS files
+library(haven) #load package to import SPSS files
+#import SPSS files
 survey_data_spss <- read_sav("test_data.sav")
 head(survey_data_spss)
 ```
@@ -97,9 +96,9 @@ The import of other file formats works in a very similar way (e.g., Stata, SAS).
 There is also a dedicated package 'qualtRics' which lets you conveniently import data from surveys you conducted via Qualtrics. Simply export your data from Qualtrics as a .csv file (standard option) and you can read it into R as follows:  
 
 
-```r
+``` r
 library(qualtRics)
-qualtrics <- read_survey("qualtrics_survey.csv")
+qualtrics <- read_survey('qualtrics_survey.csv')
 head(qualtrics)
 ```
 
@@ -116,8 +115,8 @@ When you inspect the data frame in R after you imported the data, you will find 
 Exporting to different formats is also easy, as you can just replace "read" with "write" in many of the previously discussed functions (e.g. ```write.csv(object, "file_name")```). This will save the data file to the working directory. To check what the current working directory is you can use ```getwd()```. By default, the ```write.csv(object, "file_name")```function includes the row number as the first variable. By specifying ```row.names = FALSE```, you may exclude this variable since it doesn't contain any useful information.  
 
 
-```r
-write.csv(music_data, "musicData.csv", row.names = FALSE)  #writes to a comma-separated value file 
+``` r
+write.csv(music_data, "musicData.csv", row.names = FALSE) #writes to a comma-separated value file 
 write_sav(music_data, "musicData.sav")
 ```
 
@@ -128,38 +127,37 @@ write_sav(music_data, "musicData.sav")
 Sometimes you may come across interesting data on websites that you would like to analyze. Reading data from websites is possible in R, e.g., using the ```rvest``` package. Let's assume you would like to read a table that lists the population of different countries from <a href="https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population" target="_blank">this Wikipedia page</a>. It helps to first inspect the structure of the website (e.g., using tools like <a href="http://selectorgadget.com/" target="_blank">SelectorGadget</a>), so you know which elements you would like to extract. In this case it is fairly obvious that the data are stored in a table for which the associated html-tag is ```<table>```. So let's read the entire website using ```read_html(url)``` and filter all tables using ```read_html(html_nodes(...,"table"))```.
 
 
-```r
+``` r
 library(rvest)
 url <- "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population"
-population <- read_html(url)
+population <- read_html(url) 
 population <- html_nodes(population, "table.wikitable")
 print(population)
 ```
 
 ```
 ## {xml_nodeset (1)}
-## [1] <table class="wikitable sortable"><tbody>\n<tr>\n<th>Rank</th>\n<th>\n<a  ...
+## [1] <table class="wikitable sortable sticky-header sort-under mw-datatable co ...
 ```
 
 The output shows that there are two tables on the website and the first one appears to contain the relevant information. So let's read the first table using the  ```html_table()``` function. Note that ```population``` is of class "list". A list is a vector that has other R objects (e.g., other vectors, data frames, matrices, etc.) as its elements. If we want to access the data of one of the elements, we have to use two square brackets on each side instead of just one (e.g., ```population[[1]]``` gets us the first table from the list of tables on the website; the argument ```fill = TRUE``` ensures that empty cells are replaced with missing values when reading the table).
 
 
-```r
-population <- population[[1]] %>%
-    html_table(fill = TRUE)
-head(population)  #checks if we scraped the desired data
+``` r
+population <- population[[1]] %>% html_table(fill = TRUE)
+head(population) #checks if we scraped the desired data
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Country / Dependency"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Continent"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Population"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Percentage of the world"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Date"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Source (official or from the United Nations)"],"name":[7],"type":["chr"],"align":["left"]},{"label":["Notes"],"name":[8],"type":["chr"],"align":["left"]}],"data":[{"1":"–","2":"World","3":"All","4":"7,981,873,000","5":"100%","6":"2 Oct 2022","7":"UN projection[3]","8":""},{"1":"1","2":"China","3":"Asia","4":"1,412,600,000","5":"17.7%","6":"31 Dec 2021","7":"Official estimate[4]","8":"The population figure refers to mainland China, excluding its special administrative regions of Hong Kong and Macau, the former of which returned to Chinese sovereignty in 1997 and the latter in 1999."},{"1":"2","2":"India","3":"Asia","4":"1,375,586,000","5":"17.2%","6":"1 Mar 2022","7":"Official projection[5]","8":"The figure includes the population of Indian-administered Jammu and Kashmir and Ladakh."},{"1":"3","2":"United States","3":"North America","4":"331,893,745","5":"4.16%","6":"1 Jul 2021","7":"Official estimate[6]","8":"The figure includes the 50 states and the District of Columbia, but excludes the territories of the United States."},{"1":"4","2":"Indonesia","3":"Asia[b]","4":"275,773,800","5":"3.46%","6":"1 Jul 2022","7":"Official estimate[7]","8":""},{"1":"5","2":"Pakistan","3":"Asia","4":"229,489,000","5":"2.88%","6":"1 Jul 2022","7":"UN projection[3]","8":"The figure includes the population of Pakistan-administered Azad Kashmir and Gilgit-Baltistan."}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":[1],"type":["chr"],"align":["left"]},{"label":["Location"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Population"],"name":[3],"type":["chr"],"align":["left"]},{"label":["% ofworld"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Date"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Source (official or fromthe United Nations)"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Notes"],"name":[7],"type":["chr"],"align":["left"]}],"data":[{"1":"–","2":"World","3":"8,119,000,000","4":"100%","5":"1 Jul 2024","6":"UN projection[1][3]","7":""},{"1":"1/2 [b]","2":"China","3":"1,409,670,000","4":"17.3%","5":"31 Dec 2023","6":"Official estimate[5]","7":"[c]"},{"1":"1/2 [b]","2":"India","3":"1,404,910,000","4":"17.3%","5":"1 Jul 2024","6":"Official projection[6]","7":"[d]"},{"1":"3","2":"United States","3":"335,893,238","4":"4.1%","5":"1 Jan 2024","6":"Official projection[7]","7":"[e]"},{"1":"4","2":"Indonesia","3":"282,477,584","4":"3.5%","5":"31 Jun 2024","6":"National annual projection[8]","7":""},{"1":"5","2":"Pakistan","3":"241,499,431","4":"3.0%","5":"1 Mar 2023","6":"2023 census result[9]","7":"[f]"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
 You can see that population is read as a character variable because of the commas. 
 
 
-```r
+``` r
 class(population$Population)
 ```
 
@@ -170,23 +168,22 @@ class(population$Population)
 If we wanted to use this variable for some kind of analysis, we would first need to convert it to numeric format using the ```as.numeric()``` function. However, before we can do this, we can use the ```str_replace_all()``` function from the stringr package, which replaces all matches of a string. In our case, we would like to replace the commas (```","```) with nothing (```""```).
 
 
-```r
+``` r
 library(stringr)
-population$Population <- as.numeric(str_replace_all(population$Population,
-    pattern = ",", replacement = ""))  #convert to numeric
-head(population)  #checks if we scraped the desired data
+population$Population <- as.numeric(str_replace_all(population$Population, pattern = ",", replacement = "")) #convert to numeric
+head(population) #checks if we scraped the desired data
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Rank"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Country / Dependency"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Continent"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Population"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Percentage of the world"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Date"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Source (official or from the United Nations)"],"name":[7],"type":["chr"],"align":["left"]},{"label":["Notes"],"name":[8],"type":["chr"],"align":["left"]}],"data":[{"1":"–","2":"World","3":"All","4":"7981873000","5":"100%","6":"2 Oct 2022","7":"UN projection[3]","8":""},{"1":"1","2":"China","3":"Asia","4":"1412600000","5":"17.7%","6":"31 Dec 2021","7":"Official estimate[4]","8":"The population figure refers to mainland China, excluding its special administrative regions of Hong Kong and Macau, the former of which returned to Chinese sovereignty in 1997 and the latter in 1999."},{"1":"2","2":"India","3":"Asia","4":"1375586000","5":"17.2%","6":"1 Mar 2022","7":"Official projection[5]","8":"The figure includes the population of Indian-administered Jammu and Kashmir and Ladakh."},{"1":"3","2":"United States","3":"North America","4":"331893745","5":"4.16%","6":"1 Jul 2021","7":"Official estimate[6]","8":"The figure includes the 50 states and the District of Columbia, but excludes the territories of the United States."},{"1":"4","2":"Indonesia","3":"Asia[b]","4":"275773800","5":"3.46%","6":"1 Jul 2022","7":"Official estimate[7]","8":""},{"1":"5","2":"Pakistan","3":"Asia","4":"229489000","5":"2.88%","6":"1 Jul 2022","7":"UN projection[3]","8":"The figure includes the population of Pakistan-administered Azad Kashmir and Gilgit-Baltistan."}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":[""],"name":[1],"type":["chr"],"align":["left"]},{"label":["Location"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Population"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["% ofworld"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Date"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Source (official or fromthe United Nations)"],"name":[6],"type":["chr"],"align":["left"]},{"label":["Notes"],"name":[7],"type":["chr"],"align":["left"]}],"data":[{"1":"–","2":"World","3":"8119000000","4":"100%","5":"1 Jul 2024","6":"UN projection[1][3]","7":""},{"1":"1/2 [b]","2":"China","3":"1409670000","4":"17.3%","5":"31 Dec 2023","6":"Official estimate[5]","7":"[c]"},{"1":"1/2 [b]","2":"India","3":"1404910000","4":"17.3%","5":"1 Jul 2024","6":"Official projection[6]","7":"[d]"},{"1":"3","2":"United States","3":"335893238","4":"4.1%","5":"1 Jan 2024","6":"Official projection[7]","7":"[e]"},{"1":"4","2":"Indonesia","3":"282477584","4":"3.5%","5":"31 Jun 2024","6":"National annual projection[8]","7":""},{"1":"5","2":"Pakistan","3":"241499431","4":"3.0%","5":"1 Mar 2023","6":"2023 census result[9]","7":"[f]"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
 Now the variable is of type "numeric" and could be used for analysis.
 
 
-```r
+``` r
 class(population$Population)
 ```
 
@@ -213,23 +210,22 @@ The process of obtaining data from APIs consists of the following steps:
 Let's assume that you would like to obtain population data again. The World Bank has an API that allows you to easily obtain this kind of data. The details are usually provided in the API reference, e.g., <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-api-documentation" target="_blank">here</a>. You simply "call" the API for the desired information and get a structured JSON file with the desired key-value pairs in return. For example, the population for Austria from 1960 to 2019 can be obtained using <a href="http://api.worldbank.org/v2/countries/AT/indicators/SP.POP.TOTL/?date=1960:2019&format=json&per_page=100" target="_blank">this call</a>. The file can be easily read into R using the ```fromJSON()```-function from the ```jsonlite```-package. Again, the result is a list and the second element ```ctrydata[[2]]``` contains the desired data, from which we select the "value" and "data" columns using the square brackets as usual ```[,c("value","date")]```
 
 
-```r
+``` r
 library(jsonlite)
-url <- "http://api.worldbank.org/v2/countries/AT/indicators/SP.POP.TOTL/?date=1960:2019&format=json&per_page=100"  #specifies url
-ctrydata <- fromJSON(url)  #parses the data 
+url <- "http://api.worldbank.org/v2/countries/AT/indicators/SP.POP.TOTL/?date=1960:2019&format=json&per_page=100" #specifies url
+ctrydata <- fromJSON(url) #parses the data 
 str(ctrydata)
 ```
 
 ```
 ## List of 2
-##  $ :List of 7
+##  $ :List of 6
 ##   ..$ page       : int 1
 ##   ..$ pages      : int 1
 ##   ..$ per_page   : int 100
 ##   ..$ total      : int 60
 ##   ..$ sourceid   : chr "2"
-##   ..$ sourcename : chr "World Development Indicators"
-##   ..$ lastupdated: chr "2022-09-16"
+##   ..$ lastupdated: chr "2024-11-13"
 ##  $ :'data.frame':	60 obs. of  8 variables:
 ##   ..$ indicator      :'data.frame':	60 obs. of  2 variables:
 ##   .. ..$ id   : chr [1:60] "SP.POP.TOTL" "SP.POP.TOTL" "SP.POP.TOTL" "SP.POP.TOTL" ...
@@ -245,8 +241,8 @@ str(ctrydata)
 ##   ..$ decimal        : int [1:60] 0 0 0 0 0 0 0 0 0 0 ...
 ```
 
-```r
-head(ctrydata[[2]][, c("value", "date")])  #checks if we scraped the desired data
+``` r
+head(ctrydata[[2]][,c("value","date")]) #checks if we scraped the desired data
 ```
 
 <div data-pagedtable="false">
@@ -260,66 +256,50 @@ head(ctrydata[[2]][, c("value", "date")])  #checks if we scraped the desired dat
 An even more convenient way to obtain data from web APIs is to use existing R packages that someone else has already created. There are R packages available for various web-services. For example, the ```gtrendsR``` package can be used to conveniently obtain data from the <a href="https://trends.google.at/trends/" target="_blank">Google Trends</a> page. The ```gtrends()``` function is easy to use and returns a list of elements (e.g., "interest over time", "interest by city", "related topics"), which can be inspected using the ```ls()``` function. The following example can be used to obtain data for the search term "data science" in the US between September 1 and October 6: 
 
 
-```r
+``` r
 library(gtrendsR)
-# specify search term, area, source and time
-# frame
-google_trends <- gtrends("data science", geo = c("US"),
-    gprop = c("web"), time = "2012-09-01 2020-10-06")
-# inspect trend over time data frame
+#specify search term, area, source and time frame
+google_trends <- gtrends("data science", geo = c("US"), gprop = c("web"), time = "2012-09-01 2024-10-06")
+#inspect trend over time data frame
 head(google_trends$interest_over_time)
 ```
-
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["date"],"name":[1],"type":["dttm"],"align":["right"]},{"label":["hits"],"name":[2],"type":["int"],"align":["right"]},{"label":["keyword"],"name":[3],"type":["chr"],"align":["left"]},{"label":["geo"],"name":[4],"type":["chr"],"align":["left"]},{"label":["time"],"name":[5],"type":["chr"],"align":["left"]},{"label":["gprop"],"name":[6],"type":["chr"],"align":["left"]},{"label":["category"],"name":[7],"type":["int"],"align":["right"]}],"data":[{"1":"2012-09-01","2":"16","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2012-10-01","2":"13","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2012-11-01","2":"12","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2012-12-01","2":"10","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2013-01-01","2":"13","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"},{"1":"2013-02-01","2":"12","3":"data science","4":"US","5":"2012-09-01 2020-10-06","6":"web","7":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
 
 Although we haven't covered data visualization yet (see chapter 5), you could also easily plot the data to see the increasing trend for the search term we selected using the `plot()`-function. Note that the argument `type = "b"` indicates that <u>b</u>oth - a combination of line and points - should be used.   
 
 
-```r
+``` r
 # plot data
-plot(google_trends$interest_over_time[, c("date", "hits")],
-    type = "b")
+plot(google_trends$interest_over_time[,c("date","hits")],type = "b")
 ```
-
-<img src="03-data_import_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 Another advantage of R is that it is open to user contributions. This often means that packages that allow users to collect data to investigate timely issues are available fairly quickly. As an example, consider the recent pandemic where many resources were made available via R packages to researchers (see [here](https://mine-cetinkaya-rundel.github.io/covid19-r/) for an overview). For example, we might want to get information on the number of daily confirmed cases in the US on the state level. We could obtain this information in just one line of code using the 'COVID19' package. 
 
 
-```r
+``` r
 library(COVID19)
-covid_data <- covid19(country = "US", level = 2, start = "2020-01-01")
+covid_data <- covid19(country = "US",level = 2,start = "2020-01-01")
 ```
 
 ```
-## We have invested a lot of time and effort in creating COVID-19 Data Hub, please cite the following when using it:
-## 
-## To cite package 'COVID19' in publications use:
+## We have invested a lot of time and effort in creating COVID-19 Data
+## Hub, please cite the following when using it:
 ## 
 ##   Guidotti, E., Ardia, D., (2020), "COVID-19 Data Hub", Journal of Open
-##   Source Software 5(51):2376, doi: 10.21105/joss.02376.
+##   Source Software 5(51):2376, doi: 10.21105/joss.02376
 ## 
-## A BibTeX entry for LaTeX users is
+## The implementation details and the latest version of the data are
+## described in:
 ## 
-##   @Article{,
-##     title = {COVID-19 Data Hub},
-##     year = {2020},
-##     doi = {10.21105/joss.02376},
-##     author = {Emanuele Guidotti and David Ardia},
-##     journal = {Journal of Open Source Software},
-##     volume = {5},
-##     number = {51},
-##     pages = {2376},
-##   }
+##   Guidotti, E., (2022), "A worldwide epidemiological database for
+##   COVID-19 at fine-grained spatial resolution", Sci Data 9(1):112, doi:
+##   10.1038/s41597-022-01245-1
+## To print citations in BibTeX format use:
+##  > print(citation('COVID19'), bibtex=TRUE)
 ## 
 ## To hide this message use 'verbose = FALSE'.
 ```
 
-```r
+``` r
 head(covid_data)
 ```
 
@@ -332,10 +312,9 @@ head(covid_data)
 Again, we could plot this data easily. In the following example, we first subset the data to the state of New York and then plot the development over time using the `plot()`-function. The argument `type = "l"` indicates that a <u>l</u>ine plot should be produced.   
 
 
-```r
+``` r
 # plot data
-plot(covid_data[covid_data$administrative_area_level_2 ==
-    "New York", c("date", "confirmed")], type = "l")
+plot(covid_data[covid_data$administrative_area_level_2=="New York",c("date","confirmed")],type = "l")
 ```
 
 <img src="03-data_import_files/figure-html/unnamed-chunk-17-1.png" width="672" />
@@ -361,11 +340,11 @@ plot(covid_data[covid_data$administrative_area_level_2 ==
 **(LC3.3) You would like to combine three vectors (student, grade, date) in a data frame. What would happen when executing the following code?** 
 
 
-```r
-student <- c("Max", "Jonas", "Saskia", "Victoria")
-grade <- c(3, 2, 1, 2)
-date <- as.Date(c("2020-10-06", "2020-10-08", "2020-10-09"))
-df <- data.frame(student, grade, date)
+``` r
+student <- c('Max','Jonas','Saskia','Victoria')
+grade <- c(3,2,1,2)
+date <- as.Date(c('2020-10-06','2020-10-08','2020-10-09'))
+df <- data.frame(student,grade,date)
 ```
 
 - [ ] Error because a data frame can not have different data types.
