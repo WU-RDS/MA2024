@@ -2,7 +2,10 @@
 <link rel="stylesheet" type="text/css" media="all" href="style.css" />
 
 
-
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = TRUE, warning = FALSE, message = FALSE)
+#knitr::clean_cache(clean = FALSE, path = opts_chunk$get("cache.path"))
+```
 
 # (PART) FAQs {-}
 
@@ -13,7 +16,9 @@ In this section, we provide answers to questions that students of previous cohor
 
 ## Common error messages
 
-<img src="./images/off_on.jpg" width="40%" style="display: block; margin: auto;" />
+```{r ,echo=FALSE,out.width = '40%',fig.align='center',fig.cap = ""}
+knitr::include_graphics("./images/off_on.jpg")
+```
 
 ### A general note on error messages {-}
 
@@ -55,169 +60,95 @@ Alternatively, you can set the directory in RStudio under Session -> Set Working
 
 Usually the `unexpectes SYMBOL` message is due to parentheses not being matched but it could also be any other symbol that R cannot interpret in the given context. Please check the line in which the error occurred for typos (especially too many/ too few symbols). Some common examples are:
 
-
-``` r
+```{r, error = TRUE}
 print("hello"))
-```
-
-```
-## Error in parse(text = input): <text>:1:15: unexpected ')'
-## 1: print("hello"))
-##                   ^
 ```
 There is one too many closing parenthesis here. 
 
-
-``` r
+```{r, error = TRUE}
 1 +/ 2 # Too many symbols
-```
-
-```
-## Error in parse(text = input): <text>:1:4: unexpected '/'
-## 1: 1 +/
-##        ^
 ```
 The "/" symbol may not follow the "+" symbol without any additional objects.
 
-
-``` r
+```{r, error = TRUE}
 1 2 # Missing symbol
-```
-
-```
-## Error in parse(text = input): <text>:1:3: unexpected numeric constant
-## 1: 1 2
-##       ^
 ```
 The sequence with a space between numbers is not recognized by R. 
 
-
-``` r
+```{r, error = TRUE}
 x <- 3
 2x # Missing symbol
 ```
-
-```
-## Error in parse(text = input): <text>:2:2: unexpected symbol
-## 1: x <- 3
-## 2: 2x
-##     ^
-```
 If you wanted to multiply x by 2 you would need to a the "*" symbol, as the following example shows. 
 
-
-
-``` r
+```{r include=FALSE}
+x <- 3
+```
+```{r}
 2*x
-```
-
-```
-## [1] 6
 ```
 
 ### Error in CALL : object of type 'closure' is not subsettable {-}
 
 This error occurs usually when one tries to subset a function (either with `fun$element` or `fun[1]` where `fun` is a function). Check your variable (especially `data.frames`) names for typos! This happens when you run the following code, for example, since `mean` is a function:
 
-
-``` r
+```{r,  error = TRUE}
 # Does not work:
 means <- data.frame(value = c(1,2,3))
 mean$value
 ```
 
-```
-## Error in mean$value: object of type 'closure' is not subsettable
-```
-
 instead of (i.e., correcting for the missing "s" to identify the data frame by its name)
 
-
-``` r
+```{r}
 # Works:
 means <- data.frame(value = c(1,2,3))
 means$value
 ```
 
-```
-## [1] 1 2 3
-```
-
 or we give variables the same name as a function (which should generally be avoided) but have not created that variable yet:
 
-
-``` r
+```{r error=TRUE}
 summary(aov)[[1]]
-```
-
-```
-## Error in object[[i]]: object of type 'closure' is not subsettable
 ```
 
 Make sure all the relevant code is run first:
 
-
-``` r
+```{r}
 dat <- data.frame(value = c(1,2,3), group = c("a", "b", "b"))
 aov <- aov(value~group, dat)
 summary(aov)[[1]]
 ```
 
-<div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Sum Sq"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Mean Sq"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["F value"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[5],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"1.5","3":"1.5","4":"3","5":"0.3333333","_rn_":"group"},{"1":"1","2":"0.5","3":"0.5","4":"NA","5":"NA","_rn_":"Residuals"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-
 ### Error in CALL_WITH_$: $ operator is invalid for atomic vectors {-}
 
 This error occurs when we try to subset a vector using the `$` operator. Usually this occurs when we think an object is a `data.frame` with the variable in it but it is really a vector.
 
-
-``` r
+```{r, echo = TRUE, error = TRUE}
 x <- c(1,2,3)
 x$a
 ```
 
+```{r include = FALSE}
+x <- 1:3
 ```
-## Error in x$a: $ operator is invalid for atomic vectors
-```
-
-
-
-``` r
+```{r}
 xdf <- data.frame(a = x)
 xdf$a
 ```
 
-```
-## [1] 1 2 3
-```
-
 Note that this error can also occur as part of function calls when some variables are `NA`:
 
-
-``` r
+```{r error =TRUE}
 library(psych)
 xdf$group <- NA
 mean(xdf$a, xdf$group)
 ```
 
-```
-## Error in mean.default(xdf$a, xdf$group): 'trim' must be numeric of length one
-```
-
 When you get this error make sure your data is in the format you expect it to be (e.g., using the `str` function). And that missing values (i.e., NA) are handles appropriately. 
 
-
-``` r
+```{r}
 str(xdf)
-```
-
-```
-## 'data.frame':	3 obs. of  2 variables:
-##  $ a    : int  1 2 3
-##  $ group: logi  NA NA NA
 ```
 ### Error in CALL: object 'NAME' not found {-}
 
@@ -235,18 +166,12 @@ Check your code for typos and make sure you have run all the relevant lines of c
 
 This error occurs if a function name is either misspelled or some packages have not been loaded into the current session (`library(PACKAGENAME)`). You have to re-load all packages every time you restart R. For example if you **did not** load the `ggplot2` library but try to use the `ggplot` function:
 
-
+```{r echo=FALSE, error = TRUE}
+detach(package:ggplot2)
 ```
-## Error in detach(package:ggplot2): invalid 'name' argument
-```
 
-
-``` r
+```{r error = TRUE}
 ggplot(data)
-```
-
-```
-## Error in ggplot(data): could not find function "ggplot"
 ```
 
 If you are not sure which package provides a given function, try running:
@@ -259,46 +184,28 @@ with two `??` this will search the help files of all installed packages for `FUN
 
 This error occurs when subsetting an object with the wrong number of dimension. For example if we have a vector `x` and try to get an element in the second dimension:
 
-
-``` r
+```{r error = TRUE}
 x <- c(1,2,3)
 x[1,1]
 ```
-
+```{r include=FALSE}
+x <- c(1,2,3)
 ```
-## Error in x[1, 1]: incorrect number of dimensions
-```
-
-
-``` r
+```{r}
 x[1]
-```
-
-```
-## [1] 1
 ```
 
 Note that `data.frame`s have two dimensions (each variable is a column, each observation a row) even if there is only one variable:
 
-
-``` r
+```{r}
 x <- c(1,2,3)
 data.frame(x)[1, 1]
 ```
 
-```
-## [1] 1
-```
-
 For multidimensional objects you can always check the size of each dimension using the `dim` function:
 
-
-``` r
+```{r}
 dim(data.frame(x))
-```
-
-```
-## [1] 3 1
 ```
 
 For vectors `dim` will return `NULL`.
@@ -346,7 +253,9 @@ Some libraries require the [XQuartz](https://www.xquartz.org) window system for 
 1. When asked whether R should try to install a package from sources a package which needs compilation, enter "no" or "n".
 
 
-<img src="./images/error.png" width="70%" style="display: block; margin: auto;" />
+```{r ,echo=FALSE,out.width = '70%',fig.align='center',fig.cap = ""}
+knitr::include_graphics("./images/error.png")
+```
 
 2.  If this doesn't solve the issue, try installing the free XCode package from the Apple Appstore, open a Terminal and enter "xcode-select --install". After that try to install the package again (answering "yes" to the question above). 
 
@@ -362,25 +271,15 @@ See [Diamantopoulos, Sarstedt, Fuchs, et al. (2012)](https://link.springer.com/a
 
 Calculating statistics (e.g., mean, sd) using variables that include `NA`s will return an `NA` by default. There are a couple of options to address this problem. The missing values can be deleted from a variable using the `na.omit` function. Alternatively many functions offer the `na.rm` argument which will calculate the statistic disregarding `NA`s. For example, the following will result in NA: 
 
-
-``` r
+```{r,error=TRUE}
 x <- c(1,2,3, 5, NA)
 mean(x)
 ```
-
-```
-## [1] NA
-```
 While the following disregards the NA values when computing the mean of the numeric vector: 
 
-
-``` r
+```{r}
 x <- c(1,2,3, 5, NA)
 mean(x, na.rm = TRUE)
-```
-
-```
-## [1] 2.75
 ```
 
 Note that the `scale` function automatically omits missing values when calculating the mean and standard deviation to standardize a variable.
@@ -407,28 +306,18 @@ See [confidenceinterval.R](https://raw.githubusercontent.com/WU-RDS/MRDA2021/mai
 
 When using logistic regression make sure all the values in the dependent variable (left hand side) are between $0$ and $1$
 
-
-``` r
+```{r, error=TRUE}
 dat <- data.frame(y = c(2,0,1), x = c(1,2,3))
 glm(y ~ x , data = dat, family=binomial())
-```
-
-```
-## Error in eval(family$initialize): y values must be 0 <= y <= 1
 ```
 
 ### When using logistic regression: Error in weights * y : non-numeric argument to binary operator {-}
 
 This error occurs if a variable that is supposed to be numeric is a character
 
-
-``` r
+```{r, error=TRUE}
 dat$char_y <- c("1", "0", "1")
 glm(char_y ~ x , data = dat, family=binomial())
-```
-
-```
-## Error in weights * y: non-numeric argument to binary operator
 ```
 
 ## General settings and options
@@ -446,40 +335,25 @@ Scientific notation follows the following rule: $VeD \Rightarrow V \times 10^D$.
 
 Therefore, `options(scipen=-10)` would result in:
 
-
-``` r
+```{r}
 options(scipen=-10)
 29.3749592384
 ```
 
-```
-## [1] 2.937496e+01
-```
-
 And `options(scipen=10)` would result in:
 
-
-``` r
+```{r}
 options(scipen=10)
 29.3749592384
-```
-
-```
-## [1] 29.37496
 ```
 
 See also [scientificnotation.R](https://raw.githubusercontent.com/WU-RDS/MRDA2021/main/QAscripts/scientificnotation.R) for some examples.
 
 Note that `options(digits=...)` also allows you to control the number of digits to be displayed for numeric values:
 
-
-``` r
+```{r}
 options(digits = 12)
 29.3749592384
-```
-
-```
-## [1] 29.3749592384
 ```
 
 ## Data visualization/output issues
@@ -504,16 +378,14 @@ See [histogrambins.R](https://raw.githubusercontent.com/WU-RDS/MRDA2021/main/QAs
 
 If axis labels (e.g. names) are too long, they are cut off by the default margins of R plots. You can set margins manually in `ggplot2` as part of the `theme` settings in the following order: top, right, bottom, left. For example, to add 2cm margin to each side, we can use: 
 
-
-``` r
+```{r eval = FALSE}
 my_ggplot + 
   theme(plot.margin = margin(2, 2, 2, 2, "cm"))
 ```
 
 In addition you can try to change the height and width when saving a ggplot (this usually works better):
 
-
-``` r
+```{r, eval = FALSE}
 ggsave("myggplot.png", width = 10, height = 10, units = "cm")
 ```
 
@@ -528,45 +400,27 @@ Generally, if you face an issue relating to a particular function, it is a good 
 
 **1. Common mistake:** some groups are not named in `levels` and `labels` $\Rightarrow$ results in `NA` for omitted group like in the following example: 
 
-
-``` r
+```{r error = TRUE}
 x <- c(0,0,0,1,0,2,0,1)
 x <- factor(x, levels = c(0,1), labels = c("no","yes"))
 x
 ```
 
-```
-## [1] no   no   no   yes  no   <NA> no   yes 
-## Levels: no yes
-```
-
 In this example, you need to also consider "2" as a factor level to avoid setting the value of this observation to NA:
 
-
-``` r
+```{r error = TRUE}
 x <- c(0,0,0,1,0,2,0,1)
 x <- factor(x, levels = c(0,1,2), labels = c("no","yes","maybe"))
 x
-```
-
-```
-## [1] no    no    no    yes   no    maybe no    yes  
-## Levels: no yes maybe
 ```
 
 **2. Common mistake:** the code creating the factor is run twice overwriting the original variable $\Rightarrow$ results in `NA` for all values like in the following example:
 
-
-``` r
+```{r error = TRUE}
 x <- c(0,0,0,1,0,2,0,1)
 x <- factor(x, levels = c(0,1,2), labels = c("no","yes","maybe"))
 x <- factor(x, levels = c(0,1,2), labels = c("no","yes","maybe"))
 x
-```
-
-```
-## [1] <NA> <NA> <NA> <NA> <NA> <NA> <NA> <NA>
-## Levels: no yes maybe
 ```
 As can be seen, by running the line of code specifying the factor variable twice, we first specify the factor variable correctly and then incorrectly overwrite this variable again. The second time we run the code, the values are set to NA because R looks from levels of 0,1, and 2 again, but these had already been replaced by the labels when the code was run for the first time. Hence, since there are no elements with the values of 0,1,2 anymore, these values are replaced by missing values.   
 
@@ -574,16 +428,10 @@ Note that this is usually a result of "jumping" back and forth in the code. Run 
 
 **Possible remedy**: name the factor variable you create differently from the source variable, e.g., 
 
-
-``` r
+```{r error = TRUE}
 x <- c(0,0,0,1,0,2,0,1)
 y <- factor(x, levels = c(0,1,2), labels = c("no","yes","maybe"))
 y
-```
-
-```
-## [1] no    no    no    yes   no    maybe no    yes  
-## Levels: no yes maybe
 ```
 
 In this case, you can always go back and re-run the code creating the factor variable from its original source if you have overwritten it accidentally. Otherwise you would need to re-run the entire code to get the original formating of the variable back. 
@@ -609,8 +457,7 @@ e.g.,
 If the function is provided by a package you have to load the package first using the `library(...)` function. 
 e.g.,
 
-
-``` r
+```{r message=FALSE, warning=FALSE}
 library(Hmisc)
 ?rcorr 
 ```
@@ -619,39 +466,21 @@ library(Hmisc)
 
 Some functions such as `apply` and `prop.table` take a `MARGIN` argument. This argument specifies over which dimension (e.g., rows = 1, columns = 2) a function should be applied. This is especially useful for multidimensional arrays such as matrices.
 
-
-``` r
+```{r}
 m <- matrix(1:9, nrow=3)
 m
 ```
 
-```
-##      [,1] [,2] [,3]
-## [1,]    1    4    7
-## [2,]    2    5    8
-## [3,]    3    6    9
-```
-
  e.g. we could get the `max` of each *row* with
 
-
-``` r
+```{r}
 apply(m, 1, max)
-```
-
-```
-## [1] 7 8 9
 ```
 
 and the `max` of each *column* with
 
-
-``` r
+```{r}
 apply(m, 2, max)
-```
-
-```
-## [1] 3 6 9
 ```
 
 See [margins.R](https://raw.githubusercontent.com/WU-RDS/MRDA2021/main/QAscripts/margins.R) for more examples.
@@ -662,8 +491,7 @@ See [margins.R](https://raw.githubusercontent.com/WU-RDS/MRDA2021/main/QAscripts
 
 Try installing the `tinytex` library as follows before `knit`ing your document:
 
-
-``` r
+```{r echo = TRUE, eval = FALSE}
 install.packages('tinytex')
 tinytex::install_tinytex()
 ```
@@ -674,13 +502,8 @@ In an Rmd document, there are 3 different environments, <a name="rchunk"></a>
 
 **1. R-code** is enclosed in three ticks followed by \{r, [chunk-options](https://rmarkdown.rstudio.com/lesson-3.html#chunk-options)\} where the chunk options can include configuration for printing code and output as well as figures e.g.
 
-
-``` r
+```{r}
 print("Hello R!")
-```
-
-```
-## [1] "Hello R!"
 ```
 
 **2. LaTeX math** can either be enclosed in single dollar signs \$x^2\$ $\Rightarrow x^2$ for in-line math or

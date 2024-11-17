@@ -5,8 +5,7 @@ if(!"EBImage" %in% installed.packages()) BiocManager::install("EBImage")
 if(!"devtools" %in% installed.packages()) install.packages("devtools")
 if(!"robCompositions" %in% installed.packages()) devtools::install_github("matthias-da/robCompositions")
 
-standard_installs <-
-c("tidyverse", "dplyr", "COVID19", "gtrendsR", "jsonlite", "qualtRics", 
+standard_installs <- c("tidyverse", "dplyr", "COVID19", "gtrendsR", "jsonlite", "qualtRics", 
 "rvest", "stringr", "knitr", "psych", "summarytools", "colorspace", 
 "ggExtra", "ggmap", "ggstatsplot", "ggthemes", "gtools", "Rmisc", 
 "scales", "tidyr", "ggplot2", "lsr", "pwr", "reshape2", "car", 
@@ -16,6 +15,5 @@ c("tidyverse", "dplyr", "COVID19", "gtrendsR", "jsonlite", "qualtRics",
 "sjlabelled", "tibble", "wordcloud", "BiocManager", "devtools", 
 "rmarkdown", "DescTools", "pmr", "rstatix", "robCompositions", 
 "pastecs", "ggpubr", "plyr", "haven", "openssl", "readxl", "latex2exp", 
-"skimr", "cowplot", "gridExtra", "logistf", "mfx", "plotly")
-lapply(function(x) install.packages(x), standard_installs[!standard_installs %in% installed.packages()])
-
+"skimr", "cowplot", "gridExtra", "logistf", "mfx", "plotly", "ggdag")
+install.packages(standard_installs)

@@ -345,10 +345,10 @@ Again, please make sure that you have exhausted all other resources to solve a p
   <tr>
    <td style="text-align:left;"> Questionnaire coaching* </td>
    <td style="text-align:left;"> Nov. 25, 01:00PM - 05:00PM </td>
-   <td style="text-align:left;"> D5.1.001 </td>
+   <td style="text-align:left;"> D2.2.491 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Data analysis coaching* </td>
+   <td style="text-align:left;"> Data analysis coaching </td>
    <td style="text-align:left;"> Dec. 09, 01:00PM - 05:00PM </td>
    <td style="text-align:left;"> D5.1.001 </td>
   </tr>
@@ -383,10 +383,10 @@ Again, please make sure that you have exhausted all other resources to solve a p
   <tr>
    <td style="text-align:left;"> Questionnaire coaching* </td>
    <td style="text-align:left;"> Nov. 27, 02:00PM - 06:00PM </td>
-   <td style="text-align:left;"> D4.0.022 </td>
+   <td style="text-align:left;"> D2.1.491 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Data analysis coaching* </td>
+   <td style="text-align:left;"> Data analysis coaching </td>
    <td style="text-align:left;"> Dec. 13, 01:00PM - 05:00PM </td>
    <td style="text-align:left;"> TC.3.01 </td>
   </tr>

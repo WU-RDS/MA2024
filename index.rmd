@@ -336,7 +336,7 @@ mytable_sub = data.frame(
     Component = c(
              "Intro to Questionnaire design", 
              "Questionnaire coaching*",
-             "Data analysis coaching*",
+             "Data analysis coaching",
              "(Pre-recorded) presentation submission"
              ),
     Date = c(
@@ -347,7 +347,7 @@ mytable_sub = data.frame(
     ),
     Room = c(
       "D5.1.001",
-      "D5.1.001",
+      "D2.2.491",
       "D5.1.001",
       "---"
     )
@@ -375,7 +375,7 @@ mytable_sub = data.frame(
     Component = c(
              "Intro to Questionnaire design", 
              "Questionnaire coaching*",
-             "Data analysis coaching*",
+             "Data analysis coaching",
              "(Pre-recorded) presentation submission"
              ),
     Date = c(
@@ -386,7 +386,7 @@ mytable_sub = data.frame(
     ),
     Room = c(
       "D4.0.022",
-      "D4.0.022",
+      "D2.1.491",
       "TC.3.01",
       "---"
     )
