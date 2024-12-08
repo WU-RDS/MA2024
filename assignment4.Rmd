@@ -1,0 +1,166 @@
+---
+title: "Assignment 4 ( Causal Modeling & Mediation Analysis)"
+author: "FName LName StudentID"
+output:
+  html_document: default
+---
+
+## Assignment
+
+Please use this document to solve the following exercises with R. Once you are done click on the "Knit" buttom in the RStudio interface. This creates an "html" file in the same folder as the "assignment4.Rmd" file. Open the file in a browser to make sure everything is displayed correctly and you are happy with your solution before submitting the "hmtl" file on Canvas. The filename should follow the following schema:
+
+"assignment4_studentID_lastname.html"
+
+Note that some of the tasks are labelled as "Bonus". These are not mandatory but can be used to make up for points lost **within the same assignment** (but not in other assignments and not beyond the maximum points of assignment 4).
+
+
+## Assignment A
+
+The data-set `influencer` contains the following variables to assess the success of influencer marketing campaigns:
+
+  - `follower_count`: the number of followers of the influencer
+  - `engagement_rate`: the engagement rate measured as the number of interations divided by the influencers reach
+  - `content_quality`: an index measuring the quality of the influencer's posts
+  - `post_frequency`: the number of times the influencer posted about the brand
+  - `sales`: the number of units sold during the campaign
+  - `brand_awareness`: an index measuring how many people became aware of the brand during the campaign
+
+**Task Instructions**
+
+### Task 1: Omitted Variable Bias
+
+```{r read_a41}
+influencer <- readr::read_csv("https://github.com/WU-RDS/MA2024/raw/refs/heads/main/data/influencer.csv")
+str(influencer)
+```
+
+We are interested in modeling the sales during the campaigns. 
+
+a) Draw a DAG that shows how you would model the causal influence of of `follower_count` on `sales` (feel free to draw it by hand and insert an image. You can add images with `![](./IMAGE.png)`)
+
+
+```{r a41a}
+# provide your code here (omit if drawn by hand or any other way)
+
+```
+
+b) Describe briefly what roles each of the variables in you DAG play (mediator, moderator, collider)
+
+
+c) Calculate the correlation coefficients of the variables you expect to be correlated based on your answer in a). Briefly explain any changes (if any) you would like to make to your DAG based on the results.
+
+```{r a41c}
+# provide your code here
+
+```
+
+
+d) Run and interpret the appropriate model given your answers in a) - c) (hint: you don't need anything we did not do in class)
+
+```{r a41d}
+# provide your code here
+
+```
+
+
+### Task 2: Selection Bias
+
+```{r read_a41}
+influencer2 <- readr::read_csv("https://github.com/WU-RDS/MA2024/raw/refs/heads/main/data/influencer2.csv")
+str(influencer2)
+```
+
+The data-set `influencer2` contains data from an experiment run by a company to assess whether their selection criteria for influencer campaigns are suitable to assess the impact authenticity of their posts have on sales. Instead of their usual selection criteria they select influencers at random to check if their usual selection criteria change the relationship between authenticit and sales. The data contains the following variables:
+
+ - `sales_impact`: the measured sales impact of an influencer
+ - `authenticity`: an index measuring the perceived authenticity of the influencer's posts
+ - `selected`: an indicator of whether this influencer would have been selected according to the companies usual criteria
+
+Since their usual selection criteria include the expected sales impact of a campaign as well as the authenticity index the company suspects that the selection is a collider.
+
+a) Please estimate and interpret a model that shows the causal impact of authenticity on sales assuming the company is correct and their selection is a collider
+
+```{r question_1abc}
+# provide your code here 
+
+```
+
+b) Draw the DAG for the model (feel free to draw it by hand and insert an image)
+
+```{r question_1abd}
+# provide your code here 
+
+```
+
+### Task 3: Moderation
+
+```{r read_a41}
+in_app_purchases <- readr::read_csv("https://github.com/WU-RDS/MA2024/raw/refs/heads/main/data/in_app_purchases.csv")
+str(in_app_purchases)
+```
+
+
+The data-set `in_app_purchases` includes data on a marketing campaign aimed at boosting in-app purchases. It contains the variables:
+
+- `in_app`: the number of in-app purchases of a user
+- `gender`: the gender of the user
+- `campaign_exposure`: indicator whether the user was exposed to the campaign
+
+a) Provide an appropriate visualization showing whether the effect of the campaign is moderated by gender
+
+```{r}
+# provide your code here 
+
+```
+
+a) Calculate and interpret all of the coefficients in the appropriate model given your answer in a)
+
+```{r}
+# provide your code here 
+
+```
+
+### Task 4: The IKEA effect
+
+
+```{r read_a41}
+ikea <- readr::read_csv("https://github.com/WU-RDS/MA2024/raw/refs/heads/main/data/ikea.csv")
+str(in_app_purchases)
+```
+
+The IKEA effect describes a psychological process through which consumers value products more because they feel a sense of accomplishment after assembling the something themselves. Using the following data, analyze whether you can replicate these results. The data was created through an experiment in which some consumers were randomly given fully assembled furniture while others had to assemble it themselves (it is otherwise the same furniture; variable: `self_assembly`). The researchers asked consumers about their sense of accomplishment (variable: `accomplishment`) and how much they value the final product (variable: `valuation`). Discuss the relativ magnitude of the direct and mediated effect of self assembly.
+
+```{r}
+# provide your code here 
+
+```
+
+
+## AI Disclosure
+
+I have used AI tools for the completion of this assignment. (Yes/No)
+
+
+If "Yes", please fill out the AI Disclosure form:
+
+### I acknowledge that I can explain all code snippets (partially) generated by AI and understand what the code does. (Yes/No)
+
+### To complete these exercises I have used the following AI tools:
+
+- ChatGPT
+- Github Copilot
+- ...
+
+### I have used AI tools for the the following tasks (1-9):
+
+
+### Brief description of my usage (e.g., code completion, code generation):
+
+
+### Example of code (partially) generated by AI and brief description of the purpose of the code:
+
+```{r, eval=FALSE}
+
+```
+
+
