@@ -1247,18 +1247,16 @@ Figure 1.14: Bar chart (options 2)
   </script>
 </div>
 <p>We can now take these tables to construct plots grouped by explicitness. To achieve this we simply need to add the <code>facet_wrap()</code> function, which replicates a plot multiple times, split by a specified grouping factor. Note that the grouping factor has to be supplied in R’s formula notation, hence it is preceded by a “~” symbol.</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="summarizing-data.html#cb162-1" tabindex="-1"></a><span class="fu">ggplot</span>(table_plot_cond_rel, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(genre, Freq), <span class="at">y =</span> Freq)) <span class="sc">+</span> </span>
-<span id="cb162-2"><a href="summarizing-data.html#cb162-2" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> Freq)) <span class="sc">+</span></span>
-<span id="cb162-3"><a href="summarizing-data.html#cb162-3" tabindex="-1"></a>      <span class="fu">facet_wrap</span>(<span class="sc">~</span>explicit) <span class="sc">+</span></span>
-<span id="cb162-4"><a href="summarizing-data.html#cb162-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Distribution of genres for explicit and non-explicit songs&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb162-5"><a href="summarizing-data.html#cb162-5" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">&quot;%.0f%%&quot;</span>, Freq <span class="sc">*</span> <span class="dv">100</span>)), <span class="at">vjust=</span><span class="sc">-</span><span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb162-6"><a href="summarizing-data.html#cb162-6" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb162-7"><a href="summarizing-data.html#cb162-7" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb162-8"><a href="summarizing-data.html#cb162-8" tabindex="-1"></a>  <span class="fu">scale_fill_continuous_sequential</span>(<span class="at">palette =</span> <span class="st">&quot;Blues&quot;</span>) <span class="sc">+</span></span>
-<span id="cb162-9"><a href="summarizing-data.html#cb162-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>,<span class="at">vjust=</span><span class="fl">1.1</span>,<span class="at">hjust=</span><span class="dv">1</span>),</span>
-<span id="cb162-10"><a href="summarizing-data.html#cb162-10" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,<span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>),</span>
-<span id="cb162-11"><a href="summarizing-data.html#cb162-11" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span></span>
-<span id="cb162-12"><a href="summarizing-data.html#cb162-12" tabindex="-1"></a>        ) </span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="summarizing-data.html#cb162-1" tabindex="-1"></a><span class="fu">ggplot</span>(table_plot_cond_rel, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(genre,</span>
+<span id="cb162-2"><a href="summarizing-data.html#cb162-2" tabindex="-1"></a>    Freq), <span class="at">y =</span> Freq)) <span class="sc">+</span> <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">fill =</span> Freq)) <span class="sc">+</span></span>
+<span id="cb162-3"><a href="summarizing-data.html#cb162-3" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>explicit) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Relative frequency&quot;</span>,</span>
+<span id="cb162-4"><a href="summarizing-data.html#cb162-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Distribution of genres for explicit and non-explicit songs&quot;</span>) <span class="sc">+</span></span>
+<span id="cb162-5"><a href="summarizing-data.html#cb162-5" tabindex="-1"></a>    <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">&quot;%.0f%%&quot;</span>, Freq <span class="sc">*</span></span>
+<span id="cb162-6"><a href="summarizing-data.html#cb162-6" tabindex="-1"></a>        <span class="dv">100</span>)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.2</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>,</span>
+<span id="cb162-7"><a href="summarizing-data.html#cb162-7" tabindex="-1"></a>    <span class="dv">1</span>) <span class="sc">+</span> <span class="fu">scale_fill_continuous_sequential</span>(<span class="at">palette =</span> <span class="st">&quot;Blues&quot;</span>) <span class="sc">+</span></span>
+<span id="cb162-8"><a href="summarizing-data.html#cb162-8" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="fl">1.1</span>,</span>
+<span id="cb162-9"><a href="summarizing-data.html#cb162-9" tabindex="-1"></a>        <span class="at">hjust =</span> <span class="dv">1</span>), <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb162-10"><a href="summarizing-data.html#cb162-10" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>), <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-19"></span>
 <img src="05-visualization_files/figure-html/unnamed-chunk-19-1.png" alt="Grouped bar chart (facet_wrap)" width="672" />
 <p class="caption">
@@ -1340,14 +1338,12 @@ Figure 1.20: Histogram 2
 <p>Another common way to display the distribution of continuous variables is through boxplots. ggplot will construct a boxplot if given the geom <code>geom_boxplot()</code>. In our case we might want to show the difference in streams between the genres. For this analysis, we will transform the streaming variable using a logarithmic transformation, which is common with such data (as we will see later). So let’s first create a new variable by taking the logarithm of the streams variable.</p>
 <div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="summarizing-data.html#cb167-1" tabindex="-1"></a>music_data<span class="sc">$</span>log_streams <span class="ot">&lt;-</span> <span class="fu">log</span>(music_data<span class="sc">$</span>streams)</span></code></pre></div>
 <p>Now, let’s create a boxplot based on these variables and plot the log-transformed number of streams by genre.</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="summarizing-data.html#cb168-1" tabindex="-1"></a><span class="fu">ggplot</span>(music_data,<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(genre, log_streams), <span class="at">y =</span> log_streams)) <span class="sc">+</span></span>
-<span id="cb168-2"><a href="summarizing-data.html#cb168-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">coef =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb168-3"><a href="summarizing-data.html#cb168-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Genre&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Number of streams (log-scale)&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb168-4"><a href="summarizing-data.html#cb168-4" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb168-5"><a href="summarizing-data.html#cb168-5" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle=</span><span class="dv">45</span>,<span class="at">vjust=</span><span class="fl">1.1</span>,<span class="at">hjust=</span><span class="dv">1</span>),</span>
-<span id="cb168-6"><a href="summarizing-data.html#cb168-6" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,<span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>),</span>
-<span id="cb168-7"><a href="summarizing-data.html#cb168-7" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span></span>
-<span id="cb168-8"><a href="summarizing-data.html#cb168-8" tabindex="-1"></a>        ) </span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="summarizing-data.html#cb168-1" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(genre, log_streams),</span>
+<span id="cb168-2"><a href="summarizing-data.html#cb168-2" tabindex="-1"></a>    <span class="at">y =</span> log_streams)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">coef =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Genre&quot;</span>,</span>
+<span id="cb168-3"><a href="summarizing-data.html#cb168-3" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Number of streams (log-scale)&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb168-4"><a href="summarizing-data.html#cb168-4" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">vjust =</span> <span class="fl">1.1</span>,</span>
+<span id="cb168-5"><a href="summarizing-data.html#cb168-5" tabindex="-1"></a>        <span class="at">hjust =</span> <span class="dv">1</span>), <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb168-6"><a href="summarizing-data.html#cb168-6" tabindex="-1"></a>        <span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>), <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-25"></span>
 <img src="05-visualization_files/figure-html/unnamed-chunk-25-1.png" alt="Boxplot by group" width="672" />
 <p class="caption">
@@ -1360,13 +1356,10 @@ Figure 1.22: Boxplot by group
 <div class="figcaption">Information contained in a Boxplot</div>
 </div>
 <p>Note that you could also flip the boxplot. To do this, you only need to exchange the x- and y-variables. If we provide the categorical variable to the y-axis as follows, the axis will be flipped.</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="summarizing-data.html#cb169-1" tabindex="-1"></a><span class="fu">ggplot</span>(music_data,<span class="fu">aes</span>(<span class="at">x =</span> log_streams, <span class="at">y =</span> <span class="fu">fct_reorder</span>(genre, log_streams))) <span class="sc">+</span></span>
-<span id="cb169-2"><a href="summarizing-data.html#cb169-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">coef =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb169-3"><a href="summarizing-data.html#cb169-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Number of streams (log-scale)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Genre&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb169-4"><a href="summarizing-data.html#cb169-4" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb169-5"><a href="summarizing-data.html#cb169-5" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,<span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>),</span>
-<span id="cb169-6"><a href="summarizing-data.html#cb169-6" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span></span>
-<span id="cb169-7"><a href="summarizing-data.html#cb169-7" tabindex="-1"></a>        ) </span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="summarizing-data.html#cb169-1" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> log_streams, <span class="at">y =</span> <span class="fu">fct_reorder</span>(genre,</span>
+<span id="cb169-2"><a href="summarizing-data.html#cb169-2" tabindex="-1"></a>    log_streams))) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">coef =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Number of streams (log-scale)&quot;</span>,</span>
+<span id="cb169-3"><a href="summarizing-data.html#cb169-3" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Genre&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>,</span>
+<span id="cb169-4"><a href="summarizing-data.html#cb169-4" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;#666666&quot;</span>), <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-26"></span>
 <img src="05-visualization_files/figure-html/unnamed-chunk-26-1.png" alt="Boxplot by group" width="672" />
 <p class="caption">
@@ -1374,11 +1367,10 @@ Figure 1.23: Boxplot by group
 </p>
 </div>
 <p>It is often meaningful to augment the boxplot with the data points using <code>geom_jitter()</code>. This way, differences in the distribution of the variable between the genres become even more apparent.</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="summarizing-data.html#cb170-1" tabindex="-1"></a><span class="fu">ggplot</span>(music_data,<span class="fu">aes</span>(<span class="at">x =</span> log_streams , <span class="at">y =</span> <span class="fu">fct_reorder</span>(genre, log_streams))) <span class="sc">+</span></span>
-<span id="cb170-2"><a href="summarizing-data.html#cb170-2" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">colour=</span><span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb170-3"><a href="summarizing-data.html#cb170-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">coef =</span> <span class="dv">3</span>, <span class="at">alpha =</span><span class="fl">0.1</span>) <span class="sc">+</span> </span>
-<span id="cb170-4"><a href="summarizing-data.html#cb170-4" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Number of streams (log-scale)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Genre&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb170-5"><a href="summarizing-data.html#cb170-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="summarizing-data.html#cb170-1" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> log_streams, <span class="at">y =</span> <span class="fu">fct_reorder</span>(genre,</span>
+<span id="cb170-2"><a href="summarizing-data.html#cb170-2" tabindex="-1"></a>    log_streams))) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb170-3"><a href="summarizing-data.html#cb170-3" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>(<span class="at">coef =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Number of streams (log-scale)&quot;</span>,</span>
+<span id="cb170-4"><a href="summarizing-data.html#cb170-4" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Genre&quot;</span>) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-27"></span>
 <img src="05-visualization_files/figure-html/unnamed-chunk-27-1.png" alt="Boxplot by group" width="672" />
 <p class="caption">
@@ -1744,12 +1736,12 @@ Figure 4.14: Covariation between categorical data (2)
 <ul class="task-list">
 <li><label><input type="checkbox" />Nominal</label></li>
 <li><label><input type="checkbox" />Ordinal</label></li>
-<li><label><input type="checkbox" />Interval</label></li>
-<li><label><input type="checkbox" />Ratio</label></li>
+<li><label><input type="checkbox" checked="" />Interval</label></li>
+<li><label><input type="checkbox" checked="" />Ratio</label></li>
 </ul>
 <p><strong>(LC4.2) How can you compute the standardized variate of a variable X?</strong></p>
 <ul class="task-list">
-<li><label><input type="checkbox" /><span class="math inline">\(Z=\frac{X_i-\bar{X}}{s}\)</span></label></li>
+<li><label><input type="checkbox" checked="" /><span class="math inline">\(Z=\frac{X_i-\bar{X}}{s}\)</span></label></li>
 <li><label><input type="checkbox" /><span class="math inline">\(Z=\frac{\bar{X}+X_i}{s}\)</span></label></li>
 <li><label><input type="checkbox" /><span class="math inline">\(Z=\frac{s}{\bar{X}+X_i}\)</span></label></li>
 <li><label><input type="checkbox" /><span class="math inline">\(Z=s*({\bar{X}+X_i)}\)</span></label></li>
@@ -1766,7 +1758,7 @@ Figure 4.14: Covariation between categorical data (2)
 <li><label><input type="checkbox" /><code>df$mpg_std &lt;- zscore(df$mpg)</code></label></li>
 <li><label><input type="checkbox" /><code>df$mpg_std &lt;- stdv(df$mpg)</code></label></li>
 <li><label><input type="checkbox" /><code>df$mpg_std &lt;- std.scale(df$mpg)</code></label></li>
-<li><label><input type="checkbox" /><code>df$mpg_std &lt;- scale(df$mpg)</code></label></li>
+<li><label><input type="checkbox" checked="" /><code>df$mpg_std &lt;- scale(df$mpg)</code></label></li>
 <li><label><input type="checkbox" />None of the above</label></li>
 </ul>
 <p><strong>(LC4.4) How could you produce the below output?</strong></p>
@@ -1776,7 +1768,7 @@ Figure 4.14: Covariation between categorical data (2)
   </script>
 </div>
 <ul class="task-list">
-<li><label><input type="checkbox" /><code>describe(select(mtcars, hp, mpg, qsec))</code></label></li>
+<li><label><input type="checkbox" checked="" /><code>describe(select(mtcars, hp, mpg, qsec))</code></label></li>
 <li><label><input type="checkbox" /><code>summary(select(mtcars, hp, mpg, qsec))</code></label></li>
 <li><label><input type="checkbox" /><code>table(select(mtcars, hp, mpg, qsec))</code></label></li>
 <li><label><input type="checkbox" /><code>str(select(mtcars, hp, mpg, qsec))</code></label></li>
@@ -1788,7 +1780,7 @@ Figure 4.14: Covariation between categorical data (2)
 ##  7 10  3 10  1  1</code></pre>
 <ul class="task-list">
 <li><label><input type="checkbox" /><code>describe(mtcars$carb)</code></label></li>
-<li><label><input type="checkbox" /><code>table(mtcars$carb)</code></label></li>
+<li><label><input type="checkbox" checked="" /><code>table(mtcars$carb)</code></label></li>
 <li><label><input type="checkbox" /><code>str(mtcars$carb)</code></label></li>
 <li><label><input type="checkbox" /><code>prop.table(mtcars$carb)</code></label></li>
 <li><label><input type="checkbox" />None of the above</label></li>
@@ -1797,7 +1789,7 @@ Figure 4.14: Covariation between categorical data (2)
 <ul class="task-list">
 <li><label><input type="checkbox" />Two categorical variables</label></li>
 <li><label><input type="checkbox" />One categorical and one continuous variable</label></li>
-<li><label><input type="checkbox" />Two continuous variables</label></li>
+<li><label><input type="checkbox" checked="" />Two continuous variables</label></li>
 <li><label><input type="checkbox" />One continuous variable</label></li>
 <li><label><input type="checkbox" />None of the above</label></li>
 </ul>
@@ -1805,8 +1797,8 @@ Figure 4.14: Covariation between categorical data (2)
 <p><img src="05-visualization_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <ul class="task-list">
 <li><label><input type="checkbox" />This is a bar chart</label></li>
-<li><label><input type="checkbox" />This is a histogram</label></li>
-<li><label><input type="checkbox" />It shows the frequency distribution of a continuous variable</label></li>
+<li><label><input type="checkbox" checked="" />This is a histogram</label></li>
+<li><label><input type="checkbox" checked="" />It shows the frequency distribution of a continuous variable</label></li>
 <li><label><input type="checkbox" />It shows the frequency distribution of a categorical variable</label></li>
 <li><label><input type="checkbox" />None of the above</label></li>
 </ul>
@@ -1814,14 +1806,14 @@ Figure 4.14: Covariation between categorical data (2)
 <p><img src="05-visualization_files/figure-html/unnamed-chunk-59-1.png" width="50%" /></p>
 <ul class="task-list">
 <li><label><input type="checkbox" />This is a bar chart</label></li>
-<li><label><input type="checkbox" />50% of observations are contained in the gray area</label></li>
+<li><label><input type="checkbox" checked="" />50% of observations are contained in the gray area</label></li>
 <li><label><input type="checkbox" />The horizontal black line indicates the mean</label></li>
-<li><label><input type="checkbox" />This is a boxplot</label></li>
+<li><label><input type="checkbox" checked="" />This is a boxplot</label></li>
 <li><label><input type="checkbox" />None of the above</label></li>
 </ul>
 <p><strong>(LC4.9) Which function can help you to save a graph made with <code>ggplot()</code>?</strong></p>
 <ul class="task-list">
-<li><label><input type="checkbox" /><code>ggsave()</code></label></li>
+<li><label><input type="checkbox" checked="" /><code>ggsave()</code></label></li>
 <li><label><input type="checkbox" /><code>write.plot()</code></label></li>
 <li><label><input type="checkbox" /><code>save.plot()</code></label></li>
 <li><label><input type="checkbox" /><code>export.plot()</code></label></li>
@@ -1829,7 +1821,7 @@ Figure 4.14: Covariation between categorical data (2)
 <p><strong>(LC4.10) For a variable that follows a normal distribution, within how many standard deviations of the mean are 95% of values?</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox" />1.645</label></li>
-<li><label><input type="checkbox" />1.960</label></li>
+<li><label><input type="checkbox" checked="" />1.960</label></li>
 <li><label><input type="checkbox" />2.580</label></li>
 <li><label><input type="checkbox" />3.210</label></li>
 <li><label><input type="checkbox" />None of the answers above</label></li>

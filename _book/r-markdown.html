@@ -621,7 +621,7 @@ plot(dist~speed, cars)
 ##  Mean   :15.4   Mean   : 42.98  
 ##  3rd Qu.:19.0   3rd Qu.: 56.00  
 ##  Max.   :25.0   Max.   :120.00</code></pre>
-<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="r-markdown.html#cb693-1" tabindex="-1"></a><span class="fu">plot</span>(dist<span class="sc">~</span>speed, cars)</span></code></pre></div>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="r-markdown.html#cb693-1" tabindex="-1"></a><span class="fu">plot</span>(dist <span class="sc">~</span> speed, cars)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/cars2-1.png" width="672" /></p>
 <p>A good overview of all available global/chunk options can be found <a href="https://yihui.name/knitr/options/#chunk_options">here</a>.</p>
 </div>
@@ -894,7 +894,7 @@ Code
 ##  $ label                      : chr  &quot;Independent&quot; &quot;Universal Music&quot; &quot;Universal Music&quot; &quot;Independent&quot; ...
 ##  $ top10                      : int  1 0 0 0 0 1 0 0 0 0 ...
 ##  $ expert_rating              : chr  &quot;excellent&quot; &quot;good&quot; &quot;good&quot; &quot;poor&quot; ...</code></pre>
-<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="r-markdown.html#cb699-1" tabindex="-1"></a><span class="fu">head</span>(music_data, <span class="dv">2</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="r-markdown.html#cb699-1" tabindex="-1"></a><span class="fu">head</span>(music_data, <span class="dv">2</span>)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["isrc"],"name":[1],"type":["chr"],"align":["left"]},{"label":["artist_id"],"name":[2],"type":["int"],"align":["right"]},{"label":["streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["weeks_in_charts"],"name":[4],"type":["int"],"align":["right"]},{"label":["n_regions"],"name":[5],"type":["int"],"align":["right"]},{"label":["danceability"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["energy"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["speechiness"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["instrumentalness"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["liveness"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["valence"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["tempo"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["song_length"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["song_age"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["explicit"],"name":[15],"type":["int"],"align":["right"]},{"label":["n_playlists"],"name":[16],"type":["int"],"align":["right"]},{"label":["sp_popularity"],"name":[17],"type":["int"],"align":["right"]},{"label":["youtube_views"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["tiktok_counts"],"name":[19],"type":["int"],"align":["right"]},{"label":["ins_followers_artist"],"name":[20],"type":["int"],"align":["right"]},{"label":["monthly_listeners_artist"],"name":[21],"type":["int"],"align":["right"]},{"label":["playlist_total_reach_artist"],"name":[22],"type":["int"],"align":["right"]},{"label":["sp_fans_artist"],"name":[23],"type":["int"],"align":["right"]},{"label":["shazam_counts"],"name":[24],"type":["int"],"align":["right"]},{"label":["artistName"],"name":[25],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[26],"type":["chr"],"align":["left"]},{"label":["release_date"],"name":[27],"type":["chr"],"align":["left"]},{"label":["genre"],"name":[28],"type":["chr"],"align":["left"]},{"label":["label"],"name":[29],"type":["chr"],"align":["left"]},{"label":["top10"],"name":[30],"type":["int"],"align":["right"]},{"label":["expert_rating"],"name":[31],"type":["chr"],"align":["left"]}],"data":[{"1":"BRRGE1603547","2":"3679","3":"11944813","4":"141","5":"1","6":"50.9","7":"80.3","8":"4.0","9":"0.05","10":"46.3","11":"65.1","12":"166.018","13":"3.11865","14":"228.2857","15":"0","16":"450","17":"51","18":"145030723","19":"9740","20":"29613108","21":"4133393","22":"24286416","23":"3308630","24":"73100","25":"Luan Santana","26":"Eu, Você, O Mar e Ela","27":"2016-06-20","28":"other","29":"Independent","30":"1","31":"excellent"},{"1":"USUM71808193","2":"5239","3":"8934097","4":"51","5":"21","6":"35.3","7":"75.5","8":"73.3","9":"0.00","10":"39.0","11":"43.7","12":"191.153","13":"3.22800","14":"144.2857","15":"0","16":"768","17":"54","18":"13188411","19":"358700","20":"3693566","21":"18367363","22":"143384531","23":"465412","24":"588550","25":"Alessia Cara","26":"Growing Pains","27":"2018-06-14","28":"Pop","29":"Universal Music","30":"0","31":"good"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -908,12 +908,11 @@ Code
 <li>Create a new <code>data.frame</code> that only contains songs by “BTS” (Bonus: Also include songs that feature both BTS and other artists, see e.g., “BTS feat. Charli XCX”)</li>
 <li>Save the <code>data.frame</code> sorted by success (number of streams) with the most popular songs occurring first.</li>
 </ol>
-<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="r-markdown.html#cb700-1" tabindex="-1"></a><span class="co"># provide your code here </span></span>
-<span id="cb700-2"><a href="r-markdown.html#cb700-2" tabindex="-1"></a><span class="do">## 1.</span></span>
-<span id="cb700-3"><a href="r-markdown.html#cb700-3" tabindex="-1"></a>music_data <span class="sc">|&gt;</span></span>
-<span id="cb700-4"><a href="r-markdown.html#cb700-4" tabindex="-1"></a>  <span class="fu">filter</span>(artistName <span class="sc">==</span> <span class="st">&quot;BTS&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb700-5"><a href="r-markdown.html#cb700-5" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">order_by =</span> streams, <span class="at">n =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb700-6"><a href="r-markdown.html#cb700-6" tabindex="-1"></a>  <span class="fu">select</span>(artistName, trackName)</span></code></pre></div>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="r-markdown.html#cb700-1" tabindex="-1"></a><span class="co"># provide your code here 1.</span></span>
+<span id="cb700-2"><a href="r-markdown.html#cb700-2" tabindex="-1"></a>music_data <span class="sc">|&gt;</span></span>
+<span id="cb700-3"><a href="r-markdown.html#cb700-3" tabindex="-1"></a>    <span class="fu">filter</span>(artistName <span class="sc">==</span> <span class="st">&quot;BTS&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb700-4"><a href="r-markdown.html#cb700-4" tabindex="-1"></a>    <span class="fu">slice_max</span>(<span class="at">order_by =</span> streams, <span class="at">n =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb700-5"><a href="r-markdown.html#cb700-5" tabindex="-1"></a>    <span class="fu">select</span>(artistName, trackName)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["artistName"],"name":[1],"type":["chr"],"align":["left"]},{"label":["trackName"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"BTS","2":"Dynamite"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -921,8 +920,8 @@ Code
 </div>
 <div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="r-markdown.html#cb701-1" tabindex="-1"></a><span class="do">## 2.</span></span>
 <span id="cb701-2"><a href="r-markdown.html#cb701-2" tabindex="-1"></a>bts_data <span class="ot">&lt;-</span> music_data <span class="sc">|&gt;</span></span>
-<span id="cb701-3"><a href="r-markdown.html#cb701-3" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(artistName, <span class="st">&quot;BTS&quot;</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb701-4"><a href="r-markdown.html#cb701-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(streams))</span>
+<span id="cb701-3"><a href="r-markdown.html#cb701-3" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">str_detect</span>(artistName, <span class="st">&quot;BTS&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb701-4"><a href="r-markdown.html#cb701-4" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(streams))</span>
 <span id="cb701-5"><a href="r-markdown.html#cb701-5" tabindex="-1"></a><span class="fu">distinct</span>(bts_data, artistName)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -945,9 +944,10 @@ Code
 <div id="task-2" class="section level3 hasAnchor" number="8.2.3">
 <h3><span class="header-section-number">8.2.3</span> Task 2<a href="r-markdown.html#task-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a new <code>data.frame</code> containing the 100 most streamed songs.</p>
-<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="r-markdown.html#cb704-1" tabindex="-1"></a><span class="co"># provide your code here </span></span>
-<span id="cb704-2"><a href="r-markdown.html#cb704-2" tabindex="-1"></a>top100 <span class="ot">&lt;-</span> <span class="fu">slice_max</span>(music_data, <span class="at">order_by =</span> streams, <span class="at">n =</span> <span class="dv">100</span>)</span>
-<span id="cb704-3"><a href="r-markdown.html#cb704-3" tabindex="-1"></a><span class="fu">range</span>(top100<span class="sc">$</span>streams)</span></code></pre></div>
+<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="r-markdown.html#cb704-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
+<span id="cb704-2"><a href="r-markdown.html#cb704-2" tabindex="-1"></a>top100 <span class="ot">&lt;-</span> <span class="fu">slice_max</span>(music_data, <span class="at">order_by =</span> streams,</span>
+<span id="cb704-3"><a href="r-markdown.html#cb704-3" tabindex="-1"></a>    <span class="at">n =</span> <span class="dv">100</span>)</span>
+<span id="cb704-4"><a href="r-markdown.html#cb704-4" tabindex="-1"></a><span class="fu">range</span>(top100<span class="sc">$</span>streams)</span></code></pre></div>
 <pre><code>## [1]  490037377 2165692479</code></pre>
 </div>
 <div id="task-3" class="section level3 hasAnchor" number="8.2.4">
@@ -962,11 +962,11 @@ Code
 <ol start="2" style="list-style-type: decimal">
 <li>Create a bar plot in which the heights of the bars correspond to the total number of streams within a genre (Bonus: order the bars by their height)</li>
 </ol>
-<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="r-markdown.html#cb706-1" tabindex="-1"></a><span class="co"># provide your code here </span></span>
+<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="r-markdown.html#cb706-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
 <span id="cb706-2"><a href="r-markdown.html#cb706-2" tabindex="-1"></a>genre_data <span class="ot">&lt;-</span> music_data <span class="sc">|&gt;</span></span>
-<span id="cb706-3"><a href="r-markdown.html#cb706-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">.by =</span> genre, <span class="at">total_streams =</span> <span class="fu">sum</span>(streams)) <span class="sc">|&gt;</span></span>
-<span id="cb706-4"><a href="r-markdown.html#cb706-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_streams)) <span class="sc">|&gt;</span></span>
-<span id="cb706-5"><a href="r-markdown.html#cb706-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">genre =</span> <span class="fu">fct_reorder</span>(<span class="fu">as.factor</span>(genre), total_streams))</span>
+<span id="cb706-3"><a href="r-markdown.html#cb706-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> genre, <span class="at">total_streams =</span> <span class="fu">sum</span>(streams)) <span class="sc">|&gt;</span></span>
+<span id="cb706-4"><a href="r-markdown.html#cb706-4" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total_streams)) <span class="sc">|&gt;</span></span>
+<span id="cb706-5"><a href="r-markdown.html#cb706-5" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">genre =</span> <span class="fu">fct_reorder</span>(<span class="fu">as.factor</span>(genre), total_streams))</span>
 <span id="cb706-6"><a href="r-markdown.html#cb706-6" tabindex="-1"></a><span class="fu">head</span>(genre_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -974,7 +974,7 @@ Code
   </script>
 </div>
 <div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="r-markdown.html#cb707-1" tabindex="-1"></a><span class="fu">ggplot</span>(genre_data, <span class="fu">aes</span>(<span class="at">y =</span> genre, <span class="at">x =</span> total_streams)) <span class="sc">+</span></span>
-<span id="cb707-2"><a href="r-markdown.html#cb707-2" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<span id="cb707-2"><a href="r-markdown.html#cb707-2" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/question_3_a1-1.png" width="672" /></p>
 </div>
 <div id="task-4" class="section level3 hasAnchor" number="8.2.5">
@@ -983,20 +983,16 @@ Code
 <li>Rank the music labels by their success (total number of streams of all their songs)</li>
 <li>Show the total number of streams as well as the average and the median of all songs by label. (Bonus: Also add the artist and track names and the number of streams of each label’s top song to the result)</li>
 </ol>
-<div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb708-1"><a href="r-markdown.html#cb708-1" tabindex="-1"></a><span class="co"># provide your code here </span></span>
+<div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb708-1"><a href="r-markdown.html#cb708-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
 <span id="cb708-2"><a href="r-markdown.html#cb708-2" tabindex="-1"></a>label_data <span class="ot">&lt;-</span> music_data <span class="sc">|&gt;</span></span>
-<span id="cb708-3"><a href="r-markdown.html#cb708-3" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb708-4"><a href="r-markdown.html#cb708-4" tabindex="-1"></a>    <span class="at">.by =</span> label, </span>
-<span id="cb708-5"><a href="r-markdown.html#cb708-5" tabindex="-1"></a>    <span class="at">total_streams =</span> <span class="fu">sum</span>(streams), </span>
-<span id="cb708-6"><a href="r-markdown.html#cb708-6" tabindex="-1"></a>    <span class="at">avg_streams =</span> <span class="fu">mean</span>(streams), </span>
-<span id="cb708-7"><a href="r-markdown.html#cb708-7" tabindex="-1"></a>    <span class="at">med_streams =</span> <span class="fu">median</span>(streams), </span>
-<span id="cb708-8"><a href="r-markdown.html#cb708-8" tabindex="-1"></a>    <span class="at">top_song_artist =</span> artistName[<span class="fu">which.max</span>(streams)],</span>
-<span id="cb708-9"><a href="r-markdown.html#cb708-9" tabindex="-1"></a>    <span class="at">top_song_title =</span> trackName[<span class="fu">which.max</span>(streams)],</span>
-<span id="cb708-10"><a href="r-markdown.html#cb708-10" tabindex="-1"></a>    <span class="at">top_song_streams =</span> <span class="fu">max</span>(streams)</span>
-<span id="cb708-11"><a href="r-markdown.html#cb708-11" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb708-12"><a href="r-markdown.html#cb708-12" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label_rank =</span> <span class="fu">dense_rank</span>(<span class="sc">-</span>total_streams)) <span class="sc">|&gt;</span></span>
-<span id="cb708-13"><a href="r-markdown.html#cb708-13" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_streams))</span>
-<span id="cb708-14"><a href="r-markdown.html#cb708-14" tabindex="-1"></a>label_data</span></code></pre></div>
+<span id="cb708-3"><a href="r-markdown.html#cb708-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> label, <span class="at">total_streams =</span> <span class="fu">sum</span>(streams),</span>
+<span id="cb708-4"><a href="r-markdown.html#cb708-4" tabindex="-1"></a>        <span class="at">avg_streams =</span> <span class="fu">mean</span>(streams), <span class="at">med_streams =</span> <span class="fu">median</span>(streams),</span>
+<span id="cb708-5"><a href="r-markdown.html#cb708-5" tabindex="-1"></a>        <span class="at">top_song_artist =</span> artistName[<span class="fu">which.max</span>(streams)],</span>
+<span id="cb708-6"><a href="r-markdown.html#cb708-6" tabindex="-1"></a>        <span class="at">top_song_title =</span> trackName[<span class="fu">which.max</span>(streams)],</span>
+<span id="cb708-7"><a href="r-markdown.html#cb708-7" tabindex="-1"></a>        <span class="at">top_song_streams =</span> <span class="fu">max</span>(streams)) <span class="sc">|&gt;</span></span>
+<span id="cb708-8"><a href="r-markdown.html#cb708-8" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">label_rank =</span> <span class="fu">dense_rank</span>(<span class="sc">-</span>total_streams)) <span class="sc">|&gt;</span></span>
+<span id="cb708-9"><a href="r-markdown.html#cb708-9" tabindex="-1"></a>    <span class="fu">arrange</span>(<span class="fu">desc</span>(total_streams))</span>
+<span id="cb708-10"><a href="r-markdown.html#cb708-10" tabindex="-1"></a>label_data</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["label"],"name":[1],"type":["chr"],"align":["left"]},{"label":["total_streams"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["avg_streams"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["med_streams"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["top_song_artist"],"name":[5],"type":["chr"],"align":["left"]},{"label":["top_song_title"],"name":[6],"type":["chr"],"align":["left"]},{"label":["top_song_streams"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["label_rank"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"Universal Music","2":"197499391883","3":"9129964","4":"434943.0","5":"Billie Eilish","6":"bad guy","7":"1459149566","8":"1"},{"1":"Sony Music","2":"108111852495","3":"8725735","4":"355898.5","5":"Travis Scott","6":"SICKO MODE","7":"1032407145","8":"2"},{"1":"Independent","2":"94289773362","3":"4177659","4":"238884.0","5":"XXXTENTACION","6":"Jocelyn Flores","7":"936906948","8":"3"},{"1":"Warner Music","2":"88689942555","3":"8691684","4":"347152.5","5":"Ed Sheeran","6":"Shape of You","7":"2165692479","8":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -1014,64 +1010,55 @@ Code
 </ul>
 <div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="r-markdown.html#cb709-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
 <span id="cb709-2"><a href="r-markdown.html#cb709-2" tabindex="-1"></a>music_data <span class="sc">|&gt;</span></span>
-<span id="cb709-3"><a href="r-markdown.html#cb709-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">.by =</span> genre, <span class="fu">across</span>(danceability<span class="sc">:</span>explicit, </span>
-<span id="cb709-4"><a href="r-markdown.html#cb709-4" tabindex="-1"></a>                                <span class="fu">list</span>(<span class="st">&quot;avg&quot;</span> <span class="ot">=</span> mean,</span>
-<span id="cb709-5"><a href="r-markdown.html#cb709-5" tabindex="-1"></a>                                     <span class="st">&quot;std.dev&quot;</span> <span class="ot">=</span> sd,</span>
-<span id="cb709-6"><a href="r-markdown.html#cb709-6" tabindex="-1"></a>                                     <span class="st">&quot;median&quot;</span> <span class="ot">=</span> median, </span>
-<span id="cb709-7"><a href="r-markdown.html#cb709-7" tabindex="-1"></a>                                     <span class="st">&quot;pct_10&quot;</span> <span class="ot">=</span> \(x) <span class="fu">quantile</span>(x, <span class="fl">0.1</span>), </span>
-<span id="cb709-8"><a href="r-markdown.html#cb709-8" tabindex="-1"></a>                                     <span class="st">&quot;pct_90&quot;</span> <span class="ot">=</span> \(x) <span class="fu">quantile</span>(x, <span class="fl">0.9</span>))</span>
-<span id="cb709-9"><a href="r-markdown.html#cb709-9" tabindex="-1"></a>                                )</span>
-<span id="cb709-10"><a href="r-markdown.html#cb709-10" tabindex="-1"></a>            )</span></code></pre></div>
+<span id="cb709-3"><a href="r-markdown.html#cb709-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> genre, <span class="fu">across</span>(danceability<span class="sc">:</span>explicit,</span>
+<span id="cb709-4"><a href="r-markdown.html#cb709-4" tabindex="-1"></a>        <span class="fu">list</span>(<span class="at">avg =</span> mean, <span class="at">std.dev =</span> sd, <span class="at">median =</span> median,</span>
+<span id="cb709-5"><a href="r-markdown.html#cb709-5" tabindex="-1"></a>            <span class="at">pct_10 =</span> \(x) <span class="fu">quantile</span>(x, <span class="fl">0.1</span>),</span>
+<span id="cb709-6"><a href="r-markdown.html#cb709-6" tabindex="-1"></a>            <span class="at">pct_90 =</span> \(x) <span class="fu">quantile</span>(x, <span class="fl">0.9</span>))))</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["genre"],"name":[1],"type":["chr"],"align":["left"]},{"label":["danceability_avg"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["danceability_std.dev"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["danceability_median"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["danceability_pct_10"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["danceability_pct_90"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["energy_avg"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["energy_std.dev"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["energy_median"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["energy_pct_10"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["energy_pct_90"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["speechiness_avg"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["speechiness_std.dev"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["speechiness_median"],"name":[14],"type":["dbl"],"align":["right"]},{"label":["speechiness_pct_10"],"name":[15],"type":["dbl"],"align":["right"]},{"label":["speechiness_pct_90"],"name":[16],"type":["dbl"],"align":["right"]},{"label":["instrumentalness_avg"],"name":[17],"type":["dbl"],"align":["right"]},{"label":["instrumentalness_std.dev"],"name":[18],"type":["dbl"],"align":["right"]},{"label":["instrumentalness_median"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["instrumentalness_pct_10"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["instrumentalness_pct_90"],"name":[21],"type":["dbl"],"align":["right"]},{"label":["liveness_avg"],"name":[22],"type":["dbl"],"align":["right"]},{"label":["liveness_std.dev"],"name":[23],"type":["dbl"],"align":["right"]},{"label":["liveness_median"],"name":[24],"type":["dbl"],"align":["right"]},{"label":["liveness_pct_10"],"name":[25],"type":["dbl"],"align":["right"]},{"label":["liveness_pct_90"],"name":[26],"type":["dbl"],"align":["right"]},{"label":["valence_avg"],"name":[27],"type":["dbl"],"align":["right"]},{"label":["valence_std.dev"],"name":[28],"type":["dbl"],"align":["right"]},{"label":["valence_median"],"name":[29],"type":["dbl"],"align":["right"]},{"label":["valence_pct_10"],"name":[30],"type":["dbl"],"align":["right"]},{"label":["valence_pct_90"],"name":[31],"type":["dbl"],"align":["right"]},{"label":["tempo_avg"],"name":[32],"type":["dbl"],"align":["right"]},{"label":["tempo_std.dev"],"name":[33],"type":["dbl"],"align":["right"]},{"label":["tempo_median"],"name":[34],"type":["dbl"],"align":["right"]},{"label":["tempo_pct_10"],"name":[35],"type":["dbl"],"align":["right"]},{"label":["tempo_pct_90"],"name":[36],"type":["dbl"],"align":["right"]},{"label":["song_length_avg"],"name":[37],"type":["dbl"],"align":["right"]},{"label":["song_length_std.dev"],"name":[38],"type":["dbl"],"align":["right"]},{"label":["song_length_median"],"name":[39],"type":["dbl"],"align":["right"]},{"label":["song_length_pct_10"],"name":[40],"type":["dbl"],"align":["right"]},{"label":["song_length_pct_90"],"name":[41],"type":["dbl"],"align":["right"]},{"label":["song_age_avg"],"name":[42],"type":["dbl"],"align":["right"]},{"label":["song_age_std.dev"],"name":[43],"type":["dbl"],"align":["right"]},{"label":["song_age_median"],"name":[44],"type":["dbl"],"align":["right"]},{"label":["song_age_pct_10"],"name":[45],"type":["dbl"],"align":["right"]},{"label":["song_age_pct_90"],"name":[46],"type":["dbl"],"align":["right"]},{"label":["explicit_avg"],"name":[47],"type":["dbl"],"align":["right"]},{"label":["explicit_std.dev"],"name":[48],"type":["dbl"],"align":["right"]},{"label":["explicit_median"],"name":[49],"type":["dbl"],"align":["right"]},{"label":["explicit_pct_10"],"name":[50],"type":["dbl"],"align":["right"]},{"label":["explicit_pct_90"],"name":[51],"type":["dbl"],"align":["right"]}],"data":[{"1":"other","2":"64.52704","3":"15.390890","4":"67.0","5":"42.90","6":"82.40","7":"63.90804","8":"20.45958","9":"67.70","10":"33.10","11":"87.60","12":"9.304199","13":"10.379459","14":"5.585","15":"3.100","16":"20.100","17":"0.7217099","18":"6.321211","19":"0.000000","20":"0","21":"0.050000","22":"21.91372","23":"20.269202","24":"13.30","25":"7.287","26":"45.10","27":"60.15862","28":"22.73370","29":"62.15","30":"27.50","31":"89.83","32":"123.6489","33":"31.97948","34":"120.0090","35":"87.5033","36":"172.0260","37":"3.428663","38":"0.9649817","39":"3.347550","40":"2.500895","41":"4.458583","42":"395.4522","43":"651.77910","44":"142.42857","45":"28.28571","46":"1237.7143","47":"0.07785004","48":"0.2679611","49":"0","50":"0","51":"0"},{"1":"Pop","2":"63.73658","3":"14.455431","4":"65.1","5":"44.10","6":"81.50","7":"62.91020","8":"18.62437","9":"65.00","10":"36.90","11":"86.00","12":"9.848424","13":"10.197396","14":"5.370","15":"3.020","16":"25.000","17":"1.1608197","18":"7.761208","19":"0.000000","20":"0","21":"0.160000","22":"17.26369","23":"13.163811","24":"12.20","25":"7.360","26":"33.90","27":"50.32584","28":"22.57102","29":"49.20","30":"20.60","31":"82.10","32":"120.9394","33":"28.44137","34":"119.9860","35":"86.0718","36":"160.1132","37":"3.524695","38":"0.8421095","39":"3.430200","40":"2.659957","41":"4.514137","42":"238.3576","43":"374.53971","44":"143.28571","45":"28.28571","46":"533.1429","47":"0.15527620","48":"0.3621738","49":"0","50":"0","51":"1"},{"1":"HipHop/Rap","2":"73.04785","3":"12.304102","4":"74.8","5":"55.50","6":"87.70","7":"65.09905","8":"13.27987","9":"65.70","10":"48.10","11":"82.10","12":"20.920469","13":"13.551478","14":"19.000","15":"5.310","16":"39.100","17":"0.6114178","18":"5.031168","19":"0.000000","20":"0","21":"0.060000","22":"16.89957","23":"12.485381","24":"12.10","25":"7.840","26":"33.30","27":"49.03505","28":"20.72870","29":"49.00","30":"21.10","31":"77.20","32":"121.6765","33":"28.21902","34":"121.9980","35":"85.6640","36":"159.8800","37":"3.215201","38":"0.8119683","39":"3.144667","40":"2.417933","41":"4.065967","42":"109.2966","43":"96.82665","44":"96.28571","45":"21.57143","46":"195.2857","47":"0.05153566","48":"0.2210928","49":"0","50":"0","51":"0"},{"1":"Rock","2":"54.75486","3":"13.975973","4":"55.0","5":"36.43","6":"72.30","7":"67.76872","8":"21.36872","9":"70.85","10":"36.93","11":"93.50","12":"6.186818","13":"5.224305","14":"4.320","15":"2.900","16":"11.400","17":"5.6923038","18":"17.465641","19":"0.000948","20":"0","21":"13.800000","22":"18.64689","23":"14.519118","24":"12.50","25":"7.490","26":"36.30","27":"45.64841","28":"22.53212","29":"44.00","30":"16.33","31":"77.00","32":"122.2531","33":"28.70089","34":"120.0240","35":"86.0453","36":"164.0598","37":"3.846571","38":"0.9930482","39":"3.723783","40":"2.854098","41":"4.954112","42":"356.1687","43":"531.81309","44":"160.28571","45":"36.88571","46":"1085.4286","47":"0.17180826","48":"0.3772585","49":"0","50":"0","51":"1"},{"1":"R&B","2":"67.96766","3":"13.432997","4":"70.1","5":"48.90","6":"83.10","7":"61.25491","8":"15.79594","9":"62.30","10":"40.50","11":"81.20","12":"12.337241","13":"10.098873","14":"8.380","15":"3.670","16":"27.200","17":"0.9564108","18":"6.863960","19":"0.000000","20":"0","21":"0.210000","22":"16.03997","23":"11.622330","24":"11.60","25":"7.400","26":"32.00","27":"52.83072","28":"23.01094","29":"54.10","30":"20.70","31":"83.40","32":"120.1679","33":"32.02157","34":"111.0040","35":"84.9870","36":"172.0370","37":"3.463912","38":"0.7241622","39":"3.426667","40":"2.640000","41":"4.334617","42":"229.7397","43":"460.38072","44":"109.71429","45":"31.28571","46":"318.1429","47":"0.07761829","48":"0.2676411","49":"0","50":"0","51":"0"},{"1":"Electro/Dance","2":"66.55213","3":"11.872900","4":"67.4","5":"50.90","6":"80.70","7":"74.50546","8":"13.98508","9":"76.20","10":"56.00","11":"90.78","12":"7.818187","13":"6.331865","14":"5.380","15":"3.350","16":"15.780","17":"5.0453373","18":"16.745219","19":"0.000379","20":"0","21":"9.774000","22":"18.57029","23":"14.118595","24":"13.00","25":"7.122","26":"35.80","27":"47.49889","28":"21.48897","29":"47.80","30":"18.90","31":"77.00","32":"120.7373","33":"19.41664","34":"121.9960","35":"97.9774","36":"144.0156","37":"3.361686","38":"0.7369606","39":"3.247333","40":"2.669757","41":"4.088967","42":"187.7736","43":"194.72333","44":"157.28571","45":"42.62857","46":"285.5714","47":"0.33999260","48":"0.4737939","49":"0","50":"0","51":"1"},{"1":"German Folk","2":"63.03265","3":"15.356337","4":"65.2","5":"41.44","6":"81.50","7":"61.72835","8":"22.55591","9":"66.60","10":"28.00","11":"88.54","12":"9.797514","13":"10.198743","14":"4.910","15":"2.958","16":"27.420","17":"1.7509195","18":"10.019071","19":"0.000000","20":"0","21":"0.782000","22":"18.64599","23":"15.381588","24":"12.30","25":"7.580","26":"35.42","27":"56.06759","28":"24.07133","29":"58.30","30":"22.00","31":"87.70","32":"119.3801","33":"28.53437","34":"118.0580","35":"86.1198","36":"159.8366","37":"3.646470","38":"0.9724464","39":"3.628000","40":"2.616707","41":"4.905423","42":"436.3941","43":"552.94134","44":"212.28571","45":"123.28571","46":"1276.3143","47":"0.29870130","48":"0.4581137","49":"0","50":"0","51":"1"},{"1":"Reggae","2":"75.06198","3":"9.332347","4":"76.7","5":"62.80","6":"86.40","7":"67.60661","8":"14.90742","9":"69.60","10":"48.70","11":"88.20","12":"11.956198","13":"8.686172","14":"7.850","15":"4.150","16":"24.400","17":"1.8236761","18":"9.522788","19":"0.000000","20":"0","21":"0.930000","22":"18.02198","23":"14.894363","24":"12.70","25":"6.550","26":"36.80","27":"69.73140","28":"18.37510","29":"73.40","30":"44.90","31":"90.70","32":"111.8039","33":"31.02950","34":"100.0450","35":"81.9860","36":"165.8500","37":"3.498592","38":"0.5732457","39":"3.435617","40":"2.911617","41":"4.241333","42":"343.6765","43":"530.67362","44":"152.28571","45":"16.28571","46":"794.0000","47":"0.09090909","48":"0.2886751","49":"0","50":"0","51":"0"},{"1":"Country","2":"59.67282","3":"11.984577","4":"59.7","5":"44.70","6":"74.47","7":"69.70504","8":"18.70773","9":"75.00","10":"42.13","11":"90.02","12":"5.159821","13":"4.095142","14":"3.775","15":"2.800","16":"8.967","17":"0.2375129","18":"4.044887","19":"0.000000","20":"0","21":"0.000737","22":"23.70347","23":"21.428114","24":"13.95","25":"8.490","26":"53.02","27":"58.90298","28":"21.07777","29":"61.85","30":"29.33","31":"87.18","32":"124.5243","33":"31.19017","34":"125.0975","35":"80.6458","36":"166.9938","37":"3.347030","38":"0.5425821","39":"3.267225","40":"2.726887","41":"3.969117","42":"244.2112","43":"437.55352","44":"109.28571","45":"15.88571","46":"641.9286","47":"0.01984127","48":"0.1395932","49":"0","50":"0","51":"0"},{"1":"Soundtrack","2":"52.81687","3":"16.248094","4":"54.1","5":"28.95","6":"73.30","7":"52.04574","8":"21.95865","9":"50.20","10":"22.50","11":"82.20","12":"6.821503","13":"7.511140","14":"3.990","15":"2.930","16":"15.500","17":"5.0177189","18":"19.372151","19":"0.000000","20":"0","21":"0.900000","22":"17.48736","23":"14.798672","24":"11.85","25":"7.895","26":"32.85","27":"37.98939","28":"22.43526","29":"32.30","30":"13.35","31":"71.00","32":"119.5009","33":"30.79834","34":"118.0340","35":"78.4770","36":"159.2905","37":"3.545621","38":"0.9855004","39":"3.503333","40":"2.387975","41":"4.631550","42":"230.1586","43":"318.20296","44":"147.28571","45":"61.50000","46":"405.6429","47":"0.13190184","48":"0.3389042","49":"0","50":"0","51":"1"},{"1":"Classics/Jazz","2":"45.99988","3":"18.339914","4":"46.6","5":"21.20","6":"69.22","7":"30.85225","8":"19.50915","9":"28.10","10":"8.19","11":"60.78","12":"6.110000","13":"6.549996","14":"3.920","15":"3.029","16":"11.110","17":"11.3441542","18":"25.648211","19":"0.020000","20":"0","21":"38.080000","22":"13.43700","23":"7.628625","24":"10.55","25":"7.515","26":"24.20","27":"38.23663","28":"24.30260","29":"30.95","30":"11.63","31":"74.70","32":"113.2287","33":"33.74192","34":"108.4460","35":"73.1532","36":"147.4277","37":"3.690025","38":"1.2866242","39":"3.457267","40":"2.188422","41":"5.254717","42":"819.6607","43":"780.20855","44":"590.92857","45":"153.38571","46":"1746.7714","47":"0.17500000","48":"0.3823644","49":"0","50":"0","51":"1"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="r-markdown.html#cb710-1" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(<span class="fu">factor</span>(genre), energy, median), <span class="at">y =</span> energy)) <span class="sc">+</span></span>
-<span id="cb710-2"><a href="r-markdown.html#cb710-2" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb710-3"><a href="r-markdown.html#cb710-3" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span></span>
-<span id="cb710-4"><a href="r-markdown.html#cb710-4" tabindex="-1"></a>    <span class="fu">scale_x_discrete</span>(<span class="at">guide =</span> <span class="fu">guide_axis</span>(<span class="at">n.dodge=</span><span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="r-markdown.html#cb710-1" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(<span class="fu">factor</span>(genre),</span>
+<span id="cb710-2"><a href="r-markdown.html#cb710-2" tabindex="-1"></a>    energy, median), <span class="at">y =</span> energy)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb710-3"><a href="r-markdown.html#cb710-3" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_blank</span>()) <span class="sc">+</span> <span class="fu">scale_x_discrete</span>(<span class="at">guide =</span> <span class="fu">guide_axis</span>(<span class="at">n.dodge =</span> <span class="dv">2</span>))</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/question_5_a1-1.png" width="672" /></p>
 </div>
 <div id="task-6" class="section level3 hasAnchor" number="8.2.7">
 <h3><span class="header-section-number">8.2.7</span> Task 6<a href="r-markdown.html#task-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Visualize the number of songs by label.</p>
-<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="r-markdown.html#cb711-1" tabindex="-1"></a><span class="co"># provide your code here </span></span>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="r-markdown.html#cb711-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
 <span id="cb711-2"><a href="r-markdown.html#cb711-2" tabindex="-1"></a>music_data <span class="sc">|&gt;</span></span>
-<span id="cb711-3"><a href="r-markdown.html#cb711-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">.by =</span> label, <span class="at">n_songs =</span> <span class="fu">n_distinct</span>(isrc)) <span class="sc">|&gt;</span></span>
-<span id="cb711-4"><a href="r-markdown.html#cb711-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">fct_reorder</span>(<span class="fu">as.factor</span>(label), n_songs)) <span class="sc">|&gt;</span></span>
-<span id="cb711-5"><a href="r-markdown.html#cb711-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> label, <span class="at">x =</span> n_songs)) <span class="sc">+</span></span>
-<span id="cb711-6"><a href="r-markdown.html#cb711-6" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<span id="cb711-3"><a href="r-markdown.html#cb711-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> label, <span class="at">n_songs =</span> <span class="fu">n_distinct</span>(isrc)) <span class="sc">|&gt;</span></span>
+<span id="cb711-4"><a href="r-markdown.html#cb711-4" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">label =</span> <span class="fu">fct_reorder</span>(<span class="fu">as.factor</span>(label), n_songs)) <span class="sc">|&gt;</span></span>
+<span id="cb711-5"><a href="r-markdown.html#cb711-5" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> label, <span class="at">x =</span> n_songs)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/question_6_a1-1.png" width="672" /></p>
 </div>
 <div id="task-7" class="section level3 hasAnchor" number="8.2.8">
 <h3><span class="header-section-number">8.2.8</span> Task 7<a href="r-markdown.html#task-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Visualize the average monthly artist listeners (<code>monthly_listeners_artist</code>) by genre.</p>
-<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="r-markdown.html#cb712-1" tabindex="-1"></a><span class="co"># provide your code here </span></span>
+<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="r-markdown.html#cb712-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
 <span id="cb712-2"><a href="r-markdown.html#cb712-2" tabindex="-1"></a>music_data <span class="sc">|&gt;</span></span>
-<span id="cb712-3"><a href="r-markdown.html#cb712-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">.by =</span> genre, <span class="at">avg_m_listeners =</span> <span class="fu">mean</span>(monthly_listeners_artist)) <span class="sc">|&gt;</span></span>
-<span id="cb712-4"><a href="r-markdown.html#cb712-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">genre =</span> <span class="fu">fct_reorder</span>(<span class="fu">factor</span>(genre), avg_m_listeners)) <span class="sc">|&gt;</span></span>
-<span id="cb712-5"><a href="r-markdown.html#cb712-5" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg_m_listeners, <span class="at">y =</span> genre)) <span class="sc">+</span></span>
-<span id="cb712-6"><a href="r-markdown.html#cb712-6" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
-<span id="cb712-7"><a href="r-markdown.html#cb712-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Average monthly artist listeners&quot;</span>)</span></code></pre></div>
+<span id="cb712-3"><a href="r-markdown.html#cb712-3" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">.by =</span> genre, <span class="at">avg_m_listeners =</span> <span class="fu">mean</span>(monthly_listeners_artist)) <span class="sc">|&gt;</span></span>
+<span id="cb712-4"><a href="r-markdown.html#cb712-4" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">genre =</span> <span class="fu">fct_reorder</span>(<span class="fu">factor</span>(genre), avg_m_listeners)) <span class="sc">|&gt;</span></span>
+<span id="cb712-5"><a href="r-markdown.html#cb712-5" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> avg_m_listeners, <span class="at">y =</span> genre)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span></span>
+<span id="cb712-6"><a href="r-markdown.html#cb712-6" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Average monthly artist listeners&quot;</span>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/question_7_a1-1.png" width="672" /></p>
 </div>
 <div id="task-8" class="section level3 hasAnchor" number="8.2.9">
 <h3><span class="header-section-number">8.2.9</span> Task 8<a href="r-markdown.html#task-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a histogram of the variable “valence”.</p>
-<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="r-markdown.html#cb713-1" tabindex="-1"></a><span class="co"># provide your code here </span></span>
-<span id="cb713-2"><a href="r-markdown.html#cb713-2" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> valence)) <span class="sc">+</span></span>
-<span id="cb713-3"><a href="r-markdown.html#cb713-3" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="r-markdown.html#cb713-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
+<span id="cb713-2"><a href="r-markdown.html#cb713-2" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> valence)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="14-rmdIntro_files/figure-html/question_8_a1-1.png" width="672" /></p>
 </div>
 <div id="task-9" class="section level3 hasAnchor" number="8.2.10">
 <h3><span class="header-section-number">8.2.10</span> Task 9<a href="r-markdown.html#task-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Create a scatter plot showing <code>youtube_views</code> and <code>shazam_counts</code> (Bonus: add a linear regression line). Interpret the plot briefly.</p>
-<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="r-markdown.html#cb715-1" tabindex="-1"></a><span class="co"># provide your code here </span></span>
+<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="r-markdown.html#cb715-1" tabindex="-1"></a><span class="co"># provide your code here</span></span>
 <span id="cb715-2"><a href="r-markdown.html#cb715-2" tabindex="-1"></a><span class="fu">ggplot</span>(music_data, <span class="fu">aes</span>(<span class="at">x =</span> youtube_views, <span class="at">y =</span> shazam_counts)) <span class="sc">+</span></span>
-<span id="cb715-3"><a href="r-markdown.html#cb715-3" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb715-4"><a href="r-markdown.html#cb715-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<span id="cb715-3"><a href="r-markdown.html#cb715-3" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="14-rmdIntro_files/figure-html/question_9_a1-1.png" width="672" /></p>
 <p>On average Youtube views and Shazam counts show a positive coefficient in the linear regression. However, the relationship does not appear to be linear.</p>
@@ -1113,10 +1100,9 @@ Code
 </div>
 <div id="load-data" class="section level3 hasAnchor" number="8.3.3">
 <h3><span class="header-section-number">8.3.3</span> Load data<a href="r-markdown.html#load-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="r-markdown.html#cb717-1" tabindex="-1"></a>app_user_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_data_q1.csv&quot;</span>, </span>
-<span id="cb717-2"><a href="r-markdown.html#cb717-2" tabindex="-1"></a>                          <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, </span>
-<span id="cb717-3"><a href="r-markdown.html#cb717-3" tabindex="-1"></a>                          <span class="at">header =</span> <span class="cn">TRUE</span>) <span class="co">#read in data</span></span>
-<span id="cb717-4"><a href="r-markdown.html#cb717-4" tabindex="-1"></a><span class="fu">head</span>(app_user_data)</span></code></pre></div>
+<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="r-markdown.html#cb717-1" tabindex="-1"></a>app_user_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_data_q1.csv&quot;</span>,</span>
+<span id="cb717-2"><a href="r-markdown.html#cb717-2" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)  <span class="co">#read in data</span></span>
+<span id="cb717-3"><a href="r-markdown.html#cb717-3" tabindex="-1"></a><span class="fu">head</span>(app_user_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["userID"],"name":[1],"type":["int"],"align":["right"]},{"label":["exp_group"],"name":[2],"type":["int"],"align":["right"]},{"label":["in_app_purchases"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["time_in_app"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"0","3":"7.20","4":"18.55488"},{"1":"2","2":"0","3":"8.85","4":"23.28257"},{"1":"3","2":"0","3":"17.79","4":"17.73001"},{"1":"4","2":"0","3":"10.35","4":"17.03068"},{"1":"5","2":"0","3":"10.65","4":"11.44810"},{"1":"6","2":"0","3":"18.58","4":"18.95276"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -1137,39 +1123,41 @@ Code
 <span id="cb720-2"><a href="r-markdown.html#cb720-2" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(psych))</span>
 <span id="cb720-3"><a href="r-markdown.html#cb720-3" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(dplyr))</span>
 <span id="cb720-4"><a href="r-markdown.html#cb720-4" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(ggstatsplot))</span></code></pre></div>
-<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="r-markdown.html#cb721-1" tabindex="-1"></a><span class="co">#First let&#39;s have a look at the purchases in the app in the data</span></span>
-<span id="cb721-2"><a href="r-markdown.html#cb721-2" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(app_user_data<span class="sc">$</span>in_app_purchases)</span></code></pre></div>
+<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="r-markdown.html#cb721-1" tabindex="-1"></a><span class="co"># First let&#39;s have a look at the purchases in the</span></span>
+<span id="cb721-2"><a href="r-markdown.html#cb721-2" tabindex="-1"></a><span class="co"># app in the data</span></span>
+<span id="cb721-3"><a href="r-markdown.html#cb721-3" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(app_user_data<span class="sc">$</span>in_app_purchases)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["vars"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["n"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["trimmed"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["mad"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["min"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["range"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["skew"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["kurtosis"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[13],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"1600","3":"11.11889","4":"4.996944","5":"11.18","6":"11.08962","7":"4.922232","8":"0","9":"28.95","10":"28.95","11":"0.102741","12":"-0.1035079","13":"0.1249236"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="r-markdown.html#cb722-1" tabindex="-1"></a><span class="fu">ggplot</span>(app_user_data, <span class="fu">aes</span>(in_app_purchases)) <span class="sc">+</span> </span>
-<span id="cb722-2"><a href="r-markdown.html#cb722-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">col =</span> <span class="st">&quot;white&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;lavenderblush3&quot;</span>, <span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span> </span>
-<span id="cb722-3"><a href="r-markdown.html#cb722-3" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">data =</span> app_user_data <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(in_app_purchases)),<span class="fu">aes</span>(<span class="at">xintercept =</span> mean), </span>
-<span id="cb722-4"><a href="r-markdown.html#cb722-4" tabindex="-1"></a>             <span class="at">linewidth =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">&quot;gray19&quot;</span>) <span class="sc">+</span></span>
-<span id="cb722-5"><a href="r-markdown.html#cb722-5" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Purchases&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb722-6"><a href="r-markdown.html#cb722-6" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Distribution of purchases per customer&quot;</span>) <span class="sc">+</span></span>
-<span id="cb722-7"><a href="r-markdown.html#cb722-7" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="r-markdown.html#cb722-1" tabindex="-1"></a><span class="fu">ggplot</span>(app_user_data, <span class="fu">aes</span>(in_app_purchases)) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="at">col =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb722-2"><a href="r-markdown.html#cb722-2" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;lavenderblush3&quot;</span>, <span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">data =</span> app_user_data <span class="sc">%&gt;%</span></span>
+<span id="cb722-3"><a href="r-markdown.html#cb722-3" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">summarise</span>(<span class="at">mean =</span> <span class="fu">mean</span>(in_app_purchases)),</span>
+<span id="cb722-4"><a href="r-markdown.html#cb722-4" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">xintercept =</span> mean), <span class="at">linewidth =</span> <span class="fl">0.7</span>, <span class="at">color =</span> <span class="st">&quot;gray19&quot;</span>) <span class="sc">+</span></span>
+<span id="cb722-5"><a href="r-markdown.html#cb722-5" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Purchases&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Frequency&quot;</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;Distribution of purchases per customer&quot;</span>) <span class="sc">+</span></span>
+<span id="cb722-6"><a href="r-markdown.html#cb722-6" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/question_1_1-1.png" width="672" /></p>
-<div class="sourceCode" id="cb723"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb723-1"><a href="r-markdown.html#cb723-1" tabindex="-1"></a><span class="co"># Compute mean, standard error, and confidence interval for in-app purchases</span></span>
-<span id="cb723-2"><a href="r-markdown.html#cb723-2" tabindex="-1"></a>mean_purchases <span class="ot">&lt;-</span> <span class="fu">mean</span>(app_user_data<span class="sc">$</span>in_app_purchases)</span>
-<span id="cb723-3"><a href="r-markdown.html#cb723-3" tabindex="-1"></a>sd_purchases <span class="ot">&lt;-</span> <span class="fu">sd</span>(app_user_data<span class="sc">$</span>in_app_purchases)</span>
-<span id="cb723-4"><a href="r-markdown.html#cb723-4" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(app_user_data)</span>
-<span id="cb723-5"><a href="r-markdown.html#cb723-5" tabindex="-1"></a>se_purchases <span class="ot">&lt;-</span> sd_purchases <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
-<span id="cb723-6"><a href="r-markdown.html#cb723-6" tabindex="-1"></a>df <span class="ot">&lt;-</span> n <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb723-7"><a href="r-markdown.html#cb723-7" tabindex="-1"></a>t_crit <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, df)</span>
-<span id="cb723-8"><a href="r-markdown.html#cb723-8" tabindex="-1"></a></span>
-<span id="cb723-9"><a href="r-markdown.html#cb723-9" tabindex="-1"></a><span class="co"># Confidence Interval</span></span>
-<span id="cb723-10"><a href="r-markdown.html#cb723-10" tabindex="-1"></a>ci_lower <span class="ot">&lt;-</span> mean_purchases <span class="sc">-</span> t_crit <span class="sc">*</span> se_purchases</span>
-<span id="cb723-11"><a href="r-markdown.html#cb723-11" tabindex="-1"></a>ci_upper <span class="ot">&lt;-</span> mean_purchases <span class="sc">+</span> t_crit <span class="sc">*</span> se_purchases</span>
-<span id="cb723-12"><a href="r-markdown.html#cb723-12" tabindex="-1"></a></span>
-<span id="cb723-13"><a href="r-markdown.html#cb723-13" tabindex="-1"></a><span class="fu">print</span>(ci_lower)</span></code></pre></div>
+<div class="sourceCode" id="cb723"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb723-1"><a href="r-markdown.html#cb723-1" tabindex="-1"></a><span class="co"># Compute mean, standard error, and confidence</span></span>
+<span id="cb723-2"><a href="r-markdown.html#cb723-2" tabindex="-1"></a><span class="co"># interval for in-app purchases</span></span>
+<span id="cb723-3"><a href="r-markdown.html#cb723-3" tabindex="-1"></a>mean_purchases <span class="ot">&lt;-</span> <span class="fu">mean</span>(app_user_data<span class="sc">$</span>in_app_purchases)</span>
+<span id="cb723-4"><a href="r-markdown.html#cb723-4" tabindex="-1"></a>sd_purchases <span class="ot">&lt;-</span> <span class="fu">sd</span>(app_user_data<span class="sc">$</span>in_app_purchases)</span>
+<span id="cb723-5"><a href="r-markdown.html#cb723-5" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(app_user_data)</span>
+<span id="cb723-6"><a href="r-markdown.html#cb723-6" tabindex="-1"></a>se_purchases <span class="ot">&lt;-</span> sd_purchases<span class="sc">/</span><span class="fu">sqrt</span>(n)</span>
+<span id="cb723-7"><a href="r-markdown.html#cb723-7" tabindex="-1"></a>df <span class="ot">&lt;-</span> n <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb723-8"><a href="r-markdown.html#cb723-8" tabindex="-1"></a>t_crit <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, df)</span>
+<span id="cb723-9"><a href="r-markdown.html#cb723-9" tabindex="-1"></a></span>
+<span id="cb723-10"><a href="r-markdown.html#cb723-10" tabindex="-1"></a><span class="co"># Confidence Interval</span></span>
+<span id="cb723-11"><a href="r-markdown.html#cb723-11" tabindex="-1"></a>ci_lower <span class="ot">&lt;-</span> mean_purchases <span class="sc">-</span> t_crit <span class="sc">*</span> se_purchases</span>
+<span id="cb723-12"><a href="r-markdown.html#cb723-12" tabindex="-1"></a>ci_upper <span class="ot">&lt;-</span> mean_purchases <span class="sc">+</span> t_crit <span class="sc">*</span> se_purchases</span>
+<span id="cb723-13"><a href="r-markdown.html#cb723-13" tabindex="-1"></a></span>
+<span id="cb723-14"><a href="r-markdown.html#cb723-14" tabindex="-1"></a><span class="fu">print</span>(ci_lower)</span></code></pre></div>
 <pre><code>## [1] 10.87386</code></pre>
 <div class="sourceCode" id="cb725"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb725-1"><a href="r-markdown.html#cb725-1" tabindex="-1"></a><span class="fu">print</span>(ci_upper)</span></code></pre></div>
 <pre><code>## [1] 11.36392</code></pre>
-<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="r-markdown.html#cb727-1" tabindex="-1"></a><span class="co"># Alternatively: get confidence interval from t.test</span></span>
-<span id="cb727-2"><a href="r-markdown.html#cb727-2" tabindex="-1"></a><span class="fu">t.test</span>(app_user_data<span class="sc">$</span>in_app_purchases)<span class="sc">$</span>conf.int</span></code></pre></div>
+<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb727-1"><a href="r-markdown.html#cb727-1" tabindex="-1"></a><span class="co"># Alternatively: get confidence interval from</span></span>
+<span id="cb727-2"><a href="r-markdown.html#cb727-2" tabindex="-1"></a><span class="co"># t.test</span></span>
+<span id="cb727-3"><a href="r-markdown.html#cb727-3" tabindex="-1"></a><span class="fu">t.test</span>(app_user_data<span class="sc">$</span>in_app_purchases)<span class="sc">$</span>conf.int</span></code></pre></div>
 <pre><code>## [1] 10.87386 11.36392
 ## attr(,&quot;conf.level&quot;)
 ## [1] 0.95</code></pre>
@@ -1310,11 +1298,13 @@ Interpretation: If we take 100 samples and calculate the mean and confidence int
 <h3><span class="header-section-number">8.3.6</span> Question 3<a href="r-markdown.html#question-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To define the number of users that should be placed in two different conditions, pwr.t.test() function should be used. If the goal of the experiment is to simply detect significant difference between the groups, the sample size definition should be based on two-sided test.</p>
 <p>Given the effect size = 0.1, significance level = 0.05, and power = 0.8, sample size for each group will be:</p>
-<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="r-markdown.html#cb745-1" tabindex="-1"></a><span class="co"># provide your code here (you can use multiple code chunks per question if you like)</span></span>
-<span id="cb745-2"><a href="r-markdown.html#cb745-2" tabindex="-1"></a></span>
-<span id="cb745-3"><a href="r-markdown.html#cb745-3" tabindex="-1"></a><span class="co"># Power analysis for sample size calculation</span></span>
-<span id="cb745-4"><a href="r-markdown.html#cb745-4" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.1</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="at">power =</span> <span class="fl">0.8</span>, <span class="at">type =</span> <span class="st">&quot;two.sample&quot;</span>)</span>
-<span id="cb745-5"><a href="r-markdown.html#cb745-5" tabindex="-1"></a><span class="fu">print</span>(sample_size)</span></code></pre></div>
+<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="r-markdown.html#cb745-1" tabindex="-1"></a><span class="co"># provide your code here (you can use multiple</span></span>
+<span id="cb745-2"><a href="r-markdown.html#cb745-2" tabindex="-1"></a><span class="co"># code chunks per question if you like)</span></span>
+<span id="cb745-3"><a href="r-markdown.html#cb745-3" tabindex="-1"></a></span>
+<span id="cb745-4"><a href="r-markdown.html#cb745-4" tabindex="-1"></a><span class="co"># Power analysis for sample size calculation</span></span>
+<span id="cb745-5"><a href="r-markdown.html#cb745-5" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="fu">pwr.t.test</span>(<span class="at">d =</span> <span class="fl">0.1</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
+<span id="cb745-6"><a href="r-markdown.html#cb745-6" tabindex="-1"></a>    <span class="at">power =</span> <span class="fl">0.8</span>, <span class="at">type =</span> <span class="st">&quot;two.sample&quot;</span>)</span>
+<span id="cb745-7"><a href="r-markdown.html#cb745-7" tabindex="-1"></a><span class="fu">print</span>(sample_size)</span></code></pre></div>
 <pre><code>## 
 ##      Two-sample t test power calculation 
 ## 
@@ -1346,10 +1336,9 @@ Interpretation: If we take 100 samples and calculate the mean and confidence int
 </div>
 <div id="load-data-1" class="section level3 hasAnchor" number="8.3.9">
 <h3><span class="header-section-number">8.3.9</span> Load data<a href="r-markdown.html#load-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb747-1"><a href="r-markdown.html#cb747-1" tabindex="-1"></a>app_user_data_time <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_data_q2.csv&quot;</span>, </span>
-<span id="cb747-2"><a href="r-markdown.html#cb747-2" tabindex="-1"></a>                          <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, </span>
-<span id="cb747-3"><a href="r-markdown.html#cb747-3" tabindex="-1"></a>                          <span class="at">header =</span> <span class="cn">TRUE</span>) <span class="co">#read in data</span></span>
-<span id="cb747-4"><a href="r-markdown.html#cb747-4" tabindex="-1"></a><span class="fu">head</span>(app_user_data_time)</span></code></pre></div>
+<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb747-1"><a href="r-markdown.html#cb747-1" tabindex="-1"></a>app_user_data_time <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_data_q2.csv&quot;</span>,</span>
+<span id="cb747-2"><a href="r-markdown.html#cb747-2" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)  <span class="co">#read in data</span></span>
+<span id="cb747-3"><a href="r-markdown.html#cb747-3" tabindex="-1"></a><span class="fu">head</span>(app_user_data_time)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["userID"],"name":[1],"type":["int"],"align":["right"]},{"label":["time_in_app_1"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["time_in_app_2"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"21.20","3":"29.96"},{"1":"2","2":"38.42","3":"26.40"},{"1":"3","2":"22.71","3":"27.37"},{"1":"4","2":"25.32","3":"30.71"},{"1":"5","2":"28.25","3":"30.77"},{"1":"6","2":"24.87","3":"25.69"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -1365,35 +1354,38 @@ Interpretation: If we take 100 samples and calculate the mean and confidence int
 <h3><span class="header-section-number">8.3.10</span> Question 4<a href="r-markdown.html#question-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We want to examine if push notifications have an effect on average time a user spends in the app. The null hypothesis here is that there is no difference in the mean time spent in the app for the same customers between the presence and absence of push notifications. Because the observations come from the same population of customers (a within-subject design), we refer to the difference in the means for the same population when stating our hypotheses. The alternative hypothesis states that there is a difference between the time in app for the same customers.</p>
 <p>We start our analysis with looking at the descriptive statistics and at the plot. Then we conduct a dependent means t-test to see if the difference is significant.</p>
-<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb750-1"><a href="r-markdown.html#cb750-1" tabindex="-1"></a><span class="co"># provide your code here (you can use multiple code chunks per question if you like)</span></span>
-<span id="cb750-2"><a href="r-markdown.html#cb750-2" tabindex="-1"></a></span>
-<span id="cb750-3"><a href="r-markdown.html#cb750-3" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(Rmisc))</span>
-<span id="cb750-4"><a href="r-markdown.html#cb750-4" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb750-5"><a href="r-markdown.html#cb750-5" tabindex="-1"></a></span>
-<span id="cb750-6"><a href="r-markdown.html#cb750-6" tabindex="-1"></a><span class="co">#Descriptive statistics</span></span>
-<span id="cb750-7"><a href="r-markdown.html#cb750-7" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(app_user_data_time[<span class="sc">!</span><span class="fu">is.na</span>(app_user_data_time<span class="sc">$</span>time_in_app_2), <span class="fu">c</span>(<span class="st">&quot;time_in_app_1&quot;</span>,<span class="st">&quot;time_in_app_2&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb750-1"><a href="r-markdown.html#cb750-1" tabindex="-1"></a><span class="co"># provide your code here (you can use multiple</span></span>
+<span id="cb750-2"><a href="r-markdown.html#cb750-2" tabindex="-1"></a><span class="co"># code chunks per question if you like)</span></span>
+<span id="cb750-3"><a href="r-markdown.html#cb750-3" tabindex="-1"></a></span>
+<span id="cb750-4"><a href="r-markdown.html#cb750-4" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(Rmisc))</span>
+<span id="cb750-5"><a href="r-markdown.html#cb750-5" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb750-6"><a href="r-markdown.html#cb750-6" tabindex="-1"></a></span>
+<span id="cb750-7"><a href="r-markdown.html#cb750-7" tabindex="-1"></a><span class="co"># Descriptive statistics</span></span>
+<span id="cb750-8"><a href="r-markdown.html#cb750-8" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">describe</span>(app_user_data_time[<span class="sc">!</span><span class="fu">is.na</span>(app_user_data_time<span class="sc">$</span>time_in_app_2),</span>
+<span id="cb750-9"><a href="r-markdown.html#cb750-9" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">&quot;time_in_app_1&quot;</span>, <span class="st">&quot;time_in_app_2&quot;</span>)])</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["vars"],"name":[1],"type":["int"],"align":["right"]},{"label":["n"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["mean"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["sd"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["median"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["trimmed"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["mad"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["min"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["max"],"name":[9],"type":["dbl"],"align":["right"]},{"label":["range"],"name":[10],"type":["dbl"],"align":["right"]},{"label":["skew"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["kurtosis"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["se"],"name":[13],"type":["dbl"],"align":["right"]}],"data":[{"1":"1","2":"417","3":"25.20940","4":"5.125614","5":"25.27","6":"25.07236","7":"5.174274","8":"12.25","9":"40.92","10":"28.67","11":"0.24933971","12":"-0.06751811","13":"0.2510024"},{"1":"2","2":"417","3":"27.23995","4":"4.893298","5":"27.33","6":"27.32639","7":"4.892580","8":"13.52","9":"43.95","10":"30.43","11":"-0.06761595","12":"0.01387987","13":"0.2396258"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb751-1"><a href="r-markdown.html#cb751-1" tabindex="-1"></a><span class="co">#Boxplot</span></span>
+<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb751-1"><a href="r-markdown.html#cb751-1" tabindex="-1"></a><span class="co"># Boxplot</span></span>
 <span id="cb751-2"><a href="r-markdown.html#cb751-2" tabindex="-1"></a></span>
 <span id="cb751-3"><a href="r-markdown.html#cb751-3" tabindex="-1"></a>time_data <span class="ot">&lt;-</span> app_user_data_time <span class="sc">|&gt;</span></span>
-<span id="cb751-4"><a href="r-markdown.html#cb751-4" tabindex="-1"></a>  <span class="fu">drop_na</span>(time_in_app_2) <span class="sc">|&gt;</span></span>
-<span id="cb751-5"><a href="r-markdown.html#cb751-5" tabindex="-1"></a>  <span class="fu">select</span>(time_in_app_1, time_in_app_2) <span class="sc">|&gt;</span></span>
-<span id="cb751-6"><a href="r-markdown.html#cb751-6" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb751-7"><a href="r-markdown.html#cb751-7" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(time_in_app_1, time_in_app_2), </span>
-<span id="cb751-8"><a href="r-markdown.html#cb751-8" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;push_notifications&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;time_in_app&quot;</span>)</span>
-<span id="cb751-9"><a href="r-markdown.html#cb751-9" tabindex="-1"></a></span>
-<span id="cb751-10"><a href="r-markdown.html#cb751-10" tabindex="-1"></a><span class="fu">ggplot</span>(time_data, <span class="fu">aes</span>(<span class="at">x =</span> push_notifications, <span class="at">y =</span> time_in_app)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb751-11"><a href="r-markdown.html#cb751-11" tabindex="-1"></a>    <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">color =</span> <span class="st">&quot;lavenderblush4&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb751-12"><a href="r-markdown.html#cb751-12" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Time spent in app&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Boxplot of time in app by group&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb751-13"><a href="r-markdown.html#cb751-13" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<span id="cb751-4"><a href="r-markdown.html#cb751-4" tabindex="-1"></a>    <span class="fu">drop_na</span>(time_in_app_2) <span class="sc">|&gt;</span></span>
+<span id="cb751-5"><a href="r-markdown.html#cb751-5" tabindex="-1"></a>    <span class="fu">select</span>(time_in_app_1, time_in_app_2) <span class="sc">|&gt;</span></span>
+<span id="cb751-6"><a href="r-markdown.html#cb751-6" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(time_in_app_1, time_in_app_2),</span>
+<span id="cb751-7"><a href="r-markdown.html#cb751-7" tabindex="-1"></a>        <span class="at">names_to =</span> <span class="st">&quot;push_notifications&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;time_in_app&quot;</span>)</span>
+<span id="cb751-8"><a href="r-markdown.html#cb751-8" tabindex="-1"></a></span>
+<span id="cb751-9"><a href="r-markdown.html#cb751-9" tabindex="-1"></a><span class="fu">ggplot</span>(time_data, <span class="fu">aes</span>(<span class="at">x =</span> push_notifications, <span class="at">y =</span> time_in_app)) <span class="sc">+</span></span>
+<span id="cb751-10"><a href="r-markdown.html#cb751-10" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> <span class="fl">0.2</span>, <span class="at">color =</span> <span class="st">&quot;lavenderblush4&quot;</span>) <span class="sc">+</span></span>
+<span id="cb751-11"><a href="r-markdown.html#cb751-11" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Time spent in app&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Boxplot of time in app by group&quot;</span>) <span class="sc">+</span></span>
+<span id="cb751-12"><a href="r-markdown.html#cb751-12" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/a2_question_4_1-1.png" width="672" /></p>
-<div class="sourceCode" id="cb752"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb752-1"><a href="r-markdown.html#cb752-1" tabindex="-1"></a><span class="co"># Paired t-test for time spent in app before and after push notifications</span></span>
-<span id="cb752-2"><a href="r-markdown.html#cb752-2" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(app_user_data_time<span class="sc">$</span>time_in_app_2, app_user_data_time<span class="sc">$</span>time_in_app_1, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb752-3"><a href="r-markdown.html#cb752-3" tabindex="-1"></a><span class="fu">print</span>(t_test_result)</span></code></pre></div>
+<div class="sourceCode" id="cb752"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb752-1"><a href="r-markdown.html#cb752-1" tabindex="-1"></a><span class="co"># Paired t-test for time spent in app before and</span></span>
+<span id="cb752-2"><a href="r-markdown.html#cb752-2" tabindex="-1"></a><span class="co"># after push notifications</span></span>
+<span id="cb752-3"><a href="r-markdown.html#cb752-3" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(app_user_data_time<span class="sc">$</span>time_in_app_2,</span>
+<span id="cb752-4"><a href="r-markdown.html#cb752-4" tabindex="-1"></a>    app_user_data_time<span class="sc">$</span>time_in_app_1, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb752-5"><a href="r-markdown.html#cb752-5" tabindex="-1"></a><span class="fu">print</span>(t_test_result)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -1406,22 +1398,17 @@ Interpretation: If we take 100 samples and calculate the mean and confidence int
 ## mean difference 
 ##        2.030552</code></pre>
 <div class="sourceCode" id="cb754"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb754-1"><a href="r-markdown.html#cb754-1" tabindex="-1"></a><span class="co"># Compute Cohen&#39;s d for paired samples</span></span>
-<span id="cb754-2"><a href="r-markdown.html#cb754-2" tabindex="-1"></a>cohen_d_result <span class="ot">&lt;-</span> <span class="fu">cohensD</span>(app_user_data_time<span class="sc">$</span>time_in_app_2, app_user_data_time<span class="sc">$</span>time_in_app_1, <span class="at">method =</span> <span class="st">&quot;paired&quot;</span>)</span>
-<span id="cb754-3"><a href="r-markdown.html#cb754-3" tabindex="-1"></a><span class="fu">print</span>(cohen_d_result)</span></code></pre></div>
+<span id="cb754-2"><a href="r-markdown.html#cb754-2" tabindex="-1"></a>cohen_d_result <span class="ot">&lt;-</span> <span class="fu">cohensD</span>(app_user_data_time<span class="sc">$</span>time_in_app_2,</span>
+<span id="cb754-3"><a href="r-markdown.html#cb754-3" tabindex="-1"></a>    app_user_data_time<span class="sc">$</span>time_in_app_1, <span class="at">method =</span> <span class="st">&quot;paired&quot;</span>)</span>
+<span id="cb754-4"><a href="r-markdown.html#cb754-4" tabindex="-1"></a><span class="fu">print</span>(cohen_d_result)</span></code></pre></div>
 <pre><code>## [1] 0.2856969</code></pre>
-<div class="sourceCode" id="cb756"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb756-1"><a href="r-markdown.html#cb756-1" tabindex="-1"></a><span class="co">#Visualization of the test</span></span>
-<span id="cb756-2"><a href="r-markdown.html#cb756-2" tabindex="-1"></a><span class="fu">ggwithinstats</span>(</span>
-<span id="cb756-3"><a href="r-markdown.html#cb756-3" tabindex="-1"></a>  <span class="at">data =</span> time_data,</span>
-<span id="cb756-4"><a href="r-markdown.html#cb756-4" tabindex="-1"></a>  <span class="at">x =</span> push_notifications,</span>
-<span id="cb756-5"><a href="r-markdown.html#cb756-5" tabindex="-1"></a>  <span class="at">y =</span> time_in_app,</span>
-<span id="cb756-6"><a href="r-markdown.html#cb756-6" tabindex="-1"></a>  <span class="at">path.point =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb756-7"><a href="r-markdown.html#cb756-7" tabindex="-1"></a>  <span class="at">path.mean =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb756-8"><a href="r-markdown.html#cb756-8" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;Time on site with or without push notifications&quot;</span>,</span>
-<span id="cb756-9"><a href="r-markdown.html#cb756-9" tabindex="-1"></a>  <span class="at">messages =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb756-10"><a href="r-markdown.html#cb756-10" tabindex="-1"></a>  <span class="at">bf.message =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb756-11"><a href="r-markdown.html#cb756-11" tabindex="-1"></a>  <span class="at">mean.ci =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb756-12"><a href="r-markdown.html#cb756-12" tabindex="-1"></a>  <span class="at">effsize.type =</span> <span class="st">&quot;d&quot;</span> <span class="co"># display effect size (Cohen&#39;s d in output)</span></span>
-<span id="cb756-13"><a href="r-markdown.html#cb756-13" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb756"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb756-1"><a href="r-markdown.html#cb756-1" tabindex="-1"></a><span class="co"># Visualization of the test</span></span>
+<span id="cb756-2"><a href="r-markdown.html#cb756-2" tabindex="-1"></a><span class="fu">ggwithinstats</span>(<span class="at">data =</span> time_data, <span class="at">x =</span> push_notifications,</span>
+<span id="cb756-3"><a href="r-markdown.html#cb756-3" tabindex="-1"></a>    <span class="at">y =</span> time_in_app, <span class="at">path.point =</span> <span class="cn">FALSE</span>, <span class="at">path.mean =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb756-4"><a href="r-markdown.html#cb756-4" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Time on site with or without push notifications&quot;</span>,</span>
+<span id="cb756-5"><a href="r-markdown.html#cb756-5" tabindex="-1"></a>    <span class="at">messages =</span> <span class="cn">FALSE</span>, <span class="at">bf.message =</span> <span class="cn">FALSE</span>, <span class="at">mean.ci =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb756-6"><a href="r-markdown.html#cb756-6" tabindex="-1"></a>    <span class="at">effsize.type =</span> <span class="st">&quot;d&quot;</span>  <span class="co"># display effect size (Cohen&#39;s d in output)</span></span>
+<span id="cb756-7"><a href="r-markdown.html#cb756-7" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="14-rmdIntro_files/figure-html/a2_question_4_1-2.png" width="672" /></p>
 <p>Interpretation: It appears that there is a difference in the means from the descriptive statistics and the plots. To test whether it is significant, we need to run a t-test. This time we need a different version of the t-test because the same customers are observed for the app with and without push notifications (the same customers are shown both versions of the app). This means that we need a dependent means t-test, or paired samples t-test. The other assumptions are identical to the independent-means t-test.</p>
 <p>The p-value is lower than the significance level of 5% (p &lt; .05), which means that we can reject the null hypothesis that there is no difference in the mean time in app between absence and presence of push notifications. The confidence interval confirms the conclusion to reject the null hypothesis since 0 is not contained in the range of plausible values.</p>
@@ -1455,10 +1442,9 @@ Interpretation: If we take 100 samples and calculate the mean and confidence int
 </div>
 <div id="load-data-2" class="section level3 hasAnchor" number="8.3.13">
 <h3><span class="header-section-number">8.3.13</span> Load data<a href="r-markdown.html#load-data-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb757-1"><a href="r-markdown.html#cb757-1" tabindex="-1"></a>targeting_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_targeting_data.csv&quot;</span>, </span>
-<span id="cb757-2"><a href="r-markdown.html#cb757-2" tabindex="-1"></a>                          <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, </span>
-<span id="cb757-3"><a href="r-markdown.html#cb757-3" tabindex="-1"></a>                          <span class="at">header =</span> <span class="cn">TRUE</span>) <span class="co">#read in data</span></span>
-<span id="cb757-4"><a href="r-markdown.html#cb757-4" tabindex="-1"></a><span class="fu">head</span>(targeting_data)</span></code></pre></div>
+<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb757-1"><a href="r-markdown.html#cb757-1" tabindex="-1"></a>targeting_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_targeting_data.csv&quot;</span>,</span>
+<span id="cb757-2"><a href="r-markdown.html#cb757-2" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)  <span class="co">#read in data</span></span>
+<span id="cb757-3"><a href="r-markdown.html#cb757-3" tabindex="-1"></a><span class="fu">head</span>(targeting_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["customerID"],"name":[1],"type":["int"],"align":["right"]},{"label":["targeting"],"name":[2],"type":["chr"],"align":["left"]},{"label":["revenue"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["satisfaction"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"Personalized Targeting","3":"217.03","4":"6"},{"1":"2","2":"Personalized Targeting","3":"181.27","4":"7"},{"1":"3","2":"Personalized Targeting","3":"182.09","4":"1"},{"1":"4","2":"Segment-Based Targeting","3":"180.97","4":"10"},{"1":"5","2":"Personalized Targeting","3":"142.71","4":"5"},{"1":"6","2":"Segment-Based Targeting","3":"115.86","4":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -1721,10 +1707,9 @@ Interpretation: If we take 100 samples and calculate the mean and confidence int
 </div>
 <div id="load-data-3" class="section level3 hasAnchor" number="8.3.18">
 <h3><span class="header-section-number">8.3.18</span> Load data<a href="r-markdown.html#load-data-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb790"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb790-1"><a href="r-markdown.html#cb790-1" tabindex="-1"></a>conversion_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/MA2024/main/conversion_data.csv&quot;</span>, </span>
-<span id="cb790-2"><a href="r-markdown.html#cb790-2" tabindex="-1"></a>                          <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, </span>
-<span id="cb790-3"><a href="r-markdown.html#cb790-3" tabindex="-1"></a>                          <span class="at">header =</span> <span class="cn">TRUE</span>) <span class="co">#read in data</span></span>
-<span id="cb790-4"><a href="r-markdown.html#cb790-4" tabindex="-1"></a><span class="fu">head</span>(conversion_data)</span></code></pre></div>
+<div class="sourceCode" id="cb790"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb790-1"><a href="r-markdown.html#cb790-1" tabindex="-1"></a>conversion_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;https://raw.githubusercontent.com/WU-RDS/MA2024/main/conversion_data.csv&quot;</span>,</span>
+<span id="cb790-2"><a href="r-markdown.html#cb790-2" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)  <span class="co">#read in data</span></span>
+<span id="cb790-3"><a href="r-markdown.html#cb790-3" tabindex="-1"></a><span class="fu">head</span>(conversion_data)</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["customerID"],"name":[1],"type":["int"],"align":["right"]},{"label":["exp_group"],"name":[2],"type":["chr"],"align":["left"]},{"label":["conversion"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"1","2":"Control","3":"0"},{"1":"2","2":"Treatment","3":"0"},{"1":"3","2":"Treatment","3":"0"},{"1":"4","2":"Control","3":"0"},{"1":"5","2":"Control","3":"0"},{"1":"6","2":"Control","3":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -1823,7 +1808,7 @@ library(psych)
 library(ggplot2)
 
 music_data <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/music_data_fin.csv",
-                        sep = ";", header = TRUE, dec = ",")
+    sep = ";", header = TRUE, dec = ",")
 str(music_data)
 ```
 
@@ -1863,7 +1848,7 @@ str(music_data)
 ```
 
 ``` r
-head(music_data) 
+head(music_data)
 ```
 
 <div data-pagedtable="false">
@@ -1971,9 +1956,9 @@ All audio features (danceability, energy, speechiness, instrumentalness, livenes
 
 ``` r
 library(psych)
-describeBy(select(music_data, 
-                  danceability, energy, speechiness, instrumentalness, liveness, valence, tempo), 
-           music_data$genre, skew = FALSE) 
+describeBy(select(music_data, danceability, energy,
+    speechiness, instrumentalness, liveness, valence,
+    tempo), music_data$genre, skew = FALSE)
 ```
 
 ```
@@ -2115,11 +2100,11 @@ Which share of streams do the different genres account for?
   
 
 ``` r
-genre_streams <- music_data %>% 
-  group_by(genre) %>%
-  summarise(genre_streams=sum(streams)) #first compute sum of streams by genre
+genre_streams <- music_data %>%
+    group_by(genre) %>%
+    summarise(genre_streams = sum(streams))  #first compute sum of streams by genre
 genre_streams_share <- genre_streams %>%
-  mutate(genre_share = genre_streams/sum(genre_streams)) #then divide the sum by the total streams
+    mutate(genre_share = genre_streams/sum(genre_streams))  #then divide the sum by the total streams
 genre_streams_share
 ```
 
@@ -2137,10 +2122,9 @@ This is a simple plot of valence distribution across all songs in your data (we 
   
 
 ``` r
-ggplot(music_data,aes(x = valence)) + 
-  geom_histogram(binwidth = 4, col = "white", fill = "lavenderblush3") + 
-  labs(x = "Valence", y = "Frequency") +
-  theme_minimal()
+ggplot(music_data, aes(x = valence)) + geom_histogram(binwidth = 4,
+    col = "white", fill = "lavenderblush3") + labs(x = "Valence",
+    y = "Frequency") + theme_minimal()
 ```
 
 <div class="figure" style="text-align: center">
@@ -2154,11 +2138,9 @@ Create a grouped boxplot for the variable "energy" by genre.
 
 
 ``` r
-ggplot(music_data, aes(x = genre, y = energy, color = genre)) + 
-  geom_boxplot(coef = 3) + 
-  labs(x = "Genre", y = "Energy") + 
-  theme_minimal() + 
-  coord_flip()
+ggplot(music_data, aes(x = genre, y = energy, color = genre)) +
+    geom_boxplot(coef = 3) + labs(x = "Genre", y = "Energy") +
+    theme_minimal() + coord_flip()
 ```
 
 <div class="figure" style="text-align: center">
@@ -2175,9 +2157,8 @@ Finally, we can visualize the relationship between valence and energy of songs i
 
 ``` r
 ggplot(music_data, aes(x = valence, y = energy)) +
-  geom_point(shape = 1) + 
-  labs(x = "Valence", y = "Energy") +
-  theme_minimal()
+    geom_point(shape = 1) + labs(x = "Valence", y = "Energy") +
+    theme_minimal()
 ```
 
 <div class="figure" style="text-align: center">
@@ -2205,12 +2186,10 @@ library(ggstatsplot)
 library(Rmisc)
 library(plyr)
 library(car)
-options(scipen = 999) #scientific notation
-customer_data_a <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_1.csv", 
-                          sep = ",", 
-                          header = TRUE) #read in data
-#head(customer_data_a)
-#str(customer_data_a)
+options(scipen = 999)  #scientific notation
+customer_data_a <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_1.csv",
+    sep = ",", header = TRUE)  #read in data
+# head(customer_data_a) str(customer_data_a)
 ```
 
 
@@ -2229,12 +2208,12 @@ psych::describe(customer_data_a$revenue)
 </div>
 
 ``` r
-ggplot(customer_data_a, aes(revenue)) + 
-  geom_histogram(col = "white", fill = "lavenderblush3", bins = 50) + 
-  geom_vline(data = customer_data_a %>% dplyr::summarise(mean = mean(revenue)),aes(xintercept = mean), size = 0.7, color = "gray19") +
-  labs(x = "Revenue", y = "Frequency") + 
-  ggtitle("Distribution of revenue per customer") +
-  theme_minimal()
+ggplot(customer_data_a, aes(revenue)) + geom_histogram(col = "white",
+    fill = "lavenderblush3", bins = 50) + geom_vline(data = customer_data_a %>%
+    dplyr::summarise(mean = mean(revenue)), aes(xintercept = mean),
+    size = 0.7, color = "gray19") + labs(x = "Revenue",
+    y = "Frequency") + ggtitle("Distribution of revenue per customer") +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" />
@@ -2243,12 +2222,12 @@ To compute the confidence interval for the average revenue per customer, we will
 
 
 ``` r
-mean <- mean(customer_data_a$revenue) #calculate the mean
-sd <- sd(customer_data_a$revenue) 
+mean <- mean(customer_data_a$revenue)  #calculate the mean
+sd <- sd(customer_data_a$revenue)
 n <- nrow(customer_data_a)
-se <- sd/sqrt(n) #calculate the standard error
-df <- n-1
-t_crit <- qt(0.975, df) #calculate the critical value
+se <- sd/sqrt(n)  #calculate the standard error
+df <- n - 1
+t_crit <- qt(0.975, df)  #calculate the critical value
 ```
 
 The confidence interval can be computed as follows: 
@@ -2300,10 +2279,10 @@ $$H_0: \mu_0 = \mu_1 \\ H_1: \mu_0 \neq \mu_1$$
 We need to transform the variable *exp_group* into a factor variable and inspect the data using descriptive statistics:
 
 ``` r
-customer_data_a$exp_group <- factor(customer_data_a$exp_group, 
-                                    levels = c(0,1), labels = c("control", "treatment"))
+customer_data_a$exp_group <- factor(customer_data_a$exp_group,
+    levels = c(0, 1), labels = c("control", "treatment"))
 
-describeBy(customer_data_a$revenue, customer_data_a$exp_group) #describe control and treatment groups 
+describeBy(customer_data_a$revenue, customer_data_a$exp_group)  #describe control and treatment groups 
 ```
 
 ```
@@ -2326,21 +2305,22 @@ It can already be seen that the mean revenue is higher in the treatment group.
 Next, we should visualize the data. For this, we can use plot of means or boxplot:
 
 ``` r
-mean_data <- summarySE(customer_data_a, measurevar = "revenue", 
+mean_data <- summarySE(customer_data_a, measurevar = "revenue",
     groupvars = c("exp_group"))
 
-#Plot of means
-ggplot(mean_data, aes(x = exp_group, y = revenue)) + 
-    geom_bar(position = position_dodge(0.9), fill = "lavenderblush3", stat = "identity", width = 0.50) + 
-    geom_errorbar(position = position_dodge(0.9), width = 0.15, aes(ymin = revenue - ci, ymax = revenue + ci)) + 
-    theme_minimal() + 
-    labs(x = "Experiment group", y = "Average revenue", title = "Average revenue by group") + 
+# Plot of means
+ggplot(mean_data, aes(x = exp_group, y = revenue)) +
+    geom_bar(position = position_dodge(0.9), fill = "lavenderblush3",
+        stat = "identity", width = 0.5) + geom_errorbar(position = position_dodge(0.9),
+    width = 0.15, aes(ymin = revenue - ci, ymax = revenue +
+        ci)) + theme_minimal() + labs(x = "Experiment group",
+    y = "Average revenue", title = "Average revenue by group") +
     theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
 
-#Boxplot
-ggplot(customer_data_a, aes(x = exp_group, y = revenue)) + geom_boxplot() +
-    geom_jitter(alpha = 0.2, color = "lavenderblush4") + 
-    labs(x = "Experiment group", y = "Revenue", title = "Boxplot of revenue by group") + 
+# Boxplot
+ggplot(customer_data_a, aes(x = exp_group, y = revenue)) +
+    geom_boxplot() + geom_jitter(alpha = 0.2, color = "lavenderblush4") +
+    labs(x = "Experiment group", y = "Revenue", title = "Boxplot of revenue by group") +
     theme_minimal()
 ```
 
@@ -2410,7 +2390,7 @@ The results show that revenues are **higher in the treatment group (Mean = 1506.
 Now we can test if the new personalization feature has an effect on *time spent on our website*. 
 
 ``` r
-describeBy(customer_data_a$time_on_site, customer_data_a$exp_group) #describe control and treatment groups for time on site
+describeBy(customer_data_a$time_on_site, customer_data_a$exp_group)  #describe control and treatment groups for time on site
 ```
 
 ```
@@ -2431,21 +2411,24 @@ describeBy(customer_data_a$time_on_site, customer_data_a$exp_group) #describe co
 
 
 ``` r
-mean_data_time <- summarySE(customer_data_a, measurevar = "time_on_site", 
-                            groupvars = c("exp_group"))
+mean_data_time <- summarySE(customer_data_a, measurevar = "time_on_site",
+    groupvars = c("exp_group"))
 
-#Plot of means
-ggplot(mean_data_time, aes(x = exp_group, y = time_on_site)) + 
-  geom_bar(position = position_dodge(0.9), fill = "lavenderblush3", stat = "identity", width = 0.50) + 
-  geom_errorbar(position = position_dodge(0.9), width = 0.15, aes(ymin = time_on_site - ci, ymax = time_on_site + ci)) + 
-  theme_minimal() + labs(x = "Experiment group", y = "Average time on site", title = "Average time on site by group") + 
-  theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
+# Plot of means
+ggplot(mean_data_time, aes(x = exp_group, y = time_on_site)) +
+    geom_bar(position = position_dodge(0.9), fill = "lavenderblush3",
+        stat = "identity", width = 0.5) + geom_errorbar(position = position_dodge(0.9),
+    width = 0.15, aes(ymin = time_on_site - ci, ymax = time_on_site +
+        ci)) + theme_minimal() + labs(x = "Experiment group",
+    y = "Average time on site", title = "Average time on site by group") +
+    theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
 
-#Boxplot
-ggplot(customer_data_a, aes(x = exp_group, y = time_on_site)) + geom_boxplot() +
-  geom_jitter(alpha = 0.2, color = "lavenderblush4") + 
-  labs(x = "Experiment group", y = "Time on site", title = "Boxplot of time on site by group") + 
-  theme_minimal()
+# Boxplot
+ggplot(customer_data_a, aes(x = exp_group, y = time_on_site)) +
+    geom_boxplot() + geom_jitter(alpha = 0.2, color = "lavenderblush4") +
+    labs(x = "Experiment group", y = "Time on site",
+        title = "Boxplot of time on site by group") +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-17-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-17-2.png" width="50%" />
@@ -2519,7 +2502,8 @@ Finally, we can conclude from this study that the personalization feature causes
 Given the **effect size = 0.1**, **significance level = 0.05**, and **power = 0.8**, sample size for each group will be:
 
 ``` r
-pwr.t.test(d = 0.1, sig.level = 0.05, power = 0.8, type = c("two.sample"), alternative = c("two.sided"))
+pwr.t.test(d = 0.1, sig.level = 0.05, power = 0.8,
+    type = c("two.sample"), alternative = c("two.sided"))
 ```
 
 ```
@@ -2546,11 +2530,9 @@ To achieve our desired effect size of 0.1, a significance level of 0.5 and a pow
   
 
 ``` r
-customer_data_b <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_2.csv", 
-                              sep = ",", 
-                              header = TRUE) #read in data
-#head(customer_data_b)
-#str(customer_data_b)
+customer_data_b <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_2.csv",
+    sep = ",", header = TRUE)  #read in data
+# head(customer_data_b) str(customer_data_b)
 ```
 
 Next we want to examine whether the alternative page layout has an effect on the time that a user spends on the website. The null hypothesis here is that *there is no difference in the mean time spend on the website for the same customers between the two page layouts*. Because the observations come from *the same population* of customers (i.e., a within-subject design), we refer to the difference in the means for the same population as $\mu_D$ when stating our hypotheses. The alternative hypothesis states that that *there is a difference* between the time on site variables for the same customers. In mathematical notation this can be written as
@@ -2560,7 +2542,8 @@ $$H_0: \mu_D = 0 \\ H_1: \mu_D \neq 0$$
 Again, we start with descriptive statistics to get a feel for the data: 
 
 ``` r
-psych::describe(customer_data_b[!is.na(customer_data_b$time_on_site_2), c("time_on_site_1","time_on_site_2")])
+psych::describe(customer_data_b[!is.na(customer_data_b$time_on_site_2),
+    c("time_on_site_1", "time_on_site_2")])
 ```
 
 <div data-pagedtable="false">
@@ -2573,25 +2556,28 @@ psych::describe(customer_data_b[!is.na(customer_data_b$time_on_site_2), c("time_
 We can observe the difference in means from the table above; we can also visualize the data:
 
 ``` r
-#Plot of means
-customer_data_long <- melt(customer_data_b[!is.na(customer_data_b$time_on_site_2), c("time_on_site_1", "time_on_site_2")])
+# Plot of means
+customer_data_long <- melt(customer_data_b[!is.na(customer_data_b$time_on_site_2),
+    c("time_on_site_1", "time_on_site_2")])
 names(customer_data_long) <- c("layout", "time_on_site")
 
-mean_data <- summarySE(customer_data_long, measurevar = "time_on_site", 
-                       groupvars = c("layout"))
+mean_data <- summarySE(customer_data_long, measurevar = "time_on_site",
+    groupvars = c("layout"))
 
-#Plot of means
-ggplot(mean_data, aes(x = layout, y = time_on_site)) + 
-  geom_bar(position = position_dodge(0.9), fill = "lavenderblush3", stat = "identity", width = 0.5) + 
-  geom_errorbar(position = position_dodge(0.9), width = 0.15, aes(ymin = time_on_site - ci, ymax = time_on_site + ci)) + 
-  theme_minimal() + labs(x = "", y = "Average time on site", title = "Average time on site by group") + 
-  theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
+# Plot of means
+ggplot(mean_data, aes(x = layout, y = time_on_site)) +
+    geom_bar(position = position_dodge(0.9), fill = "lavenderblush3",
+        stat = "identity", width = 0.5) + geom_errorbar(position = position_dodge(0.9),
+    width = 0.15, aes(ymin = time_on_site - ci, ymax = time_on_site +
+        ci)) + theme_minimal() + labs(x = "", y = "Average time on site",
+    title = "Average time on site by group") + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
 
-#Boxplot
-ggplot(customer_data_long, aes(x = layout, y = time_on_site)) + geom_boxplot() +
-  geom_jitter(alpha = 0.2, color = "lavenderblush4") + 
-  labs(x = "", y = "Revenue", title = "Boxplot of revenue by group") + 
-  theme_minimal()
+# Boxplot
+ggplot(customer_data_long, aes(x = layout, y = time_on_site)) +
+    geom_boxplot() + geom_jitter(alpha = 0.2, color = "lavenderblush4") +
+    labs(x = "", y = "Revenue", title = "Boxplot of revenue by group") +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-23-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-23-2.png" width="50%" />
@@ -2599,9 +2585,9 @@ It appears that there is a difference in the means. To test whether it is signif
 
 
 ``` r
-t.test(customer_data_b$time_on_site_2, customer_data_b$time_on_site_1, 
-       mu = 0, alternative = "two.sided", conf.level = 0.95,
-       paired = TRUE)
+t.test(customer_data_b$time_on_site_2, customer_data_b$time_on_site_1,
+    mu = 0, alternative = "two.sided", conf.level = 0.95,
+    paired = TRUE)
 ```
 
 ```
@@ -2623,7 +2609,8 @@ The p-value is again lower than the chosen significance level of 5% (i.e., p < .
 We can now find out how strong this effect is: it is actually rather small.
 
 ``` r
-cohensD(customer_data_b$time_on_site_1, customer_data_b$time_on_site_2, method = 'paired')
+cohensD(customer_data_b$time_on_site_1, customer_data_b$time_on_site_2,
+    method = "paired")
 ```
 
 ```
@@ -2634,17 +2621,11 @@ Alternatively, you could also use the `ggstatsplot` package to conduct the tests
   
 
 ``` r
-ggwithinstats(
-  data = customer_data_long,
-  x = layout,
-  y = time_on_site,
-  path.point = FALSE,
-  path.mean = TRUE,
-  title = "Time on site for different page layouts",
-  messages = FALSE,
-  bf.message = FALSE,
-  mean.ci = TRUE,
-  effsize.type = "d" # display effect size (Cohen's d in output)
+ggwithinstats(data = customer_data_long, x = layout,
+    y = time_on_site, path.point = FALSE, path.mean = TRUE,
+    title = "Time on site for different page layouts",
+    messages = FALSE, bf.message = FALSE, mean.ci = TRUE,
+    effsize.type = "d"  # display effect size (Cohen's d in output)
 )
 ```
 
@@ -2664,11 +2645,9 @@ The conclusion from this test would be that the alternative page layout increase
   
 
 ``` r
-customer_data_c <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_3.csv", 
-                              sep = ",", 
-                              header = TRUE) #read in data
-#head(customer_data_c)
-#str(customer_data_c)
+customer_data_c <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_3.csv",
+    sep = ",", header = TRUE)  #read in data
+# head(customer_data_c) str(customer_data_c)
 ```
 
 To answer the question of whether the type of advertising has an effect on revenue, we need to formulate a testable null hypothesis. In our case, the null hypothesis is stating that **the average level of sales is equal for all three advertising types**. In mathematical notation this implies:
@@ -2683,7 +2662,9 @@ The appropriate test for such a hypothesis is one-way ANOVA since we have a *met
 First, we need to recode relevant variables into factors and give them more descriptive level names: 
 
 ``` r
-customer_data_c$retargeting <- factor(customer_data_c$retargeting, levels = c(1,2,3), labels = c("no retargeting", "generic retargeting", "dynamic retargeting"))
+customer_data_c$retargeting <- factor(customer_data_c$retargeting,
+    levels = c(1, 2, 3), labels = c("no retargeting",
+        "generic retargeting", "dynamic retargeting"))
 ```
 
 Next we calculate summary statistics for the data and build an appropriate plot.
@@ -2715,22 +2696,22 @@ describeBy(customer_data_c$revenue, customer_data_c$retargeting)
 ```
 
 ``` r
-#Plot of means
-mean_data_2 <- summarySE(customer_data_c, measurevar = "revenue", groupvars = c("retargeting"))
-ggplot(mean_data_2, aes(x = retargeting, y = revenue)) + 
-  geom_bar(position = position_dodge(1), fill = "lavenderblush3", stat = "identity", width = 0.5) +
-  geom_errorbar(position = position_dodge(.9), width = .15, aes(ymin = revenue - ci, ymax = revenue + ci)) +
-  theme_minimal() +
-  labs(x = "", y = "Average revenue", title = "Average revenue by group")+
-  theme(plot.title = element_text(hjust = 0.5, color = "#666666")) 
+# Plot of means
+mean_data_2 <- summarySE(customer_data_c, measurevar = "revenue",
+    groupvars = c("retargeting"))
+ggplot(mean_data_2, aes(x = retargeting, y = revenue)) +
+    geom_bar(position = position_dodge(1), fill = "lavenderblush3",
+        stat = "identity", width = 0.5) + geom_errorbar(position = position_dodge(0.9),
+    width = 0.15, aes(ymin = revenue - ci, ymax = revenue +
+        ci)) + theme_minimal() + labs(x = "", y = "Average revenue",
+    title = "Average revenue by group") + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
 
-#Boxplot
-ggplot(customer_data_c, aes(x = retargeting, y = revenue)) + 
-  geom_boxplot() +
-  geom_jitter(colour = "lavenderblush4", alpha = 0.1) +
-  theme_minimal() +
-  labs(x = "", y = "Revenue")+
-  theme(plot.title = element_text(hjust = 0.5, color = "#666666")) 
+# Boxplot
+ggplot(customer_data_c, aes(x = retargeting, y = revenue)) +
+    geom_boxplot() + geom_jitter(colour = "lavenderblush4",
+    alpha = 0.1) + theme_minimal() + labs(x = "", y = "Revenue") +
+    theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-29-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-29-2.png" width="50%" />
@@ -2745,7 +2726,7 @@ The first assumption is satisfied due to the fact that *the participants were ra
 
 
 ``` r
-table(customer_data_c$retargeting) #check number of observations by group
+table(customer_data_c$retargeting)  #check number of observations by group
 ```
 
 ```
@@ -2756,8 +2737,10 @@ table(customer_data_c$retargeting) #check number of observations by group
 Due to the fact that there are always *more than 30 observations in each group* we can rely on the central limit theorem to satisfy the distributional assumptions. You can still test this assumption using Shapiro-Wilk normality test and plots:
 
 ``` r
-#test for normal distribution of variables - no need because n > 30
-by(customer_data_c$revenue, customer_data_c$retargeting, shapiro.test)
+# test for normal distribution of variables - no
+# need because n > 30
+by(customer_data_c$revenue, customer_data_c$retargeting,
+    shapiro.test)
 ```
 
 ```
@@ -2786,15 +2769,24 @@ by(customer_data_c$revenue, customer_data_c$retargeting, shapiro.test)
 ```
 
 ``` r
-#shapiro.test(customer_data_c[customer_data_c$retargeting == "no retargeting", ]$revenue)
-#shapiro.test(customer_data_c[customer_data_c$retargeting == "generic retargeting", ]$revenue)
-#shapiro.test(customer_data_c[customer_data_c$retargeting == "dynamic retargeting", ]$revenue)
-qqnorm(customer_data_c[customer_data_c$retargeting == "no retargeting", ]$revenue) 
-qqline(customer_data_c[customer_data_c$retargeting == "no retargeting", ]$revenue)
-qqnorm(customer_data_c[customer_data_c$retargeting == "generic retargeting", ]$revenue) 
-qqline(customer_data_c[customer_data_c$retargeting == "generic retargeting", ]$revenue)
-qqnorm(customer_data_c[customer_data_c$retargeting == "dynamic retargeting", ]$revenue) 
-qqline(customer_data_c[customer_data_c$retargeting == "dynamic retargeting", ]$revenue)
+# shapiro.test(customer_data_c[customer_data_c$retargeting
+# == 'no retargeting', ]$revenue)
+# shapiro.test(customer_data_c[customer_data_c$retargeting
+# == 'generic retargeting', ]$revenue)
+# shapiro.test(customer_data_c[customer_data_c$retargeting
+# == 'dynamic retargeting', ]$revenue)
+qqnorm(customer_data_c[customer_data_c$retargeting ==
+    "no retargeting", ]$revenue)
+qqline(customer_data_c[customer_data_c$retargeting ==
+    "no retargeting", ]$revenue)
+qqnorm(customer_data_c[customer_data_c$retargeting ==
+    "generic retargeting", ]$revenue)
+qqline(customer_data_c[customer_data_c$retargeting ==
+    "generic retargeting", ]$revenue)
+qqnorm(customer_data_c[customer_data_c$retargeting ==
+    "dynamic retargeting", ]$revenue)
+qqline(customer_data_c[customer_data_c$retargeting ==
+    "dynamic retargeting", ]$revenue)
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-31-1.png" width="30%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-31-2.png" width="30%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-31-3.png" width="30%" />
@@ -2816,7 +2808,7 @@ As we can see, we cannot reject the H0 of variances being equal, thus we can pro
 
 ``` r
 aov <- aov(revenue ~ retargeting, data = customer_data_c)
-summary(aov) #if levene's test would be significant, compute the Welch's F-ratio instead
+summary(aov)  #if levene's test would be significant, compute the Welch's F-ratio instead
 ```
 
 ```
@@ -2837,7 +2829,8 @@ lsr::etaSquared(aov)
 ```
 
 ``` r
-summary(aov)[[1]]$'Sum Sq'[1]/(summary(aov)[[1]]$'Sum Sq'[1] + summary(aov)[[1]]$'Sum Sq'[2]) #another way
+summary(aov)[[1]]$"Sum Sq"[1]/(summary(aov)[[1]]$"Sum Sq"[1] +
+    summary(aov)[[1]]$"Sum Sq"[2])  #another way
 ```
 
 ```
@@ -2894,8 +2887,8 @@ ggbetweenstats(
 Next we will briefly inspect the residuals of the ANOVA to see if the assumptions of the test really are justified.
 
 ``` r
-plot(aov,1)
-plot(aov,2)
+plot(aov, 1)
+plot(aov, 2)
 ```
 
 <img src="14-rmdIntro_files/figure-html/figures-side-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/figures-side-2.png" width="50%" />
@@ -2933,8 +2926,9 @@ Here we will conduct both the Bonferroni correction as well as Tukey's HSD test,
 
 
 ``` r
-#bonferroni
-pairwise.t.test(customer_data_c$revenue, customer_data_c$retargeting, data = customer_data_c, p.adjust.method = "bonferroni")
+# bonferroni
+pairwise.t.test(customer_data_c$revenue, customer_data_c$retargeting,
+    data = customer_data_c, p.adjust.method = "bonferroni")
 ```
 
 ```
@@ -2959,7 +2953,7 @@ generic retargeting vs. no retargeting
 Alternatively, you could have also chosen to use Tukey's HSD to conduct the post-hoc test:
 
 ``` r
-#tukey correction using the mult-comp package
+# tukey correction using the mult-comp package
 library(multcomp)
 tukeys <- glht(aov, linfct = mcp(retargeting = "Tukey"))
 summary(tukeys)
@@ -2980,9 +2974,9 @@ summary(tukeys)
 ## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
 ## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
 ##                                                Pr(>|t|)    
-## generic retargeting - no retargeting == 0       0.00361 ** 
-## dynamic retargeting - no retargeting == 0       < 0.001 ***
-## dynamic retargeting - generic retargeting == 0  < 0.001 ***
+## generic retargeting - no retargeting == 0        0.0035 ** 
+## dynamic retargeting - no retargeting == 0       <0.0001 ***
+## dynamic retargeting - generic retargeting == 0  <0.0001 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -3004,19 +2998,19 @@ confint(tukeys)
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
-## Quantile = 2.3453
+## Quantile = 2.3454
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.5010 229.7394
-## dynamic retargeting - no retargeting == 0      443.4211 343.8809 542.9613
-## dynamic retargeting - generic retargeting == 0 310.3009 212.0074 408.5944
+## generic retargeting - no retargeting == 0      133.1202  36.4951 229.7453
+## dynamic retargeting - no retargeting == 0      443.4211 343.8748 542.9674
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0014 408.6004
 ```
 
 ``` r
-par(mar = c(5,19,4,2)) #the mar parameter changes the margins around created plots. This is done so the labels on the side of the Tukey plot are visible (however, this was not expected)
+par(mar = c(5, 19, 4, 2))  #the mar parameter changes the margins around created plots. This is done so the labels on the side of the Tukey plot are visible (however, this was not expected)
 plot(tukeys)
 ```
 
@@ -3059,11 +3053,10 @@ describeBy(customer_data_c$nps, customer_data_c$retargeting)
 A good way to visualize ordinal data is through a boxplot.
 
 ``` r
-ggplot(data = customer_data_c, aes(x = retargeting, y = nps)) + 
-  geom_boxplot(color = 'lavenderblush4') + 
-  geom_jitter(colour="lavenderblush3", alpha = 0.1) +
-  theme_minimal() + 
-  labs(x = "", y = "Rank")
+ggplot(data = customer_data_c, aes(x = retargeting,
+    y = nps)) + geom_boxplot(color = "lavenderblush4") +
+    geom_jitter(colour = "lavenderblush3", alpha = 0.1) +
+    theme_minimal() + labs(x = "", y = "Rank")
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-41-1.png" width="528" style="display: block; margin: auto;" />
@@ -3074,7 +3067,7 @@ The only assumption that we require for this test is that the *dependent variabl
 
 
 ``` r
-kruskal.test(nps ~ retargeting, data = customer_data_c) 
+kruskal.test(nps ~ retargeting, data = customer_data_c)
 ```
 
 ```
@@ -3131,11 +3124,9 @@ It appears that the differences between median NPS for "no retargeting vs. gener
 
 
 ``` r
-customer_data_d <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_4.csv", 
-                          sep = ",", 
-                          header = TRUE) #read in data
-#head(customer_data_d)
-#str(customer_data_d)
+customer_data_d <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_4.csv",
+    sep = ",", header = TRUE)  #read in data
+# head(customer_data_d) str(customer_data_d)
 ```
 
 To find out if the new personalization feature has an effect on the conversion rate, we can use a test for proportions instead of a test for mean differences. To test for the equality of proportions (and therefore no difference between them) we can use a **chi-square ($\chi^2$) test**.
@@ -3147,8 +3138,10 @@ $$H_0: \pi_1 = \pi_2 \\ H_1: \pi_1 \neq \pi_2$$
 First, we will recode the relevant variables into factors and give them more descriptive level names:
 
 ``` r
-customer_data_d$conversion <- factor(customer_data_d$conversion, levels = c(0,1), labels = c("no", "yes"))
-customer_data_d$exp_group <- factor(customer_data_d$exp_group, levels = c(0,1), labels = c("control", "treatment"))
+customer_data_d$conversion <- factor(customer_data_d$conversion,
+    levels = c(0, 1), labels = c("no", "yes"))
+customer_data_d$exp_group <- factor(customer_data_d$exp_group,
+    levels = c(0, 1), labels = c("control", "treatment"))
 ```
 
 Don't forget to create a summary plot to get a feeling for the data.
@@ -3183,12 +3176,15 @@ We see that our conversion seems to be slightly better for the group with the pe
 
 
 ``` r
-n1 <- nrow(subset(customer_data_d, exp_group == "control")) #number of observations for control group
+n1 <- nrow(subset(customer_data_d, exp_group == "control"))  #number of observations for control group
 n2 <- nrow(subset(customer_data_d, exp_group == "treatment"))  #number of observations for treatment group
-n1_conv <- nrow(subset(customer_data_d, exp_group == "control" & conversion == "yes"))  #number of conversions for control group
-n2_conv <- nrow(subset(customer_data_d, exp_group == "treatment" & conversion == "yes"))  #number of conversions for treatment group
+n1_conv <- nrow(subset(customer_data_d, exp_group ==
+    "control" & conversion == "yes"))  #number of conversions for control group
+n2_conv <- nrow(subset(customer_data_d, exp_group ==
+    "treatment" & conversion == "yes"))  #number of conversions for treatment group
 
-prop.test(x = c(n1_conv, n2_conv), n = c(n1, n2), conf.level = 0.95, correct = FALSE) #without Yates correction
+prop.test(x = c(n1_conv, n2_conv), n = c(n1, n2), conf.level = 0.95,
+    correct = FALSE)  #without Yates correction
 ```
 
 ```
@@ -3208,8 +3204,8 @@ prop.test(x = c(n1_conv, n2_conv), n = c(n1, n2), conf.level = 0.95, correct = F
 
 
 ``` r
-table_1 <- table(customer_data_d$conversion,customer_data_d$exp_group)
-chisq.test(table_1, correct = FALSE) #without Yates correction
+table_1 <- table(customer_data_d$conversion, customer_data_d$exp_group)
+chisq.test(table_1, correct = FALSE)  #without Yates correction
 ```
 
 ```
@@ -3241,12 +3237,11 @@ Finally, we can use `ggbarstats()` for the test results visualization:
 ``` r
 library(ggstatsplot)
 library(ghibli)
-ggbarstats(data = customer_data_d, x = conversion, y = exp_group,
-           title = "Conversion by experiment group", xlab = "Group", correct = TRUE,
-           messages = FALSE, bar.proptest = FALSE,
-           bf.message = FALSE) + 
-  scale_fill_ghibli_d("PonyoLight") +
-  theme_minimal()
+ggbarstats(data = customer_data_d, x = conversion,
+    y = exp_group, title = "Conversion by experiment group",
+    xlab = "Group", correct = TRUE, messages = FALSE,
+    bar.proptest = FALSE, bf.message = FALSE) + scale_fill_ghibli_d("PonyoLight") +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-51-1.png" width="576" style="display: block; margin: auto;" />
@@ -3271,12 +3266,10 @@ library(lm.beta)
 options(scipen = 999)
 set.seed(123)
 
-sales_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/assignment4.dat", 
-                          sep = "\t", 
-                          header = TRUE) #read in data
+sales_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/assignment4.dat",
+    sep = "\t", header = TRUE)  #read in data
 sales_data$market_id <- 1:nrow(sales_data)
-#head(sales_data)
-#str(sales_data)
+# head(sales_data) str(sales_data)
 ```
 
 ### Q1
@@ -3322,7 +3315,8 @@ Inspecting the correlation matrix reveals that the sales variable is positively 
   
 
 ``` r
-rcorr(as.matrix(sales_data[,c("sales","tv_adspend","online_adspend","radio_adspend")]))
+rcorr(as.matrix(sales_data[, c("sales", "tv_adspend",
+    "online_adspend", "radio_adspend")]))
 ```
 
 ```
@@ -3347,22 +3341,28 @@ Since we have continuous variables, we use scatterplots to investigate the relat
 
 
 ``` r
-ggplot(sales_data, aes(x = tv_adspend, y = sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
-    fill = "gray", color = "lavenderblush3", alpha = 0.1) + theme_minimal()
+ggplot(sales_data, aes(x = tv_adspend, y = sales)) +
+    geom_point(shape = 1) + geom_smooth(method = "lm",
+    fill = "gray", color = "lavenderblush3", alpha = 0.1) +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-56-1.png" width="672" style="display: block; margin: auto;" />
 
 ``` r
-ggplot(sales_data, aes(x = online_adspend, y = sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
-    fill = "gray", color = "lavenderblush3", alpha = 0.1) + theme_minimal()
+ggplot(sales_data, aes(x = online_adspend, y = sales)) +
+    geom_point(shape = 1) + geom_smooth(method = "lm",
+    fill = "gray", color = "lavenderblush3", alpha = 0.1) +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-56-2.png" width="672" style="display: block; margin: auto;" />
 
 ``` r
-ggplot(sales_data, aes(x = radio_adspend, y = sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
-    fill = "gray", color = "lavenderblush3", alpha = 0.1) + theme_minimal()
+ggplot(sales_data, aes(x = radio_adspend, y = sales)) +
+    geom_point(shape = 1) + geom_smooth(method = "lm",
+    fill = "gray", color = "lavenderblush3", alpha = 0.1) +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-56-3.png" width="672" style="display: block; margin: auto;" />
@@ -3375,8 +3375,8 @@ Further steps include estimate of a multiple linear regression model in order to
                                                                                                                              The estimate the model, we will use the ```lm()``` function:
 
 ``` r
-linear_model <- lm(formula, data = sales_data) #estimate linear model
-#summary(linear_model)
+linear_model <- lm(formula, data = sales_data)  #estimate linear model
+# summary(linear_model)
 ```
                                                                                                                              **Before** we can inspect the results, we need to test if there might be potential problems with our model specification. 
 
@@ -3387,8 +3387,9 @@ To check for outliers, we extract the studentized residuals from our model and t
 
 ``` r
 sales_data$stud_resid <- rstudent(linear_model)
-plot(1:nrow(sales_data), sales_data$stud_resid, ylim = c(-3.3, 3.3))
-abline(h = c(-3, 3), col = "red", lty=2)
+plot(1:nrow(sales_data), sales_data$stud_resid, ylim = c(-3.3,
+    3.3))
+abline(h = c(-3, 3), col = "red", lty = 2)
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-58-1.png" width="672" style="display: block; margin: auto;" />
@@ -3401,8 +3402,8 @@ To test for influential observations, we use Cook's Distance. You may use the fo
 
 
 ``` r
-plot(linear_model,4)
-plot(linear_model,5)
+plot(linear_model, 4)
+plot(linear_model, 5)
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-59-1.png" width="50%" style="display: block; margin: auto;" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-59-2.png" width="50%" style="display: block; margin: auto;" />
@@ -3461,7 +3462,7 @@ Next, we test if the residuals are approximately normally distributed using the 
 
 
 ``` r
-plot(linear_model,2)
+plot(linear_model, 2)
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-64-1.png" width="672" style="display: block; margin: auto;" />
@@ -3491,7 +3492,8 @@ To test for linear dependence of the regressors, we first test the bivariate cor
 
 
 ``` r
-rcorr(as.matrix(sales_data[,c("tv_adspend","online_adspend","radio_adspend")]))
+rcorr(as.matrix(sales_data[, c("tv_adspend", "online_adspend",
+    "radio_adspend")]))
 ```
 
 ```
@@ -3629,12 +3631,10 @@ Regarding the model fit, the R<sup>2</sup> statistic tells us that approximately
 
 ``` r
 sales_data$yhat <- predict(linear_model)
-ggplot(sales_data, aes(yhat, sales)) + 
-  geom_point(size = 2, shape = 1) +
-  scale_x_continuous(name = "predicted values") +
-  scale_y_continuous(name = "observed values") +
-  geom_abline(intercept = 0, slope = 1) +
-  theme_minimal()
+ggplot(sales_data, aes(yhat, sales)) + geom_point(size = 2,
+    shape = 1) + scale_x_continuous(name = "predicted values") +
+    scale_y_continuous(name = "observed values") +
+    geom_abline(intercept = 0, slope = 1) + theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-72-1.png" width="672" style="display: block; margin: auto;" />
@@ -3656,10 +3656,10 @@ The coefficients can be extracted from the summary of the linear model and used 
 
 
 ``` r
-summary(linear_model)$coefficients[1,1] + 
-  summary(linear_model)$coefficients[2,1]*150 +
-  summary(linear_model)$coefficients[3,1]*26 +
-  summary(linear_model)$coefficients[4,1]*15
+summary(linear_model)$coefficients[1, 1] + summary(linear_model)$coefficients[2,
+    1] * 150 + summary(linear_model)$coefficients[3,
+    1] * 26 + summary(linear_model)$coefficients[4,
+    1] * 15
 ```
 
 ```
@@ -3674,7 +3674,8 @@ Equivalently one can use the `predict` function
 
 
 ``` r
-predict(linear_model, data.frame(tv_adspend = 150,online_adspend =  26,radio_adspend  =  15))
+predict(linear_model, data.frame(tv_adspend = 150,
+    online_adspend = 26, radio_adspend = 15))
 ```
 
 ```
@@ -3687,7 +3688,7 @@ predict(linear_model, data.frame(tv_adspend = 150,online_adspend =  26,radio_ads
 
 ``` r
 music_data <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/music_data_group.csv",
-                        sep = ";", header = TRUE, dec = ",")
+    sep = ";", header = TRUE, dec = ",")
 music_data$genre <- as.factor(music_data$genre)
 music_data$label <- as.factor(music_data$label)
 ```
@@ -3701,7 +3702,8 @@ We should create the model using `glm()` and have a look at the summary:
 
 
 ``` r
-mult_logit_model <- glm(top10 ~ weeks_in_charts + song_age + label, family = binomial (link = 'logit'), data = music_data)
+mult_logit_model <- glm(top10 ~ weeks_in_charts + song_age +
+    label, family = binomial(link = "logit"), data = music_data)
 summary(mult_logit_model)
 ```
 
@@ -3755,18 +3757,21 @@ From the summary of the model we can see that weeks in charts, age of song, and 
 
 ``` r
 logisticPseudoR2s <- function(LogModel) {
-  dev <- LogModel$deviance
-  nullDev <- LogModel$null.deviance
-  modelN <- length(LogModel$fitted.values)
-  R.l <-  1 -  dev / nullDev
-  R.cs <- 1- exp(-(nullDev - dev) / modelN)
-  R.n <- R.cs / ( 1 - (exp(-(nullDev / modelN))))
-  cat("Pseudo R^2 for logistic regression\n")
-  cat("Hosmer and Lemeshow R^2  ", round(R.l, 3), "\n")
-  cat("Cox and Snell R^2        ", round(R.cs, 3), "\n")
-  cat("Nagelkerke R^2           ", round(R.n, 3),    "\n")
+    dev <- LogModel$deviance
+    nullDev <- LogModel$null.deviance
+    modelN <- length(LogModel$fitted.values)
+    R.l <- 1 - dev/nullDev
+    R.cs <- 1 - exp(-(nullDev - dev)/modelN)
+    R.n <- R.cs/(1 - (exp(-(nullDev/modelN))))
+    cat("Pseudo R^2 for logistic regression\n")
+    cat("Hosmer and Lemeshow R^2  ", round(R.l, 3),
+        "\n")
+    cat("Cox and Snell R^2        ", round(R.cs, 3),
+        "\n")
+    cat("Nagelkerke R^2           ", round(R.n, 3),
+        "\n")
 }
-#Inspect Pseudo R2s
+# Inspect Pseudo R2s
 logisticPseudoR2s(mult_logit_model)
 ```
 
@@ -3797,11 +3802,9 @@ We should visualize the relationship between IVs and DV:
 
 
 ``` r
-ggplot(music_data, aes(weeks_in_charts, top10)) +  
-  geom_point(shape = 1) +
-  geom_smooth(method = "glm",
-              method.args = list(family = "binomial"),
-              se = FALSE, color = "lavenderblush3") + theme_minimal()
+ggplot(music_data, aes(weeks_in_charts, top10)) + geom_point(shape = 1) +
+    geom_smooth(method = "glm", method.args = list(family = "binomial"),
+        se = FALSE, color = "lavenderblush3") + theme_minimal()
 ```
 
 ```
@@ -3811,11 +3814,9 @@ ggplot(music_data, aes(weeks_in_charts, top10)) +
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-81-1.png" width="672" />
 
 ``` r
-ggplot(music_data, aes(song_age, top10)) + 
-  geom_point(shape = 1) +
-  geom_smooth(method = "glm",
-              method.args = list(family = "binomial"),
-              se = FALSE, color = "lavenderblush3") + theme_minimal()
+ggplot(music_data, aes(song_age, top10)) + geom_point(shape = 1) +
+    geom_smooth(method = "glm", method.args = list(family = "binomial"),
+        se = FALSE, color = "lavenderblush3") + theme_minimal()
 ```
 
 ```
@@ -3829,22 +3830,21 @@ There are several ways of plotting the effect of factor variables. Let's do it a
 
 ``` r
 library(forcats)
-labels <- as.factor(c("Warner Music", "Sony Music", "Independent", "Universal Music"))
-top10_predictions <- data.frame(pred = 
-                                  predict(glm(top10 ~ label, data = music_data), 
-                                          data.frame(label = labels), type = "response"), 
-                                label = labels)
+labels <- as.factor(c("Warner Music", "Sony Music",
+    "Independent", "Universal Music"))
+top10_predictions <- data.frame(pred = predict(glm(top10 ~
+    label, data = music_data), data.frame(label = labels),
+    type = "response"), label = labels)
 top10_counts <- table(music_data$top10, music_data$label)
 top10_share <- prop.table(top10_counts, margin = 2)
 data.frame(top10_share) |>
-  dplyr::filter(Var1 == 1) |> 
-  left_join(top10_predictions, by = c("Var2" = "label")) |>
-  dplyr::rename(Share = Freq) |>
-  ggplot(aes(fct_reorder(Var2, Share), Share)) +
-  geom_bar(stat = 'identity', fill = "lavenderblush3") +
-  geom_point(aes(x = Var2, y = pred), color = 'red4') +
-  theme_minimal() +
-  theme(axis.title.x = element_blank())
+    dplyr::filter(Var1 == 1) |>
+    left_join(top10_predictions, by = c(Var2 = "label")) |>
+    dplyr::rename(Share = Freq) |>
+    ggplot(aes(fct_reorder(Var2, Share), Share)) +
+    geom_bar(stat = "identity", fill = "lavenderblush3") +
+    geom_point(aes(x = Var2, y = pred), color = "red4") +
+    theme_minimal() + theme(axis.title.x = element_blank())
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-82-1.png" width="672" />
@@ -3985,7 +3985,7 @@ exp(coef(final_model))
 ```
 
 ``` r
-#confint(final_model)
+# confint(final_model)
 ```
 
 The interpretation of odds ratios stays the same (and should be discussed in your solution).

@@ -296,18 +296,16 @@ We can now take these tables to construct plots grouped by explicitness. To achi
 
 
 ``` r
-ggplot(table_plot_cond_rel, aes(x = fct_reorder(genre, Freq), y = Freq)) + 
-  geom_col(aes(fill = Freq)) +
-      facet_wrap(~explicit) +
-  labs(x = "", y = "Relative frequency", title = "Distribution of genres for explicit and non-explicit songs") + 
-  geom_text(aes(label = sprintf("%.0f%%", Freq * 100)), vjust=-0.2) +
-  theme_minimal() +
-  ylim(0,1) +
-  scale_fill_continuous_sequential(palette = "Blues") +
-  theme(axis.text.x = element_text(angle=45,vjust=1.1,hjust=1),
-        plot.title = element_text(hjust = 0.5,color = "#666666"),
-        legend.position = "none"
-        ) 
+ggplot(table_plot_cond_rel, aes(x = fct_reorder(genre,
+    Freq), y = Freq)) + geom_col(aes(fill = Freq)) +
+    facet_wrap(~explicit) + labs(x = "", y = "Relative frequency",
+    title = "Distribution of genres for explicit and non-explicit songs") +
+    geom_text(aes(label = sprintf("%.0f%%", Freq *
+        100)), vjust = -0.2) + theme_minimal() + ylim(0,
+    1) + scale_fill_continuous_sequential(palette = "Blues") +
+    theme(axis.text.x = element_text(angle = 45, vjust = 1.1,
+        hjust = 1), plot.title = element_text(hjust = 0.5,
+        color = "#666666"), legend.position = "none")
 ```
 
 <div class="figure" style="text-align: center">
@@ -416,14 +414,12 @@ Now, let's create a boxplot based on these variables and plot the log-transforme
 
 
 ``` r
-ggplot(music_data,aes(x = fct_reorder(genre, log_streams), y = log_streams)) +
-  geom_boxplot(coef = 3) + 
-  labs(x = "Genre", y = "Number of streams (log-scale)") + 
-  theme_minimal() + 
-  theme(axis.text.x = element_text(angle=45,vjust=1.1,hjust=1),
-        plot.title = element_text(hjust = 0.5,color = "#666666"),
-        legend.position = "none"
-        ) 
+ggplot(music_data, aes(x = fct_reorder(genre, log_streams),
+    y = log_streams)) + geom_boxplot(coef = 3) + labs(x = "Genre",
+    y = "Number of streams (log-scale)") + theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, vjust = 1.1,
+        hjust = 1), plot.title = element_text(hjust = 0.5,
+        color = "#666666"), legend.position = "none")
 ```
 
 <div class="figure" style="text-align: center">
@@ -438,13 +434,10 @@ Note that you could also flip the boxplot. To do this, you only need to exchange
 
 
 ``` r
-ggplot(music_data,aes(x = log_streams, y = fct_reorder(genre, log_streams))) +
-  geom_boxplot(coef = 3) + 
-  labs(x = "Number of streams (log-scale)", y = "Genre") + 
-  theme_minimal() + 
-  theme(plot.title = element_text(hjust = 0.5,color = "#666666"),
-        legend.position = "none"
-        ) 
+ggplot(music_data, aes(x = log_streams, y = fct_reorder(genre,
+    log_streams))) + geom_boxplot(coef = 3) + labs(x = "Number of streams (log-scale)",
+    y = "Genre") + theme_minimal() + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"), legend.position = "none")
 ```
 
 <div class="figure" style="text-align: center">
@@ -456,11 +449,10 @@ It is often meaningful to augment the boxplot with the data points using ```geom
 
 
 ``` r
-ggplot(music_data,aes(x = log_streams , y = fct_reorder(genre, log_streams))) +
-  geom_jitter(colour="red", alpha = 0.1) +
-  geom_boxplot(coef = 3, alpha =0.1) + 
-  labs(x = "Number of streams (log-scale)", y = "Genre") + 
-  theme_minimal() 
+ggplot(music_data, aes(x = log_streams, y = fct_reorder(genre,
+    log_streams))) + geom_jitter(colour = "red", alpha = 0.1) +
+    geom_boxplot(coef = 3, alpha = 0.1) + labs(x = "Number of streams (log-scale)",
+    y = "Genre") + theme_minimal()
 ```
 
 <div class="figure" style="text-align: center">
@@ -946,12 +938,12 @@ ggmap(de_map_g_str, extent = "device") +
 
 - [ ] Nominal
 - [ ] Ordinal
-- [ ] Interval
-- [ ] Ratio
+- [x] Interval
+- [x] Ratio
 
 **(LC4.2) How can you compute the standardized variate of a variable X?**
 
-- [ ] $Z=\frac{X_i-\bar{X}}{s}$
+- [x] $Z=\frac{X_i-\bar{X}}{s}$
 - [ ] $Z=\frac{\bar{X}+X_i}{s}$
 - [ ] $Z=\frac{s}{\bar{X}+X_i}$
 - [ ] $Z=s*({\bar{X}+X_i)}$
@@ -970,7 +962,7 @@ ggmap(de_map_g_str, extent = "device") +
 - [ ] `df$mpg_std <- zscore(df$mpg)`
 - [ ] `df$mpg_std <- stdv(df$mpg)`
 - [ ] `df$mpg_std <- std.scale(df$mpg)`
-- [ ] `df$mpg_std <- scale(df$mpg)`
+- [x] `df$mpg_std <- scale(df$mpg)`
 - [ ] None of the above 	
 
 **(LC4.4) How could you produce the below output?**
@@ -981,7 +973,7 @@ ggmap(de_map_g_str, extent = "device") +
   </script>
 </div>
 
-- [ ] `describe(select(mtcars, hp, mpg, qsec))`
+- [x] `describe(select(mtcars, hp, mpg, qsec))`
 - [ ] `summary(select(mtcars, hp, mpg, qsec))`
 - [ ] `table(select(mtcars, hp, mpg, qsec))`
 - [ ] `str(select(mtcars, hp, mpg, qsec))`
@@ -997,7 +989,7 @@ ggmap(de_map_g_str, extent = "device") +
 ```
 
 - [ ] `describe(mtcars$carb)`
-- [ ] `table(mtcars$carb)`
+- [x] `table(mtcars$carb)`
 - [ ] `str(mtcars$carb)`
 - [ ] `prop.table(mtcars$carb)`
 - [ ] None of the above 	
@@ -1006,7 +998,7 @@ ggmap(de_map_g_str, extent = "device") +
 
 - [ ] Two categorical variables
 - [ ] One categorical and one continuous variable
-- [ ] Two continuous variables
+- [x] Two continuous variables
 - [ ] One continuous variable
 - [ ] None of the above 	
 
@@ -1015,8 +1007,8 @@ ggmap(de_map_g_str, extent = "device") +
 <img src="05-visualization_files/figure-html/unnamed-chunk-58-1.png" width="672" />
 
 - [ ] This is a bar chart
-- [ ] This is a histogram
-- [ ] It shows the frequency distribution of a continuous variable
+- [x] This is a histogram
+- [x] It shows the frequency distribution of a continuous variable
 - [ ] It shows the frequency distribution of a categorical variable
 - [ ] None of the above 	
 
@@ -1025,14 +1017,14 @@ ggmap(de_map_g_str, extent = "device") +
 <img src="05-visualization_files/figure-html/unnamed-chunk-59-1.png" width="50%" />
 
 - [ ] This is a bar chart
-- [ ] 50% of observations are contained in the gray area
+- [x] 50% of observations are contained in the gray area
 - [ ] The horizontal black line indicates the mean
-- [ ] This is a boxplot
+- [x] This is a boxplot
 - [ ] None of the above 	
 
 **(LC4.9) Which function can help you to save a graph made with `ggplot()`?** 
 
-- [ ] `ggsave()`
+- [x] `ggsave()`
 - [ ] `write.plot()`
 - [ ] `save.plot()`
 - [ ] `export.plot()`
@@ -1040,7 +1032,7 @@ ggmap(de_map_g_str, extent = "device") +
 **(LC4.10) For a variable that follows a normal distribution, within how many standard deviations of the mean are 95% of values?**
 
 - [ ] 1.645
-- [ ] 1.960
+- [x] 1.960
 - [ ] 2.580
 - [ ] 3.210
 - [ ] None of the answers above 	

@@ -178,7 +178,7 @@ summary(cars)
 ```
 
 ``` r
-plot(dist~speed, cars)
+plot(dist ~ speed, cars)
 ```
 
 <img src="14-rmdIntro_files/figure-html/cars2-1.png" width="672" />
@@ -391,7 +391,7 @@ str(music_data)
 ```
 
 ``` r
-head(music_data, 2) 
+head(music_data, 2)
 ```
 
 <div data-pagedtable="false">
@@ -408,12 +408,11 @@ head(music_data, 2)
 
 
 ``` r
-# provide your code here 
-## 1.
+# provide your code here 1.
 music_data |>
-  filter(artistName == "BTS") |>
-  slice_max(order_by = streams, n = 1) |>
-  select(artistName, trackName)
+    filter(artistName == "BTS") |>
+    slice_max(order_by = streams, n = 1) |>
+    select(artistName, trackName)
 ```
 
 <div data-pagedtable="false">
@@ -425,8 +424,8 @@ music_data |>
 ``` r
 ## 2.
 bts_data <- music_data |>
-  filter(str_detect(artistName, "BTS")) |>
-  arrange(desc(streams))
+    filter(str_detect(artistName, "BTS")) |>
+    arrange(desc(streams))
 distinct(bts_data, artistName)
 ```
 
@@ -462,8 +461,9 @@ Create a new `data.frame` containing the 100 most streamed songs.
 
 
 ``` r
-# provide your code here 
-top100 <- slice_max(music_data, order_by = streams, n = 100)
+# provide your code here
+top100 <- slice_max(music_data, order_by = streams,
+    n = 100)
 range(top100$streams)
 ```
 
@@ -483,11 +483,11 @@ range(top100$streams)
 
 
 ``` r
-# provide your code here 
+# provide your code here
 genre_data <- music_data |>
-  summarize(.by = genre, total_streams = sum(streams)) |>
-  arrange(desc(total_streams)) |>
-  mutate(genre = fct_reorder(as.factor(genre), total_streams))
+    summarize(.by = genre, total_streams = sum(streams)) |>
+    arrange(desc(total_streams)) |>
+    mutate(genre = fct_reorder(as.factor(genre), total_streams))
 head(genre_data)
 ```
 
@@ -499,7 +499,7 @@ head(genre_data)
 
 ``` r
 ggplot(genre_data, aes(y = genre, x = total_streams)) +
-  geom_bar(stat="identity")
+    geom_bar(stat = "identity")
 ```
 
 <img src="14-rmdIntro_files/figure-html/question_3_a1-1.png" width="672" />
@@ -513,19 +513,15 @@ ggplot(genre_data, aes(y = genre, x = total_streams)) +
 
 
 ``` r
-# provide your code here 
+# provide your code here
 label_data <- music_data |>
-  summarize(
-    .by = label, 
-    total_streams = sum(streams), 
-    avg_streams = mean(streams), 
-    med_streams = median(streams), 
-    top_song_artist = artistName[which.max(streams)],
-    top_song_title = trackName[which.max(streams)],
-    top_song_streams = max(streams)
-    ) |>
-  mutate(label_rank = dense_rank(-total_streams)) |>
-  arrange(desc(total_streams))
+    summarize(.by = label, total_streams = sum(streams),
+        avg_streams = mean(streams), med_streams = median(streams),
+        top_song_artist = artistName[which.max(streams)],
+        top_song_title = trackName[which.max(streams)],
+        top_song_streams = max(streams)) |>
+    mutate(label_rank = dense_rank(-total_streams)) |>
+    arrange(desc(total_streams))
 label_data
 ```
 
@@ -548,14 +544,10 @@ label_data
 ``` r
 # provide your code here
 music_data |>
-  summarize(.by = genre, across(danceability:explicit, 
-                                list("avg" = mean,
-                                     "std.dev" = sd,
-                                     "median" = median, 
-                                     "pct_10" = \(x) quantile(x, 0.1), 
-                                     "pct_90" = \(x) quantile(x, 0.9))
-                                )
-            )
+    summarize(.by = genre, across(danceability:explicit,
+        list(avg = mean, std.dev = sd, median = median,
+            pct_10 = \(x) quantile(x, 0.1),
+            pct_90 = \(x) quantile(x, 0.9))))
 ```
 
 <div data-pagedtable="false">
@@ -565,10 +557,9 @@ music_data |>
 </div>
 
 ``` r
-ggplot(music_data, aes(x = fct_reorder(factor(genre), energy, median), y = energy)) +
-    geom_boxplot() +
-    theme(axis.title.x = element_blank()) +
-    scale_x_discrete(guide = guide_axis(n.dodge=2))
+ggplot(music_data, aes(x = fct_reorder(factor(genre),
+    energy, median), y = energy)) + geom_boxplot() +
+    theme(axis.title.x = element_blank()) + scale_x_discrete(guide = guide_axis(n.dodge = 2))
 ```
 
 <img src="14-rmdIntro_files/figure-html/question_5_a1-1.png" width="672" />
@@ -580,12 +571,11 @@ Visualize the number of songs by label.
 
 
 ``` r
-# provide your code here 
+# provide your code here
 music_data |>
-  summarize(.by = label, n_songs = n_distinct(isrc)) |>
-  mutate(label = fct_reorder(as.factor(label), n_songs)) |>
-  ggplot(aes(y = label, x = n_songs)) +
-    geom_bar(stat = "identity")
+    summarize(.by = label, n_songs = n_distinct(isrc)) |>
+    mutate(label = fct_reorder(as.factor(label), n_songs)) |>
+    ggplot(aes(y = label, x = n_songs)) + geom_bar(stat = "identity")
 ```
 
 <img src="14-rmdIntro_files/figure-html/question_6_a1-1.png" width="672" />
@@ -597,13 +587,12 @@ Visualize the average monthly artist listeners (`monthly_listeners_artist`) by g
 
 
 ``` r
-# provide your code here 
+# provide your code here
 music_data |>
-  summarize(.by = genre, avg_m_listeners = mean(monthly_listeners_artist)) |>
-  mutate(genre = fct_reorder(factor(genre), avg_m_listeners)) |>
-ggplot(aes(x = avg_m_listeners, y = genre)) +
-  geom_bar(stat = "identity") +
-  labs(x = "Average monthly artist listeners")
+    summarize(.by = genre, avg_m_listeners = mean(monthly_listeners_artist)) |>
+    mutate(genre = fct_reorder(factor(genre), avg_m_listeners)) |>
+    ggplot(aes(x = avg_m_listeners, y = genre)) + geom_bar(stat = "identity") +
+    labs(x = "Average monthly artist listeners")
 ```
 
 <img src="14-rmdIntro_files/figure-html/question_7_a1-1.png" width="672" />
@@ -614,9 +603,8 @@ Create a histogram of the variable "valence".
 
 
 ``` r
-# provide your code here 
-ggplot(music_data, aes(x = valence)) +
-  geom_histogram()
+# provide your code here
+ggplot(music_data, aes(x = valence)) + geom_histogram()
 ```
 
 ```
@@ -631,10 +619,9 @@ Create a scatter plot showing `youtube_views` and `shazam_counts` (Bonus: add a 
 
 
 ``` r
-# provide your code here 
+# provide your code here
 ggplot(music_data, aes(x = youtube_views, y = shazam_counts)) +
-  geom_point() +
-  geom_smooth(method = "lm")
+    geom_point() + geom_smooth(method = "lm")
 ```
 
 ```
@@ -683,9 +670,8 @@ Use R and appropriate methods to answer the following questions:
 
 
 ``` r
-app_user_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_data_q1.csv", 
-                          sep = ",", 
-                          header = TRUE) #read in data
+app_user_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_data_q1.csv",
+    sep = ",", header = TRUE)  #read in data
 head(app_user_data)
 ```
 
@@ -726,7 +712,8 @@ suppressPackageStartupMessages(library(ggstatsplot))
 
 
 ``` r
-#First let's have a look at the purchases in the app in the data
+# First let's have a look at the purchases in the
+# app in the data
 psych::describe(app_user_data$in_app_purchases)
 ```
 
@@ -737,23 +724,23 @@ psych::describe(app_user_data$in_app_purchases)
 </div>
 
 ``` r
-ggplot(app_user_data, aes(in_app_purchases)) + 
-  geom_histogram(col = "white", fill = "lavenderblush3", bins = 50) + 
-  geom_vline(data = app_user_data %>% dplyr::summarise(mean = mean(in_app_purchases)),aes(xintercept = mean), 
-             linewidth = 0.7, color = "gray19") +
-  labs(x = "Purchases", y = "Frequency") + 
-  ggtitle("Distribution of purchases per customer") +
-  theme_minimal()
+ggplot(app_user_data, aes(in_app_purchases)) + geom_histogram(col = "white",
+    fill = "lavenderblush3", bins = 50) + geom_vline(data = app_user_data %>%
+    dplyr::summarise(mean = mean(in_app_purchases)),
+    aes(xintercept = mean), linewidth = 0.7, color = "gray19") +
+    labs(x = "Purchases", y = "Frequency") + ggtitle("Distribution of purchases per customer") +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/question_1_1-1.png" width="672" />
 
 ``` r
-# Compute mean, standard error, and confidence interval for in-app purchases
+# Compute mean, standard error, and confidence
+# interval for in-app purchases
 mean_purchases <- mean(app_user_data$in_app_purchases)
 sd_purchases <- sd(app_user_data$in_app_purchases)
 n <- nrow(app_user_data)
-se_purchases <- sd_purchases / sqrt(n)
+se_purchases <- sd_purchases/sqrt(n)
 df <- n - 1
 t_crit <- qt(0.975, df)
 
@@ -777,7 +764,8 @@ print(ci_upper)
 ```
 
 ``` r
-# Alternatively: get confidence interval from t.test
+# Alternatively: get confidence interval from
+# t.test
 t.test(app_user_data$in_app_purchases)$conf.int
 ```
 
@@ -1004,10 +992,12 @@ Given the effect size = 0.1, significance level = 0.05, and power = 0.8, sample 
 
 
 ``` r
-# provide your code here (you can use multiple code chunks per question if you like)
+# provide your code here (you can use multiple
+# code chunks per question if you like)
 
 # Power analysis for sample size calculation
-sample_size <- pwr.t.test(d = 0.1, sig.level = 0.05, power = 0.8, type = "two.sample")
+sample_size <- pwr.t.test(d = 0.1, sig.level = 0.05,
+    power = 0.8, type = "two.sample")
 print(sample_size)
 ```
 
@@ -1046,9 +1036,8 @@ Use R and appropriate methods to answer the following question:
 
 
 ``` r
-app_user_data_time <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_data_q2.csv", 
-                          sep = ",", 
-                          header = TRUE) #read in data
+app_user_data_time <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_data_q2.csv",
+    sep = ",", header = TRUE)  #read in data
 head(app_user_data_time)
 ```
 
@@ -1077,13 +1066,15 @@ We start our analysis with looking at the descriptive statistics and at the plot
 
 
 ``` r
-# provide your code here (you can use multiple code chunks per question if you like)
+# provide your code here (you can use multiple
+# code chunks per question if you like)
 
 suppressPackageStartupMessages(library(Rmisc))
 library(tidyr)
 
-#Descriptive statistics
-psych::describe(app_user_data_time[!is.na(app_user_data_time$time_in_app_2), c("time_in_app_1","time_in_app_2")])
+# Descriptive statistics
+psych::describe(app_user_data_time[!is.na(app_user_data_time$time_in_app_2),
+    c("time_in_app_1", "time_in_app_2")])
 ```
 
 <div data-pagedtable="false">
@@ -1093,26 +1084,27 @@ psych::describe(app_user_data_time[!is.na(app_user_data_time$time_in_app_2), c("
 </div>
 
 ``` r
-#Boxplot
+# Boxplot
 
 time_data <- app_user_data_time |>
-  drop_na(time_in_app_2) |>
-  select(time_in_app_1, time_in_app_2) |>
-  pivot_longer(
-    cols = c(time_in_app_1, time_in_app_2), 
-    names_to = "push_notifications", values_to = "time_in_app")
+    drop_na(time_in_app_2) |>
+    select(time_in_app_1, time_in_app_2) |>
+    pivot_longer(cols = c(time_in_app_1, time_in_app_2),
+        names_to = "push_notifications", values_to = "time_in_app")
 
-ggplot(time_data, aes(x = push_notifications, y = time_in_app)) + geom_boxplot() +
-    geom_jitter(alpha = 0.2, color = "lavenderblush4") + 
-    labs(x = "", y = "Time spent in app", title = "Boxplot of time in app by group") + 
+ggplot(time_data, aes(x = push_notifications, y = time_in_app)) +
+    geom_boxplot() + geom_jitter(alpha = 0.2, color = "lavenderblush4") +
+    labs(x = "", y = "Time spent in app", title = "Boxplot of time in app by group") +
     theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/a2_question_4_1-1.png" width="672" />
 
 ``` r
-# Paired t-test for time spent in app before and after push notifications
-t_test_result <- t.test(app_user_data_time$time_in_app_2, app_user_data_time$time_in_app_1, paired = TRUE)
+# Paired t-test for time spent in app before and
+# after push notifications
+t_test_result <- t.test(app_user_data_time$time_in_app_2,
+    app_user_data_time$time_in_app_1, paired = TRUE)
 print(t_test_result)
 ```
 
@@ -1132,7 +1124,8 @@ print(t_test_result)
 
 ``` r
 # Compute Cohen's d for paired samples
-cohen_d_result <- cohensD(app_user_data_time$time_in_app_2, app_user_data_time$time_in_app_1, method = "paired")
+cohen_d_result <- cohensD(app_user_data_time$time_in_app_2,
+    app_user_data_time$time_in_app_1, method = "paired")
 print(cohen_d_result)
 ```
 
@@ -1141,18 +1134,12 @@ print(cohen_d_result)
 ```
 
 ``` r
-#Visualization of the test
-ggwithinstats(
-  data = time_data,
-  x = push_notifications,
-  y = time_in_app,
-  path.point = FALSE,
-  path.mean = TRUE,
-  title = "Time on site with or without push notifications",
-  messages = FALSE,
-  bf.message = FALSE,
-  mean.ci = TRUE,
-  effsize.type = "d" # display effect size (Cohen's d in output)
+# Visualization of the test
+ggwithinstats(data = time_data, x = push_notifications,
+    y = time_in_app, path.point = FALSE, path.mean = TRUE,
+    title = "Time on site with or without push notifications",
+    messages = FALSE, bf.message = FALSE, mean.ci = TRUE,
+    effsize.type = "d"  # display effect size (Cohen's d in output)
 )
 ```
 
@@ -1197,9 +1184,8 @@ Use R and appropriate methods to answer the following question:
 
 
 ``` r
-targeting_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_targeting_data.csv", 
-                          sep = ",", 
-                          header = TRUE) #read in data
+targeting_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_targeting_data.csv",
+    sep = ",", header = TRUE)  #read in data
 head(targeting_data)
 ```
 
@@ -1594,9 +1580,8 @@ You obtain a new data set with the following variables:
 
 
 ``` r
-conversion_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/conversion_data.csv", 
-                          sep = ",", 
-                          header = TRUE) #read in data
+conversion_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/conversion_data.csv",
+    sep = ",", header = TRUE)  #read in data
 head(conversion_data)
 ```
 
@@ -1747,7 +1732,7 @@ library(psych)
 library(ggplot2)
 
 music_data <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/music_data_fin.csv",
-                        sep = ";", header = TRUE, dec = ",")
+    sep = ";", header = TRUE, dec = ",")
 str(music_data)
 ```
 
@@ -1787,7 +1772,7 @@ str(music_data)
 ```
 
 ``` r
-head(music_data) 
+head(music_data)
 ```
 
 <div data-pagedtable="false">
@@ -1895,9 +1880,9 @@ All audio features (danceability, energy, speechiness, instrumentalness, livenes
 
 ``` r
 library(psych)
-describeBy(select(music_data, 
-                  danceability, energy, speechiness, instrumentalness, liveness, valence, tempo), 
-           music_data$genre, skew = FALSE) 
+describeBy(select(music_data, danceability, energy,
+    speechiness, instrumentalness, liveness, valence,
+    tempo), music_data$genre, skew = FALSE)
 ```
 
 ```
@@ -2039,11 +2024,11 @@ Which share of streams do the different genres account for?
   
 
 ``` r
-genre_streams <- music_data %>% 
-  group_by(genre) %>%
-  summarise(genre_streams=sum(streams)) #first compute sum of streams by genre
+genre_streams <- music_data %>%
+    group_by(genre) %>%
+    summarise(genre_streams = sum(streams))  #first compute sum of streams by genre
 genre_streams_share <- genre_streams %>%
-  mutate(genre_share = genre_streams/sum(genre_streams)) #then divide the sum by the total streams
+    mutate(genre_share = genre_streams/sum(genre_streams))  #then divide the sum by the total streams
 genre_streams_share
 ```
 
@@ -2061,10 +2046,9 @@ This is a simple plot of valence distribution across all songs in your data (we 
   
 
 ``` r
-ggplot(music_data,aes(x = valence)) + 
-  geom_histogram(binwidth = 4, col = "white", fill = "lavenderblush3") + 
-  labs(x = "Valence", y = "Frequency") +
-  theme_minimal()
+ggplot(music_data, aes(x = valence)) + geom_histogram(binwidth = 4,
+    col = "white", fill = "lavenderblush3") + labs(x = "Valence",
+    y = "Frequency") + theme_minimal()
 ```
 
 <div class="figure" style="text-align: center">
@@ -2078,11 +2062,9 @@ Create a grouped boxplot for the variable "energy" by genre.
 
 
 ``` r
-ggplot(music_data, aes(x = genre, y = energy, color = genre)) + 
-  geom_boxplot(coef = 3) + 
-  labs(x = "Genre", y = "Energy") + 
-  theme_minimal() + 
-  coord_flip()
+ggplot(music_data, aes(x = genre, y = energy, color = genre)) +
+    geom_boxplot(coef = 3) + labs(x = "Genre", y = "Energy") +
+    theme_minimal() + coord_flip()
 ```
 
 <div class="figure" style="text-align: center">
@@ -2099,9 +2081,8 @@ Finally, we can visualize the relationship between valence and energy of songs i
 
 ``` r
 ggplot(music_data, aes(x = valence, y = energy)) +
-  geom_point(shape = 1) + 
-  labs(x = "Valence", y = "Energy") +
-  theme_minimal()
+    geom_point(shape = 1) + labs(x = "Valence", y = "Energy") +
+    theme_minimal()
 ```
 
 <div class="figure" style="text-align: center">
@@ -2129,12 +2110,10 @@ library(ggstatsplot)
 library(Rmisc)
 library(plyr)
 library(car)
-options(scipen = 999) #scientific notation
-customer_data_a <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_1.csv", 
-                          sep = ",", 
-                          header = TRUE) #read in data
-#head(customer_data_a)
-#str(customer_data_a)
+options(scipen = 999)  #scientific notation
+customer_data_a <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_1.csv",
+    sep = ",", header = TRUE)  #read in data
+# head(customer_data_a) str(customer_data_a)
 ```
 
 
@@ -2153,12 +2132,12 @@ psych::describe(customer_data_a$revenue)
 </div>
 
 ``` r
-ggplot(customer_data_a, aes(revenue)) + 
-  geom_histogram(col = "white", fill = "lavenderblush3", bins = 50) + 
-  geom_vline(data = customer_data_a %>% dplyr::summarise(mean = mean(revenue)),aes(xintercept = mean), size = 0.7, color = "gray19") +
-  labs(x = "Revenue", y = "Frequency") + 
-  ggtitle("Distribution of revenue per customer") +
-  theme_minimal()
+ggplot(customer_data_a, aes(revenue)) + geom_histogram(col = "white",
+    fill = "lavenderblush3", bins = 50) + geom_vline(data = customer_data_a %>%
+    dplyr::summarise(mean = mean(revenue)), aes(xintercept = mean),
+    size = 0.7, color = "gray19") + labs(x = "Revenue",
+    y = "Frequency") + ggtitle("Distribution of revenue per customer") +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" />
@@ -2167,12 +2146,12 @@ To compute the confidence interval for the average revenue per customer, we will
 
 
 ``` r
-mean <- mean(customer_data_a$revenue) #calculate the mean
-sd <- sd(customer_data_a$revenue) 
+mean <- mean(customer_data_a$revenue)  #calculate the mean
+sd <- sd(customer_data_a$revenue)
 n <- nrow(customer_data_a)
-se <- sd/sqrt(n) #calculate the standard error
-df <- n-1
-t_crit <- qt(0.975, df) #calculate the critical value
+se <- sd/sqrt(n)  #calculate the standard error
+df <- n - 1
+t_crit <- qt(0.975, df)  #calculate the critical value
 ```
 
 The confidence interval can be computed as follows: 
@@ -2224,10 +2203,10 @@ $$H_0: \mu_0 = \mu_1 \\ H_1: \mu_0 \neq \mu_1$$
 We need to transform the variable *exp_group* into a factor variable and inspect the data using descriptive statistics:
 
 ``` r
-customer_data_a$exp_group <- factor(customer_data_a$exp_group, 
-                                    levels = c(0,1), labels = c("control", "treatment"))
+customer_data_a$exp_group <- factor(customer_data_a$exp_group,
+    levels = c(0, 1), labels = c("control", "treatment"))
 
-describeBy(customer_data_a$revenue, customer_data_a$exp_group) #describe control and treatment groups 
+describeBy(customer_data_a$revenue, customer_data_a$exp_group)  #describe control and treatment groups 
 ```
 
 ```
@@ -2250,21 +2229,22 @@ It can already be seen that the mean revenue is higher in the treatment group.
 Next, we should visualize the data. For this, we can use plot of means or boxplot:
 
 ``` r
-mean_data <- summarySE(customer_data_a, measurevar = "revenue", 
+mean_data <- summarySE(customer_data_a, measurevar = "revenue",
     groupvars = c("exp_group"))
 
-#Plot of means
-ggplot(mean_data, aes(x = exp_group, y = revenue)) + 
-    geom_bar(position = position_dodge(0.9), fill = "lavenderblush3", stat = "identity", width = 0.50) + 
-    geom_errorbar(position = position_dodge(0.9), width = 0.15, aes(ymin = revenue - ci, ymax = revenue + ci)) + 
-    theme_minimal() + 
-    labs(x = "Experiment group", y = "Average revenue", title = "Average revenue by group") + 
+# Plot of means
+ggplot(mean_data, aes(x = exp_group, y = revenue)) +
+    geom_bar(position = position_dodge(0.9), fill = "lavenderblush3",
+        stat = "identity", width = 0.5) + geom_errorbar(position = position_dodge(0.9),
+    width = 0.15, aes(ymin = revenue - ci, ymax = revenue +
+        ci)) + theme_minimal() + labs(x = "Experiment group",
+    y = "Average revenue", title = "Average revenue by group") +
     theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
 
-#Boxplot
-ggplot(customer_data_a, aes(x = exp_group, y = revenue)) + geom_boxplot() +
-    geom_jitter(alpha = 0.2, color = "lavenderblush4") + 
-    labs(x = "Experiment group", y = "Revenue", title = "Boxplot of revenue by group") + 
+# Boxplot
+ggplot(customer_data_a, aes(x = exp_group, y = revenue)) +
+    geom_boxplot() + geom_jitter(alpha = 0.2, color = "lavenderblush4") +
+    labs(x = "Experiment group", y = "Revenue", title = "Boxplot of revenue by group") +
     theme_minimal()
 ```
 
@@ -2334,7 +2314,7 @@ The results show that revenues are **higher in the treatment group (Mean = 1506.
 Now we can test if the new personalization feature has an effect on *time spent on our website*. 
 
 ``` r
-describeBy(customer_data_a$time_on_site, customer_data_a$exp_group) #describe control and treatment groups for time on site
+describeBy(customer_data_a$time_on_site, customer_data_a$exp_group)  #describe control and treatment groups for time on site
 ```
 
 ```
@@ -2355,21 +2335,24 @@ describeBy(customer_data_a$time_on_site, customer_data_a$exp_group) #describe co
 
 
 ``` r
-mean_data_time <- summarySE(customer_data_a, measurevar = "time_on_site", 
-                            groupvars = c("exp_group"))
+mean_data_time <- summarySE(customer_data_a, measurevar = "time_on_site",
+    groupvars = c("exp_group"))
 
-#Plot of means
-ggplot(mean_data_time, aes(x = exp_group, y = time_on_site)) + 
-  geom_bar(position = position_dodge(0.9), fill = "lavenderblush3", stat = "identity", width = 0.50) + 
-  geom_errorbar(position = position_dodge(0.9), width = 0.15, aes(ymin = time_on_site - ci, ymax = time_on_site + ci)) + 
-  theme_minimal() + labs(x = "Experiment group", y = "Average time on site", title = "Average time on site by group") + 
-  theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
+# Plot of means
+ggplot(mean_data_time, aes(x = exp_group, y = time_on_site)) +
+    geom_bar(position = position_dodge(0.9), fill = "lavenderblush3",
+        stat = "identity", width = 0.5) + geom_errorbar(position = position_dodge(0.9),
+    width = 0.15, aes(ymin = time_on_site - ci, ymax = time_on_site +
+        ci)) + theme_minimal() + labs(x = "Experiment group",
+    y = "Average time on site", title = "Average time on site by group") +
+    theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
 
-#Boxplot
-ggplot(customer_data_a, aes(x = exp_group, y = time_on_site)) + geom_boxplot() +
-  geom_jitter(alpha = 0.2, color = "lavenderblush4") + 
-  labs(x = "Experiment group", y = "Time on site", title = "Boxplot of time on site by group") + 
-  theme_minimal()
+# Boxplot
+ggplot(customer_data_a, aes(x = exp_group, y = time_on_site)) +
+    geom_boxplot() + geom_jitter(alpha = 0.2, color = "lavenderblush4") +
+    labs(x = "Experiment group", y = "Time on site",
+        title = "Boxplot of time on site by group") +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-17-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-17-2.png" width="50%" />
@@ -2443,7 +2426,8 @@ Finally, we can conclude from this study that the personalization feature causes
 Given the **effect size = 0.1**, **significance level = 0.05**, and **power = 0.8**, sample size for each group will be:
 
 ``` r
-pwr.t.test(d = 0.1, sig.level = 0.05, power = 0.8, type = c("two.sample"), alternative = c("two.sided"))
+pwr.t.test(d = 0.1, sig.level = 0.05, power = 0.8,
+    type = c("two.sample"), alternative = c("two.sided"))
 ```
 
 ```
@@ -2470,11 +2454,9 @@ To achieve our desired effect size of 0.1, a significance level of 0.5 and a pow
   
 
 ``` r
-customer_data_b <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_2.csv", 
-                              sep = ",", 
-                              header = TRUE) #read in data
-#head(customer_data_b)
-#str(customer_data_b)
+customer_data_b <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_2.csv",
+    sep = ",", header = TRUE)  #read in data
+# head(customer_data_b) str(customer_data_b)
 ```
 
 Next we want to examine whether the alternative page layout has an effect on the time that a user spends on the website. The null hypothesis here is that *there is no difference in the mean time spend on the website for the same customers between the two page layouts*. Because the observations come from *the same population* of customers (i.e., a within-subject design), we refer to the difference in the means for the same population as $\mu_D$ when stating our hypotheses. The alternative hypothesis states that that *there is a difference* between the time on site variables for the same customers. In mathematical notation this can be written as
@@ -2484,7 +2466,8 @@ $$H_0: \mu_D = 0 \\ H_1: \mu_D \neq 0$$
 Again, we start with descriptive statistics to get a feel for the data: 
 
 ``` r
-psych::describe(customer_data_b[!is.na(customer_data_b$time_on_site_2), c("time_on_site_1","time_on_site_2")])
+psych::describe(customer_data_b[!is.na(customer_data_b$time_on_site_2),
+    c("time_on_site_1", "time_on_site_2")])
 ```
 
 <div data-pagedtable="false">
@@ -2497,25 +2480,28 @@ psych::describe(customer_data_b[!is.na(customer_data_b$time_on_site_2), c("time_
 We can observe the difference in means from the table above; we can also visualize the data:
 
 ``` r
-#Plot of means
-customer_data_long <- melt(customer_data_b[!is.na(customer_data_b$time_on_site_2), c("time_on_site_1", "time_on_site_2")])
+# Plot of means
+customer_data_long <- melt(customer_data_b[!is.na(customer_data_b$time_on_site_2),
+    c("time_on_site_1", "time_on_site_2")])
 names(customer_data_long) <- c("layout", "time_on_site")
 
-mean_data <- summarySE(customer_data_long, measurevar = "time_on_site", 
-                       groupvars = c("layout"))
+mean_data <- summarySE(customer_data_long, measurevar = "time_on_site",
+    groupvars = c("layout"))
 
-#Plot of means
-ggplot(mean_data, aes(x = layout, y = time_on_site)) + 
-  geom_bar(position = position_dodge(0.9), fill = "lavenderblush3", stat = "identity", width = 0.5) + 
-  geom_errorbar(position = position_dodge(0.9), width = 0.15, aes(ymin = time_on_site - ci, ymax = time_on_site + ci)) + 
-  theme_minimal() + labs(x = "", y = "Average time on site", title = "Average time on site by group") + 
-  theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
+# Plot of means
+ggplot(mean_data, aes(x = layout, y = time_on_site)) +
+    geom_bar(position = position_dodge(0.9), fill = "lavenderblush3",
+        stat = "identity", width = 0.5) + geom_errorbar(position = position_dodge(0.9),
+    width = 0.15, aes(ymin = time_on_site - ci, ymax = time_on_site +
+        ci)) + theme_minimal() + labs(x = "", y = "Average time on site",
+    title = "Average time on site by group") + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
 
-#Boxplot
-ggplot(customer_data_long, aes(x = layout, y = time_on_site)) + geom_boxplot() +
-  geom_jitter(alpha = 0.2, color = "lavenderblush4") + 
-  labs(x = "", y = "Revenue", title = "Boxplot of revenue by group") + 
-  theme_minimal()
+# Boxplot
+ggplot(customer_data_long, aes(x = layout, y = time_on_site)) +
+    geom_boxplot() + geom_jitter(alpha = 0.2, color = "lavenderblush4") +
+    labs(x = "", y = "Revenue", title = "Boxplot of revenue by group") +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-23-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-23-2.png" width="50%" />
@@ -2523,9 +2509,9 @@ It appears that there is a difference in the means. To test whether it is signif
 
 
 ``` r
-t.test(customer_data_b$time_on_site_2, customer_data_b$time_on_site_1, 
-       mu = 0, alternative = "two.sided", conf.level = 0.95,
-       paired = TRUE)
+t.test(customer_data_b$time_on_site_2, customer_data_b$time_on_site_1,
+    mu = 0, alternative = "two.sided", conf.level = 0.95,
+    paired = TRUE)
 ```
 
 ```
@@ -2547,7 +2533,8 @@ The p-value is again lower than the chosen significance level of 5% (i.e., p < .
 We can now find out how strong this effect is: it is actually rather small.
 
 ``` r
-cohensD(customer_data_b$time_on_site_1, customer_data_b$time_on_site_2, method = 'paired')
+cohensD(customer_data_b$time_on_site_1, customer_data_b$time_on_site_2,
+    method = "paired")
 ```
 
 ```
@@ -2558,17 +2545,11 @@ Alternatively, you could also use the `ggstatsplot` package to conduct the tests
   
 
 ``` r
-ggwithinstats(
-  data = customer_data_long,
-  x = layout,
-  y = time_on_site,
-  path.point = FALSE,
-  path.mean = TRUE,
-  title = "Time on site for different page layouts",
-  messages = FALSE,
-  bf.message = FALSE,
-  mean.ci = TRUE,
-  effsize.type = "d" # display effect size (Cohen's d in output)
+ggwithinstats(data = customer_data_long, x = layout,
+    y = time_on_site, path.point = FALSE, path.mean = TRUE,
+    title = "Time on site for different page layouts",
+    messages = FALSE, bf.message = FALSE, mean.ci = TRUE,
+    effsize.type = "d"  # display effect size (Cohen's d in output)
 )
 ```
 
@@ -2588,11 +2569,9 @@ The conclusion from this test would be that the alternative page layout increase
   
 
 ``` r
-customer_data_c <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_3.csv", 
-                              sep = ",", 
-                              header = TRUE) #read in data
-#head(customer_data_c)
-#str(customer_data_c)
+customer_data_c <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_3.csv",
+    sep = ",", header = TRUE)  #read in data
+# head(customer_data_c) str(customer_data_c)
 ```
 
 To answer the question of whether the type of advertising has an effect on revenue, we need to formulate a testable null hypothesis. In our case, the null hypothesis is stating that **the average level of sales is equal for all three advertising types**. In mathematical notation this implies:
@@ -2607,7 +2586,9 @@ The appropriate test for such a hypothesis is one-way ANOVA since we have a *met
 First, we need to recode relevant variables into factors and give them more descriptive level names: 
 
 ``` r
-customer_data_c$retargeting <- factor(customer_data_c$retargeting, levels = c(1,2,3), labels = c("no retargeting", "generic retargeting", "dynamic retargeting"))
+customer_data_c$retargeting <- factor(customer_data_c$retargeting,
+    levels = c(1, 2, 3), labels = c("no retargeting",
+        "generic retargeting", "dynamic retargeting"))
 ```
 
 Next we calculate summary statistics for the data and build an appropriate plot.
@@ -2639,22 +2620,22 @@ describeBy(customer_data_c$revenue, customer_data_c$retargeting)
 ```
 
 ``` r
-#Plot of means
-mean_data_2 <- summarySE(customer_data_c, measurevar = "revenue", groupvars = c("retargeting"))
-ggplot(mean_data_2, aes(x = retargeting, y = revenue)) + 
-  geom_bar(position = position_dodge(1), fill = "lavenderblush3", stat = "identity", width = 0.5) +
-  geom_errorbar(position = position_dodge(.9), width = .15, aes(ymin = revenue - ci, ymax = revenue + ci)) +
-  theme_minimal() +
-  labs(x = "", y = "Average revenue", title = "Average revenue by group")+
-  theme(plot.title = element_text(hjust = 0.5, color = "#666666")) 
+# Plot of means
+mean_data_2 <- summarySE(customer_data_c, measurevar = "revenue",
+    groupvars = c("retargeting"))
+ggplot(mean_data_2, aes(x = retargeting, y = revenue)) +
+    geom_bar(position = position_dodge(1), fill = "lavenderblush3",
+        stat = "identity", width = 0.5) + geom_errorbar(position = position_dodge(0.9),
+    width = 0.15, aes(ymin = revenue - ci, ymax = revenue +
+        ci)) + theme_minimal() + labs(x = "", y = "Average revenue",
+    title = "Average revenue by group") + theme(plot.title = element_text(hjust = 0.5,
+    color = "#666666"))
 
-#Boxplot
-ggplot(customer_data_c, aes(x = retargeting, y = revenue)) + 
-  geom_boxplot() +
-  geom_jitter(colour = "lavenderblush4", alpha = 0.1) +
-  theme_minimal() +
-  labs(x = "", y = "Revenue")+
-  theme(plot.title = element_text(hjust = 0.5, color = "#666666")) 
+# Boxplot
+ggplot(customer_data_c, aes(x = retargeting, y = revenue)) +
+    geom_boxplot() + geom_jitter(colour = "lavenderblush4",
+    alpha = 0.1) + theme_minimal() + labs(x = "", y = "Revenue") +
+    theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-29-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-29-2.png" width="50%" />
@@ -2669,7 +2650,7 @@ The first assumption is satisfied due to the fact that *the participants were ra
 
 
 ``` r
-table(customer_data_c$retargeting) #check number of observations by group
+table(customer_data_c$retargeting)  #check number of observations by group
 ```
 
 ```
@@ -2680,8 +2661,10 @@ table(customer_data_c$retargeting) #check number of observations by group
 Due to the fact that there are always *more than 30 observations in each group* we can rely on the central limit theorem to satisfy the distributional assumptions. You can still test this assumption using Shapiro-Wilk normality test and plots:
 
 ``` r
-#test for normal distribution of variables - no need because n > 30
-by(customer_data_c$revenue, customer_data_c$retargeting, shapiro.test)
+# test for normal distribution of variables - no
+# need because n > 30
+by(customer_data_c$revenue, customer_data_c$retargeting,
+    shapiro.test)
 ```
 
 ```
@@ -2710,15 +2693,24 @@ by(customer_data_c$revenue, customer_data_c$retargeting, shapiro.test)
 ```
 
 ``` r
-#shapiro.test(customer_data_c[customer_data_c$retargeting == "no retargeting", ]$revenue)
-#shapiro.test(customer_data_c[customer_data_c$retargeting == "generic retargeting", ]$revenue)
-#shapiro.test(customer_data_c[customer_data_c$retargeting == "dynamic retargeting", ]$revenue)
-qqnorm(customer_data_c[customer_data_c$retargeting == "no retargeting", ]$revenue) 
-qqline(customer_data_c[customer_data_c$retargeting == "no retargeting", ]$revenue)
-qqnorm(customer_data_c[customer_data_c$retargeting == "generic retargeting", ]$revenue) 
-qqline(customer_data_c[customer_data_c$retargeting == "generic retargeting", ]$revenue)
-qqnorm(customer_data_c[customer_data_c$retargeting == "dynamic retargeting", ]$revenue) 
-qqline(customer_data_c[customer_data_c$retargeting == "dynamic retargeting", ]$revenue)
+# shapiro.test(customer_data_c[customer_data_c$retargeting
+# == 'no retargeting', ]$revenue)
+# shapiro.test(customer_data_c[customer_data_c$retargeting
+# == 'generic retargeting', ]$revenue)
+# shapiro.test(customer_data_c[customer_data_c$retargeting
+# == 'dynamic retargeting', ]$revenue)
+qqnorm(customer_data_c[customer_data_c$retargeting ==
+    "no retargeting", ]$revenue)
+qqline(customer_data_c[customer_data_c$retargeting ==
+    "no retargeting", ]$revenue)
+qqnorm(customer_data_c[customer_data_c$retargeting ==
+    "generic retargeting", ]$revenue)
+qqline(customer_data_c[customer_data_c$retargeting ==
+    "generic retargeting", ]$revenue)
+qqnorm(customer_data_c[customer_data_c$retargeting ==
+    "dynamic retargeting", ]$revenue)
+qqline(customer_data_c[customer_data_c$retargeting ==
+    "dynamic retargeting", ]$revenue)
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-31-1.png" width="30%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-31-2.png" width="30%" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-31-3.png" width="30%" />
@@ -2740,7 +2732,7 @@ As we can see, we cannot reject the H0 of variances being equal, thus we can pro
 
 ``` r
 aov <- aov(revenue ~ retargeting, data = customer_data_c)
-summary(aov) #if levene's test would be significant, compute the Welch's F-ratio instead
+summary(aov)  #if levene's test would be significant, compute the Welch's F-ratio instead
 ```
 
 ```
@@ -2761,7 +2753,8 @@ lsr::etaSquared(aov)
 ```
 
 ``` r
-summary(aov)[[1]]$'Sum Sq'[1]/(summary(aov)[[1]]$'Sum Sq'[1] + summary(aov)[[1]]$'Sum Sq'[2]) #another way
+summary(aov)[[1]]$"Sum Sq"[1]/(summary(aov)[[1]]$"Sum Sq"[1] +
+    summary(aov)[[1]]$"Sum Sq"[2])  #another way
 ```
 
 ```
@@ -2818,8 +2811,8 @@ ggbetweenstats(
 Next we will briefly inspect the residuals of the ANOVA to see if the assumptions of the test really are justified.
 
 ``` r
-plot(aov,1)
-plot(aov,2)
+plot(aov, 1)
+plot(aov, 2)
 ```
 
 <img src="14-rmdIntro_files/figure-html/figures-side-1.png" width="50%" /><img src="14-rmdIntro_files/figure-html/figures-side-2.png" width="50%" />
@@ -2857,8 +2850,9 @@ Here we will conduct both the Bonferroni correction as well as Tukey's HSD test,
 
 
 ``` r
-#bonferroni
-pairwise.t.test(customer_data_c$revenue, customer_data_c$retargeting, data = customer_data_c, p.adjust.method = "bonferroni")
+# bonferroni
+pairwise.t.test(customer_data_c$revenue, customer_data_c$retargeting,
+    data = customer_data_c, p.adjust.method = "bonferroni")
 ```
 
 ```
@@ -2883,7 +2877,7 @@ generic retargeting vs. no retargeting
 Alternatively, you could have also chosen to use Tukey's HSD to conduct the post-hoc test:
 
 ``` r
-#tukey correction using the mult-comp package
+# tukey correction using the mult-comp package
 library(multcomp)
 tukeys <- glht(aov, linfct = mcp(retargeting = "Tukey"))
 summary(tukeys)
@@ -2904,9 +2898,9 @@ summary(tukeys)
 ## dynamic retargeting - no retargeting == 0        443.42      42.44  10.447
 ## dynamic retargeting - generic retargeting == 0   310.30      41.91   7.404
 ##                                                Pr(>|t|)    
-## generic retargeting - no retargeting == 0       0.00361 ** 
-## dynamic retargeting - no retargeting == 0       < 0.001 ***
-## dynamic retargeting - generic retargeting == 0  < 0.001 ***
+## generic retargeting - no retargeting == 0        0.0035 ** 
+## dynamic retargeting - no retargeting == 0       <0.0001 ***
+## dynamic retargeting - generic retargeting == 0  <0.0001 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## (Adjusted p values reported -- single-step method)
@@ -2928,19 +2922,19 @@ confint(tukeys)
 ## 
 ## Fit: aov(formula = revenue ~ retargeting, data = customer_data_c)
 ## 
-## Quantile = 2.3453
+## Quantile = 2.3454
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##                                                Estimate lwr      upr     
-## generic retargeting - no retargeting == 0      133.1202  36.5010 229.7394
-## dynamic retargeting - no retargeting == 0      443.4211 343.8809 542.9613
-## dynamic retargeting - generic retargeting == 0 310.3009 212.0074 408.5944
+## generic retargeting - no retargeting == 0      133.1202  36.4951 229.7453
+## dynamic retargeting - no retargeting == 0      443.4211 343.8748 542.9674
+## dynamic retargeting - generic retargeting == 0 310.3009 212.0014 408.6004
 ```
 
 ``` r
-par(mar = c(5,19,4,2)) #the mar parameter changes the margins around created plots. This is done so the labels on the side of the Tukey plot are visible (however, this was not expected)
+par(mar = c(5, 19, 4, 2))  #the mar parameter changes the margins around created plots. This is done so the labels on the side of the Tukey plot are visible (however, this was not expected)
 plot(tukeys)
 ```
 
@@ -2983,11 +2977,10 @@ describeBy(customer_data_c$nps, customer_data_c$retargeting)
 A good way to visualize ordinal data is through a boxplot.
 
 ``` r
-ggplot(data = customer_data_c, aes(x = retargeting, y = nps)) + 
-  geom_boxplot(color = 'lavenderblush4') + 
-  geom_jitter(colour="lavenderblush3", alpha = 0.1) +
-  theme_minimal() + 
-  labs(x = "", y = "Rank")
+ggplot(data = customer_data_c, aes(x = retargeting,
+    y = nps)) + geom_boxplot(color = "lavenderblush4") +
+    geom_jitter(colour = "lavenderblush3", alpha = 0.1) +
+    theme_minimal() + labs(x = "", y = "Rank")
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-41-1.png" width="528" style="display: block; margin: auto;" />
@@ -2998,7 +2991,7 @@ The only assumption that we require for this test is that the *dependent variabl
 
 
 ``` r
-kruskal.test(nps ~ retargeting, data = customer_data_c) 
+kruskal.test(nps ~ retargeting, data = customer_data_c)
 ```
 
 ```
@@ -3055,11 +3048,9 @@ It appears that the differences between median NPS for "no retargeting vs. gener
 
 
 ``` r
-customer_data_d <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_4.csv", 
-                          sep = ",", 
-                          header = TRUE) #read in data
-#head(customer_data_d)
-#str(customer_data_d)
+customer_data_d <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_4.csv",
+    sep = ",", header = TRUE)  #read in data
+# head(customer_data_d) str(customer_data_d)
 ```
 
 To find out if the new personalization feature has an effect on the conversion rate, we can use a test for proportions instead of a test for mean differences. To test for the equality of proportions (and therefore no difference between them) we can use a **chi-square ($\chi^2$) test**.
@@ -3071,8 +3062,10 @@ $$H_0: \pi_1 = \pi_2 \\ H_1: \pi_1 \neq \pi_2$$
 First, we will recode the relevant variables into factors and give them more descriptive level names:
 
 ``` r
-customer_data_d$conversion <- factor(customer_data_d$conversion, levels = c(0,1), labels = c("no", "yes"))
-customer_data_d$exp_group <- factor(customer_data_d$exp_group, levels = c(0,1), labels = c("control", "treatment"))
+customer_data_d$conversion <- factor(customer_data_d$conversion,
+    levels = c(0, 1), labels = c("no", "yes"))
+customer_data_d$exp_group <- factor(customer_data_d$exp_group,
+    levels = c(0, 1), labels = c("control", "treatment"))
 ```
 
 Don't forget to create a summary plot to get a feeling for the data.
@@ -3107,12 +3100,15 @@ We see that our conversion seems to be slightly better for the group with the pe
 
 
 ``` r
-n1 <- nrow(subset(customer_data_d, exp_group == "control")) #number of observations for control group
+n1 <- nrow(subset(customer_data_d, exp_group == "control"))  #number of observations for control group
 n2 <- nrow(subset(customer_data_d, exp_group == "treatment"))  #number of observations for treatment group
-n1_conv <- nrow(subset(customer_data_d, exp_group == "control" & conversion == "yes"))  #number of conversions for control group
-n2_conv <- nrow(subset(customer_data_d, exp_group == "treatment" & conversion == "yes"))  #number of conversions for treatment group
+n1_conv <- nrow(subset(customer_data_d, exp_group ==
+    "control" & conversion == "yes"))  #number of conversions for control group
+n2_conv <- nrow(subset(customer_data_d, exp_group ==
+    "treatment" & conversion == "yes"))  #number of conversions for treatment group
 
-prop.test(x = c(n1_conv, n2_conv), n = c(n1, n2), conf.level = 0.95, correct = FALSE) #without Yates correction
+prop.test(x = c(n1_conv, n2_conv), n = c(n1, n2), conf.level = 0.95,
+    correct = FALSE)  #without Yates correction
 ```
 
 ```
@@ -3132,8 +3128,8 @@ prop.test(x = c(n1_conv, n2_conv), n = c(n1, n2), conf.level = 0.95, correct = F
 
 
 ``` r
-table_1 <- table(customer_data_d$conversion,customer_data_d$exp_group)
-chisq.test(table_1, correct = FALSE) #without Yates correction
+table_1 <- table(customer_data_d$conversion, customer_data_d$exp_group)
+chisq.test(table_1, correct = FALSE)  #without Yates correction
 ```
 
 ```
@@ -3165,12 +3161,11 @@ Finally, we can use `ggbarstats()` for the test results visualization:
 ``` r
 library(ggstatsplot)
 library(ghibli)
-ggbarstats(data = customer_data_d, x = conversion, y = exp_group,
-           title = "Conversion by experiment group", xlab = "Group", correct = TRUE,
-           messages = FALSE, bar.proptest = FALSE,
-           bf.message = FALSE) + 
-  scale_fill_ghibli_d("PonyoLight") +
-  theme_minimal()
+ggbarstats(data = customer_data_d, x = conversion,
+    y = exp_group, title = "Conversion by experiment group",
+    xlab = "Group", correct = TRUE, messages = FALSE,
+    bar.proptest = FALSE, bf.message = FALSE) + scale_fill_ghibli_d("PonyoLight") +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-51-1.png" width="576" style="display: block; margin: auto;" />
@@ -3195,12 +3190,10 @@ library(lm.beta)
 options(scipen = 999)
 set.seed(123)
 
-sales_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/assignment4.dat", 
-                          sep = "\t", 
-                          header = TRUE) #read in data
+sales_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/assignment4.dat",
+    sep = "\t", header = TRUE)  #read in data
 sales_data$market_id <- 1:nrow(sales_data)
-#head(sales_data)
-#str(sales_data)
+# head(sales_data) str(sales_data)
 ```
 
 ### Q1
@@ -3246,7 +3239,8 @@ Inspecting the correlation matrix reveals that the sales variable is positively 
   
 
 ``` r
-rcorr(as.matrix(sales_data[,c("sales","tv_adspend","online_adspend","radio_adspend")]))
+rcorr(as.matrix(sales_data[, c("sales", "tv_adspend",
+    "online_adspend", "radio_adspend")]))
 ```
 
 ```
@@ -3271,22 +3265,28 @@ Since we have continuous variables, we use scatterplots to investigate the relat
 
 
 ``` r
-ggplot(sales_data, aes(x = tv_adspend, y = sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
-    fill = "gray", color = "lavenderblush3", alpha = 0.1) + theme_minimal()
+ggplot(sales_data, aes(x = tv_adspend, y = sales)) +
+    geom_point(shape = 1) + geom_smooth(method = "lm",
+    fill = "gray", color = "lavenderblush3", alpha = 0.1) +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-56-1.png" width="672" style="display: block; margin: auto;" />
 
 ``` r
-ggplot(sales_data, aes(x = online_adspend, y = sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
-    fill = "gray", color = "lavenderblush3", alpha = 0.1) + theme_minimal()
+ggplot(sales_data, aes(x = online_adspend, y = sales)) +
+    geom_point(shape = 1) + geom_smooth(method = "lm",
+    fill = "gray", color = "lavenderblush3", alpha = 0.1) +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-56-2.png" width="672" style="display: block; margin: auto;" />
 
 ``` r
-ggplot(sales_data, aes(x = radio_adspend, y = sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
-    fill = "gray", color = "lavenderblush3", alpha = 0.1) + theme_minimal()
+ggplot(sales_data, aes(x = radio_adspend, y = sales)) +
+    geom_point(shape = 1) + geom_smooth(method = "lm",
+    fill = "gray", color = "lavenderblush3", alpha = 0.1) +
+    theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-56-3.png" width="672" style="display: block; margin: auto;" />
@@ -3299,8 +3299,8 @@ Further steps include estimate of a multiple linear regression model in order to
                                                                                                                              The estimate the model, we will use the ```lm()``` function:
 
 ``` r
-linear_model <- lm(formula, data = sales_data) #estimate linear model
-#summary(linear_model)
+linear_model <- lm(formula, data = sales_data)  #estimate linear model
+# summary(linear_model)
 ```
                                                                                                                              **Before** we can inspect the results, we need to test if there might be potential problems with our model specification. 
 
@@ -3311,8 +3311,9 @@ To check for outliers, we extract the studentized residuals from our model and t
 
 ``` r
 sales_data$stud_resid <- rstudent(linear_model)
-plot(1:nrow(sales_data), sales_data$stud_resid, ylim = c(-3.3, 3.3))
-abline(h = c(-3, 3), col = "red", lty=2)
+plot(1:nrow(sales_data), sales_data$stud_resid, ylim = c(-3.3,
+    3.3))
+abline(h = c(-3, 3), col = "red", lty = 2)
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-58-1.png" width="672" style="display: block; margin: auto;" />
@@ -3325,8 +3326,8 @@ To test for influential observations, we use Cook's Distance. You may use the fo
 
 
 ``` r
-plot(linear_model,4)
-plot(linear_model,5)
+plot(linear_model, 4)
+plot(linear_model, 5)
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-59-1.png" width="50%" style="display: block; margin: auto;" /><img src="14-rmdIntro_files/figure-html/unnamed-chunk-59-2.png" width="50%" style="display: block; margin: auto;" />
@@ -3385,7 +3386,7 @@ Next, we test if the residuals are approximately normally distributed using the 
 
 
 ``` r
-plot(linear_model,2)
+plot(linear_model, 2)
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-64-1.png" width="672" style="display: block; margin: auto;" />
@@ -3415,7 +3416,8 @@ To test for linear dependence of the regressors, we first test the bivariate cor
 
 
 ``` r
-rcorr(as.matrix(sales_data[,c("tv_adspend","online_adspend","radio_adspend")]))
+rcorr(as.matrix(sales_data[, c("tv_adspend", "online_adspend",
+    "radio_adspend")]))
 ```
 
 ```
@@ -3553,12 +3555,10 @@ Regarding the model fit, the R<sup>2</sup> statistic tells us that approximately
 
 ``` r
 sales_data$yhat <- predict(linear_model)
-ggplot(sales_data, aes(yhat, sales)) + 
-  geom_point(size = 2, shape = 1) +
-  scale_x_continuous(name = "predicted values") +
-  scale_y_continuous(name = "observed values") +
-  geom_abline(intercept = 0, slope = 1) +
-  theme_minimal()
+ggplot(sales_data, aes(yhat, sales)) + geom_point(size = 2,
+    shape = 1) + scale_x_continuous(name = "predicted values") +
+    scale_y_continuous(name = "observed values") +
+    geom_abline(intercept = 0, slope = 1) + theme_minimal()
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-72-1.png" width="672" style="display: block; margin: auto;" />
@@ -3580,10 +3580,10 @@ The coefficients can be extracted from the summary of the linear model and used 
 
 
 ``` r
-summary(linear_model)$coefficients[1,1] + 
-  summary(linear_model)$coefficients[2,1]*150 +
-  summary(linear_model)$coefficients[3,1]*26 +
-  summary(linear_model)$coefficients[4,1]*15
+summary(linear_model)$coefficients[1, 1] + summary(linear_model)$coefficients[2,
+    1] * 150 + summary(linear_model)$coefficients[3,
+    1] * 26 + summary(linear_model)$coefficients[4,
+    1] * 15
 ```
 
 ```
@@ -3598,7 +3598,8 @@ Equivalently one can use the `predict` function
 
 
 ``` r
-predict(linear_model, data.frame(tv_adspend = 150,online_adspend =  26,radio_adspend  =  15))
+predict(linear_model, data.frame(tv_adspend = 150,
+    online_adspend = 26, radio_adspend = 15))
 ```
 
 ```
@@ -3611,7 +3612,7 @@ predict(linear_model, data.frame(tv_adspend = 150,online_adspend =  26,radio_ads
 
 ``` r
 music_data <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/music_data_group.csv",
-                        sep = ";", header = TRUE, dec = ",")
+    sep = ";", header = TRUE, dec = ",")
 music_data$genre <- as.factor(music_data$genre)
 music_data$label <- as.factor(music_data$label)
 ```
@@ -3625,7 +3626,8 @@ We should create the model using `glm()` and have a look at the summary:
 
 
 ``` r
-mult_logit_model <- glm(top10 ~ weeks_in_charts + song_age + label, family = binomial (link = 'logit'), data = music_data)
+mult_logit_model <- glm(top10 ~ weeks_in_charts + song_age +
+    label, family = binomial(link = "logit"), data = music_data)
 summary(mult_logit_model)
 ```
 
@@ -3679,18 +3681,21 @@ From the summary of the model we can see that weeks in charts, age of song, and 
 
 ``` r
 logisticPseudoR2s <- function(LogModel) {
-  dev <- LogModel$deviance
-  nullDev <- LogModel$null.deviance
-  modelN <- length(LogModel$fitted.values)
-  R.l <-  1 -  dev / nullDev
-  R.cs <- 1- exp(-(nullDev - dev) / modelN)
-  R.n <- R.cs / ( 1 - (exp(-(nullDev / modelN))))
-  cat("Pseudo R^2 for logistic regression\n")
-  cat("Hosmer and Lemeshow R^2  ", round(R.l, 3), "\n")
-  cat("Cox and Snell R^2        ", round(R.cs, 3), "\n")
-  cat("Nagelkerke R^2           ", round(R.n, 3),    "\n")
+    dev <- LogModel$deviance
+    nullDev <- LogModel$null.deviance
+    modelN <- length(LogModel$fitted.values)
+    R.l <- 1 - dev/nullDev
+    R.cs <- 1 - exp(-(nullDev - dev)/modelN)
+    R.n <- R.cs/(1 - (exp(-(nullDev/modelN))))
+    cat("Pseudo R^2 for logistic regression\n")
+    cat("Hosmer and Lemeshow R^2  ", round(R.l, 3),
+        "\n")
+    cat("Cox and Snell R^2        ", round(R.cs, 3),
+        "\n")
+    cat("Nagelkerke R^2           ", round(R.n, 3),
+        "\n")
 }
-#Inspect Pseudo R2s
+# Inspect Pseudo R2s
 logisticPseudoR2s(mult_logit_model)
 ```
 
@@ -3721,11 +3726,9 @@ We should visualize the relationship between IVs and DV:
 
 
 ``` r
-ggplot(music_data, aes(weeks_in_charts, top10)) +  
-  geom_point(shape = 1) +
-  geom_smooth(method = "glm",
-              method.args = list(family = "binomial"),
-              se = FALSE, color = "lavenderblush3") + theme_minimal()
+ggplot(music_data, aes(weeks_in_charts, top10)) + geom_point(shape = 1) +
+    geom_smooth(method = "glm", method.args = list(family = "binomial"),
+        se = FALSE, color = "lavenderblush3") + theme_minimal()
 ```
 
 ```
@@ -3735,11 +3738,9 @@ ggplot(music_data, aes(weeks_in_charts, top10)) +
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-81-1.png" width="672" />
 
 ``` r
-ggplot(music_data, aes(song_age, top10)) + 
-  geom_point(shape = 1) +
-  geom_smooth(method = "glm",
-              method.args = list(family = "binomial"),
-              se = FALSE, color = "lavenderblush3") + theme_minimal()
+ggplot(music_data, aes(song_age, top10)) + geom_point(shape = 1) +
+    geom_smooth(method = "glm", method.args = list(family = "binomial"),
+        se = FALSE, color = "lavenderblush3") + theme_minimal()
 ```
 
 ```
@@ -3753,22 +3754,21 @@ There are several ways of plotting the effect of factor variables. Let's do it a
 
 ``` r
 library(forcats)
-labels <- as.factor(c("Warner Music", "Sony Music", "Independent", "Universal Music"))
-top10_predictions <- data.frame(pred = 
-                                  predict(glm(top10 ~ label, data = music_data), 
-                                          data.frame(label = labels), type = "response"), 
-                                label = labels)
+labels <- as.factor(c("Warner Music", "Sony Music",
+    "Independent", "Universal Music"))
+top10_predictions <- data.frame(pred = predict(glm(top10 ~
+    label, data = music_data), data.frame(label = labels),
+    type = "response"), label = labels)
 top10_counts <- table(music_data$top10, music_data$label)
 top10_share <- prop.table(top10_counts, margin = 2)
 data.frame(top10_share) |>
-  dplyr::filter(Var1 == 1) |> 
-  left_join(top10_predictions, by = c("Var2" = "label")) |>
-  dplyr::rename(Share = Freq) |>
-  ggplot(aes(fct_reorder(Var2, Share), Share)) +
-  geom_bar(stat = 'identity', fill = "lavenderblush3") +
-  geom_point(aes(x = Var2, y = pred), color = 'red4') +
-  theme_minimal() +
-  theme(axis.title.x = element_blank())
+    dplyr::filter(Var1 == 1) |>
+    left_join(top10_predictions, by = c(Var2 = "label")) |>
+    dplyr::rename(Share = Freq) |>
+    ggplot(aes(fct_reorder(Var2, Share), Share)) +
+    geom_bar(stat = "identity", fill = "lavenderblush3") +
+    geom_point(aes(x = Var2, y = pred), color = "red4") +
+    theme_minimal() + theme(axis.title.x = element_blank())
 ```
 
 <img src="14-rmdIntro_files/figure-html/unnamed-chunk-82-1.png" width="672" />
@@ -3909,7 +3909,7 @@ exp(coef(final_model))
 ```
 
 ``` r
-#confint(final_model)
+# confint(final_model)
 ```
 
 The interpretation of odds ratios stays the same (and should be discussed in your solution).

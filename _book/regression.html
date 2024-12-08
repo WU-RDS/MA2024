@@ -1113,9 +1113,9 @@ Sales=\beta_0+\beta_1*adspend+\beta_2*airplay+\beta_3*starpower+\epsilon
 ## F-statistic:  129 on 3 and 196 DF,  p-value: &lt;0.0000000000000002</code></pre>
 <p>The interpretation of the coefficients is as follows:</p>
 <ul>
-<li>adspend (β<sub>1</sub>): when advertising expenditures increase by 1 Euro, sales will increase by 0.09 units</li>
-<li>airplay (β<sub>2</sub>): when radio airplay increases by 1 play per week, sales will increase by 3.37 units</li>
-<li>starpower (β<sub>3</sub>): when the number of previous albums increases by 1, sales will increase by 11.09 units</li>
+<li>adspend (β<sub>1</sub>): when advertising expenditures increase by 1 Euro, sales will increase by 0.085 units</li>
+<li>airplay (β<sub>2</sub>): when radio airplay increases by 1 play per week, sales will increase by 3.367 units</li>
+<li>starpower (β<sub>3</sub>): when the number of previous albums increases by 1, sales will increase by 11.086 units</li>
 </ul>
 <p>The associated t-values and p-values are also given in the output. You can see that the p-values are smaller than 0.05 for all three coefficients. Hence, all effects are “significant”. This means that if the null hypothesis was true (i.e., there was no effect between the variables and sales), the probability of observing associations of the estimated magnitudes (or larger) is very small (e.g., smaller than 0.05).</p>
 <p>Again, to get a better feeling for the range of values that the coefficients could take, it is helpful to compute <b>confidence intervals</b>.</p>
@@ -1125,7 +1125,7 @@ Sales=\beta_0+\beta_1*adspend+\beta_2*airplay+\beta_3*starpower+\epsilon
 ## adspend       0.071  0.099
 ## airplay       2.820  3.915
 ## starpower     6.279 15.894</code></pre>
-<p>What does this tell you? Recall that a 95% confidence interval is defined as a range of values such that with a 95% probability, the range will contain the true unknown value of the parameter. For example, for β<sub>3</sub>, the confidence interval is [6.28,15.89]. Thus, although we have computed a point estimate of 11.09 for the effect of starpower on sales based on our sample, the effect might actually just as well take any other value within this range, considering the sample size and the variability in our data. You could also visualize the output from your regression model including the confidence intervals using the <code>ggstatsplot</code> package as follows:</p>
+<p>What does this tell you? Recall that a 95% confidence interval is defined as a range of values such that with a 95% probability, the range will contain the true unknown value of the parameter. For example, for β<sub>3</sub>, the confidence interval is [6.2785522,15.8941182]. Thus, although we have computed a point estimate of 11.086 for the effect of starpower on sales based on our sample, the effect might actually just as well take any other value within this range, considering the sample size and the variability in our data. You could also visualize the output from your regression model including the confidence intervals using the <code>ggstatsplot</code> package as follows:</p>
 <div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb513-1"><a href="regression.html#cb513-1" tabindex="-1"></a><span class="fu">library</span>(ggstatsplot)</span>
 <span id="cb513-2"><a href="regression.html#cb513-2" tabindex="-1"></a><span class="fu">ggcoefstats</span>(<span class="at">x =</span> multiple_regression,</span>
 <span id="cb513-3"><a href="regression.html#cb513-3" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Sales predicted by adspend, airplay, &amp; starpower&quot;</span>)</span></code></pre></div>
@@ -1135,7 +1135,7 @@ Sales=\beta_0+\beta_1*adspend+\beta_2*airplay+\beta_3*starpower+\epsilon
 Figure 4.3: Confidence intervals for regression model
 </p>
 </div>
-<p>The output also tells us that 66.47% of the variation can be explained by our model. You may also visually inspect the fit of the model by plotting the predicted values against the observed values. We can extract the predicted values using the <code>predict()</code> function. So let’s create a new variable <code>yhat</code>, which contains those predicted values.</p>
+<p>The output also tells us that 66.4667687% of the variation can be explained by our model. You may also visually inspect the fit of the model by plotting the predicted values against the observed values. We can extract the predicted values using the <code>predict()</code> function. So let’s create a new variable <code>yhat</code>, which contains those predicted values.</p>
 <div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="regression.html#cb514-1" tabindex="-1"></a>regression<span class="sc">$</span>yhat <span class="ot">&lt;-</span> <span class="fu">predict</span>(simple_regression)</span></code></pre></div>
 <p>We can now use this variable to plot the predicted values against the observed values. In the following plot, the model fit would be perfect if all points would fall on the diagonal line. The larger the distance between the points and the line, the worse the model fit. In other words, if all points would fall exactly on the diagonal line, the model would perfectly predict the observed values.</p>
 <div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="regression.html#cb515-1" tabindex="-1"></a><span class="fu">ggplot</span>(regression,<span class="fu">aes</span>(yhat,sales)) <span class="sc">+</span>  </span>
@@ -7213,22 +7213,22 @@ F Statistic
 <ul class="task-list">
 <li><label><input type="checkbox" />It describes the difference in means of two variables</label></li>
 <li><label><input type="checkbox" />It describes the causal relation between two variables</label></li>
-<li><label><input type="checkbox" />It is the standardized covariance</label></li>
-<li><label><input type="checkbox" />It describes the degree to which the variation in one variable is related to the variation in another variable</label></li>
+<li><label><input type="checkbox" checked="" />It is the standardized covariance</label></li>
+<li><label><input type="checkbox" checked="" />It describes the degree to which the variation in one variable is related to the variation in another variable</label></li>
 <li><label><input type="checkbox" />None of the above</label></li>
 </ul>
 <p><strong>(LC7.2) Which line through a scatterplot produces the best fit in a linear regression model?</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox" />The line associated with the steepest slope parameter</label></li>
-<li><label><input type="checkbox" />The line that minimizes the sum of the squared deviations of the predicted values (regression line) from the observed values</label></li>
-<li><label><input type="checkbox" />The line that minimizes the sum of the squared residuals</label></li>
+<li><label><input type="checkbox" checked="" />The line that minimizes the sum of the squared deviations of the predicted values (regression line) from the observed values</label></li>
+<li><label><input type="checkbox" checked="" />The line that minimizes the sum of the squared residuals</label></li>
 <li><label><input type="checkbox" />The line that maximizes the sum of the squared residuals</label></li>
 <li><label><input type="checkbox" />None of the above</label></li>
 </ul>
 <p><strong>(LC7.3) What is the interpretation of the regression coefficient (<span class="math inline">\(\beta_1\)</span>=0.05) in a regression model where log(sales) (i.e., log-transformed units) is the dependent variable and log(advertising) (i.e., the log-transformed advertising expenditures in Euro) is the independent variable (i.e., <span class="math inline">\(log(sales)=13.4+0.05∗log(advertising)\)</span>)?</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox" />An increase in advertising by 1€ leads to an increase in sales by 0.5 units</label></li>
-<li><label><input type="checkbox" />A 1% increase in advertising leads to a 0.05% increase in sales</label></li>
+<li><label><input type="checkbox" checked="" />A 1% increase in advertising leads to a 0.05% increase in sales</label></li>
 <li><label><input type="checkbox" />A 1% increase in advertising leads to a 5% decrease in sales</label></li>
 <li><label><input type="checkbox" />An increase in advertising by 1€ leads to an increase in sales by 0.005 units</label></li>
 <li><label><input type="checkbox" />None of the above</label></li>
@@ -7237,29 +7237,29 @@ F Statistic
 <ul class="task-list">
 <li><label><input type="checkbox" />It is always larger than the regular <span class="math inline">\(R^{2}\)</span></label></li>
 <li><label><input type="checkbox" />It increases with every additional variable</label></li>
-<li><label><input type="checkbox" />It increases only with additional variables that add more explanatory power than pure chance</label></li>
-<li><label><input type="checkbox" />It contains a “penalty” for including unnecessary variables</label></li>
+<li><label><input type="checkbox" checked="" />It increases only with additional variables that add more explanatory power than pure chance</label></li>
+<li><label><input type="checkbox" checked="" />It contains a “penalty” for including unnecessary variables</label></li>
 <li><label><input type="checkbox" />None of the above</label></li>
 </ul>
 <p><strong>(LC7.5) What does the term overfitting refer to?</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox" />A regression model that has too many predictor variables</label></li>
 <li><label><input type="checkbox" />A regression model that fits to a specific data set so poorly, that it will not generalize to other samples</label></li>
-<li><label><input type="checkbox" />A regression model that fits to a specific data set so well, that it will only predict well within the sample but not generalize to other samples</label></li>
+<li><label><input type="checkbox" checked="" />A regression model that fits to a specific data set so well, that it will only predict well within the sample but not generalize to other samples</label></li>
 <li><label><input type="checkbox" />A regression model that fits to a specific data set so well, that it will generalize to other samples particularly well</label></li>
 <li><label><input type="checkbox" />None of the above</label></li>
 </ul>
 <p><strong>(LC7.6) What are assumptions of the linear regression model?</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox" />Endogeneity</label></li>
-<li><label><input type="checkbox" />Independent errors</label></li>
+<li><label><input type="checkbox" checked="" />Independent errors</label></li>
 <li><label><input type="checkbox" />Heteroscedasticity</label></li>
 <li><label><input type="checkbox" />Linear dependence of regressors</label></li>
 <li><label><input type="checkbox" />None of the above</label></li>
 </ul>
 <p><strong>(LC7.7) What does the problem of heteroscedasticity in a regression model refer to?</strong></p>
 <ul class="task-list">
-<li><label><input type="checkbox" />The variance of the error term is not constant</label></li>
+<li><label><input type="checkbox" checked="" />The variance of the error term is not constant</label></li>
 <li><label><input type="checkbox" />A strong linear relationship between the independent variables</label></li>
 <li><label><input type="checkbox" />The variance of the error term is constant</label></li>
 <li><label><input type="checkbox" />A correlation between the error term and the independent variables</label></li>
@@ -7268,8 +7268,8 @@ F Statistic
 <p><strong>(LC7.8) What are properties of the multiplicative regression model (i.e., log-log specification)?</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox" />Constant marginal returns</label></li>
-<li><label><input type="checkbox" />Decreasing marginal returns</label></li>
-<li><label><input type="checkbox" />Constant elasticity</label></li>
+<li><label><input type="checkbox" checked="" />Decreasing marginal returns</label></li>
+<li><label><input type="checkbox" checked="" />Constant elasticity</label></li>
 <li><label><input type="checkbox" />Increasing marginal returns</label></li>
 <li><label><input type="checkbox" />None of the above</label></li>
 </ul>
@@ -7277,12 +7277,12 @@ F Statistic
 <ul class="task-list">
 <li><label><input type="checkbox" />When the dependent variable is continuous</label></li>
 <li><label><input type="checkbox" />When the independent and dependent variables are binary</label></li>
-<li><label><input type="checkbox" />When the dependent variable is binary</label></li>
+<li><label><input type="checkbox" checked="" />When the dependent variable is binary</label></li>
 <li><label><input type="checkbox" />None of the above</label></li>
 </ul>
 <p><strong>(LC7.10) What is the correct way to implement a linear regression model in R? (x = independent variable, y = dependent variable)?</strong></p>
 <ul class="task-list">
-<li><label><input type="checkbox" /><code>lm(y~x, data=data)</code></label></li>
+<li><label><input type="checkbox" checked="" /><code>lm(y~x, data=data)</code></label></li>
 <li><label><input type="checkbox" /><code>lm(x~y + error, data=data)</code></label></li>
 <li><label><input type="checkbox" /><code>lm(x~y, data=data)</code></label></li>
 <li><label><input type="checkbox" /><code>lm(y~x + error, data=data)</code></label></li>
@@ -7291,50 +7291,50 @@ F Statistic
 <p><strong>(LC7.11) In a logistic regression model, where conversion (1 = conversion, 0 = no conversion) is the dependent variable, you obtain an estimate of your independent variable of 0.18. What is the correct interpretation of the coefficient associated with the independent variable?</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox" />If the independent variable increases by 1 unit, the probability of a conversion increases by 0.18%.</label></li>
-<li><label><input type="checkbox" />If the independent variable increases by 1 unit, a conversion becomes exp(0.18) = 1.19 times more likely.</label></li>
+<li><label><input type="checkbox" checked="" />If the independent variable increases by 1 unit, a conversion becomes exp(0.18) = 1.19 times more likely.</label></li>
 <li><label><input type="checkbox" />If the independent variable increases by 1%, the probability of conversion increases by 0.18%.</label></li>
 <li><label><input type="checkbox" />If the independent variable increases by 1%, the probability of conversion increases by 1.19%.</label></li>
 </ul>
 <p><strong>(LC7.12) What does the term elasticity (e.g., advertising elasticity) refer to?</strong></p>
 <ul class="task-list">
-<li><label><input type="checkbox" />It expresses the relative change in an outcome variable due to a relative change in the input variable.</label></li>
+<li><label><input type="checkbox" checked="" />It expresses the relative change in an outcome variable due to a relative change in the input variable.</label></li>
 <li><label><input type="checkbox" />It expresses the unit change in an outcome variable due to a change in the input variable by 1 unit.</label></li>
-<li><label><input type="checkbox" />In a regression model: If the independent variable increases by 1%, the outcome changes by <span class="math inline">\(\beta_1\)</span>%.</label></li>
+<li><label><input type="checkbox" checked="" />In a regression model: If the independent variable increases by 1%, the outcome changes by <span class="math inline">\(\beta_1\)</span>%.</label></li>
 <li><label><input type="checkbox" />In a regression model: If the independent variable increases by 1 unit, the outcome changes by <span class="math inline">\(\beta_1\)</span> units.</label></li>
 </ul>
 <p><strong>(LC7.13) What does the additive assumption of the linear regression model refer to?</strong></p>
 <ul class="task-list">
-<li><label><input type="checkbox" />The effect of an independent variable on the dependent variable is independent of the values of the other independent variables included in the model.</label></li>
+<li><label><input type="checkbox" checked="" />The effect of an independent variable on the dependent variable is independent of the values of the other independent variables included in the model.</label></li>
 <li><label><input type="checkbox" />The effect of an independent variable on the dependent variable is dependent of the values of the other independent variables included in the model.</label></li>
 <li><label><input type="checkbox" />None of the above.</label></li>
 </ul>
 <p><strong>(LC7.14) What types of variables can we consider as independent variables in regression models?</strong></p>
 <ul class="task-list">
-<li><label><input type="checkbox" />Interval scale</label></li>
-<li><label><input type="checkbox" />Ratio scale</label></li>
-<li><label><input type="checkbox" />Ordinal scale</label></li>
-<li><label><input type="checkbox" />Nominal scale</label></li>
+<li><label><input type="checkbox" checked="" />Interval scale</label></li>
+<li><label><input type="checkbox" checked="" />Ratio scale</label></li>
+<li><label><input type="checkbox" checked="" />Ordinal scale</label></li>
+<li><label><input type="checkbox" checked="" />Nominal scale</label></li>
 </ul>
 <p><strong>(LV7.15) What is the difference between a confounder and a mediator?</strong></p>
 <ul class="task-list">
-<li><label><input type="checkbox" />A confounder is a variable that influences both the dependent and independent variable, while a mediator is a variable that is influenced by the independent variable and influences the dependent variable.</label></li>
+<li><label><input type="checkbox" checked="" />A confounder is a variable that influences both the dependent and independent variable, while a mediator is a variable that is influenced by the independent variable and influences the dependent variable.</label></li>
 <li><label><input type="checkbox" />A confounder can be omitted from the model but a mediator cannot.</label></li>
 <li><label><input type="checkbox" />A mediator can only be omitted if we conduct a randomized experiment.</label></li>
-<li><label><input type="checkbox" />A confounder can only be omitted if we conduct a randomized experiment.</label></li>
+<li><label><input type="checkbox" checked="" />A confounder can only be omitted if we conduct a randomized experiment.</label></li>
 </ul>
 <p><strong>(LV7.16) Assume a simplified world in which a firms hiring decisions are based only on technical skills and personal skills (there are no other connections). Which of the following statements are correct if we are interested in the effect personal skills have on technical skills?</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox" />Technical skills and personal skills are correlated.</label></li>
 <li><label><input type="checkbox" />We have to add information about hiring to the model since that is a confounder.</label></li>
-<li><label><input type="checkbox" />A simple model regressing technical skills on personal skills will give us the correct effect (without any control variables).</label></li>
-<li><label><input type="checkbox" />We expect the coefficient associated with technical skill to be significant if and only if we also add hiring decisions to the model (assume model assumptions are fulfilled and error variance is sufficiently small).</label></li>
+<li><label><input type="checkbox" checked="" />A simple model regressing technical skills on personal skills will give us the correct effect (without any control variables).</label></li>
+<li><label><input type="checkbox" checked="" />We expect the coefficient associated with technical skill to be significant if and only if we also add hiring decisions to the model (assume model assumptions are fulfilled and error variance is sufficiently small).</label></li>
 </ul>
 <p><strong>(LV7.17) You observe that a particular marketing campaign in your company is very effective when shown to women but has no effect on men. In that case gender is a…</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox" />Confounder</label></li>
 <li><label><input type="checkbox" />Mediator</label></li>
 <li><label><input type="checkbox" />Collider</label></li>
-<li><label><input type="checkbox" />Moderator</label></li>
+<li><label><input type="checkbox" checked="" />Moderator</label></li>
 </ul>
 <p><strong>(LV7.18) You observe that more creative ads lead to higher consumer engagement which in turn leads to increased purchase intention. In addition the ads also have a direct effect on purchase intention.</strong></p>
 <div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-b8541aa25e7e882286cf" style="width:576px;height:240px;"></div>
@@ -7342,7 +7342,7 @@ F Statistic
 <p><strong>Unfortunately, the data measuring consumer engagement was lost when a laptop was stolen from your office. Which effects can you correctly identify using the remaining data (whether the more creative ad was shown and purchase intention)?</strong></p>
 <ul class="task-list">
 <li><label><input type="checkbox" />The direct effect of creative ads on purchase intention.</label></li>
-<li><label><input type="checkbox" />The total effect of creative ads on purchase intention.</label></li>
+<li><label><input type="checkbox" checked="" />The total effect of creative ads on purchase intention.</label></li>
 <li><label><input type="checkbox" />The estimated effect is biased.</label></li>
 <li><label><input type="checkbox" />The direct effect of creative ads on purchase intention and the total effect of creative ads on purchase intention.</label></li>
 </ul>

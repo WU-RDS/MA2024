@@ -109,11 +109,11 @@ Let's load and investigate the data first:
 library(psych)
 library(ggplot2)
 rm(music_sales)
-music_sales <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/music_experiment.dat", 
-                          sep = "\t", 
-                          header = TRUE) #read in data
-music_sales$group <- factor(music_sales$group, levels = c(1:2), labels = c("low_price", "high_price")) #convert grouping variable to factor
-str(music_sales) #inspect data
+music_sales <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/music_experiment.dat",
+    sep = "\t", header = TRUE)  #read in data
+music_sales$group <- factor(music_sales$group, levels = c(1:2),
+    labels = c("low_price", "high_price"))  #convert grouping variable to factor
+str(music_sales)  #inspect data
 ```
 
 ```
@@ -124,7 +124,7 @@ str(music_sales) #inspect data
 ```
 
 ``` r
-head(music_sales) #inspect data
+head(music_sales)  #inspect data
 ```
 
 <div data-pagedtable="false">
@@ -137,7 +137,7 @@ Inspect descriptives (overall and by group).
 
 
 ``` r
-psych::describe(music_sales$unit_sales) #overall descriptives
+psych::describe(music_sales$unit_sales)  #overall descriptives
 ```
 
 ```
@@ -146,7 +146,7 @@ psych::describe(music_sales$unit_sales) #overall descriptives
 ```
 
 ``` r
-describeBy(music_sales$unit_sales, music_sales$group) #descriptives by group
+describeBy(music_sales$unit_sales, music_sales$group)  #descriptives by group
 ```
 
 ```
@@ -182,7 +182,7 @@ Let's assume that one of the parametric assumptions has been violated and we nee
 
 
 ``` r
-wilcox.test(unit_sales ~ group, data = music_sales) #Mann-Whitney U Test
+wilcox.test(unit_sales ~ group, data = music_sales)  #Mann-Whitney U Test
 ```
 
 ```
@@ -233,10 +233,9 @@ Let's load and investigate the data first:
 
 ``` r
 rm(music_sales_dep)
-music_sales_dep <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/music_experiment_dependent.dat", 
-                              sep = "\t", 
-                              header = TRUE) #read in data
-str(music_sales_dep) #inspect data
+music_sales_dep <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/music_experiment_dependent.dat",
+    sep = "\t", header = TRUE)  #read in data
+str(music_sales_dep)  #inspect data
 ```
 
 ```
@@ -247,7 +246,7 @@ str(music_sales_dep) #inspect data
 ```
 
 ``` r
-head(music_sales_dep) #inspect data
+head(music_sales_dep)  #inspect data
 ```
 
 <div data-pagedtable="false">
@@ -290,7 +289,8 @@ Again, let's assume that one of the parametric assumptions has been violated and
 
 
 ``` r
-wilcox.test(music_sales_dep$unit_sales_low_price, music_sales_dep$unit_sales_high_price, paired = TRUE) #Wilcoxon signed-rank test
+wilcox.test(music_sales_dep$unit_sales_low_price, music_sales_dep$unit_sales_high_price,
+    paired = TRUE)  #Wilcoxon signed-rank test
 ```
 
 ```
@@ -309,18 +309,11 @@ Again, you could also use the `ggstatsplot` package to obtain the result of the 
 
 ``` r
 library(ggstatsplot)
-ggwithinstats(
-  data = music_sales_dep_long,
-  x = group,
-  y = sales,
-  path.point = FALSE,
-  type = "nonparametric",
-  title = "Mean sales for different treatments",
-  messages = FALSE,
-  bf.message = FALSE,
-  mean.ci = TRUE,
-  mean.plotting = F,
-  effsize.type = "r" # display effect size (Cohen's d in output)
+ggwithinstats(data = music_sales_dep_long, x = group,
+    y = sales, path.point = FALSE, type = "nonparametric",
+    title = "Mean sales for different treatments",
+    messages = FALSE, bf.message = FALSE, mean.ci = TRUE,
+    mean.plotting = F, effsize.type = "r"  # display effect size (Cohen's d in output)
 )
 ```
 
@@ -337,10 +330,10 @@ As an example, let's use a data set containing data from an experiment at an onl
 
 
 ``` r
-online_store_promo <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/online_store_promo.dat", 
-                                 sep = "\t", 
-                                 header = TRUE) #read in data
-online_store_promo$Promotion <- factor(online_store_promo$Promotion, levels = c(1:3), labels = c("high", "medium","low")) #convert grouping variable to factor
+online_store_promo <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/online_store_promo.dat",
+    sep = "\t", header = TRUE)  #read in data
+online_store_promo$Promotion <- factor(online_store_promo$Promotion,
+    levels = c(1:3), labels = c("high", "medium", "low"))  #convert grouping variable to factor
 head(online_store_promo)
 ```
 
@@ -372,7 +365,7 @@ To test if there is a difference in medians between the groups, we can carry out
 
 
 ``` r
-kruskal.test(Sales ~ Promotion, data = online_store_promo) 
+kruskal.test(Sales ~ Promotion, data = online_store_promo)
 ```
 
 ```
@@ -391,7 +384,8 @@ To test for differences between groups, we can, for example, apply post-hoc test
 ``` r
 library(PMCMR)
 library(PMCMRplus)
-kwAllPairsNemenyiTest(x = online_store_promo$Sales, g = online_store_promo$Promotion, dist = "Tukey")
+kwAllPairsNemenyiTest(x = online_store_promo$Sales,
+    g = online_store_promo$Promotion, dist = "Tukey")
 ```
 
 ```
@@ -403,7 +397,8 @@ The results reveal that there is a significant difference between the "low" and 
 
 
 ``` r
-pairwise.t.test(online_store_promo$Sales, online_store_promo$Promotion, data = online_store_promo, p.adjust.method = "bonferroni")
+pairwise.t.test(online_store_promo$Sales, online_store_promo$Promotion,
+    data = online_store_promo, p.adjust.method = "bonferroni")
 ```
 
 ```
@@ -464,18 +459,20 @@ As always, we load the data first:
 
 
 ``` r
-call_center <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/call_center.dat", 
-                          sep = "\t", 
-                          header = TRUE) #read in data
-call_center$conversion <- factor(call_center$conversion , levels = c(0:1), labels = c("no", "yes")) #convert to factor
-call_center$agent <- factor(call_center$agent , levels = c(0:1), labels = c("agent_1", "agent_2")) #convert to factor
+call_center <- read.table("https://raw.githubusercontent.com/IMSMWU/Teaching/master/MRDA2017/call_center.dat",
+    sep = "\t", header = TRUE)  #read in data
+call_center$conversion <- factor(call_center$conversion,
+    levels = c(0:1), labels = c("no", "yes"))  #convert to factor
+call_center$agent <- factor(call_center$agent, levels = c(0:1),
+    labels = c("agent_1", "agent_2"))  #convert to factor
 ```
 
 Next, we create a table to check the relative frequencies:
 
 
 ``` r
-rel_freq_table <- as.data.frame(prop.table(table(call_center), 2)) #conditional relative frequencies
+rel_freq_table <- as.data.frame(prop.table(table(call_center),
+    2))  #conditional relative frequencies
 rel_freq_table
 ```
 
@@ -513,14 +510,16 @@ where $\sqrt{p(1-p)}$ is the equivalent to the standard deviation in the formula
 
 
 ``` r
-n1 <- nrow(subset(call_center,agent=="agent_1")) #number of observations for agent 1
-n2 <- nrow(subset(call_center,agent=="agent_2")) #number of observations for agent 1
-n1_conv <- nrow(subset(call_center,agent=="agent_1" & conversion=="yes")) #number of conversions for agent 1
-n2_conv <- nrow(subset(call_center,agent=="agent_2" & conversion=="yes")) #number of conversions for agent 2
+n1 <- nrow(subset(call_center, agent == "agent_1"))  #number of observations for agent 1
+n2 <- nrow(subset(call_center, agent == "agent_2"))  #number of observations for agent 1
+n1_conv <- nrow(subset(call_center, agent == "agent_1" &
+    conversion == "yes"))  #number of conversions for agent 1
+n2_conv <- nrow(subset(call_center, agent == "agent_2" &
+    conversion == "yes"))  #number of conversions for agent 2
 p1 <- n1_conv/n1  #proportion of conversions for agent 1
 p2 <- n2_conv/n2  #proportion of conversions for agent 2
 
-error1 <- qnorm(0.975)*sqrt((p1*(1-p1))/n1)
+error1 <- qnorm(0.975) * sqrt((p1 * (1 - p1))/n1)
 ci_lower1 <- p1 - error1
 ci_upper1 <- p1 + error1
 ci_lower1
@@ -539,7 +538,7 @@ ci_upper1
 ```
 
 ``` r
-error2 <- qnorm(0.975)*sqrt((p2*(1-p2))/n2)
+error2 <- qnorm(0.975) * sqrt((p2 * (1 - p2))/n2)
 ci_lower2 <- p2 - error2
 ci_upper2 <- p2 + error2
 ci_lower2
@@ -572,8 +571,10 @@ If the confidence interval includes zero, then the data does not suggest a diffe
 
 
 ``` r
-ci_lower <- p1 - p2 - qnorm(0.975)*sqrt(p1*(1 - p1)/n1 + p2*(1 - p2)/n2) #95% CI lower bound
-ci_upper <- p1 - p2 + qnorm(0.975)*sqrt(p1*(1 - p1)/n1 + p2*(1 - p2)/n2) #95% CI upper bound
+ci_lower <- p1 - p2 - qnorm(0.975) * sqrt(p1 * (1 -
+    p1)/n1 + p2 * (1 - p2)/n2)  #95% CI lower bound
+ci_upper <- p1 - p2 + qnorm(0.975) * sqrt(p1 * (1 -
+    p1)/n1 + p2 * (1 - p2)/n2)  #95% CI upper bound
 ci_lower
 ```
 
@@ -634,10 +635,10 @@ The observed cell frequencies can easily be seen from the contingency table:
 
 ``` r
 contigency_table <- table(call_center)
-obs_cell1 <- contigency_table[1,1]
-obs_cell2 <- contigency_table[1,2]
-obs_cell3 <- contigency_table[2,1]
-obs_cell4 <- contigency_table[2,2]
+obs_cell1 <- contigency_table[1, 1]
+obs_cell2 <- contigency_table[1, 2]
+obs_cell3 <- contigency_table[2, 1]
+obs_cell4 <- contigency_table[2, 2]
 ```
 
 The expected cell frequencies can be calculated as follows:
@@ -651,17 +652,27 @@ where $n_r$ are the total observed frequencies per row, $n_c$ are the total obse
 
 ``` r
 n <- nrow(call_center)
-exp_cell1 <- (nrow(call_center[call_center$agent=="agent_1",])*nrow(call_center[call_center$conversion=="no",]))/n
-exp_cell2 <- (nrow(call_center[call_center$agent=="agent_1",])*nrow(call_center[call_center$conversion=="yes",]))/n
-exp_cell3 <- (nrow(call_center[call_center$agent=="agent_2",])*nrow(call_center[call_center$conversion=="no",]))/n
-exp_cell4 <- (nrow(call_center[call_center$agent=="agent_2",])*nrow(call_center[call_center$conversion=="yes",]))/n
+exp_cell1 <- (nrow(call_center[call_center$agent ==
+    "agent_1", ]) * nrow(call_center[call_center$conversion ==
+    "no", ]))/n
+exp_cell2 <- (nrow(call_center[call_center$agent ==
+    "agent_1", ]) * nrow(call_center[call_center$conversion ==
+    "yes", ]))/n
+exp_cell3 <- (nrow(call_center[call_center$agent ==
+    "agent_2", ]) * nrow(call_center[call_center$conversion ==
+    "no", ]))/n
+exp_cell4 <- (nrow(call_center[call_center$agent ==
+    "agent_2", ]) * nrow(call_center[call_center$conversion ==
+    "yes", ]))/n
 ```
 
 To sum up, these are the expected cell frequencies
 
 
 ``` r
-data.frame(conversion_no = rbind(exp_cell1,exp_cell3),conversion_yes = rbind(exp_cell2,exp_cell4), row.names = c("agent_1","agent_2")) 
+data.frame(conversion_no = rbind(exp_cell1, exp_cell3),
+    conversion_yes = rbind(exp_cell2, exp_cell4), row.names = c("agent_1",
+        "agent_2"))
 ```
 
 ```
@@ -674,7 +685,9 @@ data.frame(conversion_no = rbind(exp_cell1,exp_cell3),conversion_yes = rbind(exp
 
 
 ``` r
-data.frame(conversion_no = rbind(obs_cell1,obs_cell2),conversion_yes = rbind(obs_cell3,obs_cell4), row.names = c("agent_1","agent_2")) 
+data.frame(conversion_no = rbind(obs_cell1, obs_cell2),
+    conversion_yes = rbind(obs_cell3, obs_cell4), row.names = c("agent_1",
+        "agent_2"))
 ```
 
 ```
@@ -687,10 +700,9 @@ To obtain the test statistic, we simply plug the values into the formula:
 
 
 ``` r
-chisq_cal <-  sum(((obs_cell1 - exp_cell1)^2/exp_cell1),
-                  ((obs_cell2 - exp_cell2)^2/exp_cell2),
-                  ((obs_cell3 - exp_cell3)^2/exp_cell3),
-                  ((obs_cell4 - exp_cell4)^2/exp_cell4))
+chisq_cal <- sum(((obs_cell1 - exp_cell1)^2/exp_cell1),
+    ((obs_cell2 - exp_cell2)^2/exp_cell2), ((obs_cell3 -
+        exp_cell3)^2/exp_cell3), ((obs_cell4 - exp_cell4)^2/exp_cell4))
 chisq_cal
 ```
 
@@ -715,7 +727,8 @@ where $r$ is the number of rows and $c$ is the number of columns in the continge
 
 
 ``` r
-df <-  (nrow(contigency_table) - 1) * (ncol(contigency_table) -1)
+df <- (nrow(contigency_table) - 1) * (ncol(contigency_table) -
+    1)
 df
 ```
 
@@ -752,7 +765,7 @@ We could also compute the p-value using the ```pchisq()``` function, which tells
 
 
 ``` r
-p_val <- 1-pchisq(chisq_cal,df)
+p_val <- 1 - pchisq(chisq_cal, df)
 p_val
 ```
 
@@ -861,17 +874,10 @@ As usual, you could also use the `ggstatsplot` package to obtain the result of t
 
 ``` r
 library(ggstatsplot)
-ggbarstats(
-  data = call_center,
-  x = conversion,
-  y = agent,
-  title = "Conversion by agent",
-  xlab = "Agent",
-  palette = "Blues",
-  messages = FALSE,
-  bar.proptest = FALSE,
-  bf.message = FALSE
-)
+ggbarstats(data = call_center, x = conversion, y = agent,
+    title = "Conversion by agent", xlab = "Agent",
+    palette = "Blues", messages = FALSE, bar.proptest = FALSE,
+    bf.message = FALSE)
 ```
 
 <div class="figure" style="text-align: center">
@@ -908,7 +914,8 @@ To **calculate the required sample size** when comparing proportions, the ```pow
 
 
 ``` r
-power.prop.test(p1=0.02,p2=0.025,sig.level=0.05,power=0.8)
+power.prop.test(p1 = 0.02, p2 = 0.025, sig.level = 0.05,
+    power = 0.8)
 ```
 
 ```
@@ -932,7 +939,7 @@ The output tells us that we need 1.3809\times 10^{4} observations per group to d
 
 **(LC6.1) The Null Hypothesis ($H_0$) is a statement of:**
 
-- [ ] The status-quo/no effect
+- [x] The status-quo/no effect
 - [ ] The desired status
 - [ ] The expected status
 - [ ] None of the above 
@@ -940,22 +947,22 @@ The output tells us that we need 1.3809\times 10^{4} observations per group to d
 **(LC6.2) Which statements about the Null Hypothesis ($H_0$) are TRUE?**
 
 - [ ] In scientific research, the goal is usually to confirm it
-- [ ] In scientific research, the goal is usually to reject it
+- [x] In scientific research, the goal is usually to reject it
 - [ ] It can be confirmed with one test
 - [ ] None of the above 
 
 **(LC6.3) The t-distribution:**
 
-- [ ] Has more probability mass in its tails compared to the normal distribution and therefore corrects for small samples
-- [ ] Approaches the normal distribution as n increases
-- [ ] Is the distribution of the t-statistic
+- [x] Has more probability mass in its tails compared to the normal distribution and therefore corrects for small samples
+- [x] Approaches the normal distribution as n increases
+- [x] Is the distribution of the t-statistic
 - [ ] Has less probability mass in its tails compared to the normal distribution and therefore corrects for small samples
 - [ ] None of the above 
 
 **(LC6.4) Type I vs. Type II Errors: Which of the following statements is TRUE?**
 
-- [ ] Type II Error: We believe there is no effect, when in fact there is
-- [ ] Type I Error: We believe there is an effect, when in fact there isn’t
+- [x] Type II Error: We believe there is no effect, when in fact there is
+- [x] Type I Error: We believe there is an effect, when in fact there isn’t
 - [ ] Type I Error: We believe there is no effect, when in fact there is
 - [ ] Type II Error: We believe there is an effect, when in fact there isn’t
 - [ ] None of the above 
@@ -963,16 +970,16 @@ The output tells us that we need 1.3809\times 10^{4} observations per group to d
 **(LC6.5) When planning an experiment, which of the following information would you need to compute the required sample size?**
 
 - [ ] The p-value (p)
-- [ ] The significance level (alpha)
-- [ ] The effect size (d)
+- [x] The significance level (alpha)
+- [x] The effect size (d)
 - [ ] The critical value of the test statistic (t)
 - [ ] None of the above 
 
 **(LC6.6) In which setting would you reject the null hypothesis when conducting a statistical test?**
 
-- [ ] When the absolute value of the calculated test-statistic (e.g., t-value) exceeds the critical value of the test statistic at your specified significance level (e.g., 0.05)
-- [ ] When the p-value is smaller than your specified significance level (e.g., 0.05)
-- [ ] When the confidence interval associated with the test does not contain zero
+- [x] When the absolute value of the calculated test-statistic (e.g., t-value) exceeds the critical value of the test statistic at your specified significance level (e.g., 0.05)
+- [x] When the p-value is smaller than your specified significance level (e.g., 0.05)
+- [x] When the confidence interval associated with the test does not contain zero
 - [ ] When the test-statistic (e.g., t-value) is lower than the critical value of the test statistic at your specified significance level (e.g., 0.05)
 - [ ] None of the above 
 
@@ -981,24 +988,24 @@ The output tells us that we need 1.3809\times 10^{4} observations per group to d
 - [ ] The lower the absolute value of the test statistic, the lower the p-value
 - [ ] The higher the absolute value of the test statistic, the higher the p-value
 - [ ] There is no connection between the test statistic and the p-value
-- [ ] None of the above 
+- [x] None of the above 
 
 **(LC6.8) What does a significant test result tell you?**
 
 - [ ] The importance of an effect
 - [ ] That the null hypothesis is false
 - [ ] That the null hypothesis is true
-- [ ] None of the above 
+- [x] None of the above 
 
 **(LC6.9) In an experiment in which you compare the means between two groups, you should collect data until your test shows a significant results. True or false?**
 
 - [ ] True
-- [ ] False
+- [x] False
 
 **(LC6.10) If you have data from an within-subjects experimental design, you should use the independent-means t-test. True or false?**
 
 - [ ] True
-- [ ] False
+- [x] False
  
 -------------------------------------------------------
 **Questions for chapters 6.4 and following from here**
@@ -1006,7 +1013,7 @@ The output tells us that we need 1.3809\times 10^{4} observations per group to d
 
 **(LC6.11) When should you use an ANOVA rather than a t-test?**   
 
-- [ ] To compare the means for more than two populations
+- [x] To compare the means for more than two populations
 - [ ] To compare the means of two groups
 - [ ] To adjust the variance of different sets
 - [ ] To test for causality
@@ -1016,7 +1023,7 @@ The output tells us that we need 1.3809\times 10^{4} observations per group to d
 
 - [ ] H0:μ1≠μ2≠μ3
 - [ ] H1:μ1=μ2=μ3
-- [ ] H0:μ1=μ2=μ3
+- [x] H0:μ1=μ2=μ3
 - [ ] H0:μ1≠μ2=μ3
 - [ ] None of the above 
 
@@ -1025,28 +1032,28 @@ The output tells us that we need 1.3809\times 10^{4} observations per group to d
 - [ ] Because the parametric assumptions of the t-test are not met
 - [ ] Because of deflated Type III Error rates
 - [ ] Due to the family-wise error rate the Type II Error is inflated
-- [ ] Because the Type I Error rate (alpha) wouldn't be 0.05
+- [x] Because the Type I Error rate (alpha) wouldn't be 0.05
 - [ ] None of the above 
 
 **(LC6.14) Which assumptions have to be satisfied to be able to use ANOVA on data from a between-subject design with three groups?**   
 
 - [ ] Same mean for all groups
-- [ ] Normal distribution of data
-- [ ] Homogeneity of variances
-- [ ] Independence of observation
+- [x] Normal distribution of data
+- [x] Homogeneity of variances
+- [x] Independence of observation
 - [ ] None of the above 
 
 **(LC6.15) What procedures are designed to correct of family-wise error rate in ANOVA?**   
 
-- [ ] Bonferroni correction
-- [ ] Tukey’s HSD
+- [x] Bonferroni correction
+- [x] Tukey’s HSD
 - [ ] t-test
-- [ ] Post-hoc tests
+- [x] Post-hoc tests
 - [ ] None of the above 
 
 **(LC6.16) Which of the following are examples for non-parametric tests?**   
 
-- [ ] Chi-Squared test
+- [x] Chi-Squared test
 - [ ] ANOVA
 - [ ] Kruskal-Wilcoxon test
 - [ ] T-test
@@ -1054,32 +1061,32 @@ The output tells us that we need 1.3809\times 10^{4} observations per group to d
 
 **(LC6.17) When should you use non-parametric tests?**   
 
-- [ ] When the assumptions of parametric tests are not met (e.g., normally distributed sampling distribution)
-- [ ] You have a very small sample size
-- [ ] When your dependent variable is measured on an ordinal scale
-- [ ] When your data is better represented by the median
+- [x] When the assumptions of parametric tests are not met (e.g., normally distributed sampling distribution)
+- [x] You have a very small sample size
+- [x] When your dependent variable is measured on an ordinal scale
+- [x] When your data is better represented by the median
 - [ ] None of the above 
 
 **(LC6.18) When should you use a Wilcoxon Rank Sum Test (= Mann-Whitney U Test)?**   
 
-- [ ] When the assumptions of the t-test have been violated
+- [x] When the assumptions of the t-test have been violated
 - [ ] The variances are not significantly different between groups
-- [ ] As a non-parametric alternative to the independent-means t-test
+- [x] As a non-parametric alternative to the independent-means t-test
 - [ ] When the assumptions of the ANOVA have been violated
 - [ ] None of the above 
 
 **(LC6.19) What does a Chi squared test do?**   
 
-- [ ] Tests the statistical significance of the observed association in a cross-tabulation
+- [x] Tests the statistical significance of the observed association in a cross-tabulation
 - [ ] Tests whether group A affects group B
-- [ ] Produces a test statistic that is Chi Squared distributed
-- [ ] Tests for the association between two or more categorical variables
+- [x] Produces a test statistic that is Chi Squared distributed
+- [x] Tests for the association between two or more categorical variables
 - [ ] None of the above 
 
 **(LC6.20) Which R-function would be suitable if you wanted to perform a test with ranked (ordinal) data in a two-group between-subject design?**   
 
 - [ ] `kruskal.test(x, ...)`
-- [ ] `wilcox.test(x, ...)`
+- [x] `wilcox.test(x, ...)`
 - [ ] `aov(formula, data = ,...)`
 - [ ] `t.test(x, ...)`
 - [ ] None of the above 
