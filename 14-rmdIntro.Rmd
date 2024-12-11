@@ -258,7 +258,7 @@ kable(mathy.df, escape=FALSE) %>%
 
 For your convenience the following code will load the required `tidyverse` library as well as the data. Make sure to convert each of the variables you use for you analysis to the appropriate data types (e.g., `Date`, `factor`).
 
-```{r load_data_a1, message=FALSE, warning=FALSE}
+```{r  _a1, message=FALSE, warning=FALSE}
 library(tidyverse)
 music_data <- read.csv2("https://raw.githubusercontent.com/WU-RDS/MA2024/main/data/music_data_fin.csv")
 str(music_data)
@@ -457,7 +457,7 @@ Use R and appropriate methods to answer the following questions:
 
 ### Load data
 
-```{r load_data_1}
+```{r}
 app_user_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_data_q1.csv", 
                           sep = ",", 
                           header = TRUE) #read in data
@@ -680,7 +680,7 @@ Use R and appropriate methods to answer the following question:
 
 ### Load data
 
-```{r a2_load_data_2}
+```{r a2_load_data_2234}
 app_user_data_time <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_data_q2.csv", 
                           sep = ",", 
                           header = TRUE) #read in data
@@ -780,7 +780,7 @@ Use R and appropriate methods to answer the following question:
 
 ### Load data
 
-```{r a2_load_data_3}
+```{r a2_load_data_2343}
 targeting_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/user_targeting_data.csv", 
                           sep = ",", 
                           header = TRUE) #read in data
@@ -989,7 +989,7 @@ You obtain a new data set with the following variables:
 
 ### Load data
 
-```{r load_data_4}
+```{r load_data234_4}
 conversion_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2024/main/conversion_data.csv", 
                           sep = ",", 
                           header = TRUE) #read in data
@@ -1048,798 +1048,58 @@ We can see in the contingency table and in the plot that the conversion rate in 
 
 From the managerial perspective, it makes sense to include the new email subscription pop-up feature since it significantly increases the coversion rate, although the effect size is rather small.
 
-
-<!--
-
-## Assignment 1
-
-We'll use the music data set from the last session as the basis for the assignment. 
-
-Please use R to solve the tasks. When you finished the assignment, click on the "Knit to HTML" in the RStudio menu. This will create an html document in the folder in which the assignment1.Rmd file is stored. Open this file in your browser to check if everything is correct. If you are happy with the output, pleas submit the .html-file via the assignment on Learn\@WU using the following file name: "assignment1_studendID_lastname.html".
-
-We'll first load the data that is needed for the assignment.
-
-```{r load_data, message = FALSE, warning = FALSE}
-library(dplyr)
-library(psych)
-library(ggplot2)
-
-music_data <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/music_data_fin.csv",
-                        sep = ";", header = TRUE, dec = ",")
-str(music_data)
-head(music_data) 
-```
-
-You should then convert the variables to the correct types:  
-  
-```{r convert_variables, message=FALSE, warning=FALSE}
-music_data <-  music_data %>% 
-  mutate(label = as.factor(label), # convert label and genre variables to factor with values as labels
-         genre = as.factor(genre)) %>% as.data.frame()
-```
-
-### Q1
-
-Create a new data frame containing the most successful songs of the artist "Billie Eilish" by filtering the original data set by the artist "Billie Eilish" and order the observations in an descending order.  
-
-```{r question_1, message = FALSE, warning = FALSE}
-billie_eilish <- music_data %>% 
-  select(artistName,trackName,streams) %>% #select relevant variables
-  filter(artistName == "Billie Eilish") %>% #filter by artist name
-  arrange(desc(streams)) #arrange by number of streams (in descending order)
-billie_eilish #print output
-```
-
-### Q2
-
-Create a new data frame containing the 100 overall most successful songs in the data frame and order them descending by the number of streams.
-
-Here you could simply arrange the whole data set by streams and then take 100 first rows using the `head()`-function:
-  
-```{r question_2, message = FALSE, warning = FALSE}
-top_100 <- music_data %>% 
-  select(artistName,trackName,streams) %>% #select relevant variables
-  arrange(desc(streams)) %>% #arrange by number of streams (in descending order)
-  head(100) #select first 100 observations
-top_100
-```
-
-### Q3
-
-Which genres are most popular? Group the data by genre and compute the sum of streams by genre. 
-
-Using `dplyr` functions, you could first group the observations by genre, then summarize the streams using `sum()`:
-  
-```{r question_3_1, message = FALSE, warning = FALSE}
-genres_popularity <- music_data %>% 
-  group_by(genre) %>% #group by genre
-  summarize(streams = sum(streams)) #compute sum of streams per genre
-genres_popularity
-```
-
-### Q4
-
-Which music label is most successful? Group the data by music label and compute the sum of streams by label and the average number of streams for all songs associated with a label. 
-
-Just like in the previous task, it would be enough to group the observations (in this case, by labels), and get the sums and averages of streams:
-  
-```{r question_4_1, message = FALSE, warning = FALSE}
-label_success <- music_data %>% 
-  group_by(label) %>% #group by label
-  summarize(sum_streams = sum(streams),
-            avg_streams = mean(streams)) #compute sum of streams and average streams per label
-label_success
-```
-
-### Q5
-
-How do the songs differ in terms of the song features? Please first select the relevant variables (7 song features) and compute the descriptive statistics for these variables by genre.     
-
-All audio features (danceability, energy, speechiness, instrumentalness, liveness, valence, and tempo) are variables measured on a **ratio scale**, which means that we can evaluate their **average values**. We can use `describeBy()` function, which displays mean by default alongside with range and other values:
-  
-```{r question_5_1, message = FALSE, warning = FALSE}
-library(psych)
-describeBy(select(music_data, 
-                  danceability, energy, speechiness, instrumentalness, liveness, valence, tempo), 
-           music_data$genre, skew = FALSE) 
-```
-
-
-### Q6
-
-How many songs in the data set are associated with each label? 
-  
-You could use `table()` to get the number of songs by label:
-  
-```{r question_6, message = FALSE, warning = FALSE}
-table(music_data$label)
-```
-
-
-### Q7
-
-Which share of streams do the different genres account for?
-  
-```{r question_7, message = FALSE, warning = FALSE}
-genre_streams <- music_data %>% 
-  group_by(genre) %>%
-  summarise(genre_streams=sum(streams)) #first compute sum of streams by genre
-genre_streams_share <- genre_streams %>%
-  mutate(genre_share = genre_streams/sum(genre_streams)) #then divide the sum by the total streams
-genre_streams_share
-```
-
-### Q8
-
-Create a histogram for the variable "Valence" 
-
-This is a simple plot of valence distribution across all songs in your data (we can see that it follows normal distribution):
-  
-```{r question_8, message = FALSE, warning = FALSE, fig.cap=c("Distribution of valence"), fig.align="center", echo=TRUE}
-ggplot(music_data,aes(x = valence)) + 
-  geom_histogram(binwidth = 4, col = "white", fill = "lavenderblush3") + 
-  labs(x = "Valence", y = "Frequency") +
-  theme_minimal()
-```
-
-### Q9
-
-Create a grouped boxplot for the variable "energy" by genre.
-
-```{r question_9, message = FALSE, warning = FALSE, fig.cap=c("Boxplot of energy by genre"), fig.align="center", echo=TRUE}
-ggplot(music_data, aes(x = genre, y = energy, color = genre)) + 
-  geom_boxplot(coef = 3) + 
-  labs(x = "Genre", y = "Energy") + 
-  theme_minimal() + 
-  coord_flip()
-```
-
-### Q10
-
-Create a scatterplot for the variables "valence" and "energy"
-
-Finally, we can visualize the relationship between valence and energy of songs in our data:
-  
-```{r question_10, message = FALSE, warning = FALSE, fig.cap=c("Scatterplot of energy and valence"), fig.align="center", echo=TRUE}
-ggplot(music_data, aes(x = valence, y = energy)) +
-  geom_point(shape = 1) + 
-  labs(x = "Valence", y = "Energy") +
-  theme_minimal()
-```
-
-
-
-## Assignment 2  
-
-**Assignment 2a**
-
-**Load data**
-
-```{r warning=F, message=F, echo=T, eval=T}
-library(pastecs)
-library(ggplot2)
-library(psych)
-library(pwr)
-library(lsr)
-library(reshape2)
-library(ggstatsplot)
-library(Rmisc)
-library(plyr)
-library(car)
-options(scipen = 999) #scientific notation
-customer_data_a <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_1.csv", 
-                          sep = ",", 
-                          header = TRUE) #read in data
-#head(customer_data_a)
-#str(customer_data_a)
-```
-
-
-### Q1  
-
-Let's have a quick look at the revenues that we have in our data:
-```{r message=FALSE, warning=FALSE, fig.align="center"}
-psych::describe(customer_data_a$revenue)
-
-ggplot(customer_data_a, aes(revenue)) + 
-  geom_histogram(col = "white", fill = "lavenderblush3", bins = 50) + 
-  geom_vline(data = customer_data_a %>% dplyr::summarise(mean = mean(revenue)),aes(xintercept = mean), size = 0.7, color = "gray19") +
-  labs(x = "Revenue", y = "Frequency") + 
-  ggtitle("Distribution of revenue per customer") +
-  theme_minimal()
-```
-
-To compute the confidence interval for the average revenue per customer, we will need three things: 1) the *mean* $\bar x$, 2) the *standard error* ($s \over \sqrt{n}$), and 3) the *critical value* for a t-distribution ($t_{crit}$; we will use a t-distribution, because we are not sure of the variance in the population; for this assignment, also the normal distribution and the corresponding $z$-score would have been counted as correct).
-
-```{r warning=F, message=F, echo=T, eval=T}
-mean <- mean(customer_data_a$revenue) #calculate the mean
-sd <- sd(customer_data_a$revenue) 
-n <- nrow(customer_data_a)
-se <- sd/sqrt(n) #calculate the standard error
-df <- n-1
-t_crit <- qt(0.975, df) #calculate the critical value
-```
-
-The confidence interval can be computed as follows: 
-$$CI_{rev} = \bar x \pm t_{ \alpha \over 2}*SE_{\bar x}$$
-  
-```{r}
-ci_lower <- mean - t_crit * se
-ci_upper <- mean + t_crit * se
-ci_lower
-ci_upper
-```
-
-You could also use one-sample `t.test()` function to calculate the CIs around the mean:
-
-```{r}
-t.test(customer_data_a$revenue)$conf.int
-```
-
-We can see now that the confidence interval for revenues is $CI_{rev} = [1364.34,1439.50]$.
-To communicate this information with the accounting department, you should interpret the intervals as follows: **If we'd taken 100 samples and calculated the mean and confidence interval for each of them, then the true population mean would be included in 95% of these intervals. In the sample at hand, this interval spans from 1364.34 to 1439.50 EUR**.  
-  
-  
-
-### Q2
-
-First we will analyze whether the personalization feature that was tested in the A/B-test had an effect on *revenues*. We need to formulate a hypothesis which we can test. In this case, *the null hypothesis is that the feature had no effect on the mean revenue*, i.e. that there is **no difference in the mean revenue between the two populations**. The alternative hypothesis states that the campaign *did have an effect*, meaning that there is a difference in the mean revenue between the populations. In more formal notation this is:
-
-$$H_0: \mu_0 = \mu_1 \\ H_1: \mu_0 \neq \mu_1$$
-
-We need to transform the variable *exp_group* into a factor variable and inspect the data using descriptive statistics:
-```{r warning=F, message=F, echo=T, eval=T}
-customer_data_a$exp_group <- factor(customer_data_a$exp_group, 
-                                    levels = c(0,1), labels = c("control", "treatment"))
-
-describeBy(customer_data_a$revenue, customer_data_a$exp_group) #describe control and treatment groups 
-```
-It can already be seen that the mean revenue is higher in the treatment group. 
-
-Next, we should visualize the data. For this, we can use plot of means or boxplot:
-```{r warning = F, message = F, echo=T, eval=T, fig.show="hold", out.width="50%"}
-mean_data <- summarySE(customer_data_a, measurevar = "revenue", 
-    groupvars = c("exp_group"))
-
-#Plot of means
-ggplot(mean_data, aes(x = exp_group, y = revenue)) + 
-    geom_bar(position = position_dodge(0.9), fill = "lavenderblush3", stat = "identity", width = 0.50) + 
-    geom_errorbar(position = position_dodge(0.9), width = 0.15, aes(ymin = revenue - ci, ymax = revenue + ci)) + 
-    theme_minimal() + 
-    labs(x = "Experiment group", y = "Average revenue", title = "Average revenue by group") + 
-    theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
-
-#Boxplot
-ggplot(customer_data_a, aes(x = exp_group, y = revenue)) + geom_boxplot() +
-    geom_jitter(alpha = 0.2, color = "lavenderblush4") + 
-    labs(x = "Experiment group", y = "Revenue", title = "Boxplot of revenue by group") + 
-    theme_minimal()
-```
-
-As we can see in both the descriptive statistics and the plot, the revenues were higher for the group that was exposed to the new personalization feature. To test whether or not this difference is significant, we need to use an __independent-means t-test__, since we have different customers in each group, meaning that we have collected the data using a between-subjects design (i.e., the customers in one condition are *independent* of the customers in the other condition). The requirements are clearly met:
-
-* Our dependent variable (revenue) is measured on an ratio scale;
-* Since we have more than 30 observations per group we do not really have to concern ourselves with whether the data is normally distributed or not (see central limit theorem);
-* If a customer was exposed to the feature or not was assigned randomly (i.e., the groups are independent);
-* R automatically performs Welch's t-test, which corrects for unequal variance.  
-
-```{r, warning = FALSE, message = FALSE, echo=TRUE, eval=TRUE}
-t.test(revenue ~ exp_group, data = customer_data_a)
-```
-
-The test is significant, since the **p-value is smaller than 0.05**, leading us to **reject the null hypothesis that there is no difference in the mean revenue**. The p-value states the probability of finding a difference of the observed magnitude or higher, if the null hypothesis was in fact true (i.e., if there was in fact no difference between the populations). Effectively, this means that **the personalization feature had an effect on the average expenditure**. Another thing we can extract from this test result is the confidence interval around the difference in means. **Since 0** (i.e., hypothetical difference in means from H0) **is not included in the interval**, it is not a plausible value, confirming the conclusion to reject the null hypothesis.
-
-We should also calculate the effect size:
-```{r warning = F, message = F, echo=T, eval=T}
-cohensD(revenue ~ exp_group, data = customer_data_a)
-```
-This magnitude of the effect size (0.30) suggests that the **effect of the personalization feature on the revenue is small to medium**.
-
-We can visualize the results of the test using `ggstatsplot`:
-```{r message=FALSE, warning=FALSE, fig.align="center"}
-ggbetweenstats(
-  data = customer_data_a,
-  plot.type = "box",
-  x = exp_group, #2 groups
-  y = revenue ,
-  type = "p", #default
-  effsize.type = "d", #display effect size (Cohen's d in output)
-  messages = FALSE,
-  bf.message = FALSE,
-  mean.ci = TRUE,
-  title = "Average revenue per customer by group"
-) 
-```
-
-The results show that revenues are **higher in the treatment group (Mean = 1506.27, SE = 27.56) compared to the control group (Mean = 1288.58, SE = 25.81)**. This means that, on average, the revenues were **€217.69 higher** in the treatment group, compared to the control group. An independent-means t-test showed that **this difference is significant: t(1426.2) = 5.77, p < .05 (95% CI = [143.62, 291.76]); effect size is small to medium = 0.30**.
-
-
-Now we can test if the new personalization feature has an effect on *time spent on our website*. 
-```{r}
-describeBy(customer_data_a$time_on_site, customer_data_a$exp_group) #describe control and treatment groups for time on site
-```
-
-```{r warning = F, message = F, echo=T, eval=T, fig.show="hold", out.width="50%"}
-mean_data_time <- summarySE(customer_data_a, measurevar = "time_on_site", 
-                            groupvars = c("exp_group"))
-
-#Plot of means
-ggplot(mean_data_time, aes(x = exp_group, y = time_on_site)) + 
-  geom_bar(position = position_dodge(0.9), fill = "lavenderblush3", stat = "identity", width = 0.50) + 
-  geom_errorbar(position = position_dodge(0.9), width = 0.15, aes(ymin = time_on_site - ci, ymax = time_on_site + ci)) + 
-  theme_minimal() + labs(x = "Experiment group", y = "Average time on site", title = "Average time on site by group") + 
-  theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
-
-#Boxplot
-ggplot(customer_data_a, aes(x = exp_group, y = time_on_site)) + geom_boxplot() +
-  geom_jitter(alpha = 0.2, color = "lavenderblush4") + 
-  labs(x = "Experiment group", y = "Time on site", title = "Boxplot of time on site by group") + 
-  theme_minimal()
-```
-
-There is some difference in average time spent on site, however, we need to conduct a statistical test. We are examining if there is difference in mean time on site between the populations; our formal notation for the null and alternative hypotheses stays the same:
-$$H_0: \mu_0 = \mu_1 \\ H_1: \mu_0 \neq \mu_1$$
-  
-We use the __independent-means t-test__ again:
-  
-* The dependent variable (time on site) is measured on an ratio scale
-* We still have more than 30 observations per group
-* The groups are independent
-
-```{r warning = F, message = F, echo=T, eval=T}
-t.test(time_on_site ~ exp_group, data = customer_data_a)
-cohensD(time_on_site ~ exp_group, data = customer_data_a)
-```
-
-The test results show that the difference that we observed before is **not statistically significant as p-value is >0.05**. Alternatively, we can see that **the confidence interval around the difference in means includes 0** (which is the value of difference in means from the null hypothesis). Therefore, **we cannot reject the null hypothesis**. The effect is very small.
-
-```{r message=FALSE, warning=FALSE, fig.align="center"}
-ggbetweenstats(
-  data = customer_data_a,
-  plot.type = "box",
-  x = exp_group, #2 groups
-  y = time_on_site,
-  type = "p", # default
-  effsize.type = "d", #display effect size (Cohen's d in output)
-  messages = FALSE,
-  bf.message = FALSE,
-  mean.ci = TRUE,
-  title = "Average time on site per customer by group"
-)
-```
-
-This test revealed that time on site was **slightly higher in the treatment group (Mean = 640.45, SE = 10.52) compared to the control group (Mean = 626.28, SE = 10.92)**. This difference is **not statistically significant: t(1418.3) = 0.93, p > .05 (95% CI = [-15.56; 43.92])**.
-
-
-Finally, we can conclude from this study that the personalization feature causes users to increase their expenditures, but does not result in increased time spent on the website. If the primary goal of the company is to increase the revenues, this feature might be implemented on the website.  
-
-
-### Q3
-  
-  To define the number of users that should be placed in two different conditions, `pwr.t.test()` function should be used. As far as the aim of the experiment is to simply detect *significant difference* between the groups, the sample size definition should be based on *two-sided test*.  
-
-Given the **effect size = 0.1**, **significance level = 0.05**, and **power = 0.8**, sample size for each group will be:
-```{r}
-pwr.t.test(d = 0.1, sig.level = 0.05, power = 0.8, type = c("two.sample"), alternative = c("two.sided"))
-```
-
-To achieve our desired effect size of 0.1, a significance level of 0.5 and a power of 0.8 we would need to include **at least 1,571 customers per group** in the planned experiment.
-
-
-**Assignment 2b:**
-
-### Q4  
-  
-**Load data**
-  
-```{r warning=F, message=F, echo=T, eval=T}
-customer_data_b <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_2.csv", 
-                              sep = ",", 
-                              header = TRUE) #read in data
-#head(customer_data_b)
-#str(customer_data_b)
-```
-
-Next we want to examine whether the alternative page layout has an effect on the time that a user spends on the website. The null hypothesis here is that *there is no difference in the mean time spend on the website for the same customers between the two page layouts*. Because the observations come from *the same population* of customers (i.e., a within-subject design), we refer to the difference in the means for the same population as $\mu_D$ when stating our hypotheses. The alternative hypothesis states that that *there is a difference* between the time on site variables for the same customers. In mathematical notation this can be written as
-
-$$H_0: \mu_D = 0 \\ H_1: \mu_D \neq 0$$
-  
-Again, we start with descriptive statistics to get a feel for the data: 
-```{r}
-psych::describe(customer_data_b[!is.na(customer_data_b$time_on_site_2), c("time_on_site_1","time_on_site_2")])
-```
-
-
-We can observe the difference in means from the table above; we can also visualize the data:
-```{r warning = F, message = F, paged.print = FALSE, echo=T, eval=T, fig.show="hold", out.width="50%"}
-#Plot of means
-customer_data_long <- melt(customer_data_b[!is.na(customer_data_b$time_on_site_2), c("time_on_site_1", "time_on_site_2")])
-names(customer_data_long) <- c("layout", "time_on_site")
-
-mean_data <- summarySE(customer_data_long, measurevar = "time_on_site", 
-                       groupvars = c("layout"))
-
-#Plot of means
-ggplot(mean_data, aes(x = layout, y = time_on_site)) + 
-  geom_bar(position = position_dodge(0.9), fill = "lavenderblush3", stat = "identity", width = 0.5) + 
-  geom_errorbar(position = position_dodge(0.9), width = 0.15, aes(ymin = time_on_site - ci, ymax = time_on_site + ci)) + 
-  theme_minimal() + labs(x = "", y = "Average time on site", title = "Average time on site by group") + 
-  theme(plot.title = element_text(hjust = 0.5, color = "#666666"))
-
-#Boxplot
-ggplot(customer_data_long, aes(x = layout, y = time_on_site)) + geom_boxplot() +
-  geom_jitter(alpha = 0.2, color = "lavenderblush4") + 
-  labs(x = "", y = "Revenue", title = "Boxplot of revenue by group") + 
-  theme_minimal()
-```
-It appears that there is a difference in the means. To test whether it is significant, we need to run a t-test again. However, this time we need a slightly different version of the t-test because *the same customers* are observed for the two page layouts (i.e., the same customers are shown both layouts). This means that we need a __dependent means t-test__, or **paired samples t-test**. The other assumptions are virtually identical to the independent-means t-test. The test can be executed in R by adding ```paired = TRUE``` to the code.   
-
-```{r}
-t.test(customer_data_b$time_on_site_2, customer_data_b$time_on_site_1, 
-       mu = 0, alternative = "two.sided", conf.level = 0.95,
-       paired = TRUE)
-```
-
-The p-value is again lower than the chosen significance level of 5% (i.e., p < .05), which means that we can reject the null hypothesis that there is no difference in the mean time on site between the two page layouts. The confidence interval confirms the conclusion to reject the null hypothesis since $0$ is not contained in the range of plausible values.
-
-We can now find out how strong this effect is: it is actually rather small.
-```{r warning = FALSE, echo=T, eval=T}
-cohensD(customer_data_b$time_on_site_1, customer_data_b$time_on_site_2, method = 'paired')
-```
-
-Alternatively, you could also use the `ggstatsplot` package to conduct the tests and extract the relevant information from there: 
-  
-```{r message=FALSE, warning=FALSE, fig.align="center"}
-ggwithinstats(
-  data = customer_data_long,
-  x = layout,
-  y = time_on_site,
-  path.point = FALSE,
-  path.mean = TRUE,
-  title = "Time on site for different page layouts",
-  messages = FALSE,
-  bf.message = FALSE,
-  mean.ci = TRUE,
-  effsize.type = "d" # display effect size (Cohen's d in output)
-)
-```
-
-
-The results of this experiment show that, on average, **the same users used the service more** when it included the alternative layout **(M = 747.55, SE = 11.06)** compared to the service without the previous personalization feature only **(M = 625.27, SE = 10.36)**. This difference was significant: **t(740) = 8.01, p < .05 (95% CI = [92.30, 152.25]); effect size is small = 0.29**. 
-
-The conclusion from this test would be that the alternative page layout increases the time that users spend on the website and, thus, the alternative layout might be implemented as the new standard. 
-
-
-**Assignment 2c:**
-
-### Q5  
-  
-**Load data**
-  
-```{r warning=F, message=F, echo=T, eval=T}
-customer_data_c <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_3.csv", 
-                              sep = ",", 
-                              header = TRUE) #read in data
-#head(customer_data_c)
-#str(customer_data_c)
-```
-
-To answer the question of whether the type of advertising has an effect on revenue, we need to formulate a testable null hypothesis. In our case, the null hypothesis is stating that **the average level of sales is equal for all three advertising types**. In mathematical notation this implies:
-$$H_0: \mu_1 = \mu_2 = \mu_3 $$
-  
-The alternate hypothesis is simply that the means are not all equal, i.e., 
-$$H_1: \exists {i,j}: {\mu_i \ne \mu_j} $$
-or $$H_1: \textrm{Means are not all equal} $$
-  
-The appropriate test for such a hypothesis is one-way ANOVA since we have a *metric-scaled dependent variable* and a *categorical independent variable with more than two levels*.
-
-First, we need to recode relevant variables into factors and give them more descriptive level names: 
-```{r}
-customer_data_c$retargeting <- factor(customer_data_c$retargeting, levels = c(1,2,3), labels = c("no retargeting", "generic retargeting", "dynamic retargeting"))
-```
-
-Next we calculate summary statistics for the data and build an appropriate plot.
-```{r warning = F, message = F, paged.print = FALSE, echo=T, eval=T, fig.show="hold", out.width="50%"}
-describeBy(customer_data_c$revenue, customer_data_c$retargeting)
-
-#Plot of means
-mean_data_2 <- summarySE(customer_data_c, measurevar = "revenue", groupvars = c("retargeting"))
-ggplot(mean_data_2, aes(x = retargeting, y = revenue)) + 
-  geom_bar(position = position_dodge(1), fill = "lavenderblush3", stat = "identity", width = 0.5) +
-  geom_errorbar(position = position_dodge(.9), width = .15, aes(ymin = revenue - ci, ymax = revenue + ci)) +
-  theme_minimal() +
-  labs(x = "", y = "Average revenue", title = "Average revenue by group")+
-  theme(plot.title = element_text(hjust = 0.5, color = "#666666")) 
-
-#Boxplot
-ggplot(customer_data_c, aes(x = retargeting, y = revenue)) + 
-  geom_boxplot() +
-  geom_jitter(colour = "lavenderblush4", alpha = 0.1) +
-  theme_minimal() +
-  labs(x = "", y = "Revenue")+
-  theme(plot.title = element_text(hjust = 0.5, color = "#666666")) 
-```
-
-Both the summary statistics and the plots hint at the fact that the means may not be equal. Especially the difference between dynamic retargeting and no retargeting/generic regtargeting seem to be quite high. Before we move to the formal test, we need to see if a series of **assumptions** are met, namely:
-  
-* Independence of observations
-* Distributional assumptions
-* Homogeneity of variances
-
-The first assumption is satisfied due to the fact that *the participants were randomly assigned* to the advertisement groups. To see if we need to worry about distributional assumptions we first take a look at the number of observations in each advertising group.
-
-```{r warning=FALSE, message=FALSE}
-table(customer_data_c$retargeting) #check number of observations by group
-```
-Due to the fact that there are always *more than 30 observations in each group* we can rely on the central limit theorem to satisfy the distributional assumptions. You can still test this assumption using Shapiro-Wilk normality test and plots:
-```{r warning = F, message = F, fig.show="hold", out.width="30%"}
-#test for normal distribution of variables - no need because n > 30
-by(customer_data_c$revenue, customer_data_c$retargeting, shapiro.test)
-#shapiro.test(customer_data_c[customer_data_c$retargeting == "no retargeting", ]$revenue)
-#shapiro.test(customer_data_c[customer_data_c$retargeting == "generic retargeting", ]$revenue)
-#shapiro.test(customer_data_c[customer_data_c$retargeting == "dynamic retargeting", ]$revenue)
-qqnorm(customer_data_c[customer_data_c$retargeting == "no retargeting", ]$revenue) 
-qqline(customer_data_c[customer_data_c$retargeting == "no retargeting", ]$revenue)
-qqnorm(customer_data_c[customer_data_c$retargeting == "generic retargeting", ]$revenue) 
-qqline(customer_data_c[customer_data_c$retargeting == "generic retargeting", ]$revenue)
-qqnorm(customer_data_c[customer_data_c$retargeting == "dynamic retargeting", ]$revenue) 
-qqline(customer_data_c[customer_data_c$retargeting == "dynamic retargeting", ]$revenue)
-```
-
-
-Homogeneity of variances can be checked with *Levene's test* (implemented as ```leveneTest()``` from the ```car``` package). The null hypothesis of this test is that the variances are equal, with the alternative hypothesis being that the variances are not all equal. Note that this step could also be skipped and replaced by the use of the robust ANOVA using the `oneway.test()` function. 
-```{r}
-leveneTest(revenue ~ retargeting, data = customer_data_c)
-```
-
-As we can see, we cannot reject the H0 of variances being equal, thus we can proceed with ANOVA. 
-```{r}
-aov <- aov(revenue ~ retargeting, data = customer_data_c)
-summary(aov) #if levene's test would be significant, compute the Welch's F-ratio instead
-lsr::etaSquared(aov)
-summary(aov)[[1]]$'Sum Sq'[1]/(summary(aov)[[1]]$'Sum Sq'[1] + summary(aov)[[1]]$'Sum Sq'[2]) #another way
-```
-
-Or, as was mentioned, you could also run a more robust test with `oneway.test()`:
-```{r}
-oneway.test(revenue ~ retargeting, data = customer_data_c)
-```
-
-In both tests, the **p-value is way smaller than 0.05**, which we chose as our significance level, meaning that we **reject the null hypothesis of the means being equal** in the three advertising groups. 
-
-Again, there is an option to show the test results in a graph:
-```{r fig.align="center", echo=TRUE, message = FALSE, warning = FALSE, fig.width=6, fig.height=5}
-library(ggstatsplot)
-ggbetweenstats(
-  data = customer_data_c,
-  x = retargeting,
-  y = revenue,
-  plot.type = "box",
-  pairwise.comparisons = TRUE,
-  pairwise.annotation = "p.value",
-  p.adjust.method = "bonferroni",
-  effsize.type = "eta", #if var.equal = FALSE, returns partial eta^2 
-  var.equal = TRUE,
-  mean.plotting = TRUE, 
-  mean.ci = TRUE, 
-  mean.label.size = 2.5,
-  type = "parametric", 
-  k = 3, 
-  outlier.label.color = "darkgreen", 
-  title = "Comparison of revenues between groups",
-  xlab = "Experimental group", 
-  ylab = "Revenue", 
-  messages = FALSE,
-  bf.message = FALSE,
-)
-```
-
-Next we will briefly inspect the residuals of the ANOVA to see if the assumptions of the test really are justified.
-```{r warning = F, message = F, paged.print = FALSE, echo=T, eval=T, figures-side, fig.show="hold", out.width="50%"}
-plot(aov,1)
-plot(aov,2)
-```
-
-The first plot gives us a feel for the distribution of the residuals of the three groups. The residuals seem to be roughly equally distributed, which speaks for the fact that *the homogeneity of variances assumption is fulfilled*. 
-
-The second plot is a QQ-plot of the residuals, meant as a quick visual check to see if the normality assumption is fulfilled. Leading up to the test we only checked if there were more than 30 observations per group to satisfy the normality assumption but despite this being fulfilled it is still important to check the normality of the residuals, as any strange behavior here may indicate problems with the model specification. 
-
-To further confirm that the residuals are roughly normally distributed we employ the **Shapiro-Wilk test**. The null hypothesis is that the distribution of the data is normal, with the alternative hypothesis positing that the data is not normally distributed.
-
-```{r warning=FALSE, message=FALSE, echo=T, eval=T}
-shapiro.test(resid(aov))
-```
-
-The p-value is above the significance level and thus we cannot reject the null hypothesis of normal distribution, which further implies that *the normality assumption is fulfilled*.
-
-According to the test, the effect of different types of advertising on revenues was detected: **F(2, 2201) = 57.16, p < 0.05, $\eta^2$ = 0.049**.
-
-The ANOVA result only tells us that *the means of the three groups are not equal*, but it does not tell us anything about _which_ pairs of means are unequal. To find this out we need to conduct **post-hoc tests** to check the following null hypotheses for the respective pairwise comparisons:
-
-$$1) H_0: \mu_1 = \mu_2; H_1: \mu_1 \neq \mu_2 \\
-2) H_0: \mu_2 = \mu_3; H_1: \mu_2 \neq \mu_3 \\
-3) H_0: \mu_1 = \mu_3; H_1: \mu_1 \neq \mu_3 $$
-
-Here we will conduct both the Bonferroni correction as well as Tukey's HSD test, however, either would be sufficient for your homework. Bonferroni's correction conducts multiple pairwise t-tests, with the null hypothesis being that of equal means in each case and the alternative hypothesis stating that the means are unequal.
-
-```{r warning = F, message = F, echo=T, eval=T}
-#bonferroni
-pairwise.t.test(customer_data_c$revenue, customer_data_c$retargeting, data = customer_data_c, p.adjust.method = "bonferroni")
-```
-
-
-According to the Bonferroni test, we can **reject the null hypotheses in all cases**, which means that the revenue means are significantly different from each other:
-dynamic regargeting vs. no retargeting  
-dynamic regargeting vs. generig retargeting
-generic retargeting vs. no retargeting
-
-Alternatively, you could have also chosen to use Tukey's HSD to conduct the post-hoc test:
-```{r warning = F, message = F, echo=T, eval=T}
-#tukey correction using the mult-comp package
-library(multcomp)
-tukeys <- glht(aov, linfct = mcp(retargeting = "Tukey"))
-summary(tukeys)
-```
-Tukey's correction confirms the conclusion from the Bonferroni test. There seems to be difference in the means of generic retargeting vs. no retargeting, and dynamic retargeting vs. both generic retargeting and no retargeting. 
-
-We can estimate the difference in means with corresponding confidence intervals:
-```{r warning = F, message = F, fig.align='center', fig.height=4, echo=T, eval=T}
-confint(tukeys)
-par(mar = c(5,19,4,2)) #the mar parameter changes the margins around created plots. This is done so the labels on the side of the Tukey plot are visible (however, this was not expected)
-plot(tukeys)
-```
-
-It is clearly visible that none of the CIs cross the 0 bound (it's not even visible), which further indicates that all differences in means are statistically significantly different from 0.
-
-From a reporting standpoint we can say that revenue is higher when using dynamic retargeting vs. no retargeting and generic retargeting; generic retargeting is though also more effective than no retargeting. Managerially, this means that dynamic retargeting helps us to increase sales and should thus be the preferred choice. 
-
-### Q6
-
-For this question we want to examine whether the scores from the NPS measurement are significantly different for the experimental groups (i.e., *three* types of retargeting). Because we are dealing with data on an **ordinal scale**, we can not use ANOVA for this analysis. The non-parametric counterpart is the Kruskal-Wallis test, which tests for differences in medians between more than two groups. Hence, the null hypothesis is that **the medians are equal in each group**, and the alternative hypothesis is that there is a difference in medians. 
-
-$$H_0: \bar{\mu}_1 =  \bar{\mu}_2 = \bar{\mu}_3  \\ H_1: \bar{\mu}_1 \neq \bar{\mu}_2 \neq \bar{\mu}_3 $$
-
-Let's inspect the descriptive statistics first:
-  
-```{r warning = F, message = F, echo=T, eval=T}
-# Descriptive statistics for NPS, split by group
-describeBy(customer_data_c$nps, customer_data_c$retargeting)
-```
-
-A good way to visualize ordinal data is through a boxplot.
-```{r fig.align="center", warning = F, message = F, echo=T, eval=T, fig.height=5, fig.width=5.5}
-ggplot(data = customer_data_c, aes(x = retargeting, y = nps)) + 
-  geom_boxplot(color = 'lavenderblush4') + 
-  geom_jitter(colour="lavenderblush3", alpha = 0.1) +
-  theme_minimal() + 
-  labs(x = "", y = "Rank")
-```
-
-The descriptive statistics and boxplot seem to indicate that the median NPS without retargeting and with generic retargetng is the same; median NPS for dynamic retargeting is slightly higher. The reason might be, for example, that due to the use of dynamic retargeting, customers spend more money (as was shown in ANOVA), but it doesn't result in higher NPS, possibly because customers are not comfortable with the use of their personal data for advertising purposes.  
-
-The only assumption that we require for this test is that the *dependent variable is at least ordinal*, which is fulfilled for customer ranks. Hence we can move on to performing the test:
-
-```{r warning = F, message = F}
-kruskal.test(nps ~ retargeting, data = customer_data_c) 
-```
-
-```{r fig.align="center", echo=TRUE, message = FALSE, warning = FALSE, fig.width=6, fig.height=5}
-ggbetweenstats(
-  data = customer_data_c,
-  plot.type = "box",
-  x = retargeting, #3 groups
-  y = nps,
-  type = "nonparametric",
-  pairwise.comparisons = TRUE,
-  pairwise.annotation = "p.value",
-  p.adjust.method = "bonferroni",
-  messages = FALSE,
-  title = "Median NPS for different retargeting groups"
-)
-```
-
-
-The **p-value is below 0.05 and thus we reject the null hypothesis of equal medians**. This means that the NPS of customers is different for the groups that saw different types of ads, implying that the type of retargeting has an effect on the NPS. Even though the medians of 'no retargeting' and 'generic retargeting' groups are the same, we can see the distribution of NPS for both groups; it is clear that after being exposed to generic retargeting ads instead of no retargeting at all, customers give our website higher scores, which should be considered while making a managerial decision regarding which type of promotion to use.
-
-We should not forget to test for differences between groups using a **post-hoc test**. Nemenyi test for pairwise multiple comparisons of the ranked data can be used:
-```{r warning = F, message = F}
-library(PMCMRplus)
-PMCMRplus::kwAllPairsNemenyiTest(x = customer_data_c$nps,
-    g = customer_data_c$retargeting, dist = "Tukey")
-```
-
-It appears that the differences between median NPS for "no retargeting vs. generic retargeting", "generic retargeting vs. dynamic retargeting", and "no retargeting vs. dynamic retargeting" are significant.
-
-**Assignment 2d:**
-
-### Q7  
-  
-**Load data**
-
-```{r warning=F, message=F, echo=T, eval=T}
-customer_data_d <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/data_4.csv", 
-                          sep = ",", 
-                          header = TRUE) #read in data
-#head(customer_data_d)
-#str(customer_data_d)
-```
-
-To find out if the new personalization feature has an effect on the conversion rate, we can use a test for proportions instead of a test for mean differences. To test for the equality of proportions (and therefore no difference between them) we can use a **chi-square ($\chi^2$) test**.
-
-Our null hypothesis in this case states that **the proportions of conversion are the same for groups with and without the personalization feature**. Our alternative hypothesis states that these proportions are unequal.
-
-$$H_0: \pi_1 = \pi_2 \\ H_1: \pi_1 \neq \pi_2$$
-
-First, we will recode the relevant variables into factors and give them more descriptive level names:
-```{r warning=FALSE, message=FALSE}
-customer_data_d$conversion <- factor(customer_data_d$conversion, levels = c(0,1), labels = c("no", "yes"))
-customer_data_d$exp_group <- factor(customer_data_d$exp_group, levels = c(0,1), labels = c("control", "treatment"))
-```
-
-Don't forget to create a summary plot to get a feeling for the data.
-
-```{r fig.align="center", echo=TRUE, message = FALSE, warning = FALSE, fig.height=5, fig.width=6}
-#conditional relative frequencies
-rel_freq_table <- as.data.frame(prop.table(table(customer_data_d$exp_group, customer_data_d$conversion), 1))
-names(rel_freq_table) <- c("group", "conversion", "freq") # changing names of the columns
-rel_freq_table
-
-library(colorspace)
-ggplot(rel_freq_table, aes(x = group, y = freq, fill = conversion)) + #plot data
-  geom_col(width = .7) + 
-  geom_text(aes(label = paste0(round(freq*100,0), "%")), position = position_stack(vjust = 0.5), size = 4) + #add percentages
-  ylab("Proportion of conversions") + xlab("group") + # specify axis labels
-  theme_minimal() + 
-  scale_fill_discrete_sequential(palette = "Reds 2", nmax = 4, order = 2:4)
-```
-
-We see that our conversion seems to be slightly better for the group with the personalization feature, but let´s check whether these proportions are significantly different.
-
-```{r message=FALSE, warning=FALSE}
-n1 <- nrow(subset(customer_data_d, exp_group == "control")) #number of observations for control group
-n2 <- nrow(subset(customer_data_d, exp_group == "treatment"))  #number of observations for treatment group
-n1_conv <- nrow(subset(customer_data_d, exp_group == "control" & conversion == "yes"))  #number of conversions for control group
-n2_conv <- nrow(subset(customer_data_d, exp_group == "treatment" & conversion == "yes"))  #number of conversions for treatment group
-
-prop.test(x = c(n1_conv, n2_conv), n = c(n1, n2), conf.level = 0.95, correct = FALSE) #without Yates correction
-```
-
-
-```{r echo=TRUE, message = FALSE, warning = FALSE}
-table_1 <- table(customer_data_d$conversion,customer_data_d$exp_group)
-chisq.test(table_1, correct = FALSE) #without Yates correction
-```
-
-```{r echo=TRUE, message = FALSE, warning = FALSE}
-test_stat <- chisq.test(table_1, correct = FALSE)$statistic
-n <- nrow(customer_data_d)
-phi1 <- sqrt(test_stat/n)
-phi1
-```
-
-It can be clearly seen from the test that **p-value is < 0.05**, so the result of the treatment on the conversion rate is **statistically significant**. We also calculated the effect size (*Cohen's d = Cramer's V = 0.026*): it is pretty small.
-
-
-Finally, we can use `ggbarstats()` for the test results visualization:
-```{r fig.align="center", echo=TRUE, message = FALSE, warning = FALSE, fig.width=6, fig.height=5}
-library(ggstatsplot)
-library(ghibli)
-ggbarstats(data = customer_data_d, x = conversion, y = exp_group,
-           title = "Conversion by experiment group", xlab = "Group", correct = TRUE,
-           messages = FALSE, bar.proptest = FALSE,
-           bf.message = FALSE) + 
-  scale_fill_ghibli_d("PonyoLight") +
-  theme_minimal()
-```
-
-The test (as well as the graph above) shows that **the conversion rate for the treatment group was higher than for the control group by 1 p.p.** This difference is though significant: **$\chi^2$ (1) = 7.35, p < .05 (95% CI = [0.003,0.02])**, but the effect size is rather tiny (Cohen's d = 0.026), so the personalization feature can be considered positive, but not too influential factor for conversion rate increase.
-
-
 ## Assignment 3
 
-**Assignment A: Multiple linear regression**
+### Assignment A
 
-```{r message = FALSE, warning = FALSE}
+As a marketing manager at a consumer electronics company, you have been assigned the task of evaluating the effectiveness of various marketing activities on the sales of smart home devices (smart speakers). The company wants to understand the relative influence of leaflet promotions, in-store sales representatives, and radio advertising, as well as the impact of pricing on overall sales.
+
+The dataset provided contains data from multiple stores over the past year. Each row in the dataset corresponds to a different store, detailing the sales performance of smart home devices alongside the store’s marketing investments and product pricing.
+
+The following variables are available to you:
+
+* Sales: Number of units sold in each store
+* Price: Sale price of the product (in Euros)
+* Marketing Contribution: Promotion costs for including the product in leaflets distributed by the store (in Euros)
+* Sales Reps: Expenditure on in-store promotions managed by the company’s sales representatives (in Euros)
+* Retail Media POS: Advertising expenses for marketing placements at the point of sale (in Euros)
+* Region: Categorical variable indicating the region where the store is located (rural, suburban, or urban)
+
+**Task Instructions**
+
+Please conduct the following analyses:
+
+1. Regression Equation: Formally state the regression equation you will use to determine the relative influence of each marketing activity and price on sales. Save the equation as a "formula" object in the R code chunk.
+
+2. Variable Description: Describe the model variables using appropriate summary statistics and visualizations to provide a clear understanding of each variable’s distribution and scale.
+
+3. Multiple Linear Regression Model: Estimate a multiple linear regression model to evaluate the relative influence of each variable. Before interpreting the results, assess whether the model meets the assumptions of linear regression. Use appropriate diagnostic tests and plots to evaluate these assumptions.
+
+4. Alternative Model Specifications: If the model assumptions are not fully met, evaluate alternative model specifications using different functional forms. Justify your choice of model based on diagnostic criteria and model properties.
+
+5. Model Interpretation: Interpret the results of the chosen model:
+
+* Which variables have a significant influence on sales, and what do the coefficients imply about each variable’s effect?
+* What is the relative importance of each predictor?
+* Interpret the F-test results.
+* How would you assess the fit of the model? Include a visualization of model fit for clarity.
+
+6. Sales Prediction: Based on your chosen model, predict the sales quantity for a store planning the following marketing activities: Price: €350, Marketing Contribution: €10,000, Sales Reps: €6,000, Retail Media POS: €3,000. Provide the equation you used for the prediction.
+
+7. Assess to what extent customers from different regions differ regarding their price sensitivity. Are customers from urban and suburban areas more or less price-sensitive compared to rural areas? Provide a detailed explanation of your analysis and results.
+
+When you have completed your analysis, click the “Knit to HTML” button above the code editor. This will generate an HTML document of your results in the folder where the "assignment3.Rmd" file is stored. Open the HTML file in your Internet browser to verify the output. Once verified, submit the HTML file via Canvas. Name the file: “assignment3_studentID_name.html”.
+
+### Data analysis
+
+### Load data
+
+```{r load_d234ata}
+sales_data <- read.csv("https://raw.githubusercontent.com/WU-RDS/MA2024/main/data/assignment3.csv", 
+                          header = TRUE) #read in data
+head(sales_data)
+str(sales_data)
+
 library(tidyverse)
 library(psych)
 library(Hmisc)
@@ -1851,275 +1111,522 @@ library(lm.beta)
 options(scipen = 999)
 set.seed(123)
 
-sales_data <- read.table("https://raw.githubusercontent.com/WU-RDS/MA2022/main/data/assignment4.dat", 
-                          sep = "\t", 
-                          header = TRUE) #read in data
-sales_data$market_id <- 1:nrow(sales_data)
-#head(sales_data)
-#str(sales_data)
+
 ```
 
-### Q1
+### Question 1
 
-In a first step, we specify the regression equation. In this case, sales is the **dependent variable** which is regressed on the different types of advertising expenditures that represent the **independent variables** for product *i*. Thus, the regression equation is:
 
-$$Sales_{i}=\beta_0 + \beta_1 * tv\_adspend_{i} + \beta_2 * online\_adspend_{i} + \beta_3 * radio\_adspend_{i} + \epsilon_i$$
-This equation will be used later to turn the output of the regression analysis (namely the coefficients: $\beta_0$ - intersect coefficient, and $\beta_1$, $\beta_2$, and $\beta_3$ that represent the unknown relationship between sales and advertising expenditures on TV, online channels and radio, respectively) to the "managerial" form and draw marketing conclusions.  
 
-To save the formula, simply assign it to an object:
-```{r message = FALSE, warning = FALSE}
-formula <- sales ~ tv_adspend + online_adspend + radio_adspend
+In a first step, we specify the regression equation. In this case, sales of home devices is the dependent variable, and predictors for store i are 1) price, 2) promotion costs, 3) expenditures on sales representatives, 4) costs for marketing placements at POS.
+
+
+$$
+Sales_i=\beta_0 + \beta_1 * Price_i + \beta_2 * MarketingContribution_i + \beta_3 * SalesReps_i + \beta_4 * RetailMediaPOS_i + \epsilon_i
+$$
+
+This equation will be used later to turn the output of the regression analysis (namely the coefficients: β0 - intersect coefficient, and β1, β2, and β3 that represent the unknown relationship between sales and Price, MarketingContribution, SalesReps, SalesMediaPOS to the “managerial” form and draw marketing conclusions.
+
+With the following code we are saving the formula: 
+
+```{r}
+
+formula <- Sales ~ Price + MarketingContribution + SalesReps + RetailMediaPOS
+
 ```
 
-You can use this formula in the regression formula.
 
-### Q2
 
-The descriptive statistics can be checked using the ```describe()``` function:
-  
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, paged.print = FALSE}
+### Question 2
+
+Inspecting the variables with descriptive statistics:
+
+```{r}
+
+#descriptive statistics can be checked with the following code
 psych::describe(sales_data)
+
+
 ```
 
-Inspecting the correlation matrix reveals that the sales variable is positively correlated with TV advertising and online advertising expenditures. The correlations among the independent variables appear to be low to moderate. 
-  
-```{r eval = TRUE, echo = TRUE, warning = FALSE, message = FALSE}
-rcorr(as.matrix(sales_data[,c("sales","tv_adspend","online_adspend","radio_adspend")]))
+Inspecting the correlation matrix reveals that the sales variable is positively correlated with MarketingContribution, SalesReps and RetailMediaPOS.
+
+```{r}
+
+rcorr(as.matrix(sales_data[,c("Sales","Price","MarketingContribution","SalesReps", "RetailMediaPOS")]))
+
 ```
 
-Since we have continuous variables, we use scatterplots to investigate the relationship between sales and each of the predictor variables.
 
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
-ggplot(sales_data, aes(x = tv_adspend, y = sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
+```{r}
+
+#Since we have continuous variables, we use scatterplots to investigate the relationship between sales and each of the predictor variables.
+
+# relationship of Price and Sales
+ggplot(sales_data, aes(x = Price, y = Sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
     fill = "gray", color = "lavenderblush3", alpha = 0.1) + theme_minimal()
-ggplot(sales_data, aes(x = online_adspend, y = sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
+
+#relationship of MarketingContribution and Sales
+ggplot(sales_data, aes(x = MarketingContribution, y = Sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
     fill = "gray", color = "lavenderblush3", alpha = 0.1) + theme_minimal()
-ggplot(sales_data, aes(x = radio_adspend, y = sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
+
+#relationship of SalesReps and Sales
+ggplot(sales_data, aes(x = SalesReps, y = Sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
     fill = "gray", color = "lavenderblush3", alpha = 0.1) + theme_minimal()
+
+#relationship of RetailMediaPOS
+ggplot(sales_data, aes(x = RetailMediaPOS, y = Sales)) + geom_point(shape = 1) + geom_smooth(method = "lm", 
+    fill = "gray", color = "lavenderblush3", alpha = 0.1) + theme_minimal()
+
+
+
 ```
 
-The plots including the fitted lines from a simple linear model already suggest that there might be a positive linear relationship between sales and TV- and online-advertising. However, there does not appear to be a strong relationship between sales and radio advertising. 
 
-Further steps include estimate of a multiple linear regression model in order to determine the relative influence of each type of advertising on sales and test of the model's assumptions.
+The plots including the fitted lines from a simple linear model suggest that there might be a positive relationship between sales and the predictors. However, the relationships between sales and independent variables appear to be rather weak. It appears more that the effect of independent variables is decreasing with increasing budget spent on these marketing activities. 
 
-### Q3
-                                                                                                                             The estimate the model, we will use the ```lm()``` function:
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
-linear_model <- lm(formula, data = sales_data) #estimate linear model
-#summary(linear_model)
+Further steps include estimate of a multiple linear regression model in order to determine if linear specification fits the model.
+
+
+### Question 3
+
+First, we estimate the model with the lm() function. But before we can inspect and interpret the results, we need to test if there might be potential problems with our model specification.
+
+
+```{r}
+
+#Estimate linear model
+linear_model <- lm(formula, data = sales_data)
+summary(linear_model)
+
 ```
-                                                                                                                             **Before** we can inspect the results, we need to test if there might be potential problems with our model specification. 
 
-*Outliers*
 
-To check for outliers, we extract the studentized residuals from our model and test if there are any absolute values larger than 3.
+```{r}
 
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
+
+#Outliers
 sales_data$stud_resid <- rstudent(linear_model)
-plot(1:nrow(sales_data), sales_data$stud_resid, ylim = c(-3.3, 3.3))
-abline(h = c(-3, 3), col = "red", lty=2)
+plot(1:nrow(sales_data),sales_data$stud_resid, ylim=c(-3.3,3.3)) #create scatterplot 
+abline(h=c(-3,3),col="red",lty=2) #add reference lines
+
+
 ```
 
-Since there are no residuals with absolute values larger than 3, we conclude that there are no severe outliers. 
+To check for outliers, we extract the studentized residuals from our model and test if there are any absolute values larger than 3. Since there are many residuals with absolute values larger than 3, we conclude that there are many outliers.
 
-*Influential observations*
+```{r}
 
-To test for influential observations, we use Cook's Distance. You may use the following two plots to verify if any Cook's Distance values are larger than the cutoff of 1.
-
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.show="hold", out.width="50%"}
+#influential observation
 plot(linear_model,4)
 plot(linear_model,5)
-```
-Since all values are well below the cutoff, we conclude that influential observations are not a problem in our model. 
-                                                                                                                             *Non-linear relationships*
 
-Next, we test if a linear specification appears feasible. You could test this using the added variable plots:
 
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
-avPlots(linear_model, col.lines = palette()[2])
 ```
 
-The plots suggest that the linear specification is appropriate. In addition, you could also use the residuals plot to see if the linear specification is appropriate. The red line is a smoothed curve through the residuals plot and if it deviates from the dashed grey horizontal line a lot, this would suggest that a linear specification is not appropriate. 
+To test for influential observations, we use Cook’s Distance. To identify influential observations, we should look at values above 1 in the first plot. It is easy to see that all of the Cook’s distance values are below the cutoff of 1.  In the second plot we should watch out for the outlying values at the upper right corner or at the lower right corner of the plot. Those spots are the places where cases can be influential against a regression line. In our example, both plots show that there are no influential cases.
 
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
+
+
+```{r}
+
+#Heteroscedasticity
+
 plot(linear_model, 1)
-```
 
-In this example, the red line is close to the dashed grey line, so the linear specification appears reasonable. 
-
-*Heteroscedasticity*
-
-Next, we test if the residual variance is approximately the same at all levels of the predicted outcome variables (i.e., homoscedasticity). To do this, we use the residuals plot again.
-
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
-plot(linear_model, 1)
-```
-
-The spread of residuals at different levels of the predicted outcome does not appear to be very different. Thus, we can conclude that heteroscedasticity is unlikely to be a problem. We can also confirm this conclusion by using the Breusch-Pagan test, which shows an insignificant results, meaning that we cannot reject the Null Hypothesis of equal variances.
-
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
+#Breusch Pagan test
 bptest(linear_model)
+
 ```
 
-*Non-normally distributed errors*
 
-Next, we test if the residuals are approximately normally distributed using the Q-Q plot from the output:
+Next, we test if a linear specification appears feasible. We can look at the residuals plot to see if the linear specification is appropriate. This plot helps us to determine if error variances are equal, which is an assumption of the linear model. The red line is a smoothed curve through the residuals plot and if it deviates from the dashed grey horizontal line a lot, it means that the linear model specification is not a correct choice. In this example, the red line is rather far from the dashed grey line, so this assumption seems to be not met. 
 
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
+Also, the residual variance (i.e., the spread of the values on the y-axis) should be similar across the scale of the fitted values on the x-axis, but we can observe a slight funnel shape, which indicates non-constant variances in the errors, so we can conduct Breusch Pagan test to confirm it. The null hypothesis for this test is that the error variances are equal, so the significant p-value <0,05 indicates that the error variances aren't equal, which indicates that the assumption of homoscedasticity is not met.
+
+
+Next, we test if the residuals are approximately normally distributed using the Q-Q plot from the output and a Shapiro Wilk test.
+
+```{r}
+
+#Non-normally distributed errors
+
 plot(linear_model,2)
-```
 
-The Q-Q plot does not suggest a severe deviation from a normal distribution. This could also be validated using the Shapiro test (we again can't reject the Null Hypothesis that suggests normal distribution):
-
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
 shapiro.test(resid(linear_model))
+
 ```
 
-*Correlation of errors*
+To check for normal distribution of the residuals, we need to conduct a Shapiro-Wilk test, the null hypothesis for it is that the residuals are normally distributed. So the significant p-value <0,05 indicates that the error variances aren't equal, which indicates that the assumption of normally distributed error term is not met.
 
-We actually wouldn't need to test this assumption here since there is not natural order in the data. 
+Correlation of errors: We actually wouldn’t need to test this assumption here since there is not natural order in the data.
 
-*Multicollinearity*
 
-To test for linear dependence of the regressors, we first test the bivariate correlations for any extremely high correlations (i.e., >0.8).
+```{r}
 
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
-rcorr(as.matrix(sales_data[,c("tv_adspend","online_adspend","radio_adspend")]))
-```
+#Multicollinearity
 
-The results show that the bivariate correlations are low to moderate. This can also be shown in plots:
+rcorr(as.matrix(sales_data[,c("Price","MarketingContribution","SalesReps", "RetailMediaPOS")]))
 
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.show="hold", out.width="50%"}
-plot(sales_data[,c("tv_adspend","online_adspend","radio_adspend")])
-ggcorrmat(data = sales_data[,c("tv_adspend", "online_adspend", "radio_adspend")],matrix.type = "upper",colors = c("skyblue4", "white", "palevioletred4")
-#title = "Correlalogram of independent variables",
+plot(sales_data[,c("Price","MarketingContribution","SalesReps", "RetailMediaPOS")])
+
+ggcorrmat(
+  data = sales_data[,c("Price","MarketingContribution","SalesReps", "RetailMediaPOS")],
+  matrix.type = "upper",
+  colors = c("skyblue4", "white", "palevioletred4")
+  #title = "Correlalogram of independent variables",
 )
-```
 
-In the next step, we compute the variance inflation factor for each predictor variable. The values should be close to 1 and values larger than 4 indicate potential problems with the linear dependence of regressors.  
-
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
 vif(linear_model)
+
 ```
 
-Here, all VIF values are well below the cutoff, indicating that there are no problems with multicollinearity. 
+To test for linear dependence of the regressors, we first test the bivariate correlations for any extremely high correlations (i.e., >0.8). We can see that bivariate correlations are not high among independent variable, so this assumption is met.
 
-### Q4
+In the next step, we compute the variance inflation factor for each predictor variable. The values should be close to 1 and values larger than 4 indicate potential problems with the linear dependence of regressors, but in our model we don't see any such values. 
 
-In a next step, we will investigate the results from the model using the ```summary()``` function.
+### Question 4
 
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
-summary(linear_model)
+It appears that a linear model might not represent the data well. It rather appears that the effect of an additional Euro spend on different marketing activities is decreasing with increasing levels of advertising expenditures. Thus, we can assume decreasing marginal returns.  Plus, the assumptions of linear specification like absence of outliers, homoscedasticity and normally distributed residuals.
+
+In this case, a multiplicative model might be a better representation of the data.
+
+```{r}
+
+log_reg <- lm(log(Sales) ~ log(Price) + log(MarketingContribution) + log(SalesReps) + log(RetailMediaPOS), data = sales_data)
+summary(log_reg)
+
+
 ```
 
-For each of the individual predictors, we test the following hypothesis: 
+We can check again the assumptions to see if the multiplicative specification fits the model better and if we can interpret the results of this model.
 
-$$H_0: \beta_k=0$$
-$$H_1: \beta_k\ne0$$
+```{r}
 
-where k denotes the number of the regression coefficient. In the present example, we reject the null hypothesis for tv_adspend and online_adspend, where we observe a significant effect (i.e., p < 0.05). However, we fail to reject the null for the "radio_adspend" variable (i.e., the effect is insignificant). 
+#Outliers
+sales_data$stud_resid_1 <- rstudent(log_reg)
+plot(1:nrow(sales_data),sales_data$stud_resid_1, ylim=c(-3.3,3.3)) #create scatterplot 
+abline(h=c(-3,3),col="red",lty=2) #add reference lines
 
-The interpretation of the coefficients is as follows: 
+#influential observation
+plot(log_reg,4)
+plot(log_reg,5)
 
-* tv_adspend (&beta;<sub>1</sub>): when TV advertising expenditures increase by 1000 Euro, sales will increase by `r round(summary(linear_model)$coefficients[2],3)*1000` units;
-* online_adspend (&beta;<sub>2</sub>): when online advertising expenditures increase by 1000 Euro, sales will increase by `r round(summary(linear_model)$coefficients[3],3)*1000` units;
-* radio_adspend (&beta;<sub>3</sub>): when radio advertising expenditures increase by 1000 Euro, sales will increase by `r round(summary(linear_model)$coefficients[4],3)*1000` units (i.e., decrease by `r round(summary(linear_model)$coefficients[4],3)*1000*(-1)` units).
-
-You should always provide a measure of uncertainty that is associated with the estimates. You could compute the confidence intervals around the coefficients using the ```confint()``` function.
-
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
-confint(linear_model)
 ```
 
-The results show that, for example, with a 95% probability the effect of online advertising will be between 0.168 and 0.205. 
+We can see that in comparison with the plot of the linear model, there are fewer outliers, namely values of studentized residuals more than 3 and less than -3. 
+
+
+We check now if the assumption of constant variance is met, which was not the case in the linear specification.
+
+```{r}
+
+#Heteroscedasticity
+
+plot(log_reg, 1)
+
+#Breusch Pagan test
+bptest(log_reg)
+
+```
+
+In the plot, we can now observe that the values are more equally distributed along the line. We also conduct Breusch Pagan test. The null hypothesis for this test is that the error variances are equal, so the significant p-value of 0.6857 indicates that we cannot reject the null hypothesis, so the error variances are equal, which indicates that the assumption of homoscedasticity is met for this model.
+
+Next we check if the residuals are normally distributed, which wasn't the case in the linear model. 
+
+```{r}
+#Non-normally distributed errors
+
+plot(log_reg,2)
+
+shapiro.test(resid(log_reg))
+
+
+```
+
+The null hypothesis of this Shaprio Wilk test is that the residuals are normally distributed. Since the p-value of the test is 0.8898 we cannot reject the null hypothesis, so the residuals in this model are normally distributed unlike in the linear specification.
+
+Looking at the added variable plots, we can conclude that each predictor appears to have a unique contribution to explaining the variance in the dependent variable. 
+
+
+```{r}
+
+#Non-linear relationships
+avPlots(log_reg, col.lines = palette()[2])
+
+```
+
+And finally, we check for multicollinearity, 
+
+```{r}
+
+#Multicollinearity
+
+vif(log_reg)
+
+
+```
+Here, all vif values are well below the cutoff, indicating that there are no problems with multicollinearity.
+
+All assumption are met for the multiplicative model, log-log transformed model represents our data well, so we can proceed with the interpretation.
+
+### Question 5
+
+In a next step, we will investigate the results from the model.
+
+```{r}
+
+summary(log_reg)
+
+```
+
+The intercept tells us the amount of sales if all the marketing expenditures would be 0. The following variables have a significant influence on sales because for them the p-value is <0.05: log(Price), log(MarketingContribution), log(SalesReps), log(RetailMediaPOS).
+
+The interpretation of the coefficients is as follows:
+- A 1% increase in the sales price of the product leads to 1.3% decrease in sales holding other predictors constant.
+- A 1% increase in promotion costs for including the product in leaflets distributed by the store leads to 0.3% increase in sales holding other predictors constant.
+- A 1% increase in expenditures on in-store promotions managed by the sales reps leads to 0.25% increase in sales holding other predictors constant. 
+- A 1% increase in advertising expenses for marketing placements at POS leads to 0.15% increase in sales holding other predictors constant.
+
+We should always provide a measure of uncertainty that is associated with the estimates. You could compute the confidence intervals around the coefficients using the confint() function.
+
+ 
+```{r}
+
+confint(log_reg)
+
+```
+
+The results show that, for instance, with 95% confidence the true effect of the marketing contributions lies between 0.29 and 0.32.
 
 Although the variables are measured on the same scale, you should still test the relative influence by inspecting the standardized coefficients that express the effects in terms of standard deviations.
 
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
-lm.beta(linear_model)
+ 
+```{r}
+
+lm.beta(log_reg)
+
 ```
+Here, we conclude that marketing contribution has the largest ROI followed by price (negative effect) and costs on sales reps.
 
-Here, we conclude that TV advertising has the largest ROI followed by online advertising and radio advertising (that actually has negative effect).
+Another significance test is the F-test. It tests the null hypothesis: H0:R-squared=0
 
-Another significance test is the F-test. It tests the null hypothesis:
-$$H_0: R^2=0$$
-This is equivalent to the following null hypothesis: 
+This is equivalent to the following null hypothesis: H0:β1=β2=β3=βk=0
 
-$$H_0: \beta_1=\beta_2=\beta_3=\beta_k=0$$
-The result of the test is provided in the output above (**F-statistic: 468.1 on 3 and 232 DF,  p-value: < 2.2e-16**). Since the p-value is smaller than 0.05, we reject the null hypothesis that all coefficients are zero. 
+The result of the test is provided in the output above (F-statistic: 1464 on 4 and 1455 DF, p-value: <0,05). Since the p-value is smaller than 0.05, we reject the null hypothesis that all coefficients are zero.
 
-Regarding the model fit, the R<sup>2</sup> statistic tells us that approximately 86% of the variance can be explained by the model. This can be visualized as follows: 
+Regarding the model fit, the R2 statistic tells us that approximately 80% of the variance can be explained by the model.
 
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
-sales_data$yhat <- predict(linear_model)
-ggplot(sales_data, aes(yhat, sales)) + 
-  geom_point(size = 2, shape = 1) +
-  scale_x_continuous(name = "predicted values") +
-  scale_y_continuous(name = "observed values") +
-  geom_abline(intercept = 0, slope = 1) +
-  theme_minimal()
-```
-
-Of course, you could have also used the functions included in the ggstatsplot package to report the results from your regression model.
-
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE, fig.align="center", fig.width=7, fig.height=5}
-ggcoefstats(x = linear_model, k = 3, title = "Sales predicted by adspend, airplay, & starpower")
-```
-
-### Q5
-
-Finally, we can predict the outcome for the given marketing mix using the following equation: 
-$$\hat{Sales} = \beta_0 + \beta_1*150 + \beta_2*26 + \beta_3*15 $$
-The coefficients can be extracted from the summary of the linear model and used for quick sales value prediction as follows:
-
-```{r message=FALSE, warning=FALSE, echo=TRUE, eval=TRUE}
-summary(linear_model)$coefficients[1,1] + 
-  summary(linear_model)$coefficients[2,1]*150 +
-  summary(linear_model)$coefficients[3,1]*26 +
-  summary(linear_model)$coefficients[4,1]*15
-```
-
-$$\hat{sales}= 3.6 + 0.045*150 + 0.187*26 + (-0.011)*15 = 15.11$$
-
-This means that given the planned marketing mix, we would expect to sell around 15,112 units. 
-
-Equivalently one can use the `predict` function 
+The results of the model and model fit can be also visualized with the following plots:
 
 ```{r}
-predict(linear_model, data.frame(tv_adspend = 150,online_adspend =  26,radio_adspend  =  15))
+
+ggcoefstats(x = log_reg, k = 3, title = "Sales predicted by marketing expenditures")
+
+# Create the predictions (yhat) from the log-log model
+sales_data$yhat <- predict(log_reg)
+
+# Create a scatter plot of predicted vs. observed log(Sales)
+ggplot(sales_data, aes(x = yhat, y = log(Sales))) +  
+  geom_point(size = 2, shape = 1) +  # scatter plot of predicted vs observed log(Sales)
+  scale_x_continuous(name = "Predicted log(Sales)") +  # label for the x-axis
+  scale_y_continuous(name = "Observed log(Sales)") +  # label for the y-axis
+  geom_abline(intercept = 0, slope = 1, color = "red", linetype = "dashed") +  # identity line (45-degree)
+  theme_minimal() +  # minimal theme
+  labs(title = "Predicted vs. Observed log(Sales) - Log-Log Model")  # add title
+
 ```
 
-**Assignment B: Logistic regression**
 
-```{r warning=FALSE, message=FALSE}
+
+
+### Question 6
+
+Provide a description of your steps here! Below is a template for your equation:
+
+$$log(Sales) = \beta_0 + \beta_1*log(Price)+ \beta_2*log(MarketingContribution)+\beta_3*log(SalesReps)+\beta_4*log(RetailMediaPOS)$$
+
+$$log(Sales) = 6.474 + (-1.305)*log(350)+0.302*log(10000)+0.249*log(6000)+0.155+log(3000) $$
+
+ 
+```{r}
+
+Price <- 350
+MarketingContribution <- 10000
+SalesReps <- 6000
+RetailMediaPOS <- 3000
+
+# Get the coefficients from the model summary
+intercept <- summary(log_reg)$coefficients[1,1]
+coef_log_Price <- summary(log_reg)$coefficients[2,1]
+coef_log_MarketingContribution <- summary(log_reg)$coefficients[3,1]
+coef_log_SalesReps <- summary(log_reg)$coefficients[4,1]
+coef_log_RetailMediaPOS <- summary(log_reg)$coefficients[5,1]
+
+# Calculate the log(Sales) prediction using the log-log model formula
+log_sales_prediction <- intercept + 
+                        coef_log_Price * log(Price) + 
+                        coef_log_MarketingContribution * log(MarketingContribution) + 
+                        coef_log_SalesReps * log(SalesReps) + 
+                        coef_log_RetailMediaPOS * log(RetailMediaPOS) 
+                  
+
+# Exponentiate to get the predicted sales
+sales_prediction <- exp(log_sales_prediction)
+
+# Output the predicted sales
+sales_prediction
+
+
+```
+
+The predicted sales with the given marketing expenditures are 151 units.
+
+### Question 7
+
+First we visualize the relationship between the 3 variables and then formally test the effect in the model.
+
+```{r}
+
+#boxplots of sales by regions
+ggplot(sales_data, aes(x = Region, y = Sales)) +
+  geom_boxplot(fill = "gray", color = "lavenderblush3") +  # Fill and color matching scatter plot
+  labs(title = "Sales by Region", x = "Region", y = "Sales") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+# Transform data to log scale for the scatter plot
+sales_data$log_Sales <- log(sales_data$Sales)
+sales_data$log_Price <- log(sales_data$Price)
+
+# Create a scatter plot of log(Sales) vs log(Price) by Region
+ggplot(sales_data, aes(x = log_Price, y = log_Sales, color = Region)) +
+  geom_point(alpha = 0.6) +   # Scatter points with some transparency
+  geom_smooth(method = "lm", se = FALSE, aes(color = Region)) +  # Add regression lines
+  labs(
+    title = "Log-Log Relationship Between Sales and Price by Region",
+    x = "Log(Price)",
+    y = "Log(Sales)",
+    color = "Region"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "top")
+
+```
+
+From the inspection of the plot, we can already see that there are only very slight differences in price sensitivity between regions. We can see the more exact result in the model.
+
+
+```{r}
+
+log_reg_with_region <- lm(log(Sales) ~ log(Price) + log(MarketingContribution) + log(SalesReps) + log(RetailMediaPOS) + Region + log(Price)*Region, data = sales_data)
+
+summary(log_reg_with_region)
+
+
+```
+From inspecting the model, we can conclude that region indeed has an effect on price sensitivity.
+
+The coefficient for RegionSuburban indicates that in the Suburban region the sales are expected to be 1.09% higher than in the Rural region. This effect is significant (p<0.05). Similarly, for the RegionUrban sales are expected to be 1.29% higher than in the Rural region, and this effect is also statistically significant (p<0.05).
+
+The interaction effect: The coefficient log(Price) of -1.167 demonstrates the base price sensitivity in the rural region. This means that in the rural region a 1% increase in price will lead to a 1.167% decrease in sales. In the suburban region, customers are more price sensitive by 0.187. This means that a 1% increase in price will lead to (-1.167-0.187=) 1.354% decrease in sales. In urban region, people are the most price sensitive, by 0.22 more than in the rural region. A 1% increase in price will lead to (-1.167-0.22 =) 1.387% decrease in sales. 
+
+This result could indicate that in urban areas consumers have access to more alternatives and hence, react stronger to price changes. 
+
+
+### Assignment B
+
+As a marketing manager of a music streaming service, you are set the task to derive insights from data using different quantitative analyses.   
+
+The following variables are available to you:
+
+The data set contains the following variables:
+
+* isrc = unique song id
+* artist_id = unique artist ID
+* streams = the number of streams of the song received globally between 2017-2021
+* weeks_in_charts = the number of weeks the song was in the top200 charts in this period
+* n_regions = the number of markets where the song appeared in the top200 charts
+* danceability
+* energy
+* speechiness
+* instrumentalness
+* liveness
+* valence
+* tempo
+* song_length = the duration of the song (in minutes)
+* song_age = the age of the song (in weeks since release)
+* explicit = indicator for explicit lyrics
+* n_playlists = number of playlists a song is featured on
+* sp_popularity = the Spotify popularity index of an artist
+* youtube_views = the number of views the song received on YouTube
+* tiktok_counts = the number of Tiktok views the song received on TikTok
+* ins_followers_artist = the number of Instagram followers of the artist
+* monthly_listeners_artist = the number of monthly listeners of an artist
+* playlist_total_reach_artist = the number of playlist followers of the playlists the song is on
+* sp_fans_artist = the number of fans of the artist on Spotify
+* shazam_counts = the number of times a song is shazamed
+* artistName = name of the artist
+* trackName = name of the song
+* release_date = release date of song
+* genre = genre associated with the song
+* label = music label associated with the song
+* top10 = indicator variable, indicating if a song made it to the top10
+
+1. Build and estimate a classification model (i.e., logistic regression) to explain the success of songs in terms of the chart position (i.e., if a song made it to the top 10 or not). This means, the variable "top10"" is your dependent variable. As independent (explanatory) variables, you should include the variables "weeks_in_charts", "song_age" and "label". In addition to these 3 variables you should identify 5 more variables that have a significant effect on the chart performance. Please visualize the relationship between the top10 variable and the independent variables using appropriate plots and interpret the model coefficients.
+
+### Data analysis
+
+### Load data
+
+```{r load_data_112, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(psych)
+library(dplyr)
+options(scipen = 999)
+set.seed(123)
 music_data <- read.csv2("https://raw.githubusercontent.com/WU-RDS/RMA2022/main/data/music_data_group.csv",
                         sep = ";", header = TRUE, dec = ",")
 music_data$genre <- as.factor(music_data$genre)
 music_data$label <- as.factor(music_data$label)
+str(music_data)
 ```
 
-### Q6
-                                                                                                                             For this model, we need to consider the logistic function, so the final mathematical representation (with three main predictors of interest so far) would look as follows:
-                                                                                                                             $$f(\mathbf{X}) = P(y_i = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 * x_{1,i} + \beta_2 * x_{2,i} +\beta_3 * x_{3,i})}}$$
-where $\beta_0$ is the intercept coefficient, and $\beta_1$, $\beta_2$, and $\beta_3$ represent the parameters of our model: weeks in charts, age of song, and label.
+### Question 1
 
-We should create the model using `glm()` and have a look at the summary:
 
-```{r message = FALSE, warning = FALSE}
+For this model, we need to consider the logistic function, so the final mathematical representation (with three main predictors of interest so far) would look as follows:
+
+
+$$f(\mathbf{X}) = P(y_i = 1) = \frac{1}{1
++ e^{-(\beta_0 + \beta_1 * x_{1,i} + \beta_2 * x_{2,i} +\beta_3 *
+x_{3,i})}}$$
+
+where β0 is the intercept coefficient, and β1, β2, and β3represent the parameters of our model: weeks in charts, age of song, and label.
+
+We should create the model using glm() and have a look at the summary
+
+```{r}
 mult_logit_model <- glm(top10 ~ weeks_in_charts + song_age + label, family = binomial (link = 'logit'), data = music_data)
 summary(mult_logit_model)
 ```
 
+
+
+
+
 ```{r}
 confint(mult_logit_model)
+
 ```
 
 From the summary of the model we can see that weeks in charts, age of song, and label can be used to predict if a song will end up in top-10 or not. We can also assess the model fit:
 
 ```{r}
+
 logisticPseudoR2s <- function(LogModel) {
-  dev <- LogModel$deviance
-  nullDev <- LogModel$null.deviance
+  dev <- LogModel$deviance 
+  nullDev <- LogModel$null.deviance 
   modelN <- length(LogModel$fitted.values)
   R.l <-  1 -  dev / nullDev
   R.cs <- 1- exp(-(nullDev - dev) / modelN)
@@ -2131,34 +1638,47 @@ logisticPseudoR2s <- function(LogModel) {
 }
 #Inspect Pseudo R2s
 logisticPseudoR2s(mult_logit_model)
+
 ```
 
-To make conclusions about the effect that predictors have on success, we should convert the log-odds ratios to odds ratios using `exp()` function:
+To make conclusions about the effect that predictors have on success, we should convert the log-odds ratios to odds ratios using exp() function:
 
 ```{r}
 exp(coef(mult_logit_model))
 ```
 
-The results tell us, for example, that when a song is one week older, it is slightly less likely to get to the top-10 chart. If we are concerned about the labels to which the songs belong, we can see that in comparison to rather unknown (independent) labels, songs from Universal are 2.38 times more likely to appear in the top-10 chart.
+
+The results tell us, for example, that for each extra week in charts, the odds of the song to be in the top 10 are 1.0126 times higher, or equivalently, the likelihood of the outcome is increased by 1.26%. Or songs from Universal are 2.38 times more likely to appear in the top-10 chart in comparison with songs from independent labels, or equivalently, the likelihood of the outcome is increased by 138.5% compared to independent labels. 
 
 We should visualize the relationship between IVs and DV:
 
 ```{r}
+#Relationship of weeks in charts and top10
+
 ggplot(music_data, aes(weeks_in_charts, top10)) +  
   geom_point(shape = 1) +
-  geom_smooth(method = "glm",
-              method.args = list(family = "binomial"),
-              se = FALSE, color = "lavenderblush3") + theme_minimal()
-ggplot(music_data, aes(song_age, top10)) + 
-  geom_point(shape = 1) +
-  geom_smooth(method = "glm",
-              method.args = list(family = "binomial"),
+  geom_smooth(method = "glm", 
+              method.args = list(family = "binomial"), 
               se = FALSE, color = "lavenderblush3") + theme_minimal()
 ```
 
-There are several ways of plotting the effect of factor variables. Let's do it as follows to gain a better understanding of predicted values in logistic regression:
+
 
 ```{r}
+#Relationship of song age and top10
+
+ggplot(music_data, aes(song_age, top10)) +  
+  geom_point(shape = 1) +
+  geom_smooth(method = "glm", 
+              method.args = list(family = "binomial"), 
+              se = FALSE, color = "lavenderblush3") + theme_minimal()
+```
+
+
+
+```{r}
+#Relationship of label and top10
+
 library(forcats)
 labels <- as.factor(c("Warner Music", "Sony Music", "Independent", "Universal Music"))
 top10_predictions <- data.frame(pred = 
@@ -2168,51 +1688,69 @@ top10_predictions <- data.frame(pred =
 top10_counts <- table(music_data$top10, music_data$label)
 top10_share <- prop.table(top10_counts, margin = 2)
 data.frame(top10_share) |>
-  dplyr::filter(Var1 == 1) |> 
+  filter(Var1 == 1) |> 
   left_join(top10_predictions, by = c("Var2" = "label")) |>
-  dplyr::rename(Share = Freq) |>
-  ggplot(aes(fct_reorder(Var2, Share), Share)) +
+  dplyr::rename(`Top 10 share` = Freq) |>
+  ggplot(aes(fct_reorder(Var2, `Top 10 share`), `Top 10 share`)) +
   geom_bar(stat = 'identity', fill = "lavenderblush3") +
   geom_point(aes(x = Var2, y = pred), color = 'red4') +
   theme_minimal() +
   theme(axis.title.x = element_blank())
 ```
 
-For factor variables, it would be also fine to plot the proportion plots (e.g., using `ggbarstats()` or `prop.table()` functions) as far as when considered separately, factor levels' proportions represent the exact probability of getting the 1 probability of a DV.  
-
-To find out which other variables might have a significant effect on the chart performance, we can either load variables one-by-one manually or use a step-wise approach. For the latter, we basically need a model to start with (usually it's a "null" model, however, we already have a model that works for us, i.e., `mult_logit_model`) and the most loaded model that includes all the variables (we will only drop all character and date variables). Let's create it in the next step (please note that we already drop some variables that potentially might be influenced if a song appears in top-10: streams, sp_popularity, n_regions, etc.)
+To find out which other variables might have a significant effect on the chart performance, we can either load variables one-by-one manually or use a step-wise approach. For the latter, we basically need a model to start with (usually it’s a “null” model, however, we already have a model that works for us, i.e., mult_logit_model) and the most loaded model that includes all the variables (we will only drop all character and date variables). Let’s create it in the next step (please note that we already drop some variables that potentially might be influenced if a song appears in top-10: streams, sp_popularity, n_regions, etc.)
 
 ```{r}
-music_data$explicit <- factor(music_data$explicit,levels = c(0,1), labels = c("not explicit", "explicit"))
+music_data$explicit <- factor(music_data$explicit, 
+                                    levels = c(0,1), labels = c("not explicit", "explicit"))
+
 full_model <- glm(top10 ~ weeks_in_charts + song_age + label + #our basic model. Next we add the rest of the variables to it:
-                    danceability + energy + speechiness + instrumentalness + liveness + valence + tempo + song_length +
-                    explicit + n_playlists + genre, family = binomial(link = 'logit'), data = music_data)
+                    danceability + energy + speechiness + instrumentalness + liveness + valence + tempo +
+                    song_length + explicit + n_playlists + genre,
+                  family = binomial(link = 'logit'), data = music_data)
 ```
 
-Let's have a look at how the fullest model possible works:
+Let’s have a look at the fullest model possible:
 
 ```{r}
 summary(full_model)
 ```
 
-We don't really need to go too much in details and apply step-by-step comparisons of the models using the suggested variables, so we can pick five significant factors from the summary above. For example, we can proceed with the model as follows:
+We can pick five significant factors from the summary above. For example, we can proceed with the model as follows:
 
 ```{r}
 final_model <- glm(top10 ~ weeks_in_charts + song_age + label + #our basic model. Next we add the rest of the variables to it:
-danceability + liveness + tempo + song_length + n_playlists,family = binomial(link = 'logit'), data = music_data)
+                   danceability + liveness + tempo + song_length + n_playlists,
+                   family = binomial(link = 'logit'), data = music_data)
+
 summary(final_model)
 ```
 
 ```{r}
 logisticPseudoR2s(final_model)
-exp(coef(final_model))
-#confint(final_model)
 ```
 
-The interpretation of odds ratios stays the same (and should be discussed in your solution).
-<br>
+We can see from the table above that the model explains 50% of the variability in the likelihood of the song being in top 10 (according to Nagelkerke R-squared).
 
-If we still want to choose a parsimonious model using step-wise comparisons, we can do it as follows: the function below takes the "base" model, adds variables from the fullest model one-by-one to it, and shows the new models' performance:
+```{r}
+exp(coef(final_model))
+```
+
+Interpretation: The results tell us, for example, that for each one minute increase in song length, the odds of the song to be in the top 10 are 0.73 times lower, or equivalently, the likelihood of the song to be in top 10 is decreased by 27%. For each one unit increase in danceability, the odds of the song to be in top 10 are 1.02 times higher, or equivalently, the likelihood of the song being in top 10 is increased by 2%.
+
+Alternatively, average partial effect as means of model interpretation can be used:
+```{r}
+library(mfx)
+# Average partial effect
+logitmfx(final_model, data = music_data, atmean = FALSE)
+```
+
+
+Interpretation of average partial effects: If a song is one week older, the probability of this song appearing in top-10 chart decreases by 0.01 percentage points.
+
+If we still want to choose a parsimonious model using step-wise comparisons, we can do it as follows: the function below takes the “base” model, adds variables from the fullest model one-by-one to it, and shows the new models’ performance.
+
+AIC values can be compared, we want the model with lowest possible AIC. As a second measure for variable selection, we can use the pseudo R-squared, that gives a value for explanatory power of the model.
 
 ```{r}
 step(mult_logit_model, #our base model
@@ -2221,7 +1759,291 @@ step(mult_logit_model, #our base model
      test = "Chisq",
      data = music_data)
 ```
-<br>
-<br>
 
--->
+
+
+## Assignment 4
+
+### Assignment A
+
+The data-set `influencer` contains the following variables to assess the success of influencer marketing campaigns:
+
+  - `follower_count`: the number of followers of the influencer
+  - `engagement_rate`: the engagement rate measured as the number of interations divided by the influencers reach
+  - `content_quality`: an index measuring the quality of the influencer's posts
+  - `post_frequency`: the number of times the influencer posted about the brand
+  - `sales`: the number of units sold during the campaign
+  - `brand_awareness`: an index measuring how many people became aware of the brand during the campaign
+
+**Task Instructions**
+
+#### Task 1: Omitted Variable Bias
+
+```{r}
+influencer <- readr::read_csv("https://github.com/WU-RDS/MA2024/raw/refs/heads/main/data/influencer.csv")
+str(influencer)
+set.seed(1234)
+```
+
+We are interested in modeling the sales during the campaigns. 
+
+a) Draw a DAG that shows how you would model the causal influence of of `follower_count` on `sales` (feel free to draw it by hand and insert an image. You can add images with `![](./IMAGE.png)`)
+
+
+```{r}
+
+base_model <- lm(sales ~ follower_count, data = influencer)
+summary(base_model)
+
+```
+
+```{r}
+
+engagement_model <- lm(sales ~ follower_count + engagement_rate, data = influencer)
+summary(engagement_model)
+
+```
+```{r}
+
+frequency_model <- lm(sales ~ follower_count + post_frequency, data = influencer)
+summary(frequency_model)
+
+```
+
+```{r}
+
+content_model <- lm(sales ~ follower_count + content_quality, data = influencer)
+summary(content_model)
+
+```
+
+```{r}
+
+awareness_model <- lm(sales ~ follower_count + brand_awareness, data = influencer)
+summary(awareness_model)
+
+```
+
+We ran several models, starting with a base model with one independent variable follower_count and sales as dependent variable. Then we added different variables in this model to see if some of them add explanatory power, and it's the case only for the variable engagement_rate. The effect of follower count on sales increases when engagement rate is added to the model from 0.9 to 1.9, suggesting that engagement rate is acting as a confounder, influencing both follower_count and sales.
+
+
+b) Describe briefly what roles each of the variables in you DAG play (mediator, moderator, collider)
+
+```{r}
+
+#Engagement rate is a confounder
+
+library(DiagrammeR)
+
+mermaid("
+graph LR
+   engagement_rate --> follower_count
+   engagement_rate --> sales
+   follower_count --> sales
+")
+
+
+```
+
+
+c) Calculate the correlation coefficients of the variables you expect to be correlated based on your answer in a). Briefly explain any changes (if any) you would like to make to your DAG based on the results.
+
+```{r}
+
+# Load necessary libraries
+library(ggplot2)
+library(corrplot)
+
+
+#Variable selection
+variables <- influencer[, c("follower_count", "sales", "engagement_rate", 
+                              "brand_awareness", "content_quality", "post_frequency")]
+
+# Calculate correlation matrix
+cor_matrix <- cor(variables, use = "complete.obs", method = "pearson")
+
+# Print the correlation matrix
+print(cor_matrix)
+
+# Visualize the correlation matrix using corrplot
+corrplot(cor_matrix, method = "circle", type = "upper", 
+         tl.col = "black", tl.srt = 45, addCoef.col = "black")
+
+```
+
+
+d) Run and interpret the appropriate model given your answers in a) - c) (hint: you don't need anything we did not do in class)
+
+```{r}
+
+#Confounder - engagement rate
+
+base_model <- lm(sales ~ follower_count, data = influencer)
+summary(base_model)
+
+engagement_model <- lm(sales ~ follower_count + engagement_rate, data = influencer)
+summary(engagement_model)
+
+```
+
+
+All the coefficients have a p-value lower than 0.05, which means they are all significant, so we can proceed with the interpretations. 
+
+The coefficient for follower count is now 1.99, meaning for each additional follower, sales increase by 1.99 units, holding another predictor constant. This is higher than the previous value of 0.9 in the base model. After adjusting for engagement rate, the effect of follower count on sales becomes stronger. The coefficient for engagement rate is 2.1, meaning for each unit increase in engagement rate, sales increase by 2.1 units, holding another predictor constant.
+
+The R-squared of the model increased from 0.13 in the base model to 0.5 in the model including engagement rate. So, this model explains 50% of the variance in sales. 
+
+#### Task 2: Selection Bias
+
+```{r}
+influencer2 <- readr::read_csv("https://github.com/WU-RDS/MA2024/raw/refs/heads/main/data/influencer2.csv")
+str(influencer2)
+```
+
+The data-set `influencer2` contains data from an experiment run by a company to assess whether their selection criteria for influencer campaigns are suitable to assess the impact authenticity of their posts have on sales. Instead of their usual selection criteria they select influencers at random to check if their usual selection criteria change the relationship between authenticit and sales. The data contains the following variables:
+
+ - `sales_impact`: the measured sales impact of an influencer
+ - `authenticity`: an index measuring the perceived authenticity of the influencer's posts
+ - `selected`: an indicator of whether this influencer would have been selected according to the companies usual criteria
+
+Since their usual selection criteria include the expected sales impact of a campaign as well as the authenticity index the company suspects that the selection is a collider.
+
+a) Please estimate and interpret a model that shows the causal impact of authenticity on sales assuming the company is correct and their selection is a collider
+
+```{r}
+# provide your code here 
+
+model_correct <- lm(sales_impact ~ authenticity, influencer2)
+model_collider <-  lm(sales_impact ~ authenticity + selected, influencer2)
+
+summary(model_correct)
+summary(model_collider)
+
+```
+
+b) Draw the DAG for the model (feel free to draw it by hand and insert an image)
+
+```{r}
+
+#collider
+library(DiagrammeR)
+
+## Model the situation assumed by the company (=collider) 
+mermaid("
+graph LR
+   authenticity--> select
+   sales--> select
+   authenticity-->sales
+")
+
+```
+
+#### Task 3: Moderation
+
+```{r}
+in_app_purchases <- readr::read_csv("https://github.com/WU-RDS/MA2024/raw/refs/heads/main/data/in_app_purchases.csv")
+str(in_app_purchases)
+```
+
+
+The data-set `in_app_purchases` includes data on a marketing campaign aimed at boosting in-app purchases. It contains the variables:
+
+- `in_app`: the number of in-app purchases of a user
+- `gender`: the gender of the user
+- `campaign_exposure`: indicator whether the user was exposed to the campaign
+
+a) Provide an appropriate visualization showing whether the effect of the campaign is moderated by gender
+
+```{r}
+
+library(ggplot2)
+
+ggplot(in_app_purchases, aes(x = campaign_exposure, y = in_app_purchases, fill = gender)) +
+  geom_boxplot(alpha = 0.7, position = position_dodge(width = 0.8)) +  # Adjusted dodge for separation
+  labs(
+    title = "In-App Purchases by Campaign Exposure and Gender",
+    x = "Campaign Exposure",
+    y = "In-App Purchases",
+    fill = "Gender"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "top",
+    axis.text = element_text(size = 12),      # Improves text size
+    plot.title = element_text(size = 16, face = "bold")  # Enhances title appearance
+  )
+
+
+```
+
+From the boxplots we can already see that gender moderates the effect of the campaign. This campaign works much better on women than on men. We can check it formally by running the regression and looking at the coefficients. 
+
+
+a) Calculate and interpret all of the coefficients in the appropriate model given your answer in a)
+
+```{r}
+
+moderation_gender <- lm(in_app_purchases ~ campaign_exposure*gender, data = in_app_purchases)
+summary(moderation_gender)
+
+```
+
+From the model we can see that all the coefficients are significant (p<0.05), so we can proceed with interpreting them.
+
+campaign_exposureNot Exposed - When the female customers are not exposed to the campaign, their in app purchases fall by 7.8 units in comparison with customers exposed to the campaign.
+genderMale - Men who are exposed to the campaign make 4.04 fewer in-app purchases on average compared to women who are exposed to the campaign.
+campaign_exposureNot Exposed:genderMale - Men are less negatively affected by not being exposed to the campaign compared to women. 
+
+-7.8 + 3.9 = -3.9: If men are not exposed to the campaign, their in app purchases fall by 3.9 units in comparison with decrease of 7.8 among women. 
+
+
+#### Task 4: The IKEA effect
+
+
+```{r}
+ikea <- readr::read_csv("https://github.com/WU-RDS/MA2024/raw/refs/heads/main/data/ikea.csv")
+str(ikea)
+```
+
+The IKEA effect describes a psychological process through which consumers value products more because they feel a sense of accomplishment after assembling the something themselves. Using the following data, analyze whether you can replicate these results. The data was created through an experiment in which some consumers were randomly given fully assembled furniture while others had to assemble it themselves (it is otherwise the same furniture; variable: `self_assembly`). The researchers asked consumers about their sense of accomplishment (variable: `accomplishment`) and how much they value the final product (variable: `valuation`). Discuss the relative magnitude of the direct and mediated effect of self assembly.
+
+```{r}
+# provide your code here 
+
+#Mediation - engagement rate
+
+#Step 1: Run regression just with X and Y
+total_effect_ikea <- lm(valuation ~ self_assembly, data = ikea)
+
+#Step 2: Run regression just with M1
+X_on_M_ikea <- lm(accomplishment ~ self_assembly, data = ikea)
+
+
+# Step 3: Run regression with Y on X and M1
+avg_direct_effect_M_ikea <- lm(valuation ~ self_assembly + accomplishment, data = ikea)
+
+summary(total_effect_ikea)
+summary(X_on_M_ikea)
+summary(avg_direct_effect_M_ikea)
+
+# Indirect effect: self_assembly -> accomplishment -> valuation
+indirect_effect <- coef(X_on_M_ikea)["self_assembly"] * coef(avg_direct_effect_M_ikea)["accomplishment"]
+
+# Print the indirect effect
+indirect_effect
+
+
+```
+
+
+The coefficients in all 3 models are significant (p<0.05), so we can proceed with the interpretations. 
+
+First model with just the effect of self assembly on valuation: 11.54 (p<0.05) If consumers assemble the product themselves (as opposed to receiving it fully assembled), their valuation of the product increases by 11.54 units.
+
+Second model with the effect of the self assembly on the sense of accomplishment: If the furniture is self assembled, it increases the sense of accomplishment by approximately 2.12 units in comparison with furniture that doesn't have to be assembled. 
+
+Third model with the effect of both self assembly and accomplishment on valuation: After including the accomplishment variable in the model, self assembly still has a positive effect on valuation, but now the effect is reduced compared to the total effect in the first step. The reduction suggests part of the effect of self assembly on valuation is mediated by accomplishment.
+
+As the next step, we calculate the indirect effect of the self assembly on valuation through sense of accomplishment by multiplying the coefficients from the first and second models: 2.122 * 2.889 = 6.13
+
+The mediated effect via accomplishment (=6.13) is slightly larger than the direct effect (5.41), suggesting that the IKEA effect (the increased valuation due to self assembly) is largely driven by the sense of accomplishment that consumers feel when assembling the product themselves.
