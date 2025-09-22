@@ -1,8 +1,19 @@
 {
   description = "Dev env for MA";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://rstats-on-nix.cachix.org"
+      "https://rde.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "rstats-on-nix.cachix.org-1:vdiiVgocg6WeJrODIqdprZRUrhi1JzhBnXv7aWI6+F0="
+      "rde.cachix.org-1:yRxQYM+69N/dVER6HNWRjsjytZnJVXLS/+t/LI9d1D4="
+    ];
+  };
+
   inputs = {
-    nixpkgs.url = "github:rstats-on-nix/nixpkgs/2025-08-25";
+    nixpkgs.url = "github:rstats-on-nix/nixpkgs/2025-09-16";
   };
 
   outputs = {
@@ -35,15 +46,5 @@
         };
       }
     );
-  };
-  nixConfig = {
-    extra-substituters = [
-      "https://rstats-on-nix.cachix.org"
-      "https://rde.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "rstats-on-nix.cachix.org-1:vdiiVgocg6WeJrODIqdprZRUrhi1JzhBnXv7aWI6+F0="
-      "rde.cachix.org-1:yRxQYM+69N/dVER6HNWRjsjytZnJVXLS/+t/LI9d1D4="
-    ];
   };
 }
