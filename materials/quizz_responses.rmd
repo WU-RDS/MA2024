@@ -28,13 +28,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - [ ] …has an absolute zero point
 - [ ] …possesses all properties of an ordinal scale
-- [x] …can have numerical values
-- [x] …serves as a label to classify/categorize objects
+- [ ] …can have numerical values
+- [ ] …serves as a label to classify/categorize objects
 - [ ] None of the above 	
 
 **(LC1.3) Which of these statements regarding formative constructs are true?**
 
-- [x] Indicators (items) measure the cause for the change of the not directly observable construct
+- [ ] Indicators (items) measure the cause for the change of the not directly observable construct
 - [ ] Indicators (items) measure the effect of the change in a not directly observable construct
 - [ ] The indicators (items) of the scale should be highly correlated
 - [ ] Multi-item measurement is particularly important for the increase in the reliability of the measurement
@@ -45,17 +45,17 @@ knitr::opts_chunk$set(echo = TRUE)
 - [ ] …the main concern is to generate predictions of future outcomes 
 - [ ] …the main concern is to maximize the explained variance
 - [ ] …observational research is the 'gold standard'
-- [x] …randomization minimizes unsystematic variation
+- [ ] …randomization minimizes unsystematic variation
 - [ ] None of the above 	
 
 **(LC1.5) True or false? Reliability refers to the consistency of a measurement.**
 
-- [x] True 
+- [ ] True 
 - [ ] False
 
 **(LC1.5) Using a between-subjects design, we ... **
 
-- [x] ... manipulate the independent variable (treatment) using different persons for each group
+- [ ] ... manipulate the independent variable (treatment) using different persons for each group
 - [ ] ... manipulate independent variable using the same participants for each group 
 - [ ] ... manipulate the dependent variable (treatment) using different persons for each group
 - [ ] ... manipulate dependent variable using the same participants for each group 
@@ -63,23 +63,23 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **(LC1.6) When conducting field experiments, the term crossover effect means ...**
 
-- [x] ... that an individual who was supposed to be assigned to one treatment is accidentally exposed to another treatment 
+- [ ] ... that an individual who was supposed to be assigned to one treatment is accidentally exposed to another treatment 
 - [ ] ... that a treated individual affects the outcomes for other untreated individuals  
 - [ ] ... that individuals can be part of both the test and the control condition
 - [ ] None of the above
 
 **(LC1.7) Conditions for causality are ...**
 
-- [x] ... a cause and an effect should vary together in the way predicted by the hypothesis under consideration 
+- [ ] ... a cause and an effect should vary together in the way predicted by the hypothesis under consideration 
 - [ ] ... random assignment of test units
-- [x] ... the causing event must occur before the effect
-- [x] ... absence of other possible causal factors
+- [ ] ... the causing event must occur before the effect
+- [ ] ... absence of other possible causal factors
 - [ ] None of the above
 
 **(LC1.8) The effect of the treatment on the treated in DID models can be written as ...**
 
 - [ ] $(Yt,pre - Yt,post) − (Yc,post - Yc,pre)$  
-- [x] $(Yt,post - Yt,pre) − (Yc,post - Yc,pre)$ 
+- [ ] $(Yt,post - Yt,pre) − (Yc,post - Yc,pre)$ 
 - [ ] $(Yt,pre - Yt,post) − (Yc,pre - Yc,post)$  
 - [ ] $(Yt,post - Yt,pre) − (Yc,pre - Yc,post)$  
 - [ ] None of the above
@@ -87,15 +87,15 @@ knitr::opts_chunk$set(echo = TRUE)
 **(LC1.9) In predictive modeling tasks ...**
 
 - [ ] ... once major concern are unobserved confounders
-- [x] ... one major concern is overfitting 
-- [x] ... we primarily care about the predictive ability of the model  
+- [ ] ... one major concern is overfitting 
+- [ ] ... we primarily care about the predictive ability of the model  
 - [ ] ... we primarily care about causal effects 
 - [ ] None of the above
 
 **(LC1.10) True or false? For ordinal scales, the magnitude of difference between scale points is known**
 
 - [ ] True 
-- [x] False
+- [ ] False
 
 
 
@@ -104,8 +104,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **(LC3.1) Which of the following are data types are recognized by R?**
 
-- [x] Factor
-- [x] Date
+- [ ] Factor
+- [ ] Date
 - [ ] Decimal
 - [ ] Vector
 - [ ] None of the above 	
@@ -113,8 +113,8 @@ knitr::opts_chunk$set(echo = TRUE)
 **(LC3.2) What function should you use to check if an object is a data frame?**
 
 - [ ] `type()`
-- [x] `str()`
-- [x] `class()`
+- [ ] `str()`
+- [ ] `class()`
 - [ ] `object.type()`
 - [ ] None of the above 	
 
@@ -129,7 +129,7 @@ df <- data.frame(student,grade,date)
 
 - [ ] Error because a data frame can not have different data types
 - [ ] Error because you should use `as.data.frame()` instead of `data.frame()`
-- [x] Error because all vectors need to have the same length
+- [ ] Error because all vectors need to have the same length
 - [ ] Error because the column names are not specified
 - [ ] This code should not report an error	
 
@@ -145,33 +145,33 @@ df
 
 **(LC3.4) How can you obtain Christina's grade from the data frame?**
 
-- [x] `df[4,2]`
+- [ ] `df[4,2]`
 - [ ] `df[2,4]`
 - [ ] `df[student="Christina","grade"]`
-- [x] `df[student=="Christina","grade"]`
+- [ ] `df[student=="Christina","grade"]`
 - [ ] None of the above 	
 
 **(LC3.5) How can you add a new variable 'student_id' to the data frame that assigns numbers to students in an ascending order?**
 
-- [x] `df$student_id <- 1:nrow(df)`
+- [ ] `df$student_id <- 1:nrow(df)`
 - [ ] `df&student_id <- 1:nrow(df)`
-- [x] `df[,"student_id"] <- 1:nrow(df)`
+- [ ] `df[,"student_id"] <- 1:nrow(df)`
 - [ ] `df$student_id <- 1:length(df)`
 - [ ] None of the above 	
 
 **(LC3.6) How could you obtain all rows with students who obtained a 1?**
 
-- [x] `df[df$grade==1,]`
-- [x] `df[grade == min(df$grade),]`
+- [ ] `df[df$grade==1,]`
+- [ ] `df[grade == min(df$grade),]`
 - [ ] `df[,df$grade==1]`
-- [x] `df[grade==1,]`
+- [ ] `df[grade==1,]`
 - [ ] None of the above 	
 
 **(LC3.7) How could you create a subset of observations where the grade is not missing (NA) **
 
 - [ ] `df_subset <- df[grade!=NA,]`
 - [ ] `df_subset <- df[isnot.na(grade),]`
-- [x] `df_subset <- df[!is.na(grade),]`
+- [ ] `df_subset <- df[!is.na(grade),]`
 - [ ] `df_subset <- df[,grade!=NA]`
 - [ ] None of the above 
 
@@ -179,7 +179,7 @@ df
 
 - [ ] `df[grade<3,]/nrow(df)`
 - [ ] `nrow(df[grade<3,])/length(df)`
-- [x] `nrow(df[grade<3,])/nrow(df)`
+- [ ] `nrow(df[grade<3,])/nrow(df)`
 - [ ] `nrow(df[,grade<3])/nrow(df)`
 - [ ] None of the above
 
@@ -187,7 +187,7 @@ df
 
 - [ ] `read.table(file_name.csv)`
 - [ ] `load.csv("file.csv")`
-- [x] `read.table("file.csv")`
+- [ ] `read.table("file.csv")`
 - [ ] `get.table(file_name.csv)`
 - [ ] None of the above
 
@@ -196,7 +196,7 @@ df
 - [ ] `ncol(df)`
 - [ ] `nrow(df)`
 - [ ] `dim(df)`
-- [x] `str(df)`
+- [ ] `str(df)`
 - [ ] None of the above
 
 
@@ -206,12 +206,12 @@ df
 
 - [ ] Nominal
 - [ ] Ordinal
-- [x] Interval
-- [x] Ratio
+- [ ] Interval
+- [ ] Ratio
 
 **(LC4.2) How can you compute the standardized variate of a variable X?**
 
-- [x] $Z=\frac{X_i-\bar{X}}{s}$
+- [ ] $Z=\frac{X_i-\bar{X}}{s}$
 - [ ] $Z=\frac{\bar{X}+X_i}{s}$
 - [ ] $Z=\frac{s}{\bar{X}+X_i}$
 - [ ] $Z=s*({\bar{X}+X_i)}$
@@ -228,7 +228,7 @@ head(mtcars,6)
 - [ ] `df$mpg_std <- zscore(df$mpg)`
 - [ ] `df$mpg_std <- stdv(df$mpg)`
 - [ ] `df$mpg_std <- std.scale(df$mpg)`
-- [x] `df$mpg_std <- scale(df$mpg)`
+- [ ] `df$mpg_std <- scale(df$mpg)`
 - [ ] None of the above 	
 
 **(LC4.4) How could you produce the below output?**
@@ -238,7 +238,7 @@ library(psych)
 as.data.frame(psych::describe(mtcars[,c("hp","mpg","qsec")]))
 ```
 
-- [x] `describe(mtcars[,c("hp","mpg","qsec")])`
+- [ ] `describe(mtcars[,c("hp","mpg","qsec")])`
 - [ ] `summary(mtcars[,c("hp","mpg","qsec")])`
 - [ ] `table(mtcars[,c("hp","mpg","qsec")])`
 - [ ] `str(mtcars[,c("hp","mpg","qsec")])`
@@ -251,7 +251,7 @@ table(mtcars$carb)
 ```
 
 - [ ] `describe(mtcars$carb)`
-- [x] `table(mtcars$carb)`
+- [ ] `table(mtcars$carb)`
 - [ ] `str(mtcars$carb)`
 - [ ] `prop.table(mtcars$carb)`
 - [ ] None of the above 	
@@ -260,7 +260,7 @@ table(mtcars$carb)
 
 - [ ] Two categorical variables
 - [ ] One categorical and one continuous variable
-- [x] Two continuous variables
+- [ ] Two continuous variables
 - [ ] One continuous variable
 - [ ] None of the above 	
 
@@ -271,8 +271,8 @@ hist(mtcars$mpg,xlab="miles per gallon", main="miles per gallon")
 ```
 
 - [ ] This is a bar chart
-- [x] This is a histogram
-- [x] It shows the frequency distribution of a continuous variable
+- [ ] This is a histogram
+- [ ] It shows the frequency distribution of a continuous variable
 - [ ] It shows the frequency distribution of a categorical variable
 - [ ] None of the above 	
 
@@ -283,14 +283,14 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 ```
 
 - [ ] This is a bar chart
-- [x] 50% of observations are contained in the gray area
+- [ ] 50% of observations are contained in the gray area
 - [ ] The horizontal black line indicates the mean
-- [x] This is a boxplot
+- [ ] This is a boxplot
 - [ ] None of the above 	
 
 **(LC4.9) Which function can help you to save a graph made with `ggplot()`?** 
 
-- [x] `ggsave()`
+- [ ] `ggsave()`
 - [ ] `write.plot()`
 - [ ] `save.plot()`
 - [ ] `export.plot()`
@@ -298,7 +298,7 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 **(LC4.10) For a variable that follows a normal distribution, within how many standard deviations of the mean are 95% of values?**
 
 - [ ] 1.645
-- [x] 1.960
+- [ ] 1.960
 - [ ] 2.580
 - [ ] 3.210
 - [ ] None of the above 	
@@ -316,7 +316,7 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 
 **(LC5.1) What is the correct interpretation of a confidence interval for a significance level of $\alpha$=0.05?**
 
-- [x] If we take 100 samples and calculate mean and confidence interval for each one of them, then the true population mean would be included in 95% of these intervals.
+- [ ] If we take 100 samples and calculate mean and confidence interval for each one of them, then the true population mean would be included in 95% of these intervals.
 - [ ] If we take 100 samples and calculate mean and confidence interval for each one of them, then the true population mean would be included in 5% of these intervals.
 - [ ] If we take 100 samples and calculate mean and confidence interval for each one of them, then the true population mean would be included in 100% of these intervals.
 - [ ] For a given sample, there is a 95% chance that the true population mean lies within the confidence interval.
@@ -324,25 +324,25 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 **(LC5.2) Which statements regarding standard error are TRUE?**
 
 - [ ] There is no connection between the standard deviation and the standard error.
-- [x] The standard error is a function of the sample size and the standard deviation.
-- [x] The standard error of the mean decreases as the sample size increases.
-- [x] The standard error of the mean increases as the standard deviation increases.
+- [ ] The standard error is a function of the sample size and the standard deviation.
+- [ ] The standard error of the mean decreases as the sample size increases.
+- [ ] The standard error of the mean increases as the standard deviation increases.
 - [ ] None of the above 	
 
 **(LC5.3) What is the correct definition for the standard error ($SE_{\bar x}$)?**
 
-- [x] ${s \over \sqrt{n}}$
+- [ ] ${s \over \sqrt{n}}$
 - [ ] ${s * \sqrt{n}}$
-- [x] ${\sqrt{s^2} \over \sqrt{n}}$
+- [ ] ${\sqrt{s^2} \over \sqrt{n}}$
 - [ ] ${\sqrt{s} \over n}$
 - [ ] None of the above 	
 
 **(LC5.4) Which of the following do you need to compute a confidence interval around a sample mean?**
 
-- [x] The critical value of the test statistic given a certain level of confidence 
-- [x] A continuous variable (i.e., at least measured at the interval level) 
-- [x] The sample the mean
-- [x] The standard error
+- [ ] The critical value of the test statistic given a certain level of confidence 
+- [ ] A continuous variable (i.e., at least measured at the interval level) 
+- [ ] The sample the mean
+- [ ] The standard error
 - [ ] None of the above 	
 
 **(LC5.5) What is the correct definition for the confidence interval?**
@@ -350,14 +350,14 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 - [ ] $CI=\bar{x} \pm \frac{z_{1-\frac{a}{n}}}{\sigma_{\bar{x}}}$
 - [ ] $CI=\bar{x} * z_{1-\frac{a}{n}}*\sigma_{\bar{x}}$
 - [ ] $CI= z_{1-\frac{a}{n}}*\sigma_{\bar{x}}-\bar{x}$
-- [x] $CI=\bar{x} \pm z_{1-\frac{a}{n}}*\sigma_{\bar{x}}$
+- [ ] $CI=\bar{x} \pm z_{1-\frac{a}{n}}*\sigma_{\bar{x}}$
 - [ ] None of the above 	
 
 *As a marketing manager at Spotify you wish to find the average listening time of your users. Based on a random sample of 180 users you found that the mean listening time for the sample is 7.34 hours per week and the standard deviation is 6.87 hours.* 
 
 **(LC5.6) What is the 95% confidence interval for the mean listening time (the corresponding z-value for the 95% CI is 1.96)?**
 
-- [x] [6.34;8.34]
+- [ ] [6.34;8.34]
 - [ ] [7.15;7.55]
 - [ ] [6.25;8.15]
 - [ ] [6.54;8.54]
@@ -375,7 +375,7 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 
 **(LC6.1) The Null Hypothesis ($H_0$) is a statement of:**
 
-- [x] The status-quo/no effect
+- [ ] The status-quo/no effect
 - [ ] The desired status
 - [ ] The expected status
 - [ ] None of the above 
@@ -383,22 +383,22 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 **(LC6.2) Which statements about the Null Hypothesis ($H_0$) are TRUE?**
 
 - [ ] In scientific research, the goal is usually to confirm it
-- [x] In scientific research, the goal is usually to reject it
+- [ ] In scientific research, the goal is usually to reject it
 - [ ] It can be confirmed with one test
 - [ ] None of the above 
 
 **(LC6.3) The t-distribution:**
 
-- [x] Has more probability mass in its tails compared to the normal distribution and therefore corrects for small samples
-- [x] Approaches the normal distribution as n increases
-- [x] Is the distribution of the t-statistic
+- [ ] Has more probability mass in its tails compared to the normal distribution and therefore corrects for small samples
+- [ ] Approaches the normal distribution as n increases
+- [ ] Is the distribution of the t-statistic
 - [ ] Has less probability mass in its tails compared to the normal distribution and therefore corrects for small samples
 - [ ] None of the above 
 
 **(LC6.4) Type I vs. Type II Errors: Which of the following statements is TRUE?**
 
-- [x] Type II Error: We believe there is no effect, when in fact there is
-- [x] Type I Error: We believe there is an effect, when in fact there isn’t
+- [ ] Type II Error: We believe there is no effect, when in fact there is
+- [ ] Type I Error: We believe there is an effect, when in fact there isn’t
 - [ ] Type I Error: We believe there is no effect, when in fact there is
 - [ ] Type II Error: We believe there is an effect, when in fact there isn’t
 - [ ] None of the above 
@@ -406,16 +406,16 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 **(LC6.5) When planning an experiment, which of the following information would you need to compute the required sample size?**
 
 - [ ] The p-value (p)
-- [x] The significance level (alpha)
-- [x] The effect size (d)
+- [ ] The significance level (alpha)
+- [ ] The effect size (d)
 - [ ] The critical value of the test statistic (t)
 - [ ] None of the above 
 
 **(LC6.6) In which setting would you reject the null hypothesis when conducting a statistical test?**
 
-- [x] When the absolute value of the calculated test-statistic (e.g., t-value) exceeds the critical value of the test statistic at your specified significance level (e.g., 0.05)
-- [x] When the p-value is smaller than your specified significance level (e.g., 0.05)
-- [x] When the confidence interval associated with the test does not contain zero
+- [ ] When the absolute value of the calculated test-statistic (e.g., t-value) exceeds the critical value of the test statistic at your specified significance level (e.g., 0.05)
+- [ ] When the p-value is smaller than your specified significance level (e.g., 0.05)
+- [ ] When the confidence interval associated with the test does not contain zero
 - [ ] When the test-statistic (e.g., t-value) is lower than the critical value of the test statistic at your specified significance level (e.g., 0.05)
 - [ ] None of the above 
 
@@ -424,24 +424,24 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 - [ ] The lower the absolute value of the test statistic, the lower the p-value
 - [ ] The higher the absolute value of the test statistic, the higher the p-value
 - [ ] There is no connection between the test statistic and the p-value
-- [x] None of the above 
+- [ ] None of the above 
 
 **(LC6.8) What does a significant test result tell you?**
 
 - [ ] The importance of an effect
 - [ ] That the null hypothesis is false
 - [ ] That the null hypothesis is true
-- [x] None of the above 
+- [ ] None of the above 
 
 **(LC6.9) In an experiment in which you compare the means between two groups, you should collect data until your test shows a significant results. True or false?**
 
 - [ ] True
-- [x] False
+- [ ] False
 
 **(LC6.10) If you have data from an within-subjects experimental design, you should use the independent-means t-test. True or false?**
 
 - [ ] True
-- [x] False
+- [ ] False
  
 -------------------------------------------------------
 **Questions for chapters 6.4 and following from here**
@@ -449,7 +449,7 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 
 **(LC6.11) When should you use an ANOVA rather than a t-test?**   
 
-- [x] To compare the means for more than populations
+- [ ] To compare the means for more than populations
 - [ ] To compare the means of two groups
 - [ ] To adjust the variance of different sets
 - [ ] To test for causality
@@ -459,7 +459,7 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 
 - [ ] H0:μ1≠μ2≠μ3
 - [ ] H1:μ1=μ2=μ3
-- [x] H0:μ1=μ2=μ3
+- [ ] H0:μ1=μ2=μ3
 - [ ] H0:μ1≠μ2=μ3
 - [ ] None of the above 
 
@@ -468,28 +468,28 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 - [ ] Because the parametric assumptions of the t-test are not met
 - [ ] Because of deflated Type III Error rates
 - [ ] Due to the family-wise error rate the Type II Error is inflated
-- [x] Because the Type I Error rate (alpha) wouldn't be 0.05
+- [ ] Because the Type I Error rate (alpha) wouldn't be 0.05
 - [ ] None of the above 
 
 **(LC6.14) Which assumptions have to be satisfied to be able to use ANOVA on data from a between-subject design with three groups?**   
 
 - [ ] Same mean for all groups
-- [x] Normal distribution of data
-- [x] Homogeneity of variances
-- [x] Independence of observation
+- [ ] Normal distribution of data
+- [ ] Homogeneity of variances
+- [ ] Independence of observation
 - [ ] None of the above 
 
 **(LC6.15) What procedures are designed to correct of family-wise error rate in ANOVA?**   
 
-- [x] Bonferroni correction
-- [x] Tukey’s HSD
+- [ ] Bonferroni correction
+- [ ] Tukey’s HSD
 - [ ] t-test
-- [x] Post-hoc tests
+- [ ] Post-hoc tests
 - [ ] None of the above 
 
 **(LC6.16) Which of the following are examples for non-parametric tests?**   
 
-- [x] Chi-Squared test
+- [ ] Chi-Squared test
 - [ ] ANOVA
 - [ ] Kruskal-Wilcoxon test
 - [ ] T-test
@@ -497,32 +497,32 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 
 **(LC6.17) When should you use non-parametric tests?**   
 
-- [x] When the assumptions of parametric tests are not met (e.g., normally distributed sampling distribution)
-- [x] You have a very small sample size
-- [x] When your dependent variable is measured on an ordinal scale
-- [x] When your data is better represented by the median
+- [ ] When the assumptions of parametric tests are not met (e.g., normally distributed sampling distribution)
+- [ ] You have a very small sample size
+- [ ] When your dependent variable is measured on an ordinal scale
+- [ ] When your data is better represented by the median
 - [ ] None of the above 
 
 **(LC6.18) When should you use a Wilcoxon Rank Sum Test (= Mann-Whitney U Test)?**   
 
-- [x] When the assumptions of the t-test have been violated
+- [ ] When the assumptions of the t-test have been violated
 - [ ] The variances are not significantly different between groups
-- [x] As a non-parametric alternative to the independent-means t-test
+- [ ] As a non-parametric alternative to the independent-means t-test
 - [ ] When the assumptions of the ANOVA have been violated
 - [ ] None of the above 
 
 **(LC6.19) What does a Chi squared test do?**   
 
-- [x] Tests the statistical significance of the observed association in a cross-tabulation
+- [ ] Tests the statistical significance of the observed association in a cross-tabulation
 - [ ] Tests whether group A affects group B
-- [x] Produces a test statistic that is Chi Squared distributed
-- [x] Tests for the association between two or more categorical variables
+- [ ] Produces a test statistic that is Chi Squared distributed
+- [ ] Tests for the association between two or more categorical variables
 - [ ] None of the above 
 
 **(LC6.20) Which R-function would be suitable if you wanted to perform a test with ranked (ordinal) data in a two-group between-subject design?**   
 
 - [ ] `kruskal.test(x, ...)`
-- [x] `wilcox.test(x, ...)`
+- [ ] `wilcox.test(x, ...)`
 - [ ] `aov(formula, data = ,...)`
 - [ ] `t.test(x, ...)`
 - [ ] None of the above 
@@ -541,22 +541,22 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 
 - [ ] It describes the difference in means of two variables
 - [ ] It describes the causal relation between two variables
-- [x] It is the standardized covariance
-- [x] It describes the degree to which the variation in one variable is related to the variation in another variable
+- [ ] It is the standardized covariance
+- [ ] It describes the degree to which the variation in one variable is related to the variation in another variable
 - [ ] None of the above 
 
 **(LC7.2) Which line through a scatterplot produces the best fit in a linear regression model?**
 
 - [ ] The line associated with the steepest slope parameter
-- [x] The line that minimizes the sum of the squared deviations of the predicted values (regression line) from the observed values
-- [x] The line that minimizes the sum of the squared residuals
+- [ ] The line that minimizes the sum of the squared deviations of the predicted values (regression line) from the observed values
+- [ ] The line that minimizes the sum of the squared residuals
 - [ ] The line that maximizes the sum of the squared residuals
 - [ ] None of the above 
 
 **(LC7.3) What is the interpretation of the regression coefficient ($\beta_1$=0.05) in a regression model where log(sales) (i.e., log-transformed units) is the dependent variable and log(advertising) (i.e., the log-transformed advertising expenditures in Euro) is the independent variable (i.e., $log(sales)=13.4+0.05∗log(advertising)$)?**
 
 - [ ] An increase in advertising by 1€ leads to an increase in sales by 0.5 units
-- [x] A 1% increase in advertising leads to a 0.05% increase in sales
+- [ ] A 1% increase in advertising leads to a 0.05% increase in sales
 - [ ] A 1% increase in advertising leads to a 5% decrease in sales
 - [ ] An increase in advertising by 1€ leads to an increase in sales by 0.005 units
 - [ ] None of the above
@@ -565,29 +565,29 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 
 - [ ] It is always larger than the regular $R^{2}$
 - [ ] It increases with every additional variable
-- [x] It increases only with additional variables that add more explanatory power than pure chance
-- [x] It contains a “penalty” for including unnecessary variables
+- [ ] It increases only with additional variables that add more explanatory power than pure chance
+- [ ] It contains a “penalty” for including unnecessary variables
 - [ ] None of the above 
 
 **(LC7.5) What does the term overfitting refer to?**
 
 - [ ] A regression model that has too many predictor variables
 - [ ] A regression model that fits to a specific data set so poorly, that it will not generalize to other samples
-- [x] A regression model that fits to a specific data set so well, that it will only predict well within the sample but not generalize to other samples
+- [ ] A regression model that fits to a specific data set so well, that it will only predict well within the sample but not generalize to other samples
 - [ ] A regression model that fits to a specific data set so well, that it will generalize to other samples particularly well
 - [ ] None of the above 
 
 **(LC7.6) What are assumptions of the linear regression model?**
 
 - [ ] Endogeneity
-- [x] Independent errors
+- [ ] Independent errors
 - [ ] Heteroscedasticity
 - [ ] Linear dependence of regressors
 - [ ] None of the above 
 
 **(LC7.7) What does the problem of heteroscedasticity in a regression model refer to?**
 
-- [x] The variance of the error term is not constant
+- [ ] The variance of the error term is not constant
 - [ ] A strong linear relationship between the independent variables
 - [ ] The variance of the error term is constant
 - [ ] A correlation between the error term and the independent variables
@@ -596,8 +596,8 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 **(LC7.8) What are properties of the multiplicative regression model (i.e., log-log specification)?**
 
 - [ ] Constant marginal returns
-- [x] Decreasing marginal returns
-- [x] Constant elasticity
+- [ ] Decreasing marginal returns
+- [ ] Constant elasticity
 - [ ] Increasing marginal returns
 - [ ] None of the above 
 
@@ -605,12 +605,12 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 
 - [ ] When the dependent variable is continuous
 - [ ] When the independent and dependent variables are binary
-- [x] When the dependent variable is binary
+- [ ] When the dependent variable is binary
 - [ ] None of the above 
 
 **(LC7.10) What is the correct way to implement a linear regression model in R? (x = independent variable, y = dependent variable)?**
 
-- [x] `lm(y~x, data=data)`
+- [ ] `lm(y~x, data=data)`
 - [ ] `lm(x~y + error, data=data)`
 - [ ] `lm(x~y, data=data)`
 - [ ] `lm(y~x + error, data=data)`
@@ -622,9 +622,9 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 
 **(LC8.1) The goals of factor analysis are...**
 
-- [x] ...to identify underlying dimensions that explain correlations among variables.
+- [ ] ...to identify underlying dimensions that explain correlations among variables.
 - [ ] ...to identify multiplicative effects in a linear regression.
-- [x] ...to identify a smaller set of uncorrelated variables.
+- [ ] ...to identify a smaller set of uncorrelated variables.
 - [ ] ...to identify interaction terms in a linear regression.
 - [ ] None of the above 
 
@@ -633,13 +633,13 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 - [ ] A reduction greater than 50% of the input variables
 - [ ] Between a third and a fourth of the input variables
 - [ ] A reduction smaller than 50% of the input variables
-- [x] None of the above 
+- [ ] None of the above 
 
 **(LC8.3) What assumptions have to be fulfilled for using factor analysis?**
 
-- [x] Variables must be in interval or ratio scale
-- [x] Existence of some underlying factor structure
-- [x] The correlation matrix must have sufficient number of correlations
+- [ ] Variables must be in interval or ratio scale
+- [ ] Existence of some underlying factor structure
+- [ ] The correlation matrix must have sufficient number of correlations
 - [ ] Variables must be measured using ordinal scales
 - [ ] None of the above
 
@@ -647,29 +647,29 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 
 - [ ] Regression coefficients
 - [ ] Correlations between the variables
-- [x] Weights of a variable on a factor
-- [x] Factor loadings
+- [ ] Weights of a variable on a factor
+- [ ] Factor loadings
 - [ ] None of the above 
 
 **(LC8.5) What is the null hypothesis of the Bartlett’s test of sphericity?**
 
 - [ ] All variables are correlated in the population
 - [ ] The correlation matrix is singular
-- [x] All variables are uncorrelated in the population
-- [x] The correlation matrix is an identity matrix
+- [ ] All variables are uncorrelated in the population
+- [ ] The correlation matrix is an identity matrix
 - [ ] None of the above 
 
 **(LC8.6) Before conducting PCA, how can you test the sampling adequacy of your data (i.e., how suited your data is for Factor Analysis)?**
 
 - [ ] Kaiser-Meyer-Olkin (KMO) test with scores <0.5
-- [x] Kaiser-Meyer-Olkin (KMO) test with scores >0.5
+- [ ] Kaiser-Meyer-Olkin (KMO) test with scores >0.5
 - [ ] By inspecting the scree plot
 - [ ] Cronbach's alpha test with scores >0.7
 - [ ] None of the above 
 
 **(LC8.7) What is communality?**
 
-- [x] Proportion of common variance in a variable
+- [ ] Proportion of common variance in a variable
 - [ ] Variance that is unique to a particular variable
 - [ ] Proportion of unique variance in a variable
 - [ ] Covariance between two factors
@@ -678,13 +678,13 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 **(LC8.8) Orthogonal factor rotation assumes:**
 
 - [ ] Inter-correlated factors
-- [x] Uncorrelated factors
+- [ ] Uncorrelated factors
 - [ ] Outer-correlated factors
 - [ ] None of the above 
 
 **(LC8.9) Imagine you want to conduct a PCA on 10 variables without factor rotation and in a first step, you wish to find out how many components you should extract. How would the corresponding R Code look?**
 
-- [x] `principal(data, nfactors = 10, rotate = "none")`
+- [ ] `principal(data, nfactors = 10, rotate = "none")`
 - [ ] `principal(data, nfactors = “varimax”, rotate = 10)`
 - [ ] `principal(data, nfactors = 10, rotate = "oblimin")`
 - [ ] `principal(data, nfactors = 10, rotate = "varimax")`
@@ -695,7 +695,7 @@ boxplot(mtcars$mpg, outline = T, notch = F)
 - [ ] Validity (i.e. “consistency”) requires the absence of random errors
 - [ ] Reliability (i.e. “truthfulness") requires the absence of measurement errors
 - [ ] Validity describes the extent to which a scale produces consistent results in repeated measurements
-- [x] None of the above 
+- [ ] None of the above 
 
 
 ## References {-}
