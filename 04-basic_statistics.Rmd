@@ -248,7 +248,6 @@ st_css()
 ```
 
 ```{r, message=FALSE, error = FALSE, warning = FALSE, results='asis'}
-library(summarytools)
 print(dfSummary(select(music_data, streams, valence, genre, label, explicit), plain.ascii = FALSE, style = "grid",valid.col = FALSE, tmp.img.dir = "tmp", graph.magnif = .65),  method = 'render',headings = FALSE,footnote= NA)
 ```
 

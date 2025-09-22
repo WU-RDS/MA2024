@@ -664,14 +664,15 @@ ggplot(moderation_df, aes(x = x, y = y, color = cut(w, 10))) +
 To understand for which values of the moderator the slope is significant (and in which direction) we can use the so-called Johnson-Neyman intervals.
 
 ```{r, jn, fig.height=4, fig.width=7}
+library(interactions)
 moderated_ols <- lm(y ~ x*w, data = moderation_df)
 pred_resp <- predict_response(moderated_ols, c("x", "w"))
-plot(johnson_neyman(pred_resp)) 
+interactions::johnson_neyman(model = moderated_ols, pred = "x", modx = "w")
 ```
 
 In PROCESS the simple moderation model is `model=1`. `jn=1` will give us the Johnson-Neyman intervals.
 
-```{r, eval=TRUE}
+```{r, eval=FALSE}
 process(moderation_df, y = "y", x = "x", w="w", model=1, jn=1, seed=123)
 ```
 

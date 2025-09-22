@@ -1,6 +1,6 @@
 {pkgs, ...}: with pkgs.rPackages; [
-    #summarytools
     COVID19
+    DiagrammeR
     EBImage
     GPArotation
     HH
@@ -21,9 +21,12 @@
     factoextra
     forcats
     foreign
+    formatR
     ggExtra
     gganimate
     ggcorrplot
+    ggdag
+    ggeffects
     ggiraph
     ggiraphExtra
     ggmap
@@ -32,10 +35,12 @@
     ggthemes
     gmodels
     gridExtra
+    gt
     gtools
     gtrendsR
     haven
     hornpa
+    interactions
     janitor
     jsonlite
     kableExtra
@@ -45,6 +50,7 @@
     lmtest
     logistf
     lsr
+    marginaleffects
     mfx
     multcomp
     openssl
@@ -63,6 +69,7 @@
     sjlabelled
     stargazer
     stringr
+    summarytools
     tibble
     tidyr
     tidyverse
