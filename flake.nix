@@ -26,7 +26,6 @@
       {pkgs}: {
         default = pkgs.mkShell {
           packages = with pkgs; [
-            xquartz
             (rWrapper.override
               {
                 packages =
